@@ -952,7 +952,13 @@
                     apiEndpoint: 'https://evangelista-web-production.up.railway.app/chat' 
                 };
 
-                let state = { isOpen: false, history: [], isTyping: false };
+                // 1. ESTADO CON MEMORIA INTEGRADA
+                let state = { 
+                    isOpen: false, 
+                    history: [], 
+                    lead_data: {}, // <--- AQUÍ SE GUARDA LA FICHA DEL CLIENTE
+                    isTyping: false 
+                };
                 
                 const dom = {
                     modal: document.getElementById('vetting-modal'),
@@ -964,7 +970,7 @@
                     calendlyBar: document.getElementById('calendly-unlock')
                 };
 
-                // 1. UI Toggle
+                // 2. UI Toggle
                 const toggleChat = (forceState = null) => {
                     state.isOpen = forceState !== null ? forceState : !state.isOpen;
                     if (state.isOpen) {
@@ -977,7 +983,7 @@
                     }
                 };
 
-                // 2. Renderizado de Mensajes
+                // 3. Renderizado de Mensajes
                 const appendMessage = (role, text) => {
                     if (!text) return;
                     
@@ -990,7 +996,6 @@
                     
                     const label = role === 'user' ? 'Usted' : 'Socio Digital';
                     
-                    // Inyectar HTML
                     msgDiv.innerHTML = `
                         <span class="text-[8px] text-evOlive/50 uppercase tracking-widest">${label}</span>
                         <div class="${bubbleClass} p-3 text-xs leading-relaxed max-w-[90%] font-light shadow-sm">
@@ -1000,20 +1005,17 @@
                     gsap.to(msgDiv, { opacity: 1, y: -5, duration: 0.3 });
                     dom.log.scrollTop = dom.log.scrollHeight;
                     
-                    // Si es el modelo, activar el Motor de Cadencia Humana
                     if (role === 'model') {
                         const contentDiv = msgDiv.querySelector('div');
                         typeWriterEffect(contentDiv, text);
                     }
                 };
 
-                // 3. MOTOR DE ESCRITURA HUMANA (Human Cadence Engine)
+                // 4. MOTOR DE ESCRITURA HUMANA
                 const typeWriterEffect = (element, text) => {
                     let i = 0; 
                     state.isTyping = true; 
                     element.innerHTML = ''; 
-                    
-                    // A. Latencia Cognitiva (El bot "piensa" antes de escribir)
                     const thinkingTime = Math.min(Math.max(text.length * 5, 1000), 2500);
 
                     const typeNextChar = () => {
@@ -1022,37 +1024,26 @@
                             element.innerHTML += char;
                             i++;
                             dom.log.scrollTop = dom.log.scrollHeight;
-
-                            // B. Velocidad Variable (Estocástica)
                             let nextDelay = 30 + (Math.random() * 20 - 10); 
-
-                            // C. Pausas de Puntuación
                             if (char === '.' || char === '?') nextDelay += 400; 
                             else if (char === ',') nextDelay += 150;
-
                             setTimeout(typeNextChar, nextDelay);
                         } else {
-                            state.isTyping = false; // Liberar el chat
+                            state.isTyping = false; 
                         }
                     };
-
-                    // Ejecutar tras la latencia simulada
                     setTimeout(typeNextChar, thinkingTime);
                 };
 
-                // 4. Lógica de Envío (REPARADA)
+                // 5. LÓGICA DE ENVÍO (CEREBRO ACTUALIZADO)
                 const handleSend = async () => {
                     const text = dom.input.value.trim();
-                    // Bloqueo: Si está vacío o si la IA sigue escribiendo, no enviar.
                     if (!text || state.isTyping) return;
                     
-                    // Limpiar input INMEDIATAMENTE
                     dom.input.value = ''; 
-                    
                     appendMessage('user', text);
                     state.history.push({ role: "user", parts: [text] });
 
-                    // Loader Visual
                     const loaderId = 'loader-' + Date.now();
                     const loader = document.createElement('div');
                     loader.id = loaderId;
@@ -1065,29 +1056,32 @@
                         const response = await fetch(CONFIG.apiEndpoint, {
                             method: 'POST', 
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ message: text, history: state.history })
+                            // --- AQUÍ ESTÁ EL CAMBIO CLAVE: ENVIAMOS LA MEMORIA ---
+                            body: JSON.stringify({ 
+                                message: text, 
+                                history: state.history,
+                                lead_data: state.lead_data 
+                            })
                         });
 
-                        // Quitar Loader
                         if(document.getElementById(loaderId)) document.getElementById(loaderId).remove();
-
                         if (!response.ok) throw new Error("Error server");
 
                         const data = await response.json();
 
+                        // --- ACTUALIZAMOS LA MEMORIA LOCAL CON LO QUE APRENDIÓ LA IA ---
+                        if (data.updated_lead_data) {
+                            state.lead_data = data.updated_lead_data;
+                            console.log("Memoria Lead Actualizada:", state.lead_data);
+                        }
+
                         if (data.response) {
-                            // 1. Mostrar respuesta del Socio (Texto normal)
                             appendMessage('model', data.response);
                             state.history.push({ role: "model", parts: [data.response] });
                             
-                            // 2. VERIFICAR SI EL AUDITOR AUTORIZÓ CALENDLY
                             if (data.silent_audit?.action === 'UNLOCK_CALENDLY') {
-                                
-                                // A. Crear la "Tarjeta de Cierre" (Diseño Premium)
                                 const ctaDiv = document.createElement('div');
-                                // Usamos tus colores corporativos (evOlive, evBone)
                                 ctaDiv.className = "mt-4 mb-2 p-4 bg-evOlive/10 border-l-2 border-evOlive rounded-r-lg flex flex-col gap-3 shadow-lg transform transition-all duration-500 hover:bg-evOlive/20";
-                                
                                 ctaDiv.innerHTML = `
                                     <div class="flex items-center gap-2 text-evOlive">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1095,23 +1089,17 @@
                                         </svg>
                                         <span class="font-bold text-[10px] uppercase tracking-widest">Protocolo Foundation Aprobado</span>
                                     </div>
-                                    
                                     <p class="text-[10px] text-evBone/80 font-light leading-relaxed">
-                                        Se ha autorizado una ventana de 45 minutos en la agenda de la Dirección para validar la viabilidad del proyecto.
+                                        Se ha autorizado una ventana de 45 minutos en la agenda de la Dirección.
                                     </p>
-                                    
                                     <button onclick="window.open('https://calendly.com/gaec545/30min', '_blank')" 
                                         class="group w-full py-3 bg-evOlive text-evBone hover:bg-evBlack transition-all duration-300 font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer border border-transparent hover:border-evOlive/30">
                                         <span>Reservar Sesión</span>
                                         <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                     </button>
                                 `;
-                                
-                                // B. Inyectarlo en el chat con animación suave
                                 dom.log.appendChild(ctaDiv);
                                 gsap.from(ctaDiv, { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" });
-                                
-                                // C. Scroll automático al final
                                 dom.log.scrollTop = dom.log.scrollHeight;
                             }
                         }
@@ -1119,7 +1107,7 @@
                     } catch (error) {
                         if(document.getElementById(loaderId)) document.getElementById(loaderId).remove();
                         appendMessage('model', "Conexión interrumpida. Por favor verifique el servidor.");
-                        state.isTyping = false; // Liberar bloqueo en caso de error
+                        state.isTyping = false; 
                     }
                 };
 
