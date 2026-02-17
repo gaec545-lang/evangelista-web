@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth bg-[#F9F8F4]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evangelista & Co. | Intelligence Architecture</title>
+    <meta name="description" content="Firma de Arquitectura de Soluciones y Estrategia de Datos.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        evOlive: '#3D441E',      /* Autoridad */
+                        evOliveDark: '#2A3010',  /* Profundidad */
+                        evBrown: '#7D6348',      /* Tierra/Lujo */
+                        evBone: '#F9F8F4',       /* Papel Institucional */
+                        evSurface: '#EFECE6',    /* Superficie */
+                        evBlack: '#111111',      /* Negro Técnico */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    fontSize: {
+                        // Clamp: Mínimo 3.5rem, Ideal 8vw, Máximo 10rem
+                        'display': ['clamp(3.5rem, 8vw, 10rem)', { lineHeight: '0.9', letterSpacing: '-0.03em' }],
+                    },
+                    letterSpacing: {
+                        widest: '0.15em',
+                        extreme: '0.35em',
+                    },
+                    boxShadow: {
+                        'elite': '0 30px 60px -15px rgba(61, 68, 30, 0.15)',
+                        'glass': '0 8px 32px 0 rgba(61, 68, 30, 0.05)',
+                    },
+                    backgroundImage: {
+                        // Ruido generado por código para evitar error 404 de imágenes
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.7\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ESTILOS GLOBALES DE INGENIERÍA */
+        
+        /* Evitar scroll horizontal indeseado */
+        body { 
+            overflow-x: hidden; 
+            cursor: default;
+        }
+
+        /* Selección de texto premium */
+        ::selection {
+            background: #3D441E; /* evOlive */
+            color: #F9F8F4;      /* evBone */
+        }
+
+        /* Ocultar scrollbar pero mantener funcionalidad */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F9F8F4; }
+        ::-webkit-scrollbar-thumb { background: #7D6348; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3D441E; }
+
+        /* CLASE CRÍTICA: Evita el parpadeo antes de animar (FOUC) */
+        .gsap-hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        /* Bordes de Arquitecto (Líneas de 1px sutiles) */
+        .arch-border { border: 1px solid rgba(61, 68, 30, 0.1); }
+        .arch-border-b { border-bottom: 1px solid rgba(61, 68, 30, 0.1); }
+    </style>
+</head>
+
+<body class="bg-evBone text-evBlack antialiased relative">
+
+    <div class="fixed inset-0 bg-noise opacity-50 pointer-events-none z-0 mix-blend-multiply"></div>
+
+    <div class="fixed top-[-10%] right-[-5%] w-[40vw] h-[40vw] border border-evOlive/5 rounded-full z-0 pointer-events-none float-anim"></div>
+    <div class="fixed bottom-[-10%] left-[-5%] w-[35vw] h-[35vw] border border-evBrown/5 rounded-full z-0 pointer-events-none float-anim" style="animation-delay: -5s;"></div>
+
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 py-8 px-6 md:px-12 transition-all duration-500 border-b border-transparent">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            
+            <a href="#" class="flex items-center gap-4 group relative">
+                <img src="assets/logoEvangelistaCo.png" 
+                     alt="Evangelista & Co. Emblem" 
+                     class="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out">
+                
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-1">
+                        <span class="font-serif text-2xl md:text-3xl font-bold tracking-tighter text-evOlive">
+                            EVANGELISTA
+                        </span>
+                        <span class="font-serif text-2xl md:text-3xl font-normal italic text-evBrown">
+                            & CO.
+                        </span>
+                    </div>
+                    <span class="h-px w-0 bg-evBrown mt-1 transition-all duration-700 ease-out group-hover:w-full"></span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-12 bg-evBone/0 px-8 py-2 rounded-full transition-all duration-500" id="nav-menu">
+                <a href="#truth" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors relative group py-2">
+                    La Brecha
+                    <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                </a>
+                <a href="#blueprint" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors relative group py-2">
+                    Blueprint
+                    <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                </a>
+                <a href="#governance" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors relative group py-2">
+                    Gobernanza
+                    <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                </a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="#vetting" class="gsap-hidden nav-cta group relative inline-flex overflow-hidden px-8 py-3 bg-evOlive text-evBone border border-evOlive transition-all duration-500 hover:border-evBlack">
+                    <div class="absolute inset-0 bg-evBlack transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></div>
+                    <span class="relative z-10 text-[10px] font-bold tracking-extreme uppercase flex items-center gap-2 group-hover:text-white">
+                        Iniciar Diagnóstico
+                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="relative min-h-screen flex items-center justify-center pt-32 px-6 md:px-12 overflow-hidden z-10">
+        
+        <div class="absolute inset-0 max-w-[1800px] mx-auto pointer-events-none opacity-20">
+            <div class="border-l border-evOlive h-full absolute left-6 md:left-12 top-0"></div>
+            <div class="border-r border-evOlive h-full absolute right-6 md:right-12 top-0"></div>
+        </div>
+
+        <div class="relative max-w-screen-2xl mx-auto w-full text-center">
+            
+            <div class="gsap-hidden hero-elem flex flex-col items-center gap-4 mb-10">
+                <span class="h-12 w-px bg-evBrown/50"></span>
+                <span class="inline-block px-4 py-2 border border-evBrown/20 text-[10px] font-bold tracking-[0.3em] uppercase text-evBrown bg-evBone/50 backdrop-blur-sm">
+                    Intelligence Architecture Firm
+                </span>
+            </div>
+
+            <h1 class="gsap-hidden hero-elem font-serif text-display text-evOlive mb-12 relative leading-[0.85]">
+                La intuición es<br>
+                <span class="italic text-evBrown font-light relative px-2 inline-block">
+                    negligencia.
+                    <svg class="absolute bottom-0 left-0 w-full h-2 md:h-4 text-evOlive/20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                        <path d="M0 5 Q 50 12 100 5" stroke="currentColor" stroke-width="2" fill="none" id="hero-underline" />
+                    </svg>
+                </span>
+            </h1>
+
+            <p class="gsap-hidden hero-elem text-xl md:text-2xl font-light text-evBlack/70 max-w-4xl mx-auto leading-relaxed mb-16">
+                Diseñamos <strong>Arquitecturas de Soluciones</strong> y Estrategias de Datos de Grado Institucional. 
+                <br class="hidden lg:block">
+                No gestionamos información; construimos el ecosistema inteligente que blinda su rentabilidad.
+            </p>
+
+            <div class="gsap-hidden hero-elem flex flex-col sm:flex-row justify-center gap-6 items-center">
+                <a href="#truth" class="group relative min-w-[220px] px-8 py-5 bg-evBlack text-evBone overflow-hidden shadow-elite transition-all hover:shadow-xl hover:-translate-y-1">
+                    <span class="relative z-10 text-xs font-bold tracking-extreme uppercase group-hover:text-white">Ver La Verdad</span>
+                    <div class="absolute inset-0 bg-evOlive transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                </a>
+                
+                <a href="#blueprint" class="group min-w-[220px] px-8 py-5 border border-evOlive/30 text-evOlive hover:border-evOlive transition-all bg-transparent hover:bg-evOlive/5">
+                    <span class="text-xs font-bold tracking-extreme uppercase group-hover:text-evBlack">Explorar Blueprint</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 gsap-hidden hero-elem">
+            <span class="text-[9px] uppercase tracking-widest text-evOlive/50 font-bold">Scroll</span>
+            <div class="w-px h-16 bg-gradient-to-b from-evOlive/50 to-transparent"></div>
+        </div>
+
+    </header>
+
+    <section id="truth" class="relative py-32 bg-evBone border-t arch-border z-20">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+            
+            <div class="lg:col-span-5 lg:sticky lg:top-32 h-fit">
+                <span class="gsap-fade-up opacity-0 block text-[10px] font-bold tracking-extreme uppercase text-evBrown mb-8">
+                    /// Diagnóstico Situacional
+                </span>
+                
+                <h2 class="gsap-fade-up opacity-0 font-serif text-5xl md:text-6xl text-evOlive mb-10 leading-[1.05]">
+                    Su ERP es un<br>
+                    <span class="text-evOlive/40 italic">cementerio de datos.</span>
+                </h2>
+                
+                <div class="gsap-fade-up opacity-0 space-y-8">
+                    <p class="text-lg font-light text-evBlack/70 leading-relaxed border-l border-evBrown pl-6">
+                        SAP, Oracle o Aspel registran la historia, no el futuro. La <strong>entropía de datos</strong> (silos, errores humanos) le está costando entre un 5% y un 12% de margen neto anual.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 space-y-px border arch-border bg-evOlive/10">
+                
+                <div class="gsap-card opacity-0 translate-y-12 bg-evSurface p-12 md:p-16 hover:bg-white transition-colors duration-500">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full bg-evBone border arch-border flex items-center justify-center text-evOlive/50">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-red-800/60 uppercase border border-red-800/20 px-3 py-1 bg-red-50">Riesgo Alto</span>
+                    </div>
+                    <h3 class="font-serif text-3xl text-evOlive/60 mb-4">Reportes Estáticos</h3>
+                    <p class="text-sm font-light text-evBlack/60 leading-relaxed">
+                        Usted recibe la información 15 días después del cierre. Las decisiones correctivas llegan tarde y el daño al flujo de caja ya es irreversible.
+                    </p>
+                </div>
+
+                <div class="gsap-card opacity-0 translate-y-12 bg-evOlive p-12 md:p-16 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    
+                    <div class="relative z-10 flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <span class="text-[9px] font-bold tracking-widest text-white uppercase border border-white/20 px-3 py-1">Estándar E&C</span>
+                    </div>
+                    <h3 class="relative z-10 font-serif text-3xl text-white mb-4">Verdad en Tiempo Real</h3>
+                    <p class="relative z-10 text-sm font-light text-white/80 leading-relaxed">
+                        Arquitectura Data Mesh que conecta sus silos. Si un margen cae hoy a las 10:00 AM, la alerta se dispara a las 10:01 AM. Gobernanza activa 24/7.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="blueprint" class="relative py-32 bg-evSurface border-t arch-border z-10">
+        <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(#3D441E 1px, transparent 1px), linear-gradient(90deg, #3D441E 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="max-w-[1600px] mx-auto px-6 relative z-10">
+            
+            <div class="text-center mb-20">
+                <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">Arquitectura de Soluciones</span>
+                <h2 class="font-serif text-5xl md:text-6xl text-evOlive mb-6">The Blueprint of Truth</h2>
+                <p class="text-evBlack/50 font-light text-lg">Visualice la transformación: Del caos a la rentabilidad.</p>
+            </div>
+
+            <div class="bg-evBone rounded-xl shadow-elite arch-border overflow-hidden">
+                
+                <div class="flex flex-wrap border-b arch-border bg-white">
+                    <button onclick="changeLayer(0)" class="bp-tab flex-1 py-6 px-2 relative hover:bg-evSurface transition-colors group active" data-idx="0">
+                        <span class="block text-2xl font-serif text-evOlive mb-2 transition-colors">01</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-evBrown">Fuentes</span>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-evOlive scale-x-100 transition-transform origin-left bp-progress"></div>
+                    </button>
+                    <button onclick="changeLayer(1)" class="bp-tab flex-1 py-6 px-2 relative hover:bg-evSurface transition-colors group opacity-60 hover:opacity-100" data-idx="1">
+                        <span class="block text-2xl font-serif text-evOlive/40 mb-2 transition-colors">02</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-evBrown">Motor</span>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-evOlive scale-x-0 transition-transform origin-left bp-progress"></div>
+                    </button>
+                    <button onclick="changeLayer(2)" class="bp-tab flex-1 py-6 px-2 relative hover:bg-evSurface transition-colors group opacity-60 hover:opacity-100" data-idx="2">
+                        <span class="block text-2xl font-serif text-evOlive/40 mb-2 transition-colors">03</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-evBrown">Visión</span>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-evOlive scale-x-0 transition-transform origin-left bp-progress"></div>
+                    </button>
+                    <button onclick="changeLayer(3)" class="bp-tab flex-1 py-6 px-2 relative hover:bg-evOlive hover:text-white transition-colors group opacity-60 hover:opacity-100 bg-evOlive/5" data-idx="3">
+                        <span class="block text-2xl font-serif text-evOlive/40 group-hover:text-white mb-2 transition-colors">04</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-evBrown group-hover:text-evBone">Ejecución</span>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-evBrown scale-x-0 transition-transform origin-left bp-progress"></div>
+                    </button>
+                </div>
+
+                <div class="grid lg:grid-cols-2 min-h-[500px]">
+                    
+                    <div class="relative bg-evSurface/50 border-r arch-border overflow-hidden flex items-center justify-center p-8">
+                        
+                        <div class="bp-layer absolute inset-0 flex items-center justify-center" id="visual-0">
+                            <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl">
+                                <circle cx="60" cy="60" r="35" fill="white" stroke="#3D441E" stroke-width="2"/>
+                                <text x="60" y="65" text-anchor="middle" font-size="10" fill="#3D441E">ERP</text>
+                                <circle cx="240" cy="100" r="30" fill="white" stroke="#3D441E" stroke-width="2"/>
+                                <text x="240" y="105" text-anchor="middle" font-size="10" fill="#3D441E">CRM</text>
+                                <circle cx="150" cy="240" r="35" fill="white" stroke="#3D441E" stroke-width="2"/>
+                                <text x="150" y="245" text-anchor="middle" font-size="10" fill="#3D441E">XLS</text>
+                                <line x1="90" y1="75" x2="210" y2="100" stroke="#EF4444" stroke-width="2" stroke-dasharray="5,5"/>
+                                <line x1="80" y1="85" x2="130" y2="210" stroke="#EF4444" stroke-width="2" stroke-dasharray="5,5"/>
+                            </svg>
+                        </div>
+
+                        <div class="bp-layer absolute inset-0 flex items-center justify-center opacity-0" id="visual-1">
+                            <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl animate-[spin_12s_linear_infinite]">
+                                <circle cx="150" cy="150" r="90" fill="none" stroke="#3D441E" stroke-width="1" stroke-dasharray="10,10"/>
+                                <rect x="110" y="110" width="80" height="80" fill="#3D441E"/>
+                                <text x="150" y="155" text-anchor="middle" font-size="12" fill="white" font-weight="bold" letter-spacing="2">ALCOA+</text>
+                                <circle cx="150" cy="50" r="5" fill="#7D6348"/>
+                                <circle cx="150" cy="250" r="5" fill="#7D6348"/>
+                                <circle cx="50" cy="150" r="5" fill="#7D6348"/>
+                                <circle cx="250" cy="150" r="5" fill="#7D6348"/>
+                            </svg>
+                        </div>
+
+                        <div class="bp-layer absolute inset-0 flex items-center justify-center opacity-0" id="visual-2">
+                            <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl">
+                                <rect x="40" y="60" width="220" height="140" rx="4" fill="white" stroke="#3D441E" stroke-width="2"/>
+                                <path d="M60 160 L100 130 L150 150 L240 80" stroke="#7D6348" stroke-width="4" fill="none"/>
+                                <circle cx="240" cy="80" r="6" fill="#3D441E"/>
+                                <rect x="60" y="210" width="60" height="10" fill="#E5E5E5"/>
+                                <rect x="130" y="210" width="60" height="10" fill="#E5E5E5"/>
+                                <rect x="200" y="210" width="60" height="10" fill="#E5E5E5"/>
+                            </svg>
+                        </div>
+
+                        <div class="bp-layer absolute inset-0 flex items-center justify-center opacity-0" id="visual-3">
+                            <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl">
+                                <circle cx="150" cy="150" r="80" fill="#3D441E"/>
+                                <path d="M100 150 L140 190 L200 110" stroke="#F9F8F4" stroke-width="10" stroke-linecap="round" fill="none"/>
+                                <text x="150" y="260" text-anchor="middle" font-size="14" fill="#3D441E" font-weight="bold">PMO READY</text>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div class="relative p-12 md:p-16 flex flex-col justify-center bg-white">
+                        
+                        <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-100" id="content-0">
+                            <span class="text-6xl font-serif text-evOlive/10 mb-6">01</span>
+                            <h3 class="text-3xl font-serif text-evOlive mb-6">Fuentes & Caos</h3>
+                            <p class="text-lg font-light text-evBlack/60 mb-8">Sus datos viven aislados en Excel, ERPs y CRMs que no se hablan. Esta fragmentación crea puntos ciegos financieros.</p>
+                            <div class="border-l-2 border-red-400 pl-4">
+                                <p class="text-sm text-red-500 font-medium">Impacto: Ceguera Operativa Total.</p>
+                            </div>
+                        </div>
+
+                        <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-0 pointer-events-none translate-y-4" id="content-1">
+                            <span class="text-6xl font-serif text-evOlive/10 mb-6">02</span>
+                            <h3 class="text-3xl font-serif text-evOlive mb-6">Motor Forense</h3>
+                            <p class="text-lg font-light text-evBlack/60 mb-8">Ingesta y limpieza. Aplicamos filtros forenses y estándares ALCOA+ para asegurar que el dato sea íntegro antes de procesarlo.</p>
+                            <div class="border-l-2 border-evOlive pl-4">
+                                <p class="text-sm text-evOlive font-medium">Resultado: Evidencia Auditable.</p>
+                            </div>
+                        </div>
+
+                        <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-0 pointer-events-none translate-y-4" id="content-2">
+                            <span class="text-6xl font-serif text-evOlive/10 mb-6">03</span>
+                            <h3 class="text-3xl font-serif text-evOlive mb-6">Visualización</h3>
+                            <p class="text-lg font-light text-evBlack/60 mb-8">Tableros Estratégicos. Usted ve la verdad en tiempo real. Diferenciamos entre lo que ve el CEO (Estrategia) y lo que ve el Gerente (Táctica).</p>
+                            <div class="border-l-2 border-evBrown pl-4">
+                                <p class="text-sm text-evBrown font-medium">Resultado: Control de Mando.</p>
+                            </div>
+                        </div>
+
+                        <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-0 pointer-events-none translate-y-4" id="content-3">
+                            <span class="text-6xl font-serif text-evOlive/10 mb-6">04</span>
+                            <h3 class="text-3xl font-serif text-evOlive mb-6">Ejecución & PMO</h3>
+                            <p class="text-lg font-light text-evBlack/60 mb-8">La Integración Vertical. Transformamos el insight en un proyecto de mejora administrativa gestionado por nosotros.</p>
+                            <div class="border-l-2 border-evOlive pl-4">
+                                <p class="text-sm text-evOlive font-medium">Resultado: Dinero en el Banco.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="governance" class="py-32 bg-evBone border-t arch-border relative z-10">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-12">
+            
+            <div class="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
+                <div>
+                    <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">Modelo de Ejecución</span>
+                    <h2 class="font-serif text-5xl md:text-6xl text-evOlive">Integración Vertical</h2>
+                </div>
+                <p class="text-evBlack/60 font-light max-w-md text-right md:text-left">
+                    No delegamos. Controlamos la cadena de valor completa: desde la extracción del dato hasta la gestión del proyecto de mejora.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-px bg-evOlive/10 border arch-border">
+                
+                <div class="bg-evBone p-12 md:p-16 hover:bg-white transition-colors duration-500 group relative overflow-hidden">
+                    <span class="text-8xl font-serif text-evOlive/5 absolute top-4 right-4 group-hover:text-evOlive/10 transition-colors">I</span>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 border arch-border flex items-center justify-center mb-8 rounded-full bg-evSurface group-hover:bg-evOlive group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h3 class="font-serif text-2xl text-evOlive mb-6">The Foundation</h3>
+                        <p class="text-sm font-light text-evBlack/60 leading-relaxed mb-8">
+                            Auditoría Forense de Datos. Saneamos su pasado. Identificamos inconsistencias históricas, duplicidades y fugas en sus registros actuales.
+                        </p>
+                        <ul class="space-y-3 border-t arch-border pt-6">
+                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
+                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Limpieza SQL
+                            </li>
+                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
+                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Mapeo de Silos
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-evOlive text-evBone p-12 md:p-16 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-noise opacity-10 mix-blend-overlay"></div>
+                    <span class="text-8xl font-serif text-white/5 absolute top-4 right-4">II</span>
+                    
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 border border-white/20 flex items-center justify-center mb-8 rounded-full bg-white/10">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h3 class="font-serif text-2xl text-white mb-6">The Architecture</h3>
+                        <p class="text-sm font-light text-white/70 leading-relaxed mb-8">
+                            Ingeniería de Inteligencia. Construimos el Data Mesh que conecta sus departamentos. Generamos los tableros que dictan la estrategia.
+                        </p>
+                        <ul class="space-y-3 border-t border-white/10 pt-6">
+                            <li class="text-xs font-bold tracking-widest uppercase text-white flex items-center gap-2">
+                                <span class="w-1 h-1 bg-white rounded-full"></span> Business Intelligence
+                            </li>
+                            <li class="text-xs font-bold tracking-widest uppercase text-white flex items-center gap-2">
+                                <span class="w-1 h-1 bg-white rounded-full"></span> Dashboards Directivos
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-evBone p-12 md:p-16 hover:bg-white transition-colors duration-500 group relative overflow-hidden">
+                    <span class="text-8xl font-serif text-evOlive/5 absolute top-4 right-4 group-hover:text-evOlive/10 transition-colors">III</span>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 border arch-border flex items-center justify-center mb-8 rounded-full bg-evSurface group-hover:bg-evOlive group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        </div>
+                        <h3 class="font-serif text-2xl text-evOlive mb-6">The Governance</h3>
+                        <p class="text-sm font-light text-evBlack/60 leading-relaxed mb-8">
+                            Ejecución y PMO. No solo le decimos qué está mal; gestionamos el proyecto para arreglarlo. Vigilancia continua del cumplimiento.
+                        </p>
+                        <ul class="space-y-3 border-t arch-border pt-6">
+                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
+                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Project Management
+                            </li>
+                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
+                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Auditoría Continua
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 bg-evOliveDark relative overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-evOlive to-transparent"></div>
+        <div class="absolute inset-0 bg-noise opacity-20 mix-blend-soft-light"></div>
+        
+        <div class="relative z-10 text-center max-w-4xl px-6">
+            <span class="inline-block mb-8 text-[10px] font-bold tracking-[0.4em] uppercase text-evBone/40 border border-evBone/10 px-4 py-2">
+                Nuestra Garantía
+            </span>
+            <h2 class="font-serif text-4xl md:text-6xl text-evBone leading-tight mb-12">
+                "No vendemos horas de consultoría. <br>
+                <span class="text-evBrown italic">Vendemos la recuperación de su capital."</span>
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 border-t border-evBone/10 pt-12">
+                <div class="text-center">
+                    <span class="block text-3xl md:text-4xl font-serif text-evBone mb-2">$3.5M+</span>
+                    <span class="text-[9px] uppercase tracking-widest text-evBone/50">Recuperado 2025</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-3xl md:text-4xl font-serif text-evBone mb-2">100%</span>
+                    <span class="text-[9px] uppercase tracking-widest text-evBone/50">ALCOA+ Compliant</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-3xl md:text-4xl font-serif text-evBone mb-2">Q1</span>
+                    <span class="text-[9px] uppercase tracking-widest text-evBone/50">Resultados Rápidos</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-3xl md:text-4xl font-serif text-evBone mb-2">24/7</span>
+                    <span class="text-[9px] uppercase tracking-widest text-evBone/50">Vigilancia Sentinel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vetting" class="py-24 bg-evBone text-evBlack relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+            <div class="absolute right-0 top-0 w-[500px] h-[500px] bg-evOlive/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mb-16 border-l-2 border-evOlive pl-6">
+                <span class="text-evOlive/70 text-[10px] tracking-[0.2em] uppercase mb-2 block">Contacto & Admisión</span>
+                <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-evOlive">Protocolos de Interacción</h2>
+                <p class="font-light text-evBlack/80 text-sm md:text-base leading-relaxed max-w-2xl">
+                    En Evangelista & Co. hemos eliminado la burocracia de los formularios tradicionales. 
+                    Seleccione el canal adecuado según la naturaleza estratégica de su solicitud.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-evOlive/10 pt-12">
+                
+                <div class="group space-y-6 pr-8">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-2 h-2 bg-evOlive rounded-full animate-pulse relative">
+                            <div class="absolute inset-0 bg-evOlive rounded-full animate-ping opacity-75"></div>
+                        </div>
+                        <span class="text-[10px] uppercase tracking-widest text-evOlive font-bold">Consultoría & Estrategia</span>
+                    </div>
+                    
+                    <h3 class="font-playfair text-2xl text-evOlive">Servicio de Consultoria</h3>
+                    <p class="text-xs font-light text-evBlack/70 leading-relaxed text-justify">
+                        El acceso a la agenda de los Clientes para proyectos <strong>Foundation</strong> o <strong>Architecture</strong> es exclusivo a través de nuestro sistema de diagnóstico autónomo. 
+                        <br><br>
+                        Nuestro Socio Digital evaluará la madurez operativa de su caso en tiempo real y desbloqueará los horarios disponibles si califica.
+                        <br><br>
+                        Tenemos cupo limitado para nuestros servicios de consultoria.
+                    </p>
+
+                    <button onclick="document.getElementById('btn-open-chat').click()" 
+                        class="mt-4 group/btn relative inline-flex items-center gap-4 px-8 py-4 bg-evOlive text-evBone font-bold text-[10px] tracking-[0.2em] uppercase hover:bg-evBlack transition-all duration-500 shadow-md hover:shadow-evOlive/30">
+                        <span>Iniciar Diagnóstico</span>
+                        <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </button>
+                </div>
+
+                <div class="group space-y-6 md:pl-12 md:border-l border-evOlive/10 relative">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-2 h-2 border border-evOlive rounded-full"></div>
+                        <span class="text-[10px] uppercase tracking-widest text-evOlive font-bold">Relaciones Corporativas</span>
+                    </div>
+
+                    <h3 class="font-playfair text-2xl text-evOlive">Administración General</h3>
+                    <p class="text-xs font-light text-evBlack/70 leading-relaxed text-justify">
+                        Canal reservado estrictamente para alianzas comerciales, relaciones públicas, proveedores y asuntos legales.
+                        <br><br>
+                        <em class="opacity-60 text-[9px] uppercase tracking-wide border-l border-evOlive/30 text-evOlive pl-2 block mt-2">
+                            Nota: Solicitudes de consultoría enviadas por esta vía serán redirigidas automáticamente al Digital Vetting.
+                        </em>
+                    </p>
+
+                    <div class="flex flex-col gap-3 mt-8 text-xs font-light text-evOlive/80">
+                        <a href="mailto:corporativo@evangelista.co" class="hover:text-evOlive transition-colors flex items-center gap-3 group/link">
+                            <span class="w-6 h-6 rounded-full border border-evOlive/30 flex items-center justify-center text-evOlive/60 group-hover/link:border-evOlive group-hover/link:text-evOlive transition-all">@</span>
+                            <span class="text-evBlack/80 group-hover/link:text-evOlive transition-colors">consultoria@ibbmexico.org</span>
+                        </a>
+                        <div class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-full border border-evOlive/30 flex items-center justify-center text-evOlive/60">📍</span>
+                            <span class="text-evBlack/80">PUEBLA / CDMX</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<div id="drawer-overlay" class="absolute inset-0 bg-evOlive/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+            <footer class="bg-evBlack text-evBone border-t border-evOlive/20 pt-24 pb-12 relative overflow-hidden z-10">
+        <div class="absolute inset-0 bg-noise opacity-10 mix-blend-soft-light pointer-events-none"></div>
+
+        <div class="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
+            
+            <div class="grid md:grid-cols-12 gap-16 mb-24">
+                
+                <div class="md:col-span-5 space-y-8">
+                    
+                    <div class="flex items-start gap-4 group">
+                        <img src="assets/logoEvangelistaCo.png" 
+                             alt="Evangelista Logo" 
+                             class="h-14 w-auto object-contain brightness-0 invert opacity-90 group-hover:scale-105 transition-transform duration-500">
+                        
+                        <div class="flex flex-col -mt-1">
+                            <span class="font-serif text-3xl font-bold tracking-tighter text-evBone">
+                                EVANGELISTA
+                            </span>
+                            <span class="font-serif text-3xl font-normal italic text-evOlive">
+                                & CO.
+                            </span>
+                        </div>
+                    </div>
+
+                    <p class="text-sm font-light text-evBone/60 leading-relaxed max-w-md">
+                        Somos una firma de Arquitectura de Inteligencia. Nuestra misión es erradicar la intuición de la toma de decisiones directivas mediante la construcción de ecosistemas de datos auditables, gobernados y rentables.
+                    </p>
+                    <div class="pt-4">
+                        <span class="text-[10px] uppercase tracking-widest text-evOlive font-bold">Puebla • Ciudad de México</span>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 md:col-start-7 space-y-6">
+                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evOlive mb-4">Firma</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" id="btn-footer-identity" class="text-sm text-evBone/80 hover:text-white transition-colors flex items-center gap-2 group">
+                                Nuestra Identidad
+                                <span class="w-0 h-px bg-evOlive transition-all group-hover:w-4"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="btn-footer-cases" class="text-sm text-evBone/80 hover:text-white transition-colors flex items-center gap-2 group">
+                                Casos de Exito
+                                <span class="w-0 h-px bg-evOlive transition-all group-hover:w-4"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3 space-y-6">
+                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evOlive mb-4">Legal & Contacto</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" class="text-sm text-evBone/60 hover:text-evOlive transition-colors">Aviso de Privacidad</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-evBone/60 hover:text-evOlive transition-colors">Términos de Servicio</a>
+                        </li>
+                        <li class="pt-4">
+                            <a href="mailto:consultoria@ibbmexico.org" class="text-sm font-serif italic text-evBone hover:text-evOlive transition-colors">consultoria@ibbmexico.org</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40">
+                <span class="text-[10px] uppercase tracking-widest">© 2026 Evangelista & Co. Inc.</span>
+                <span class="text-[10px] uppercase tracking-widest">Intelligence Architecture Firm</span>
+            </div>
+        </div>
+    </footer>
+
+
+   <div id="ui-layer" class="fixed inset-0 z-[9999] pointer-events-none">
+
+        <div id="drawer-overlay" class="absolute inset-0 bg-evOlive/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+        <aside id="drawer-identity" class="absolute top-0 right-0 h-full w-full md:w-[600px] bg-evBone shadow-2xl translate-x-full pointer-events-auto overflow-y-auto border-l border-evOlive/10">
+            <div class="p-10 md:p-16 min-h-full bg-evBone relative flex flex-col justify-between">
+                
+                <button id="btn-close-identity" class="absolute top-8 right-8 p-2 bg-evSurface rounded-full hover:rotate-90 transition-transform cursor-pointer z-50">
+                    <svg class="w-6 h-6 text-evOlive" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+
+                <div class="drawer-content opacity-0"> <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-8 block">/// Identidad Organizacional</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-evOlive mb-8 leading-tight">Nuestra Declaración</h2>
+                    
+                    <div class="space-y-8 text-evBlack/80">
+                        <p class="font-serif text-xl italic text-evOlive border-l-2 border-evOlive pl-6">
+                            "No somos una agencia; somos arquitectos de la verdad operativa. Donde otros ven caos, nosotros vemos patrones financieros."
+                        </p>
+                        
+                        <div class="h-px w-full bg-evOlive/10 my-8"></div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="font-bold text-evOlive uppercase text-xs tracking-widest mb-2">Misión Forense</h3>
+                                <p class="font-light text-sm leading-relaxed">Exponer la realidad financiera mediante ingeniería de datos ALCOA+, eliminando la intuición para instaurar la precisión.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-evOlive uppercase text-xs tracking-widest mb-2">Visión Estratégica</h3>
+                                <p class="font-light text-sm leading-relaxed">Convertir la incertidumbre operativa en activos líquidos de decisión para Consejos de Administración.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 pt-8 border-t border-evOlive/10 drawer-footer opacity-0"> <span class="text-[9px] font-bold tracking-widest text-evOlive/40 uppercase block mb-4">Certified Architecture</span>
+                    <div class="flex flex-wrap gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-evOlive text-xs tracking-widest">MICROSOFT</span>
+                            <span class="font-light text-[8px] text-evOlive">Power Platform</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-evOlive text-xs tracking-widest">GOOGLE</span>
+                            <span class="font-light text-[8px] text-evOlive">Cloud Data</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-evOlive text-xs tracking-widest">SAP</span>
+                            <span class="font-light text-[8px] text-evOlive">Integration</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-right">
+                        <p class="font-serif text-evOlive text-lg">Evangelista & Co.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <aside id="drawer-cases" class="absolute top-0 right-0 h-full w-full md:w-[600px] bg-evOlive shadow-2xl translate-x-full pointer-events-auto overflow-y-auto border-l border-white/10">
+            <div class="p-10 md:p-16 min-h-full bg-evOlive text-white relative flex flex-col justify-between">
+                
+                <button id="btn-close-cases" class="absolute top-8 right-8 p-2 bg-white/10 rounded-full hover:rotate-90 transition-transform cursor-pointer z-50">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+
+                <div class="drawer-content opacity-0">
+                    <span class="text-[10px] font-bold tracking-extreme text-white/50 uppercase mb-8 block">/// Operaciones</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-12">Casos</h2>
+                    
+                    <div class="space-y-px border border-white/10">
+                        <div class="p-8 bg-white/5 hover:bg-white/10 transition-all duration-300 group cursor-default">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-serif text-2xl group-hover:text-evBone transition-colors">Textilera Industrial</h3>
+                                <span class="text-[9px] border border-white/20 px-2 py-1 rounded-full uppercase tracking-wider">Auditoría</span>
+                            </div>
+                            <p class="text-sm font-light opacity-70 mb-6 leading-relaxed">
+                                Detección de "inventario fantasma" y fugas de materia prima mediante triangulación de datos ERP vs. Consumo Energético.
+                            </p>
+                            <div class="flex items-end gap-2">
+                                <span class="text-4xl font-serif text-white block">$3.5M</span>
+                                <span class="text-[10px] text-white/40 uppercase tracking-widest mb-2">Recuperado en Q1</span>
+                            </div>
+                        </div>
+
+                        <div class="p-8 bg-white/5 hover:bg-white/10 transition-all duration-300 group cursor-default">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-serif text-2xl group-hover:text-evBone transition-colors">Retailer de Lujo</h3>
+                                <span class="text-[9px] border border-white/20 px-2 py-1 rounded-full uppercase tracking-wider">Prevención</span>
+                            </div>
+                            <p class="text-sm font-light opacity-70 mb-6 leading-relaxed">
+                                Implementación de sistema Sentinel para monitoreo de flujo de efectivo en tiempo real en 12 sucursales.
+                            </p>
+                            <div class="flex items-end gap-2">
+                                <span class="text-4xl font-serif text-white block">100%</span>
+                                <span class="text-[10px] text-white/40 uppercase tracking-widest mb-2">Integridad de Datos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center opacity-0 drawer-footer">
+                    <p class="text-[9px] uppercase tracking-[0.3em]">Resultados Auditables</p>
+                </div>
+            </div>
+        </aside>
+
+        <div id="vetting-modal" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] bg-evBlack text-evBone shadow-2xl rounded-lg overflow-hidden translate-y-[120%] opacity-0 transition-transform duration-500 z-[100] font-mono border border-evOlive/30 pointer-events-auto">
+            <div class="bg-evOlive/20 p-4 border-b border-evOlive/30 flex justify-between items-center backdrop-blur-md">
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-[10px] tracking-widest uppercase text-evOlive font-bold">Socio Digital_v1.5</span>
+                </div>
+                <button id="btn-close-chat" class="text-evBone/50 hover:text-evBone transition-colors cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+            
+            <div id="chat-log" class="h-[350px] overflow-y-auto p-6 space-y-4 bg-evBlack scrollbar-thin scrollbar-thumb-evOlive/20">
+                <div class="flex flex-col gap-1 items-start">
+                    <span class="text-[8px] text-evOlive/50 uppercase tracking-widest">System</span>
+                    <div class="bg-evOlive/10 p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-xs leading-relaxed text-evBone/90 border-l-2 border-evOlive">
+                        Bienvenido. Soy el Socio Digital de Evangelista & Co.<br><br>
+                        En mi experiencia, nadie busca una firma de arquitectura de datos cuando todo está tranquilo. Generalmente, los líderes llegan a nosotros cuando el crecimiento de la empresa ha superado a sus sistemas de control.<br><br>
+                        No estoy aquí para venderle tecnología, sino para entender el momento de su negocio.<br><br>
+                        <strong>Cuénteme, ¿qué está pasando actualmente en su operación que le hizo pensar en buscarnos hoy?</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-evBlack border-t border-evOlive/20 relative">
+                <input type="text" id="chat-input" class="w-full bg-evBone/5 border border-evBone/10 rounded p-3 text-xs text-evBone focus:outline-none focus:border-evOlive transition-colors placeholder-evBone/20" placeholder="Ej: Fraude en inventarios..." autocomplete="off">
+                <div class="absolute right-6 top-1/2 -translate-y-1/2">
+                    <button id="btn-send-chat" class="text-evOlive hover:text-evBone transition-colors cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="calendly-unlock" class="hidden bg-evBrown p-3 text-center cursor-pointer hover:bg-white hover:text-evBrown transition-colors">
+                <span class="text-[10px] font-bold tracking-extreme uppercase flex items-center justify-center gap-2">
+                    Agenda Directiva Desbloqueada
+                </span>
+            </div>
+        </div>
+
+        <button id="btn-open-chat" class="fixed bottom-6 right-6 z-[100] bg-evOlive text-evBone px-6 py-4 shadow-elite hover:bg-evBlack transition-all flex items-center gap-3 group border border-evOlive/20 pointer-events-auto cursor-pointer">
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-bold tracking-widest uppercase">Diagnóstico IA</span>
+        </button>
+
+    </div>
+
+   <script>
+        // 1. LÓGICA DEL BLUEPRINT (INTACTA)
+        window.changeLayer = function(index) {
+            document.querySelectorAll('.bp-tab').forEach(tab => {
+                const isActive = parseInt(tab.dataset.idx) === index;
+                const progress = tab.querySelector('.bp-progress');
+                if (isActive) {
+                    tab.classList.add('active', 'bg-evSurface');
+                    tab.classList.remove('opacity-60');
+                    gsap.to(progress, { scaleX: 1, duration: 0.5, ease: "power2.out" });
+                    gsap.to(tab.querySelector('span:first-child'), { color: '#3D441E', duration: 0.3 });
+                } else {
+                    tab.classList.remove('active', 'bg-evSurface');
+                    tab.classList.add('opacity-60');
+                    gsap.to(progress, { scaleX: 0, duration: 0.3 });
+                    gsap.to(tab.querySelector('span:first-child'), { color: 'rgba(61, 68, 30, 0.4)', duration: 0.3 });
+                }
+            });
+            document.querySelectorAll('.bp-layer').forEach((layer, i) => {
+                if (i === index) {
+                    gsap.to(layer, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" });
+                } else {
+                    gsap.to(layer, { opacity: 0, scale: 0.8, duration: 0.4 });
+                }
+            });
+            document.querySelectorAll('.bp-content').forEach((content, i) => {
+                if (i === index) {
+                    gsap.to(content, { opacity: 1, y: 0, duration: 0.5, delay: 0.1, pointerEvents: "all" });
+                } else {
+                    gsap.to(content, { opacity: 0, y: 20, duration: 0.3, pointerEvents: "none" });
+                }
+            });
+        };
+
+        // 2. INICIALIZACIÓN DEL SISTEMA
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("Sistema Evangelista: ONLINE (Force Visibility Protocol)");
+            gsap.registerPlugin(ScrollTrigger);
+
+            // --- A. ANIMACIONES VISUALES ---
+            const tlHero = gsap.timeline();
+            tlHero.to('.hero-elem', {
+                autoAlpha: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out",
+                onStart: () => gsap.set('.hero-elem', { y: 30, autoAlpha: 0 })
+            });
+            gsap.fromTo("#hero-underline path", 
+                { drawSVG: "0%" }, { scrollTrigger: { trigger: "h1", start: "top 80%" }, duration: 1.5, drawSVG: "100%", ease: "power2.out" }
+            );
+            gsap.utils.toArray('.gsap-fade-up').forEach(elem => {
+                gsap.fromTo(elem, { y: 50, opacity: 0 }, { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
+            });
+            gsap.utils.toArray('.gsap-card').forEach((card, i) => {
+                gsap.to(card, { scrollTrigger: { trigger: card, start: "top 90%" }, y: 0, opacity: 1, duration: 0.8, delay: i * 0.1, ease: "power3.out" });
+            });
+            ScrollTrigger.create({
+                start: "top -50",
+                onUpdate: (self) => {
+                    const nav = document.getElementById('navbar');
+                    if (self.direction === 1) { nav.classList.add('bg-evBone/90', 'backdrop-blur-md', 'shadow-sm', 'py-4'); nav.classList.remove('py-8'); }
+                    else if (self.scroll() < 50) { nav.classList.remove('bg-evBone/90', 'backdrop-blur-md', 'shadow-sm', 'py-4'); nav.classList.add('py-8'); }
+                }
+            });
+            gsap.to(".float-anim", { y: "30px", rotation: 5, duration: 6, yoyo: true, repeat: -1, ease: "sine.inOut", stagger: 2 });
+            changeLayer(0); // Iniciar Blueprint
+
+
+            // --- B. GESTIÓN DE DRAWERS (PROTOCOLOS DE VISIBILIDAD FORZADA) ---
+            const overlay = document.getElementById('drawer-overlay');
+            const drawerIdentity = document.getElementById('drawer-identity');
+            const drawerCases = document.getElementById('drawer-cases');
+            
+            // Botones
+            const btnIdentity = document.getElementById('btn-open-identity');
+            const btnCases = document.getElementById('btn-open-cases');
+            const btnFooterIdentity = document.getElementById('btn-footer-identity');
+            const btnFooterCases = document.getElementById('btn-footer-cases');
+            
+            // Cierres
+            const closeIdentity = document.getElementById('btn-close-identity');
+            const closeCases = document.getElementById('btn-close-cases');
+
+            // --- FUNCIÓN DE APERTURA ---
+            function openDrawer(drawer) {
+                if(!drawer) return;
+                
+                // 1. Mostrar Overlay
+                overlay.classList.remove('hidden');
+                overlay.classList.add('pointer-events-auto');
+                gsap.to(overlay, { opacity: 1, duration: 0.3 });
+                
+                // 2. Deslizar Panel
+                gsap.to(drawer, { x: "0%", duration: 0.5, ease: "power3.out" });
+
+                // 3. FORCE VISIBILITY (La solución al bug "Invisible")
+                // Buscamos cualquier contenido dentro del drawer y forzamos su opacidad a 1
+                const content = drawer.querySelectorAll('.drawer-content, .drawer-footer');
+                if(content.length > 0) {
+                    gsap.to(content, { 
+                        autoAlpha: 1, // Esto maneja opacity + visibility
+                        y: 0, 
+                        duration: 0.4, 
+                        delay: 0.2, 
+                        overwrite: true // Sobrescribe cualquier instrucción previa de "ocultar"
+                    });
+                }
+
+                document.body.style.overflow = 'hidden';
+            }
+            // ------------------------------------
+
+            function closeAll() {
+                overlay.classList.remove('pointer-events-auto');
+                gsap.to(overlay, { opacity: 0, duration: 0.3 });
+                
+                // Cerrar Drawers
+                gsap.to([drawerIdentity, drawerCases], { 
+                    x: "100%", 
+                    duration: 0.4, 
+                    ease: "power3.in",
+                    onComplete: () => {
+                        // LIMPIEZA FORENSE: Resetear propiedades para la próxima vez
+                        // Esto evita que se queden "invisibles"
+                        const allContent = document.querySelectorAll('.drawer-content, .drawer-footer');
+                        gsap.set(allContent, { clearProps: "all" });
+                        gsap.set(allContent, { opacity: 0, y: 10 }); // Preparar para entrada elegante
+                    }
+                });
+                
+                // Cerrar Chat
+                const chatModal = document.getElementById('vetting-modal');
+                const chatBtn = document.getElementById('btn-open-chat');
+                if(chatModal) {
+                     gsap.to(chatModal, { y: "120%", opacity: 0, duration: 0.4 });
+                     gsap.to(chatBtn, { y: "0%", opacity: 1, duration: 0.3, delay: 0.3, pointerEvents: "all" });
+                }
+                document.body.style.overflow = 'auto';
+            }
+
+            // LISTENERS
+            if(btnIdentity) btnIdentity.addEventListener('click', (e) => { e.preventDefault(); openDrawer(drawerIdentity); });
+            if(btnCases) btnCases.addEventListener('click', (e) => { e.preventDefault(); openDrawer(drawerCases); });
+            
+            if(btnFooterIdentity) btnFooterIdentity.addEventListener('click', (e) => { e.preventDefault(); openDrawer(drawerIdentity); });
+            if(btnFooterCases) btnFooterCases.addEventListener('click', (e) => { e.preventDefault(); openDrawer(drawerCases); });
+
+            if(closeIdentity) closeIdentity.addEventListener('click', closeAll);
+            if(closeCases) closeCases.addEventListener('click', closeAll);
+            if(overlay) overlay.addEventListener('click', closeAll);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+
+
+            // --- C. CHATBOT (SISTEMA INTEGRAL: CADENCIA HUMANA + VETTING) ---
+            const VettingGate = (() => {
+                const CONFIG = { 
+                    apiEndpoint: 'evangelista-web-production.up.railway.app' 
+                };
+
+                let state = { isOpen: false, history: [], isTyping: false };
+                
+                const dom = {
+                    modal: document.getElementById('vetting-modal'),
+                    triggerBtn: document.getElementById('btn-open-chat'),
+                    closeBtn: document.getElementById('btn-close-chat'),
+                    log: document.getElementById('chat-log'),
+                    input: document.getElementById('chat-input'),
+                    sendBtn: document.getElementById('btn-send-chat'),
+                    calendlyBar: document.getElementById('calendly-unlock')
+                };
+
+                // 1. UI Toggle
+                const toggleChat = (forceState = null) => {
+                    state.isOpen = forceState !== null ? forceState : !state.isOpen;
+                    if (state.isOpen) {
+                        gsap.to(dom.modal, { y: "0%", opacity: 1, duration: 0.5, ease: "power3.out" });
+                        gsap.to(dom.triggerBtn, { y: "200%", opacity: 0, duration: 0.3, pointerEvents: "none" }); 
+                        dom.input.focus();
+                    } else {
+                        gsap.to(dom.modal, { y: "120%", opacity: 0, duration: 0.4, ease: "power3.in" });
+                        gsap.to(dom.triggerBtn, { y: "0%", opacity: 1, duration: 0.3, delay: 0.4, pointerEvents: "all" });
+                    }
+                };
+
+                // 2. Renderizado de Mensajes
+                const appendMessage = (role, text) => {
+                    if (!text) return;
+                    
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = `flex flex-col gap-1 items-${role === 'user' ? 'end' : 'start'} opacity-0`;
+                    
+                    const bubbleClass = role === 'user' 
+                        ? 'bg-evBone text-evBlack rounded-tl-lg rounded-bl-lg rounded-br-lg' 
+                        : 'bg-evOlive/10 text-evBone/90 rounded-tr-lg rounded-br-lg rounded-bl-lg border-l-2 border-evOlive';
+                    
+                    const label = role === 'user' ? 'Usted' : 'Socio Digital';
+                    
+                    // Inyectar HTML
+                    msgDiv.innerHTML = `
+                        <span class="text-[8px] text-evOlive/50 uppercase tracking-widest">${label}</span>
+                        <div class="${bubbleClass} p-3 text-xs leading-relaxed max-w-[90%] font-light shadow-sm">
+                            ${role === 'user' ? text : ''} </div>`;
+                    
+                    dom.log.appendChild(msgDiv);
+                    gsap.to(msgDiv, { opacity: 1, y: -5, duration: 0.3 });
+                    dom.log.scrollTop = dom.log.scrollHeight;
+                    
+                    // Si es el modelo, activar el Motor de Cadencia Humana
+                    if (role === 'model') {
+                        const contentDiv = msgDiv.querySelector('div');
+                        typeWriterEffect(contentDiv, text);
+                    }
+                };
+
+                // 3. MOTOR DE ESCRITURA HUMANA (Human Cadence Engine)
+                const typeWriterEffect = (element, text) => {
+                    let i = 0; 
+                    state.isTyping = true; 
+                    element.innerHTML = ''; 
+                    
+                    // A. Latencia Cognitiva (El bot "piensa" antes de escribir)
+                    const thinkingTime = Math.min(Math.max(text.length * 5, 1000), 2500);
+
+                    const typeNextChar = () => {
+                        if (i < text.length) {
+                            const char = text.charAt(i);
+                            element.innerHTML += char;
+                            i++;
+                            dom.log.scrollTop = dom.log.scrollHeight;
+
+                            // B. Velocidad Variable (Estocástica)
+                            let nextDelay = 30 + (Math.random() * 20 - 10); 
+
+                            // C. Pausas de Puntuación
+                            if (char === '.' || char === '?') nextDelay += 400; 
+                            else if (char === ',') nextDelay += 150;
+
+                            setTimeout(typeNextChar, nextDelay);
+                        } else {
+                            state.isTyping = false; // Liberar el chat
+                        }
+                    };
+
+                    // Ejecutar tras la latencia simulada
+                    setTimeout(typeNextChar, thinkingTime);
+                };
+
+                // 4. Lógica de Envío (REPARADA)
+                const handleSend = async () => {
+                    const text = dom.input.value.trim();
+                    // Bloqueo: Si está vacío o si la IA sigue escribiendo, no enviar.
+                    if (!text || state.isTyping) return;
+                    
+                    // Limpiar input INMEDIATAMENTE
+                    dom.input.value = ''; 
+                    
+                    appendMessage('user', text);
+                    state.history.push({ role: "user", parts: [text] });
+
+                    // Loader Visual
+                    const loaderId = 'loader-' + Date.now();
+                    const loader = document.createElement('div');
+                    loader.id = loaderId;
+                    loader.className = 'flex gap-1 p-3 opacity-50';
+                    loader.innerHTML = '<div class="w-1 h-1 bg-evOlive animate-bounce"></div><div class="w-1 h-1 bg-evOlive animate-bounce delay-100"></div>';
+                    dom.log.appendChild(loader);
+                    dom.log.scrollTop = dom.log.scrollHeight;
+
+                    try {
+                        const response = await fetch(CONFIG.apiEndpoint, {
+                            method: 'POST', 
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ message: text, history: state.history })
+                        });
+
+                        // Quitar Loader
+                        if(document.getElementById(loaderId)) document.getElementById(loaderId).remove();
+
+                        if (!response.ok) throw new Error("Error server");
+
+                        const data = await response.json();
+
+                        if (data.response) {
+                            // 1. Mostrar respuesta del Socio (Texto normal)
+                            appendMessage('model', data.response);
+                            state.history.push({ role: "model", parts: [data.response] });
+                            
+                            // 2. VERIFICAR SI EL AUDITOR AUTORIZÓ CALENDLY
+                            if (data.silent_audit?.action === 'UNLOCK_CALENDLY') {
+                                
+                                // A. Crear la "Tarjeta de Cierre" (Diseño Premium)
+                                const ctaDiv = document.createElement('div');
+                                // Usamos tus colores corporativos (evOlive, evBone)
+                                ctaDiv.className = "mt-4 mb-2 p-4 bg-evOlive/10 border-l-2 border-evOlive rounded-r-lg flex flex-col gap-3 shadow-lg transform transition-all duration-500 hover:bg-evOlive/20";
+                                
+                                ctaDiv.innerHTML = `
+                                    <div class="flex items-center gap-2 text-evOlive">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="font-bold text-[10px] uppercase tracking-widest">Protocolo Foundation Aprobado</span>
+                                    </div>
+                                    
+                                    <p class="text-[10px] text-evBone/80 font-light leading-relaxed">
+                                        Se ha autorizado una ventana de 45 minutos en la agenda de la Dirección para validar la viabilidad del proyecto.
+                                    </p>
+                                    
+                                    <button onclick="window.open('https://calendly.com/gaec545/30min', '_blank')" 
+                                        class="group w-full py-3 bg-evOlive text-evBone hover:bg-evBlack transition-all duration-300 font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 cursor-pointer border border-transparent hover:border-evOlive/30">
+                                        <span>Reservar Sesión</span>
+                                        <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </button>
+                                `;
+                                
+                                // B. Inyectarlo en el chat con animación suave
+                                dom.log.appendChild(ctaDiv);
+                                gsap.from(ctaDiv, { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" });
+                                
+                                // C. Scroll automático al final
+                                dom.log.scrollTop = dom.log.scrollHeight;
+                            }
+                        }
+
+                    } catch (error) {
+                        if(document.getElementById(loaderId)) document.getElementById(loaderId).remove();
+                        appendMessage('model', "Conexión interrumpida. Por favor verifique el servidor.");
+                        state.isTyping = false; // Liberar bloqueo en caso de error
+                    }
+                };
+
+                const init = () => {
+                    if (!dom.modal) return;
+                    dom.triggerBtn.addEventListener('click', () => toggleChat(true));
+                    dom.closeBtn.addEventListener('click', () => toggleChat(false));
+                    dom.sendBtn.addEventListener('click', handleSend);
+                    dom.input.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+                };
+
+                return { init };
+            })();
+
+            VettingGate.init();
+        });
+    </script>
+</body>
+</html>
