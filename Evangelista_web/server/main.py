@@ -207,11 +207,12 @@ async def chat_endpoint(request: ChatRequest):
         # 2. Estrategia
         estrategia = await run_strategist(request.history, request.message, new_memory)
         
-        # 3. Guardar si aplica
+        # 3. Guardar SIEMPRE (Para probar la conexión)
+        await save_to_sheets(new_memory)
+        
         silent_audit = {"action": "CONTINUE"}
         if estrategia.get("tactic") == "ALLOW_MEETING":
             silent_audit = {"action": "UNLOCK_CALENDLY"}
-            await save_to_sheets(new_memory)
 
         # 4. Respuesta Voz
         respuesta = await run_voice(request.message, estrategia.get("instructions"))
