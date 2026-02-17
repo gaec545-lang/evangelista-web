@@ -2,29 +2,38 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import os
 from groq import Groq
-from dotenv import load_dotenv
+# from dotenv import load_dotenv  <-- COMENTAMOS ESTO PARA EVITAR ERRORES SI NO HAY ARCHIVO
 from fastapi.middleware.cors import CORSMiddleware
 
-# Cargar variables de entorno
-load_dotenv()
+# Intentamos cargar .env solo si existe (para local), si no, seguimos
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
-# Inicializar la app
 app = FastAPI()
 
-# --- CONFIGURACIÓN DE SEGURIDAD (CORS) ---
-# Esto es lo que permite que tu página web hable con el servidor
+# --- SEGURIDAD CORS ---
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permite acceso desde cualquier lugar (GitHub, localhost, etc.)
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Permite todos los métodos (GET, POST, OPTIONS)
-    allow_headers=["*"],  # Permite todos los encabezados
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-# Configuración del cliente Groq
-client = Groq(
-    api_key=os.environ.get("GROQ_API_KEY"),
-)
+# --- VERIFICACIÓN DE LLAVE ---
+# Leemos la variable DIRECTAMENTE del sistema
+api_key_system = os.environ.get("GROQ_API_KEY")
+
+if not api_key_system:
+    # Si no hay llave, imprimimos error en los logs pero NO rompemos la app al inicio
+    print("CRITICAL: GROQ_API_KEY not found in environment variables")
+    # Ponemos un cliente dummy para que la app arranque, pero fallará al chatear
+    client = None
+else:
+    client = Groq(api_key=api_key_system)
 
 class ChatRequest(BaseModel):
     message: str
@@ -35,8 +44,9 @@ def read_root():
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
-    if not os.environ.get("GROQ_API_KEY"):
-        raise HTTPException(status_code=500, detail="Error de configuración: API Key no encontrada")
+    # Verificación en tiempo de ejecución
+    if not client:
+        raise HTTPException(status_code=500, detail="Error de Servidor: API Key no configurada en Railway")
     
     try:
         chat_completion = client.chat.completions.create(
@@ -50,7 +60,7 @@ async def chat_endpoint(request: ChatRequest):
                     "content": request.message,
                 }
             ],
-            model="llama3-8b-8192", # O el modelo que prefieras usar
+            model="llama3-8b-8192",
         )
         return {"response": chat_completion.choices[0].message.content}
     except Exception as e:
