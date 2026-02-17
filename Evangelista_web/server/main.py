@@ -13,7 +13,6 @@ from datetime import datetime
 # 1. CONFIGURACIÓN
 # ==============================================================================
 
-# Cargar credenciales desde Railway
 api_key = os.getenv("GROQ_API_KEY")
 google_creds_json = os.getenv("GOOGLE_CREDENTIALS")
 
@@ -27,14 +26,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Conexión Groq
 if not api_key:
     client = None
-    print("CRITICAL: GROQ_API_KEY not found.")
 else:
     client = AsyncGroq(api_key=api_key)
 
-# Conexión Google Sheets
 sheet_db = None
 try:
     if google_creds_json:
@@ -42,45 +38,42 @@ try:
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
         client_gs = gspread.authorize(creds)
-        # Intentamos conectar
         try:
             sheet_db = client_gs.open("DB_Leads_Evangelista").sheet1
             print("--- CONEXIÓN EXITOSA A GOOGLE SHEETS ---")
         except Exception as e:
-            print(f"Error abriendo la hoja (Verifica el nombre exacto): {e}")
-    else:
-        print("ADVERTENCIA: No hay credenciales de Google configuradas.")
+            print(f"Error hoja: {e}")
 except Exception as e:
-    print(f"Error general Google: {e}")
+    print(f"Error Google: {e}")
 
 class ChatRequest(BaseModel):
     message: str
     history: list = []
-    lead_data: dict = {} # La memoria viaja aquí
+    lead_data: dict = {}
 
 # ==============================================================================
-# 2. PROMPTS DE NEGOCIO
+# 2. PROMPTS DE NEGOCIO (AJUSTADOS)
 # ==============================================================================
 
 CONTEXTO_SERVICIOS = """
 SERVICIOS:
-1. Foundation (Limpieza de datos).
-2. Architecture (Ingeniería/ETL).
-3. Intelligence (Power BI).
+1. Foundation (Limpieza).
+2. Architecture (Ingeniería).
+3. Intelligence (BI).
 """
 
 PROMPT_SCRIBE = """
-ERES: Analista de datos silencioso.
-OBJETIVO: Extraer datos clave del mensaje actual del usuario.
+ERES: Analista de datos.
+OBJETIVO: Extraer datos y detectar validación de precio.
 
-CAMPOS A EXTRAER (Si no se menciona, usa null):
-- empresa: Nombre de la organización.
-- dolor: Problema operativo (ej: inventarios, excel lento).
-- stack: Herramientas (SAP, Excel, Oracle).
-- presupuesto_validado: Boolean (true si aceptó el rango de $35k+).
-- urgencia: (Baja/Media/Alta).
+CAMPOS:
+- empresa: Nombre.
+- dolor: Problema.
+- stack: Herramientas.
+- presupuesto_validado: BOOLEAN STRICT. Solo es 'true' si el usuario dice explícitamente "sí", "ok", "está bien" o "me parece bien" DESPUÉS de recibir el precio ($35k). Si solo pregunta precio, es null o false.
+- urgencia: Baja/Media/Alta.
 
-SALIDA JSON ÚNICA:
+SALIDA JSON:
 {
   "empresa": "...",
   "dolor": "...",
@@ -92,30 +85,29 @@ SALIDA JSON ÚNICA:
 
 PROMPT_STRATEGIST = f"""
 ### ROL: DIRECTOR DE ESTRATEGIA
-Tu objetivo es CLASIFICAR al cliente y validar si merece una reunión.
+Tu objetivo es CLASIFICAR al cliente.
 
-### MEMORIA DEL LEAD:
+### MEMORIA:
 {{LEAD_MEMORY}}
 
 {CONTEXTO_SERVICIOS}
 
-### REGLAS DE VETTING:
-1. Si falta 'empresa' -> Pregunta nombre y giro.
-2. Si falta 'dolor' -> Pregunta qué proceso quieren optimizar.
-3. Si preguntan precio -> Dales el anclaje ($35k+) y espera validación.
-4. SOLO SI tenemos Empresa + Dolor + Presupuesto Validado -> Permite agendar.
+### REGLAS DE ESTRATEGIA:
+1. Si 'presupuesto_validado' NO es true: Tu prioridad absoluta es dar el ANCLAJE DE PRECIO ($35k). No agendes cita.
+2. Si falta empresa/dolor: Investiga.
+3. SOLO SI (Empresa + Dolor + Presupuesto=true): TACTIC = "ALLOW_MEETING".
 
 ### SALIDA JSON:
 {{
   "tactic": "INVESTIGATE" | "ANCHOR_PRICE" | "ALLOW_MEETING" | "REJECT",
-  "instructions": "Instrucciones para el redactor."
+  "instructions": "Instrucciones para redactor."
 }}
 """
 
 PROMPT_VOICE = """
 ERES: Socio Senior de Evangelista & Co.
-TONO: Exclusivo, breve, directo. Max 40 palabras.
-OBJETIVO: Ejecutar la instrucción estratégica.
+TONO: Exclusivo, breve (max 40 palabras), directo.
+OBJETIVO: Ejecutar instrucción.
 """
 
 # ==============================================================================
@@ -123,29 +115,26 @@ OBJETIVO: Ejecutar la instrucción estratégica.
 # ==============================================================================
 
 async def update_lead_memory(current_memory, user_msg):
-    """Actualiza la ficha con IA"""
     if not client: return current_memory
     try:
         completion = await client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": PROMPT_SCRIBE},
-                {"role": "user", "content": user_msg}
+                {"role": "user", "content": f"Memoria previa: {current_memory}\nMensaje actual: {user_msg}"}
             ],
             response_format={"type": "json_object"},
             temperature=0
         )
         new_data = json.loads(completion.choices[0].message.content)
-        # Actualizamos solo lo nuevo
         updated = current_memory.copy()
         for k, v in new_data.items():
-            if v: updated[k] = v
+            if v is not None: updated[k] = v
         return updated
     except:
         return current_memory
 
 async def save_to_sheets(memory):
-    """Escribe en Google Sheets"""
     if not sheet_db: return
     try:
         row = [
@@ -155,18 +144,16 @@ async def save_to_sheets(memory):
             memory.get("stack", "N/A"),
             "SI" if memory.get("presupuesto_validado") else "NO",
             memory.get("urgencia", "N/A"),
-            "8.5", 
-            "Lead Web"
+            "9.0", 
+            "Lead Calificado"
         ]
         sheet_db.append_row(row)
-        print("Lead guardado en Google Sheets")
     except Exception as e:
-        print(f"Error escribiendo en Sheets: {e}")
+        print(f"Error Sheets: {e}")
 
 async def run_strategist(history, user_msg, memory):
     prompt = PROMPT_STRATEGIST.replace("{LEAD_MEMORY}", json.dumps(memory))
     msgs = [{"role": "system", "content": prompt}]
-    # Contexto breve
     for m in history[-2:]:
         role = "user" if m.get('role') == "user" else "assistant"
         content = m.get('parts', [""])[0]
@@ -178,11 +165,11 @@ async def run_strategist(history, user_msg, memory):
             model="llama-3.3-70b-versatile",
             messages=msgs,
             response_format={"type": "json_object"},
-            temperature=0.1
+            temperature=0
         )
         return json.loads(comp.choices[0].message.content)
     except:
-        return {"tactic": "INVESTIGATE", "instructions": "Responde cordialmente."}
+        return {"tactic": "INVESTIGATE", "instructions": "Continua."}
 
 async def run_voice(user_msg, instructions):
     try:
@@ -195,32 +182,42 @@ async def run_voice(user_msg, instructions):
         )
         return comp.choices[0].message.content
     except:
-        return "Un momento, validando servidor."
+        return "Un momento."
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     if not client: raise HTTPException(status_code=500, detail="API Key Missing")
     try:
-        # 1. Actualizar Memoria
+        # 1. Memoria
         new_memory = await update_lead_memory(request.lead_data, request.message)
         
         # 2. Estrategia
         estrategia = await run_strategist(request.history, request.message, new_memory)
         
-        # 3. Guardar SIEMPRE (Para probar la conexión)
-        await save_to_sheets(new_memory)
-        
+        # --- CANDADO DE SEGURIDAD (HARD LOCK) ---
+        # Si la IA quiere agendar pero no hay validación explícita de dinero, LA BLOQUEAMOS.
+        if estrategia.get("tactic") == "ALLOW_MEETING":
+            if not new_memory.get("presupuesto_validado"):
+                print("⚠️ VETO: Bloqueando cita por falta de validación financiera.")
+                estrategia["tactic"] = "ANCHOR_PRICE"
+                estrategia["instructions"] = "El cliente quiere avanzar pero NO ha aceptado explícitamente el precio base de $35,000 MXN. Dales el precio y pide confirmación antes de agendar."
+
+        # 3. Ejecución
         silent_audit = {"action": "CONTINUE"}
+        
+        # Solo guardamos y mostramos botón si pasó el candado
         if estrategia.get("tactic") == "ALLOW_MEETING":
             silent_audit = {"action": "UNLOCK_CALENDLY"}
+            # Verificar si ya guardamos este lead para no duplicar (opcional simple)
+            await save_to_sheets(new_memory)
 
-        # 4. Respuesta Voz
+        # 4. Voz
         respuesta = await run_voice(request.message, estrategia.get("instructions"))
 
         return {
             "response": respuesta,
             "silent_audit": silent_audit,
-            "updated_lead_data": new_memory # Devolvemos la memoria al frontend
+            "updated_lead_data": new_memory
         }
     except Exception as e:
         print(f"Error: {e}")
