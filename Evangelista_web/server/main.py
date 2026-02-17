@@ -5,18 +5,17 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from groq import AsyncGroq
-# Intentamos cargar dotenv solo si estamos en local
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ImportError:
-    pass
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from datetime import datetime
 
 # ==============================================================================
-# 1. INFRAESTRUCTURA & SEGURIDAD
+# 1. CONFIGURACIÓN
 # ==============================================================================
 
+# Cargar credenciales desde Railway
 api_key = os.getenv("GROQ_API_KEY")
+google_creds_json = os.getenv("GOOGLE_CREDENTIALS")
 
 app = FastAPI()
 
@@ -28,187 +27,199 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Conexión Groq
 if not api_key:
     client = None
     print("CRITICAL: GROQ_API_KEY not found.")
 else:
     client = AsyncGroq(api_key=api_key)
 
+# Conexión Google Sheets
+sheet_db = None
+try:
+    if google_creds_json:
+        creds_dict = json.loads(google_creds_json)
+        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+        creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+        client_gs = gspread.authorize(creds)
+        # Intentamos conectar
+        try:
+            sheet_db = client_gs.open("DB_Leads_Evangelista").sheet1
+            print("--- CONEXIÓN EXITOSA A GOOGLE SHEETS ---")
+        except Exception as e:
+            print(f"Error abriendo la hoja (Verifica el nombre exacto): {e}")
+    else:
+        print("ADVERTENCIA: No hay credenciales de Google configuradas.")
+except Exception as e:
+    print(f"Error general Google: {e}")
+
 class ChatRequest(BaseModel):
     message: str
-    history: list = [] 
+    history: list = []
+    lead_data: dict = {} # La memoria viaja aquí
 
 # ==============================================================================
-# 2. CEREBRO CORPORATIVO (KNOWLEDGE BASE)
+# 2. PROMPTS DE NEGOCIO
 # ==============================================================================
 
 CONTEXTO_SERVICIOS = """
-NUESTROS 3 PILARES DE SERVICIO:
-1. **Foundation (Auditoría & Saneamiento):**
-   - *Qué es:* Diagnóstico forense de datos. Limpieza de "Basura IN/Basura OUT".
-   - *Base:* Normalización de bases de datos y corrección de flujos operativos humanos.
-   
-2. **Architecture (Ingeniería de Datos):**
-   - *Qué es:* Construcción de la tubería digital. Conexión de fuentes (ERPs, Excel, SQL).
-   - *Base:* Modelado de datos (Estrella/Copo de Nieve) y ETLs automatizados.
-
-3. **Intelligence (Visualización & Decisión):**
-   - *Qué es:* Tableros de Power BI vivos para toma de decisiones.
-   - *Base:* KPIs financieros, operativos y proyecciones de rentabilidad.
-
-PREGUNTAS FRECUENTES (FAQ) - RESPUESTAS APROBADAS:
-- *Tiempo:* "Los sprints iniciales duran de 4 a 6 semanas."
-- *Entregables:* "Acceso a repositorio de datos propio y tableros en Power BI Service."
-- *Stack:* "Python, SQL, Power BI y ecosistema Azure/Fabric."
-- *Know-How:* NUNCA expliques CÓMO se hace el código, solo QUÉ logra (Rentabilidad, Orden, Claridad).
+SERVICIOS:
+1. Foundation (Limpieza de datos).
+2. Architecture (Ingeniería/ETL).
+3. Intelligence (Power BI).
 """
 
-# ==============================================================================
-# 3. AGENTES (PROMPTS DE NEGOCIO)
-# ==============================================================================
+PROMPT_SCRIBE = """
+ERES: Analista de datos silencioso.
+OBJETIVO: Extraer datos clave del mensaje actual del usuario.
 
-# --- AGENTE 1: EL ESTRATEGA (Director Comercial) ---
-PROMPT_STRATEGIST = f"""
-### ROL: DIRECTOR DE ESTRATEGIA
-Tu objetivo es CLASIFICAR la intención del cliente y decidir el siguiente paso.
+CAMPOS A EXTRAER (Si no se menciona, usa null):
+- empresa: Nombre de la organización.
+- dolor: Problema operativo (ej: inventarios, excel lento).
+- stack: Herramientas (SAP, Excel, Oracle).
+- presupuesto_validado: Boolean (true si aceptó el rango de $35k+).
+- urgencia: (Baja/Media/Alta).
 
-{CONTEXTO_SERVICIOS}
-
-### REGLA DE ORO: EL FILTRO (VETTING FIRST)
-NUNCA mandes a agendar cita de inmediato.
-Si el usuario pide cita o precio, PRIMERO debes validar su situación.
-La IA debe explicar brevemente que es necesario conocerse para ver si aplica.
-
-### LÓGICA DE RESPUESTA
-1. **Duda de Servicio:** Si pregunta "¿Qué hacen?", explica los pilares brevemente.
-2. **Intención de Compra:** Si pide "Precio" o "Cita" -> TACTIC: 'QUALIFY_FIRST'.
-3. **Estudiante/Curioso:** Si no tiene empresa o busca tarea -> TACTIC: 'REJECT'.
-
-### SALIDA JSON:
-{{
-  "tactic": "EXPLAIN_SERVICES" | "QUALIFY_FIRST" | "REJECT" | "ANSWER_DOUBT",
-  "reasoning": "Por qué elegiste esto",
-  "instructions_for_voice": "Instrucciones precisas para el redactor."
-}}
-"""
-
-# --- AGENTE 2: EL VOCERO (La Voz de la Firma) ---
-PROMPT_VOICE = """
-### ROL: SOCIO SENIOR DE EVANGELISTA & CO.
-Eres la cara de la firma. Tu tono es Exclusivo, Directo y Estratégico.
-
-### RESTRICCIONES CRÍTICAS
-1. **MÁXIMO 30 PALABRAS para explicar el proceso de selección.**
-   - Ejemplo: "En Evangelista & Co. no aceptamos todos los proyectos. Requerimos conocer su infraestructura actual para validar si nuestra metodología aplica a su caso."
-2. **NO VENDAS:** Tú no necesitas el dinero, ellos necesitan el orden.
-3. **PRECIO:** Si te ordenan dar precio, usa el anclaje: "Proyectos Foundation desde $35,000 MXN, ajustables según entropía."
-
-### INPUT
-Recibirás instrucciones estratégicas y el contexto de servicios si es necesario.
-Responde al usuario final.
-"""
-
-# --- AGENTE 3: EL AUDITOR (Juez de Calendly) ---
-PROMPT_AUDITOR = """
-ERES: El Algoritmo de Vetting.
-OBJETIVO: Decidir si mostramos el botón de Calendly.
-
-CRITERIOS PARA 'UNLOCK_CALENDLY':
-1. El usuario YA explicó su problema (Dolor de negocio).
-2. El usuario aceptó implícitamente que necesita ayuda profesional.
-3. NO desbloquear en el primer mensaje. Debe haber un intercambio previo.
-
-SALIDA JSON:
+SALIDA JSON ÚNICA:
 {
-  "action": "UNLOCK_CALENDLY" | "CONTINUE"
+  "empresa": "...",
+  "dolor": "...",
+  "stack": "...",
+  "presupuesto_validado": true/false/null,
+  "urgencia": "..."
 }
 """
 
+PROMPT_STRATEGIST = f"""
+### ROL: DIRECTOR DE ESTRATEGIA
+Tu objetivo es CLASIFICAR al cliente y validar si merece una reunión.
+
+### MEMORIA DEL LEAD:
+{{LEAD_MEMORY}}
+
+{CONTEXTO_SERVICIOS}
+
+### REGLAS DE VETTING:
+1. Si falta 'empresa' -> Pregunta nombre y giro.
+2. Si falta 'dolor' -> Pregunta qué proceso quieren optimizar.
+3. Si preguntan precio -> Dales el anclaje ($35k+) y espera validación.
+4. SOLO SI tenemos Empresa + Dolor + Presupuesto Validado -> Permite agendar.
+
+### SALIDA JSON:
+{{
+  "tactic": "INVESTIGATE" | "ANCHOR_PRICE" | "ALLOW_MEETING" | "REJECT",
+  "instructions": "Instrucciones para el redactor."
+}}
+"""
+
+PROMPT_VOICE = """
+ERES: Socio Senior de Evangelista & Co.
+TONO: Exclusivo, breve, directo. Max 40 palabras.
+OBJETIVO: Ejecutar la instrucción estratégica.
+"""
+
 # ==============================================================================
-# 4. MOTORES DE INFERENCIA
+# 3. LÓGICA
 # ==============================================================================
 
-async def run_strategist(history, user_msg):
-    if not client: return {"tactic": "QUALIFY_FIRST", "instructions_for_voice": "Error de conexión."}
-    
-    messages = [{"role": "system", "content": PROMPT_STRATEGIST}]
-    for m in history[-3:]: 
-        role = "user" if m.get('role') == "user" else "assistant"
-        content = m.get('parts', [""])[0]
-        messages.append({"role": role, "content": content})
-    messages.append({"role": "user", "content": user_msg})
-
+async def update_lead_memory(current_memory, user_msg):
+    """Actualiza la ficha con IA"""
+    if not client: return current_memory
     try:
         completion = await client.chat.completions.create(
             model="llama-3.3-70b-versatile",
-            messages=messages,
-            temperature=0.1,
+            messages=[
+                {"role": "system", "content": PROMPT_SCRIBE},
+                {"role": "user", "content": user_msg}
+            ],
             response_format={"type": "json_object"},
-            max_tokens=300
+            temperature=0
         )
-        return json.loads(completion.choices[0].message.content)
+        new_data = json.loads(completion.choices[0].message.content)
+        # Actualizamos solo lo nuevo
+        updated = current_memory.copy()
+        for k, v in new_data.items():
+            if v: updated[k] = v
+        return updated
     except:
-        return {"instructions_for_voice": "Responde con cortesía profesional."}
+        return current_memory
 
-async def run_voice(user_msg, strategy_json):
-    if not client: return "Sistemas en mantenimiento."
+async def save_to_sheets(memory):
+    """Escribe en Google Sheets"""
+    if not sheet_db: return
+    try:
+        row = [
+            datetime.now().strftime("%Y-%m-%d %H:%M"),
+            memory.get("empresa", "N/A"),
+            memory.get("dolor", "N/A"),
+            memory.get("stack", "N/A"),
+            "SI" if memory.get("presupuesto_validado") else "NO",
+            memory.get("urgencia", "N/A"),
+            "8.5", 
+            "Lead Web"
+        ]
+        sheet_db.append_row(row)
+        print("Lead guardado en Google Sheets")
+    except Exception as e:
+        print(f"Error escribiendo en Sheets: {e}")
 
-    input_prompt = f"""
-    CONTEXTO DEL USUARIO: "{user_msg}"
-    INSTRUCCIÓN DEL ESTRATEGA: {strategy_json.get('instructions_for_voice')}
-    
-    Recuerda: Si es momento de filtrar, usa MÁXIMO 30 palabras para explicar que debemos evaluarlos primero.
-    """
+async def run_strategist(history, user_msg, memory):
+    prompt = PROMPT_STRATEGIST.replace("{LEAD_MEMORY}", json.dumps(memory))
+    msgs = [{"role": "system", "content": prompt}]
+    # Contexto breve
+    for m in history[-2:]:
+        role = "user" if m.get('role') == "user" else "assistant"
+        content = m.get('parts', [""])[0]
+        msgs.append({"role": role, "content": content})
+    msgs.append({"role": "user", "content": user_msg})
 
     try:
-        completion = await client.chat.completions.create(
+        comp = await client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=msgs,
+            response_format={"type": "json_object"},
+            temperature=0.1
+        )
+        return json.loads(comp.choices[0].message.content)
+    except:
+        return {"tactic": "INVESTIGATE", "instructions": "Responde cordialmente."}
+
+async def run_voice(user_msg, instructions):
+    try:
+        comp = await client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": PROMPT_VOICE},
-                {"role": "user", "content": input_prompt}
-            ],
-            temperature=0.6,
-            max_tokens=400
+                {"role": "user", "content": f"User: {user_msg}\nInstrucción: {instructions}"}
+            ]
         )
-        return completion.choices[0].message.content
+        return comp.choices[0].message.content
     except:
-        return "Disculpe, estamos recalculando proyecciones. Intente de nuevo."
-
-async def run_auditor(user_msg, bot_msg):
-    if not client: return {"action": "CONTINUE"}
-    audit_input = f"User: {user_msg}\nBot: {bot_msg}"
-    try:
-        completion = await client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {"role": "system", "content": PROMPT_AUDITOR},
-                {"role": "user", "content": audit_input}
-            ],
-            temperature=0,
-            response_format={"type": "json_object"}
-        )
-        return json.loads(completion.choices[0].message.content)
-    except:
-        return {"action": "CONTINUE"}
-
-# ==============================================================================
-# 5. ENDPOINT
-# ==============================================================================
+        return "Un momento, validando servidor."
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     if not client: raise HTTPException(status_code=500, detail="API Key Missing")
     try:
-        # 1. Estrategia
-        estrategia = await run_strategist(request.history, request.message)
-        # 2. Voz
-        respuesta = await run_voice(request.message, estrategia)
-        # 3. Auditoría
-        auditoria = await run_auditor(request.message, respuesta)
+        # 1. Actualizar Memoria
+        new_memory = await update_lead_memory(request.lead_data, request.message)
+        
+        # 2. Estrategia
+        estrategia = await run_strategist(request.history, request.message, new_memory)
+        
+        # 3. Guardar si aplica
+        silent_audit = {"action": "CONTINUE"}
+        if estrategia.get("tactic") == "ALLOW_MEETING":
+            silent_audit = {"action": "UNLOCK_CALENDLY"}
+            await save_to_sheets(new_memory)
+
+        # 4. Respuesta Voz
+        respuesta = await run_voice(request.message, estrategia.get("instructions"))
 
         return {
             "response": respuesta,
-            "silent_audit": auditoria
+            "silent_audit": silent_audit,
+            "updated_lead_data": new_memory # Devolvemos la memoria al frontend
         }
     except Exception as e:
         print(f"Error: {e}")
