@@ -3,9 +3,7 @@ from pydantic import BaseModel
 import os
 from groq import Groq
 from dotenv import load_dotenv
-
-# --- IMPORTANTE: El módulo de seguridad ---
-from fastapi.middleware.cors import CORSMiddleware 
+from fastapi.middleware.cors import CORSMiddleware
 
 # Cargar variables de entorno
 load_dotenv()
