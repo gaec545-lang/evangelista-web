@@ -13,6 +13,20 @@ api_key = os.getenv("GROQ_API_KEY")
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware # <--- ASEGÚRATE DE IMPORTAR ESTO ARRIBA
+
+app = FastAPI() # <--- ESTA LÍNEA YA DEBERÍA EXISTIR
+
+# --- INICIO DEL PASE VIP (COPIA DESDE AQUÍ) ---
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # El asterisco permite que CUALQUIER sitio entre. 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# --- FIN DEL PASE VIP ---
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
