@@ -16,12 +16,10 @@ except ImportError:
 # 1. INFRAESTRUCTURA & SEGURIDAD
 # ==============================================================================
 
-# Recuperar la llave del entorno (Railway)
 api_key = os.getenv("GROQ_API_KEY")
 
 app = FastAPI()
 
-# Configuración de CORS (El pase VIP para que tu web entre)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -30,124 +28,136 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Cliente Asíncrono (Más rápido para múltiples usuarios)
 if not api_key:
     client = None
     print("CRITICAL: GROQ_API_KEY not found.")
 else:
     client = AsyncGroq(api_key=api_key)
 
-# Modelo de datos que recibe desde el Javascript
 class ChatRequest(BaseModel):
     message: str
-    history: list = [] # Historial de la conversación
+    history: list = [] 
 
 # ==============================================================================
-# 2. LOS CEREBROS (PROMPTS DE NEGOCIO)
+# 2. CEREBRO CORPORATIVO (KNOWLEDGE BASE)
 # ==============================================================================
 
-# --- AGENTE 1: EL ESTRATEGA (Piensa, no habla) ---
-PROMPT_STRATEGIST = """
-### ROL: DIRECTOR DE ESTRATEGIA Y PRICING
-Tu objetivo es filtrar leads y vender la REUNIÓN, no el servicio final.
+CONTEXTO_SERVICIOS = """
+NUESTROS 3 PILARES DE SERVICIO:
+1. **Foundation (Auditoría & Saneamiento):**
+   - *Qué es:* Diagnóstico forense de datos. Limpieza de "Basura IN/Basura OUT".
+   - *Base:* Normalización de bases de datos y corrección de flujos operativos humanos.
+   
+2. **Architecture (Ingeniería de Datos):**
+   - *Qué es:* Construcción de la tubería digital. Conexión de fuentes (ERPs, Excel, SQL).
+   - *Base:* Modelado de datos (Estrella/Copo de Nieve) y ETLs automatizados.
 
-### POLÍTICA DE PRECIOS (STRICT MODE)
-1.  **PROHIBIDO COTIZAR FINAL:** Nunca des un precio cerrado (ej: "Son $42,000"). No has visto sus datos, sería irresponsable.
-2.  **PRECIO PISO (ANCHOR):** Usa siempre la frase "Inversión base desde $35,000 MXN". Esto sirve solo para filtrar a quienes no tienen presupuesto.
-3.  **FACTOR DE INCERTIDUMBRE:** Si detectas caos (Excel, manualidad), advierte que el precio final se ajustará, pero NO digas cuánto.
+3. **Intelligence (Visualización & Decisión):**
+   - *Qué es:* Tableros de Power BI vivos para toma de decisiones.
+   - *Base:* KPIs financieros, operativos y proyecciones de rentabilidad.
+
+PREGUNTAS FRECUENTES (FAQ) - RESPUESTAS APROBADAS:
+- *Tiempo:* "Los sprints iniciales duran de 4 a 6 semanas."
+- *Entregables:* "Acceso a repositorio de datos propio y tableros en Power BI Service."
+- *Stack:* "Python, SQL, Power BI y ecosistema Azure/Fabric."
+- *Know-How:* NUNCA expliques CÓMO se hace el código, solo QUÉ logra (Rentabilidad, Orden, Claridad).
+"""
+
+# ==============================================================================
+# 3. AGENTES (PROMPTS DE NEGOCIO)
+# ==============================================================================
+
+# --- AGENTE 1: EL ESTRATEGA (Director Comercial) ---
+PROMPT_STRATEGIST = f"""
+### ROL: DIRECTOR DE ESTRATEGIA
+Tu objetivo es CLASIFICAR la intención del cliente y decidir el siguiente paso.
+
+{CONTEXTO_SERVICIOS}
+
+### REGLA DE ORO: EL FILTRO (VETTING FIRST)
+NUNCA mandes a agendar cita de inmediato.
+Si el usuario pide cita o precio, PRIMERO debes validar su situación.
+La IA debe explicar brevemente que es necesario conocerse para ver si aplica.
 
 ### LÓGICA DE RESPUESTA
-1.  **Perfilado:** ¿Es Estudiante? -> REJECT (Sé cortés pero firme). ¿Es Empresa? -> PROCEED.
-2.  **Manejo de Costos:**
-    * Si preguntan "¿Cuánto cuesta?": Da el Rango Base ($35k+) y explica que la cotización final requiere ver la complejidad de sus datos en la sesión.
-    * Si piden "Architecture": Explica que Foundation es el prerrequisito para poder cotizar Architecture.
+1. **Duda de Servicio:** Si pregunta "¿Qué hacen?", explica los pilares brevemente.
+2. **Intención de Compra:** Si pide "Precio" o "Cita" -> TACTIC: 'QUALIFY_FIRST'.
+3. **Estudiante/Curioso:** Si no tiene empresa o busca tarea -> TACTIC: 'REJECT'.
 
-### FORMATO JSON OBLIGATORIO
-Debes responder SOLO un JSON con esta estructura:
-{
-  "tactic": "REJECT" | "ANCHOR_PRICE" | "PIVOT_TO_MEETING",
-  "reasoning": "Breve explicación de por qué elegiste esto.",
-  "instructions_for_voice": "Instrucciones precisas para el agente que redactará la respuesta."
-}
+### SALIDA JSON:
+{{
+  "tactic": "EXPLAIN_SERVICES" | "QUALIFY_FIRST" | "REJECT" | "ANSWER_DOUBT",
+  "reasoning": "Por qué elegiste esto",
+  "instructions_for_voice": "Instrucciones precisas para el redactor."
+}}
 """
 
-# --- AGENTE 2: EL VOCERO (Habla con el cliente) ---
+# --- AGENTE 2: EL VOCERO (La Voz de la Firma) ---
 PROMPT_VOICE = """
-### ROL: SOCIO SENIOR (FRONTMAN) DE EVANGELISTA & CO.
-Tu trabajo es responder al cliente basándote estrictamente en la ESTRATEGIA que se te dará.
+### ROL: SOCIO SENIOR DE EVANGELISTA & CO.
+Eres la cara de la firma. Tu tono es Exclusivo, Directo y Estratégico.
 
-### TONO Y ESTILO
-* **Autoridad Serena:** No usas signos de exclamación excesivos. Eres breve.
-* **Profesionalismo Médico:** Un cirujano no cobra sin ver al paciente. Tú tampoco.
-* **Frase Clave de Precio (Si se requiere):** "Nuestros protocolos Foundation inician en los **$35,000 MXN**. Sin embargo, la inversión final depende de la entropía (desorden) de sus datos actuales."
+### RESTRICCIONES CRÍTICAS
+1. **MÁXIMO 30 PALABRAS para explicar el proceso de selección.**
+   - Ejemplo: "En Evangelista & Co. no aceptamos todos los proyectos. Requerimos conocer su infraestructura actual para validar si nuestra metodología aplica a su caso."
+2. **NO VENDAS:** Tú no necesitas el dinero, ellos necesitan el orden.
+3. **PRECIO:** Si te ordenan dar precio, usa el anclaje: "Proyectos Foundation desde $35,000 MXN, ajustables según entropía."
 
 ### INPUT
-Recibirás:
-1. Mensaje del Cliente.
-2. Instrucción Estratégica (Síguela al pie de la letra).
-
-Tu respuesta debe ser texto plano, listo para enviarse al chat.
+Recibirás instrucciones estratégicas y el contexto de servicios si es necesario.
+Responde al usuario final.
 """
 
-# --- AGENTE 3: EL AUDITOR (Decide si abre Calendly) ---
+# --- AGENTE 3: EL AUDITOR (Juez de Calendly) ---
 PROMPT_AUDITOR = """
-ERES: El Algoritmo de Vetting (Juez Silencioso).
-OBJETIVO: Analizar la conversación y decidir si el cliente merece acceso a la agenda del Director.
+ERES: El Algoritmo de Vetting.
+OBJETIVO: Decidir si mostramos el botón de Calendly.
 
 CRITERIOS PARA 'UNLOCK_CALENDLY':
-1.  **Aceptación Económica:** El usuario ya recibió el precio base ($35k) y sigue interesado o pregunta por fechas.
-2.  **Dolor Real:** El usuario expresó un problema de negocio real (inventarios, caos, pérdidas).
-3.  **No es Estudiante:** Si parece tarea escolar, bloquea.
+1. El usuario YA explicó su problema (Dolor de negocio).
+2. El usuario aceptó implícitamente que necesita ayuda profesional.
+3. NO desbloquear en el primer mensaje. Debe haber un intercambio previo.
 
-SALIDA JSON OBLIGATORIA:
+SALIDA JSON:
 {
-  "action": "UNLOCK_CALENDLY" | "CONTINUE",
-  "reason": "Explicación breve"
+  "action": "UNLOCK_CALENDLY" | "CONTINUE"
 }
 """
 
 # ==============================================================================
-# 3. MOTORES DE INFERENCIA (Funciones)
+# 4. MOTORES DE INFERENCIA
 # ==============================================================================
 
 async def run_strategist(history, user_msg):
-    if not client: return {"tactic": "PIVOT_TO_MEETING", "instructions_for_voice": "Responde genérico por error de sistema."}
+    if not client: return {"tactic": "QUALIFY_FIRST", "instructions_for_voice": "Error de conexión."}
     
-    # Preparamos los mensajes para el modelo
     messages = [{"role": "system", "content": PROMPT_STRATEGIST}]
-    
-    # Añadimos contexto (últimos 3 mensajes para no gastar tantos tokens)
     for m in history[-3:]: 
         role = "user" if m.get('role') == "user" else "assistant"
         content = m.get('parts', [""])[0]
         messages.append({"role": role, "content": content})
-    
     messages.append({"role": "user", "content": user_msg})
 
     try:
         completion = await client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=messages,
-            temperature=0.1, # Muy frío y calculador
+            temperature=0.1,
             response_format={"type": "json_object"},
             max_tokens=300
         )
         return json.loads(completion.choices[0].message.content)
-    except Exception as e:
-        print(f"Error Estratega: {e}")
-        return {
-            "instructions_for_voice": "El cliente pregunta algo. Responde con profesionalismo invitando a una sesión de diagnóstico."
-        }
+    except:
+        return {"instructions_for_voice": "Responde con cortesía profesional."}
 
 async def run_voice(user_msg, strategy_json):
-    if not client: return "Error: Sistema de IA desconectado."
+    if not client: return "Sistemas en mantenimiento."
 
     input_prompt = f"""
-    MENSAJE DEL CLIENTE: "{user_msg}"
+    CONTEXTO DEL USUARIO: "{user_msg}"
+    INSTRUCCIÓN DEL ESTRATEGA: {strategy_json.get('instructions_for_voice')}
     
-    INSTRUCCIÓN ESTRATÉGICA: {strategy_json.get('instructions_for_voice')}
-    
-    Redacta la respuesta final:
+    Recuerda: Si es momento de filtrar, usa MÁXIMO 30 palabras para explicar que debemos evaluarlos primero.
     """
 
     try:
@@ -157,18 +167,16 @@ async def run_voice(user_msg, strategy_json):
                 {"role": "system", "content": PROMPT_VOICE},
                 {"role": "user", "content": input_prompt}
             ],
-            temperature=0.6, # Un poco más creativo para hablar
+            temperature=0.6,
             max_tokens=400
         )
         return completion.choices[0].message.content
-    except Exception as e:
-        return "Disculpe, estamos experimentando alta demanda en nuestros servidores neuronales."
+    except:
+        return "Disculpe, estamos recalculando proyecciones. Intente de nuevo."
 
 async def run_auditor(user_msg, bot_msg):
     if not client: return {"action": "CONTINUE"}
-
-    audit_input = f"User: {user_msg}\nBot (Tu respuesta): {bot_msg}"
-
+    audit_input = f"User: {user_msg}\nBot: {bot_msg}"
     try:
         completion = await client.chat.completions.create(
             model="llama-3.3-70b-versatile",
@@ -184,38 +192,24 @@ async def run_auditor(user_msg, bot_msg):
         return {"action": "CONTINUE"}
 
 # ==============================================================================
-# 4. ENDPOINT PRINCIPAL
+# 5. ENDPOINT
 # ==============================================================================
-
-@app.get("/")
-def read_root():
-    return {"status": "Sistema Neural Evangelista & Co. [ONLINE]"}
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
-    if not client:
-        raise HTTPException(status_code=500, detail="API Key no configurada")
-    
+    if not client: raise HTTPException(status_code=500, detail="API Key Missing")
     try:
-        # PASO 1: El Estratega piensa qué hacer
-        print("--- 1. Estratega pensando... ---")
+        # 1. Estrategia
         estrategia = await run_strategist(request.history, request.message)
-        print(f"Estrategia decidida: {estrategia.get('tactic')}")
-        
-        # PASO 2: El Vocero redacta el mensaje
-        print("--- 2. Vocero redactando... ---")
-        respuesta_texto = await run_voice(request.message, estrategia)
-        
-        # PASO 3: El Auditor verifica si desbloquea Calendly
-        print("--- 3. Auditor evaluando... ---")
-        auditoria = await run_auditor(request.message, respuesta_texto)
-        print(f"Decisión Auditor: {auditoria.get('action')}")
+        # 2. Voz
+        respuesta = await run_voice(request.message, estrategia)
+        # 3. Auditoría
+        auditoria = await run_auditor(request.message, respuesta)
 
         return {
-            "response": respuesta_texto,
-            "silent_audit": auditoria # Esto le dice al JS si muestra el botón de Calendly
+            "response": respuesta,
+            "silent_audit": auditoria
         }
-
     except Exception as e:
-        print(f"Error Crítico: {str(e)}")
+        print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
