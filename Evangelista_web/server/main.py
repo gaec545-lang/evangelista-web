@@ -8,6 +8,7 @@ from groq import AsyncGroq
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
+import re  # <--- AGREGAR ESTO PARA QUE FUNCIONE EL CAZADOR DE CORREOS
 
 # ==============================================================================
 # 1. INFRAESTRUCTURA & CONEXIONES
@@ -205,18 +206,42 @@ async def update_lead_memory(current_memory, user_msg):
         print(f"Error Scribe: {e}")
         return current_memory
 
-async def save_to_sheets(memory):
+def detect_contact_info(text):
+    """
+    Función de Rescate (Regex) que funciona AUNQUE LA IA FALLE.
+    Busca patrones de email o teléfonos.
+    """
+    found_data = {}
+    # Regex Email
+    email_match = re.search(r'[\w\.-]+@[\w\.-]+\.\w+', text)
+    if email_match:
+        found_data['email_detectado'] = email_match.group(0)
+    
+    # Regex Teléfono (Busca secuencias de 10 dígitos aprox)
+    phone_match = re.search(r'\b\d{10}\b|\b\d{3}[-.\s]\d{3}[-.\s]\d{4}\b', text)
+    if phone_match:
+        found_data['telefono_detectado'] = phone_match.group(0)
+        
+    return found_data
+
+async def save_to_sheets(memory, manual_tag=None):
     if not sheet_db: return
     try:
+        # Preparamos la info de contacto si existe para que no rompa el excel
+        contacto = memory.get("contacto", "")
+        if isinstance(contacto, dict): contacto = str(contacto)
+        
+        tag = manual_tag if manual_tag else "CALIFICADO"
+        
         row = [
             datetime.now().strftime("%Y-%m-%d %H:%M"),
             memory.get("empresa", "N/A"),
-            memory.get("dolor", "N/A"),
+            f"{memory.get('dolor', 'N/A')} | {contacto}", # Ponemos contacto junto al dolor para verlo rápido
             memory.get("stack", "N/A"),
             "SI" if memory.get("presupuesto_validado") else "NO",
             memory.get("urgencia", "N/A"),
-            "CALIFICADO", 
-            memory.get("intencion_compra", "WEB")
+            tag, 
+            "WEB"
         ]
         sheet_db.append_row(row)
     except Exception as e:
@@ -264,28 +289,43 @@ async def run_voice(user_msg, instructions):
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     if not client: raise HTTPException(status_code=500, detail="API Key Missing")
+    
+    memory_backup = request.lead_data or {}
+    
+    # --- NIVEL 0: CAZADOR SILENCIOSO (RESCATE INMEDIATO) ---
+    # Antes de cualquier IA, revisamos si el usuario mandó un correo o teléfono
+    # Esto asegura el lead AUNQUE la IA falle 1 milisegundo después.
+    emergency_contact = detect_contact_info(request.message)
+    if emergency_contact:
+        print(f"🚨 CONTACTO DE EMERGENCIA DETECTADO: {emergency_contact}")
+        
+        # Lo guardamos en la memoria local
+        if 'contacto' not in memory_backup: memory_backup['contacto'] = ""
+        memory_backup['contacto'] += f" {str(emergency_contact)}"
+        
+        # ¡LO GUARDAMOS EN EXCEL YA! (Backup de seguridad)
+        await save_to_sheets(memory_backup, manual_tag="CONTACTO_RESCATADO")
+
     try:
-        # 1. PERFILADO (SCRIBE)
+        # 1. PERFILADO
         new_memory = await update_lead_memory(request.lead_data, request.message)
         
-        # 2. ESTRATEGIA (DIRECTOR)
+        # 2. ESTRATEGIA
         estrategia = await run_strategist(request.history, request.message, new_memory)
         
-        # --- HARD LOCK DE SEGURIDAD (CANDADO PYTHON) ---
-        # Si la IA quiere agendar, verificamos doblemente con código que el dinero esté validado.
+        # Hard Lock (Candado de Dinero)
         if estrategia.get("tactic") == "ALLOW_MEETING":
             if not new_memory.get("presupuesto_validado"):
-                print("⚠️ VETO AUTOMÁTICO: Intento de cita sin validación financiera.")
                 estrategia["tactic"] = "ANCHOR_PRICE"
-                estrategia["instructions"] = "El cliente quiere cita pero NO ha dicho explícitamente que acepta los $35k. Dales el precio base y pide confirmación."
+                estrategia["instructions"] = "El cliente quiere cita pero NO ha aceptado $35k. Da el precio base."
 
-        # 3. AUDITORÍA SILENCIOSA
+        # 3. AUDITORÍA
         silent_audit = {"action": "CONTINUE"}
         if estrategia.get("tactic") == "ALLOW_MEETING":
             silent_audit = {"action": "UNLOCK_CALENDLY"}
             await save_to_sheets(new_memory)
 
-        # 4. GENERACIÓN DE VOZ
+        # 4. VOZ
         respuesta = await run_voice(request.message, estrategia.get("instructions"))
 
         return {
@@ -293,6 +333,27 @@ async def chat_endpoint(request: ChatRequest):
             "silent_audit": silent_audit,
             "updated_lead_data": new_memory
         }
+
     except Exception as e:
-        print(f"Error Critical: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        print(f"🔥 ERROR CRÍTICO CAPTURADO: {e}")
+        
+        # --- PROTOCOLO DE BLINDAJE ---
+        # Si todo falló, guardamos lo que tenemos en Excel con etiqueta de ERROR
+        try:
+            if sheet_db:
+                err_row = [
+                    datetime.now().strftime("%Y-%m-%d %H:%M"),
+                    memory_backup.get("empresa", "Error"),
+                    f"FALLO SISTEMA - SOLICITANDO DATOS | Msg: {request.message}",
+                    "N/A", "NO", "CRITICAL", "0.0", "ERROR"
+                ]
+                sheet_db.append_row(err_row)
+        except:
+            pass
+
+        # ESTA ES LA RESPUESTA QUE SALVA EL LEAD AL PEDIR DATOS MANUALMENTE:
+        return {
+            "response": "⚠️ Interrupción Técnica Momentánea. Para no perder el avance de su diagnóstico, por favor escriba su **Correo Electrónico y Número de Teléfono** ahora mismo. Un Socio Senior lo contactará manualmente en los próximos 10 minutos.",
+            "silent_audit": {"action": "CONTINUE"},
+            "updated_lead_data": memory_backup
+        }
