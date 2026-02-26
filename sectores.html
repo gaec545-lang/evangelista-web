@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth bg-evOliveDark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sectores | Evangelista & Co.</title>
+    <meta name="description" content="Casos de aplicación de inteligencia forense por industria: Manufactura, Construcción, Retail y Logística.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        evOlive: '#1a1a2e',      
+                        evOliveDark: '#11111f',  
+                        evBrown: '#D4AF37',      
+                        evBone: '#FFFFFF',       
+                        evSurface: '#F5F5F5',    
+                        evBlack: '#0a0a0a',      
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    fontSize: {
+                        'display': ['clamp(2.5rem, 5vw, 5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+                    },
+                    letterSpacing: {
+                        widest: '0.15em',
+                        extreme: '0.35em',
+                    },
+                    boxShadow: {
+                        'elite': '0 30px 60px -15px rgba(0, 0, 0, 0.5)',
+                        'glow': '0 0 20px rgba(212, 175, 55, 0.1)',
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.7\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { overflow-x: hidden; cursor: default; background-color: #11111f; color: #FFFFFF; }
+        ::selection { background: #D4AF37; color: #11111f; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #11111f; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FFFFFF; }
+        
+        .gsap-hidden { visibility: hidden; opacity: 0; }
+        .arch-border { border: 1px solid rgba(255, 255, 255, 0.1); }
+        .arch-border-b { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+        /* Accordion transition classes */
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .accordion-content > div { overflow: hidden; }
+        .accordion-active .accordion-content { grid-template-rows: 1fr; }
+        .accordion-active .accordion-icon { transform: rotate(180deg); color: #D4AF37; }
+        .accordion-active .accordion-header { background-color: rgba(255,255,255,0.02); }
+    </style>
+</head>
+
+<body class="antialiased relative">
+
+    <div class="fixed inset-0 bg-noise opacity-30 pointer-events-none z-0 mix-blend-overlay"></div>
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 py-6 px-6 md:px-12 transition-all duration-500 bg-evOliveDark/90 backdrop-blur-md shadow-sm border-b arch-border">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-4 group relative">
+                <img src="assets/logoEvangelistaCo.png" alt="Evangelista & Co." class="h-8 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-all">
+                <div class="flex items-center gap-1">
+                    <span class="font-serif text-xl md:text-2xl font-bold tracking-tighter text-evBone">EVANGELISTA</span>
+                    <span class="font-serif text-xl md:text-2xl font-normal italic text-evBrown">& CO.</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-12" id="nav-menu">
+                <a href="index.html" class="text-[10px] font-bold tracking-extreme uppercase text-evBone/60 hover:text-evBone transition-colors">Inicio</a>
+                <a href="por-que-nosotros.html" class="text-[10px] font-bold tracking-extreme uppercase text-evBone/60 hover:text-evBone transition-colors">Por qué nosotros</a>
+                <a href="#" class="text-[10px] font-bold tracking-extreme uppercase text-evBrown transition-colors relative">
+                    Sectores
+                    <span class="absolute bottom-[-8px] left-0 w-full h-px bg-evBrown"></span>
+                </a>
+            </div>
+            <div class="hidden md:block">
+                <button onclick="document.getElementById('btn-open-chat').click()" class="px-8 py-3 bg-evBone text-evOlive text-[10px] font-bold tracking-extreme uppercase hover:bg-evBrown hover:text-evOlive transition-all">
+                    Iniciar Diagnóstico
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-40 pb-20 px-6 md:px-12 overflow-hidden z-10 border-b arch-border">
+        <div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-evBrown/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="gsap-hidden hero-elem inline-block px-4 py-2 border border-evBrown/30 text-[10px] font-bold tracking-[0.3em] uppercase text-evBrown mb-8 bg-evOliveDark/50 backdrop-blur-sm">
+                Inteligencia Aplicada por Industria
+            </span>
+            <h1 class="gsap-hidden hero-elem font-serif text-display text-evBone mb-8 leading-tight">
+                El dolor es el mismo. <br>
+                <span class="italic text-evBrown font-light">La fuga es diferente.</span>
+            </h1>
+            <p class="gsap-hidden hero-elem text-xl font-light text-evBone/60 leading-relaxed max-w-3xl mx-auto">
+                No vendemos reportes genéricos. Construimos arquitecturas forenses diseñadas para detectar y bloquear la pérdida de capital específica de su sector operativo.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-24 relative z-10">
+        <div class="max-w-[1200px] mx-auto px-6 md:px-12 space-y-4">
+
+            <div class="accordion-item border arch-border bg-evOlive/50 backdrop-blur-sm hover:border-evBrown/30 transition-colors duration-300">
+                <button class="accordion-header w-full flex items-center justify-between p-6 md:p-10 text-left transition-colors">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded border arch-border flex items-center justify-center text-evBrown bg-evOliveDark">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl md:text-3xl text-evBone">Manufactura Textil</h2>
+                            <p class="text-xs font-bold tracking-widest text-evBone/40 uppercase mt-2">Planta & Producción</p>
+                        </div>
+                    </div>
+                    <div class="accordion-icon transition-transform duration-500 text-evBone/40">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </button>
+                
+                <div class="accordion-content">
+                    <div class="px-6 md:px-10 pb-10">
+                        <div class="pt-6 border-t arch-border grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h3 class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">El Dolor Silencioso</h3>
+                                <p class="text-lg font-light text-evBone/90 leading-relaxed mb-8 italic">
+                                    "La merma no registrada y la ineficiencia energética están devorando sus márgenes de producción diarios sin que usted lo note."
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Descuadre continuo entre materia prima comprada y producto terminado.</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Altos costos energéticos no atribuidos a lotes o máquinas específicas.</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Inventario fantasma acumulado en almacenes intermedios sin trazabilidad.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-evOliveDark/50 p-8 border arch-border flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-evBrown/5 rounded-full blur-2xl"></div>
+                                <div class="relative z-10">
+                                    <h3 class="text-[10px] font-bold tracking-extreme text-evBone/50 uppercase mb-6 block">Tablero de Dirección (Sentinel)</h3>
+                                    <ul class="space-y-4 mb-8">
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Costo energético real por metro de tela producido.
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Merma de material detectada y cruzada en tiempo real.
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Eficiencia global de maquinaria (OEE) cruzada con nómina.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="relative z-10 border-t arch-border pt-6 mt-4 flex items-end justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-evBone/40 uppercase tracking-widest block mb-1">Resultado Auditado</span>
+                                        <span class="text-3xl font-serif text-evBrown">$4.2M MXN</span>
+                                    </div>
+                                    <button onclick="document.getElementById('btn-open-chat').click()" class="text-[10px] font-bold uppercase tracking-widest text-evBone hover:text-evBrown transition-colors flex items-center gap-2">
+                                        Ver si aplica <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item border arch-border bg-evOlive/50 backdrop-blur-sm hover:border-evBrown/30 transition-colors duration-300">
+                <button class="accordion-header w-full flex items-center justify-between p-6 md:p-10 text-left transition-colors">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded border arch-border flex items-center justify-center text-evBrown bg-evOliveDark">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl md:text-3xl text-evBone">Construcción e Inmobiliario</h2>
+                            <p class="text-xs font-bold tracking-widest text-evBone/40 uppercase mt-2">Desarrollo & Obra</p>
+                        </div>
+                    </div>
+                    <div class="accordion-icon transition-transform duration-500 text-evBone/40">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </button>
+                
+                <div class="accordion-content">
+                    <div class="px-6 md:px-10 pb-10">
+                        <div class="pt-6 border-t arch-border grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h3 class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">El Dolor Silencioso</h3>
+                                <p class="text-lg font-light text-evBone/90 leading-relaxed mb-8 italic">
+                                    "Los sobrecostos en obra y materiales se ocultan en reportes de avance retrasados, destruyendo la rentabilidad del proyecto final."
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Compras de materiales duplicadas, infladas o no justificadas físicamente.</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Retrasos de estimación de obra que no se reflejan oportunamente en el flujo de caja.</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Presupuesto original vs. costo real desfasados por semanas, impidiendo correcciones.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-evOliveDark/50 p-8 border arch-border flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-evBrown/5 rounded-full blur-2xl"></div>
+                                <div class="relative z-10">
+                                    <h3 class="text-[10px] font-bold tracking-extreme text-evBone/50 uppercase mb-6 block">Tablero de Dirección (Sentinel)</h3>
+                                    <ul class="space-y-4 mb-8">
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Desviación presupuestal por concepto de obra en tiempo real.
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Alertas inmediatas de compra de materiales no planificados.
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Flujo de caja proyectado vs. avance físico certificado.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="relative z-10 border-t arch-border pt-6 mt-4 flex items-end justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-evBone/40 uppercase tracking-widest block mb-1">Resultado Auditado</span>
+                                        <span class="text-3xl font-serif text-evBrown">$8.5M MXN</span>
+                                    </div>
+                                    <button onclick="document.getElementById('btn-open-chat').click()" class="text-[10px] font-bold uppercase tracking-widest text-evBone hover:text-evBrown transition-colors flex items-center gap-2">
+                                        Ver si aplica <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item border arch-border bg-evOlive/50 backdrop-blur-sm hover:border-evBrown/30 transition-colors duration-300">
+                <button class="accordion-header w-full flex items-center justify-between p-6 md:p-10 text-left transition-colors">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded border arch-border flex items-center justify-center text-evBrown bg-evOliveDark">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl md:text-3xl text-evBone">Retail y eCommerce Multicanal</h2>
+                            <p class="text-xs font-bold tracking-widest text-evBone/40 uppercase mt-2">Omnicanalidad & Stock</p>
+                        </div>
+                    </div>
+                    <div class="accordion-icon transition-transform duration-500 text-evBone/40">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </button>
+                
+                <div class="accordion-content">
+                    <div class="px-6 md:px-10 pb-10">
+                        <div class="pt-6 border-t arch-border grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h3 class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">El Dolor Silencioso</h3>
+                                <p class="text-lg font-light text-evBone/90 leading-relaxed mb-8 italic">
+                                    "Vender por múltiples canales sin inventario centralizado causa quiebres de stock, cancelaciones y pérdida silenciosa de clientes de alto valor."
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Discrepancia fatal entre inventario físico en tienda, almacén web y marketplaces.</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Costo de adquisición de clientes (CAC) superior al valor de vida real del cliente (LTV).</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Devoluciones mal procesadas que se traducen en pérdida doble (costo logístico + merma).</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-evOliveDark/50 p-8 border arch-border flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-evBrown/5 rounded-full blur-2xl"></div>
+                                <div class="relative z-10">
+                                    <h3 class="text-[10px] font-bold tracking-extreme text-evBone/50 uppercase mb-6 block">Tablero de Dirección (Sentinel)</h3>
+                                    <ul class="space-y-4 mb-8">
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Rentabilidad neta por SKU incluyendo costos de envío y retornos.
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Alertas predictivas de quiebre de stock multicanal.
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Cálculo del LTV real por canal y por segmento de cliente.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="relative z-10 border-t arch-border pt-6 mt-4 flex items-end justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-evBone/40 uppercase tracking-widest block mb-1">Resultado Auditado</span>
+                                        <span class="text-3xl font-serif text-evBrown">$3.8M MXN</span>
+                                    </div>
+                                    <button onclick="document.getElementById('btn-open-chat').click()" class="text-[10px] font-bold uppercase tracking-widest text-evBone hover:text-evBrown transition-colors flex items-center gap-2">
+                                        Ver si aplica <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item border arch-border bg-evOlive/50 backdrop-blur-sm hover:border-evBrown/30 transition-colors duration-300">
+                <button class="accordion-header w-full flex items-center justify-between p-6 md:p-10 text-left transition-colors">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded border arch-border flex items-center justify-center text-evBrown bg-evOliveDark">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl md:text-3xl text-evBone">Transporte y Logística</h2>
+                            <p class="text-xs font-bold tracking-widest text-evBone/40 uppercase mt-2">Flotas & Rutas</p>
+                        </div>
+                    </div>
+                    <div class="accordion-icon transition-transform duration-500 text-evBone/40">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </button>
+                
+                <div class="accordion-content">
+                    <div class="px-6 md:px-10 pb-10">
+                        <div class="pt-6 border-t arch-border grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h3 class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">El Dolor Silencioso</h3>
+                                <p class="text-lg font-light text-evBone/90 leading-relaxed mb-8 italic">
+                                    "El robo hormiga de combustible y los mantenimientos no planificados hunden la rentabilidad de cada kilómetro recorrido por su flota."
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Consumo de diésel facturado discrepante con el rendimiento real de telemetría.</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Tiempos muertos operativos en patio o ruta no penalizados en el sistema.</p>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-1.5 h-1.5 bg-evBrown rounded-full mt-2 shrink-0 shadow-glow"></span>
+                                        <p class="text-sm font-light text-evBone/70">Costos ocultos multiplicados por mantenimientos correctivos en lugar de preventivos.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-evOliveDark/50 p-8 border arch-border flex flex-col justify-between relative overflow-hidden">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-evBrown/5 rounded-full blur-2xl"></div>
+                                <div class="relative z-10">
+                                    <h3 class="text-[10px] font-bold tracking-extreme text-evBone/50 uppercase mb-6 block">Tablero de Dirección (Sentinel)</h3>
+                                    <ul class="space-y-4 mb-8">
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Costo por kilómetro real (diésel, peajes, nómina y desgaste).
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Alertas de rendimiento anómalo de combustible por camión.
+                                        </li>
+                                        <li class="flex items-center gap-3 text-sm font-light text-evBone">
+                                            <svg class="w-4 h-4 text-evBrown" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Rentabilidad neta por ruta, por cliente y por operador.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="relative z-10 border-t arch-border pt-6 mt-4 flex items-end justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-evBone/40 uppercase tracking-widest block mb-1">Resultado Auditado</span>
+                                        <span class="text-3xl font-serif text-evBrown">$5.1M MXN</span>
+                                    </div>
+                                    <button onclick="document.getElementById('btn-open-chat').click()" class="text-[10px] font-bold uppercase tracking-widest text-evBone hover:text-evBrown transition-colors flex items-center gap-2">
+                                        Ver si aplica <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="ui-layer" class="fixed inset-0 z-[9999] pointer-events-none">
+        <div id="vetting-modal" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] bg-evBlack text-evBone shadow-2xl rounded-lg overflow-hidden translate-y-[120%] opacity-0 transition-transform duration-500 z-[100] font-mono border border-evBrown/30 pointer-events-auto">
+            <div class="bg-evOliveDark/90 p-4 border-b border-evBrown/30 flex justify-between items-center backdrop-blur-md">
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-[10px] tracking-widest uppercase text-evBrown font-bold">Socio Digital_v1.5</span>
+                </div>
+                <button id="btn-close-chat" class="text-evBone/50 hover:text-evBone transition-colors cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+            
+            <div id="chat-log" class="h-[350px] overflow-y-auto p-6 space-y-4 bg-evBlack scrollbar-thin scrollbar-thumb-evBrown/20">
+                <div class="flex flex-col gap-1 items-start">
+                    <span class="text-[8px] text-evBrown/50 uppercase tracking-widest">System</span>
+                    <div class="bg-evOliveDark p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-xs leading-relaxed text-evBone/90 border-l-2 border-evBrown shadow-glow">
+                        Bienvenido. Soy el Socio Digital de Evangelista & Co.<br><br>
+                        Veo que está revisando los casos de aplicación industrial. Cada sector tiene fugas de capital muy específicas, pero la raíz siempre es la misma: entropía de datos.<br><br>
+                        <strong>Cuénteme, ¿en qué industria opera y cuál es el dolor operativo que más le está costando dinero hoy?</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-evBlack border-t border-evBrown/20 relative">
+                <input type="text" id="chat-input" class="w-full bg-evOliveDark border border-evBone/10 rounded p-3 text-xs text-evBone focus:outline-none focus:border-evBrown transition-colors placeholder-evBone/20" placeholder="Ej: Industria Textil, falla en inventario..." autocomplete="off">
+                <div class="absolute right-6 top-1/2 -translate-y-1/2">
+                    <button id="btn-send-chat" class="text-evBrown hover:text-evBone transition-colors cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <button id="btn-open-chat" class="fixed bottom-6 right-6 z-[100] bg-evBone text-evOlive px-6 py-4 shadow-elite hover:bg-evBrown transition-all flex items-center gap-3 group border border-transparent pointer-events-auto cursor-pointer">
+            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-bold tracking-widest uppercase">Diagnóstico IA</span>
+        </button>
+    </div>
+
+    <footer class="bg-evBlack text-evBone border-t arch-border pt-24 pb-12 relative overflow-hidden z-10">
+        <div class="max-w-[1920px] mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid md:grid-cols-12 gap-16 mb-24">
+                <div class="md:col-span-5 space-y-8">
+                    <div class="flex items-start gap-4 group">
+                        <img src="assets/logoEvangelistaCo.png" alt="Evangelista Logo" class="h-14 w-auto object-contain brightness-0 invert opacity-90 group-hover:scale-105 transition-transform duration-500">
+                        <div class="flex flex-col -mt-1">
+                            <span class="font-serif text-3xl font-bold tracking-tighter text-evBone">EVANGELISTA</span>
+                            <span class="font-serif text-3xl font-normal italic text-evBrown">& CO.</span>
+                        </div>
+                    </div>
+                    <p class="text-sm font-light text-evBone/60 leading-relaxed max-w-md">
+                        Somos una firma de Arquitectura de Inteligencia. Nuestra misión es erradicar la intuición de la toma de decisiones directivas mediante la construcción de ecosistemas de datos auditables, gobernados y rentables.
+                    </p>
+                    <div class="pt-4">
+                        <span class="text-[10px] uppercase tracking-widest text-evBrown font-bold">Puebla • Ciudad de México</span>
+                    </div>
+                </div>
+                <div class="md:col-span-3 md:col-start-7 space-y-6">
+                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evBrown mb-4">Firma</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-sm text-evBone/80 hover:text-white transition-colors">Nuestra Identidad</a></li>
+                        <li><a href="por-que-nosotros.html" class="text-sm text-evBone/80 hover:text-white transition-colors">El Argumento Central</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-3 space-y-6">
+                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evBrown mb-4">Legal & Contacto</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-sm text-evBone/60 hover:text-evBrown transition-colors">Aviso de Privacidad</a></li>
+                        <li class="pt-4"><a href="mailto:consultoria@ibbmexico.org" class="text-sm font-serif italic text-evBone hover:text-evBrown transition-colors">consultoria@ibbmexico.org</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t arch-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40">
+                <span class="text-[10px] uppercase tracking-widest">© 2026 Evangelista & Co. Inc.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Animation
+            const tlHero = gsap.timeline();
+            tlHero.to('.hero-elem', {
+                autoAlpha: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out",
+                onStart: () => gsap.set('.hero-elem', { y: 30, autoAlpha: 0 })
+            });
+            
+            // Accordion Logic
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            // Open first tab by default
+            if(accordionItems.length > 0) {
+                accordionItems[0].classList.add('accordion-active');
+            }
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('accordion-active');
+                    
+                    // Close all
+                    accordionItems.forEach(acc => acc.classList.remove('accordion-active'));
+                    
+                    // If it wasn't active, open it
+                    if (!isActive) {
+                        item.classList.add('accordion-active');
+                        // Small scroll adjustment
+                        setTimeout(() => {
+                            const y = item.getBoundingClientRect().top + window.scrollY - 100;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                        }, 300);
+                    }
+                });
+            });
+
+            // Vetting Gate Chatbot Logic (Simplificada para CTA interactivo)
+            const dom = {
+                modal: document.getElementById('vetting-modal'),
+                triggerBtn: document.getElementById('btn-open-chat'),
+                closeBtn: document.getElementById('btn-close-chat')
+            };
+
+            let isOpen = false;
+
+            const toggleChat = (forceState = null) => {
+                isOpen = forceState !== null ? forceState : !isOpen;
+                if (isOpen) {
+                    gsap.to(dom.modal, { y: "0%", opacity: 1, duration: 0.5, ease: "power3.out" });
+                    gsap.to(dom.triggerBtn, { y: "200%", opacity: 0, duration: 0.3, pointerEvents: "none" }); 
+                    document.getElementById('chat-input').focus();
+                } else {
+                    gsap.to(dom.modal, { y: "120%", opacity: 0, duration: 0.4, ease: "power3.in" });
+                    gsap.to(dom.triggerBtn, { y: "0%", opacity: 1, duration: 0.3, delay: 0.4, pointerEvents: "all" });
+                }
+            };
+
+            dom.triggerBtn.addEventListener('click', () => toggleChat(true));
+            dom.closeBtn.addEventListener('click', () => toggleChat(false));
+            
+            // Simulación visual del envío 
+            document.getElementById('btn-send-chat').addEventListener('click', () => {
+               const input = document.getElementById('chat-input');
+               if(input.value.trim() !== '') {
+                   const log = document.getElementById('chat-log');
+                   const msg = document.createElement('div');
+                   msg.className = "flex flex-col gap-1 items-end opacity-0";
+                   msg.innerHTML = `<span class="text-[8px] text-evBrown/50 uppercase tracking-widest">Usted</span>
+                                    <div class="bg-evBone text-evBlack rounded-tl-lg rounded-bl-lg rounded-br-lg p-3 text-xs leading-relaxed max-w-[90%]">${input.value}</div>`;
+                   log.appendChild(msg);
+                   gsap.to(msg, {opacity: 1, y: -5, duration: 0.3});
+                   input.value = '';
+                   log.scrollTop = log.scrollHeight;
+               }
+            });
+        });
+    </script>
+</body>
+</html>
