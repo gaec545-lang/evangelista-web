@@ -384,87 +384,39 @@
         </div>
     </section>
 
-    <section id="governance" class="py-32 bg-evBone border-t arch-border relative z-10">
-        <div class="max-w-[1800px] mx-auto px-6 md:px-12">
+    <section id="governance" class="py-16 bg-evOliveDark border-t border-evOlive/20 relative z-10">
+        <div class="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
+        
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
             
-            <div class="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
-                <div>
-                    <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">Modelo de Ejecución</span>
-                    <h2 class="font-serif text-5xl md:text-6xl text-evOlive">Integración Vertical</h2>
-                </div>
-                <p class="text-evBlack/60 font-light max-w-md text-right md:text-left">
-                    No delegamos. Controlamos la cadena de valor completa: desde la extracción del dato hasta la gestión del proyecto de mejora.
-                </p>
+            <div class="text-center mb-10">
+                <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-3 block">Modelo de Ejecución</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-evBone">Integración Vertical</h2>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-px bg-evOlive/10 border arch-border">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10">
+                <div class="text-center md:text-left border-t md:border-t-0 md:border-l border-evBrown/30 pt-4 md:pt-0 md:pl-6">
+                    <span class="text-evBrown font-serif text-xl mb-2 block">I. Foundation</span>
+                    <p class="text-sm font-light text-evBone/80">Diagnóstico forense. Encontramos lo que sus sistemas ocultan.</p>
+                </div>
                 
-                <div class="bg-evBone p-12 md:p-16 hover:bg-white transition-colors duration-500 group relative overflow-hidden">
-                    <span class="text-8xl font-serif text-evOlive/5 absolute top-4 right-4 group-hover:text-evOlive/10 transition-colors">I</span>
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 border arch-border flex items-center justify-center mb-8 rounded-full bg-evSurface group-hover:bg-evOlive group-hover:text-white transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        </div>
-                        <h3 class="font-serif text-2xl text-evOlive mb-6">The Foundation</h3>
-                        <p class="text-sm font-light text-evBlack/60 leading-relaxed mb-8">
-                            Auditoría Forense de Datos. Saneamos su pasado. Identificamos inconsistencias históricas, duplicidades y fugas en sus registros actuales.
-                        </p>
-                        <ul class="space-y-3 border-t arch-border pt-6">
-                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
-                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Limpieza SQL
-                            </li>
-                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
-                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Mapeo de Silos
-                            </li>
-                        </ul>
-                    </div>
+                <div class="text-center md:text-left border-t md:border-t-0 md:border-l border-evBrown/30 pt-4 md:pt-0 md:pl-6">
+                    <span class="text-evBrown font-serif text-xl mb-2 block">II. Architecture</span>
+                    <p class="text-sm font-light text-evBone/80">Construimos la inteligencia que convierte datos en decisiones.</p>
                 </div>
 
-                <div class="bg-evOlive text-evBone p-12 md:p-16 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-noise opacity-10 mix-blend-overlay"></div>
-                    <span class="text-8xl font-serif text-white/5 absolute top-4 right-4">II</span>
-                    
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 border border-white/20 flex items-center justify-center mb-8 rounded-full bg-white/10">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        </div>
-                        <h3 class="font-serif text-2xl text-white mb-6">The Architecture</h3>
-                        <p class="text-sm font-light text-white/70 leading-relaxed mb-8">
-                            Ingeniería de Inteligencia. Construimos el Data Mesh que conecta sus departamentos. Generamos los tableros que dictan la estrategia.
-                        </p>
-                        <ul class="space-y-3 border-t border-white/10 pt-6">
-                            <li class="text-xs font-bold tracking-widest uppercase text-white flex items-center gap-2">
-                                <span class="w-1 h-1 bg-white rounded-full"></span> Business Intelligence
-                            </li>
-                            <li class="text-xs font-bold tracking-widest uppercase text-white flex items-center gap-2">
-                                <span class="w-1 h-1 bg-white rounded-full"></span> Dashboards Directivos
-                            </li>
-                        </ul>
-                    </div>
+                <div class="text-center md:text-left border-t md:border-t-0 md:border-l border-evBrown/30 pt-4 md:pt-0 md:pl-6">
+                    <span class="text-evBrown font-serif text-xl mb-2 block">III. Sentinel</span>
+                    <p class="text-sm font-light text-evBone/80">Vigilancia continua. Protegemos lo que Architecture construyó.</p>
                 </div>
-
-                <div class="bg-evBone p-12 md:p-16 hover:bg-white transition-colors duration-500 group relative overflow-hidden">
-                    <span class="text-8xl font-serif text-evOlive/5 absolute top-4 right-4 group-hover:text-evOlive/10 transition-colors">III</span>
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 border arch-border flex items-center justify-center mb-8 rounded-full bg-evSurface group-hover:bg-evOlive group-hover:text-white transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                        </div>
-                        <h3 class="font-serif text-2xl text-evOlive mb-6">The Governance</h3>
-                        <p class="text-sm font-light text-evBlack/60 leading-relaxed mb-8">
-                            Ejecución y PMO. No solo le decimos qué está mal; gestionamos el proyecto para arreglarlo. Vigilancia continua del cumplimiento.
-                        </p>
-                        <ul class="space-y-3 border-t arch-border pt-6">
-                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
-                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Project Management
-                            </li>
-                            <li class="text-xs font-bold tracking-widest uppercase text-evBrown flex items-center gap-2">
-                                <span class="w-1 h-1 bg-evBrown rounded-full"></span> Auditoría Continua
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="flex justify-center">
+                <a href="metodologia.html" class="border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black px-8 py-3 transition-all duration-200 text-xs font-bold tracking-widest uppercase shadow-elite">
+                    Ver metodología completa →
+                </a>
+            </div>
+
         </div>
     </section>
 
