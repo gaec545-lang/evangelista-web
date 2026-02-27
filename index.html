@@ -143,29 +143,29 @@
                     </a>
                 </div>
 
-                <button id="btn-mobile-menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="lg:hidden text-evOlive hover:text-evBrown focus:outline-none p-2 transition-colors cursor-pointer">
+                <button id="btn-mobile-menu" type="button" class="lg:hidden text-evOlive hover:text-evBrown focus:outline-none p-2 transition-colors cursor-pointer relative z-[60]">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
 
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-gray-900 border-t border-gray-700 shadow-2xl z-40">
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-gray-900 border-t border-gray-700 shadow-2xl z-[50]">
             <div class="p-4 flex flex-col">
                 <span class="text-[9px] font-bold tracking-widest text-gray-500 uppercase px-4 mb-2">Fundamentos</span>
-                <a href="#truth" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">La Brecha</a>
-                <a href="#blueprint" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Blueprint</a>
-                <a href="#governance" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Gobernanza</a>
+                <a href="#truth" class="mobile-link block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">La Brecha</a>
+                <a href="#blueprint" class="mobile-link block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Blueprint</a>
+                <a href="#governance" class="mobile-link block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Gobernanza</a>
                 
                 <div class="w-full h-px bg-gray-700 my-4"></div>
                 
                 <span class="text-[9px] font-bold tracking-widest text-gray-500 uppercase px-4 mb-2">Explorar</span>
-                <a href="por-que-nosotros.html" class="block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Por qué nosotros</a>
-                <a href="sectores.html" class="block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Sectores</a>
-                <a href="metodologia.html" class="block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Metodología</a>
+                <a href="por-que-nosotros.html" class="mobile-link block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Por qué nosotros</a>
+                <a href="sectores.html" class="mobile-link block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Sectores</a>
+                <a href="metodologia.html" class="mobile-link block py-2 px-4 text-xs font-bold tracking-widest uppercase text-gray-300 hover:text-yellow-400 transition-colors">Metodología</a>
                 
                 <div class="md:hidden mt-6 px-4 pb-2">
-                    <button onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('btn-open-chat').click();" class="w-full bg-evBrown text-evOlive font-bold text-[10px] tracking-widest uppercase py-3 hover:bg-yellow-400 transition-colors shadow-lg">
+                    <button id="btn-mobile-chat" type="button" class="w-full bg-evBrown text-evOlive font-bold text-[10px] tracking-widest uppercase py-3 hover:bg-yellow-400 transition-colors shadow-lg">
                         Iniciar Diagnóstico
                     </button>
                 </div>
@@ -1006,6 +1006,40 @@
                         mobileMenu.classList.add('hidden');
                     });
                 });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnMobile = document.getElementById('btn-mobile-menu');
+            const menuMobile = document.getElementById('mobile-menu');
+            const btnMobileChat = document.getElementById('btn-mobile-chat');
+            const linksMobile = document.querySelectorAll('.mobile-link');
+
+            if (btnMobile && menuMobile) {
+                // Abre/cierra el menú al tocar las 3 líneas
+                btnMobile.addEventListener('click', function(e) {
+                    e.preventDefault(); // Evita comportamientos por defecto
+                    e.stopPropagation(); // Evita que el clic se propague y se cierre inmediatamente
+                    menuMobile.classList.toggle('hidden');
+                });
+
+                // Cierra el menú si se hace clic en cualquier enlace
+                linksMobile.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        menuMobile.classList.add('hidden');
+                    });
+                });
+
+                // Lógica especial para el botón "Iniciar Diagnóstico" dentro del menú móvil
+                if (btnMobileChat) {
+                    btnMobileChat.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        menuMobile.classList.add('hidden');
+                        const chatBtn = document.getElementById('btn-open-chat');
+                        if(chatBtn) chatBtn.click();
+                    });
+                }
             }
         });
     </script>
