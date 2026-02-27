@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
@@ -20,12 +19,12 @@
             theme: {
                 extend: {
                     colors: {
-                        evOlive: '#1a1a2e',      /* Oscuro principal (Autoridad) */
-                        evOliveDark: '#11111f',  /* Oscuro profundo */
-                        evBrown: '#D4AF37',      /* Dorado (Tierra/Lujo) */
-                        evBone: '#FFFFFF',       /* Blanco (Papel Institucional) */
-                        evSurface: '#F5F5F5',    /* Superficie gris muy claro */
-                        evBlack: '#0a0a0a',      /* Negro Técnico */
+                        evOlive: '#1a1a2e',      
+                        evOliveDark: '#11111f',  
+                        evBrown: '#D4AF37',      
+                        evBone: '#FFFFFF',       
+                        evSurface: '#F5F5F5',    
+                        evBlack: '#0a0a0a',      
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -51,27 +50,13 @@
     </script>
 
     <style>
-        /* ESTILOS GLOBALES DE INGENIERÍA */
-        body { 
-            overflow-x: hidden; 
-            cursor: default;
-        }
-
-        ::selection {
-            background: #1a1a2e; 
-            color: #FFFFFF;      
-        }
-
+        body { overflow-x: hidden; cursor: default; }
+        ::selection { background: #1a1a2e; color: #FFFFFF; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #FFFFFF; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #1a1a2e; }
-
-        .gsap-hidden {
-            visibility: hidden;
-            opacity: 0;
-        }
-
+        .gsap-hidden { visibility: hidden; opacity: 0; }
         .arch-border { border: 1px solid rgba(26, 26, 46, 0.1); }
         .arch-border-b { border-bottom: 1px solid rgba(26, 26, 46, 0.1); }
     </style>
@@ -80,7 +65,6 @@
 <body class="bg-evBone text-evBlack antialiased relative">
 
     <div class="fixed inset-0 bg-noise opacity-50 pointer-events-none z-0 mix-blend-multiply"></div>
-
     <div class="fixed top-[-10%] right-[-5%] w-[40vw] h-[40vw] border border-evOlive/5 rounded-full z-0 pointer-events-none float-anim"></div>
     <div class="fixed bottom-[-10%] left-[-5%] w-[35vw] h-[35vw] border border-evBrown/5 rounded-full z-0 pointer-events-none float-anim" style="animation-delay: -5s;"></div>
 
@@ -88,38 +72,27 @@
         <div class="max-w-[1920px] mx-auto flex items-center justify-between relative">
             
             <a href="index.html" class="flex items-center gap-2 group relative whitespace-nowrap flex-shrink-0">
-                <img src="assets/logoEvangelistaCo.png" 
-                     alt="Evangelista & Co. Emblem" 
-                     class="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out">
-                
+                <img src="assets/logoEvangelistaCo.png" alt="Evangelista & Co. Emblem" class="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out">
                 <span class="inline-flex flex-col leading-none">
-                    <span class="font-serif text-2xl md:text-3xl font-bold tracking-tighter text-evOlive">
-                        EVANGELISTA
-                    </span>
-                    <span class="font-serif text-xl md:text-2xl font-normal italic text-evBrown mt-1">
-                        & CO.
-                    </span>
+                    <span class="font-serif text-2xl md:text-3xl font-bold tracking-tighter text-evOlive">EVANGELISTA</span>
+                    <span class="font-serif text-xl md:text-2xl font-normal italic text-evBrown mt-1">& CO.</span>
                 </span>
             </a>
 
             <div class="hidden lg:flex items-center gap-8 bg-evBone/0 px-8 py-2 rounded-full transition-all duration-500 min-w-0" id="nav-menu">
                 <a href="#truth" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors relative group py-2">
-                    La Brecha
-                    <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    La Brecha <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                 </a>
                 <a href="#blueprint" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors relative group py-2">
-                    Blueprint
-                    <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    Blueprint <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                 </a>
                 <a href="#governance" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors relative group py-2">
-                    Gobernanza
-                    <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    Gobernanza <span class="absolute bottom-0 left-0 w-full h-px bg-evBrown scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                 </a>
-                
+
                 <div class="relative group py-2">
                     <button class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors flex items-center gap-1 focus:outline-none">
-                        Explorar
-                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        Explorar <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="absolute hidden group-hover:block top-full left-0 bg-gray-900 border border-gray-700 rounded-lg py-2 min-w-max z-50 shadow-2xl mt-1">
                         <a href="por-que-nosotros.html" class="block py-2 px-6 text-[10px] font-bold tracking-extreme uppercase text-gray-300 hover:text-yellow-400 transition-colors">Por qué nosotros</a>
@@ -134,8 +107,7 @@
                     <a href="#vetting" onclick="document.getElementById('btn-open-chat').click(); return false;" class="gsap-hidden nav-cta group relative inline-flex overflow-hidden px-8 py-3 bg-evOlive text-evBone border border-evOlive transition-all duration-500 hover:border-evBlack">
                         <div class="absolute inset-0 bg-evBlack transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"></div>
                         <span class="relative z-10 text-[10px] font-bold tracking-extreme uppercase flex items-center gap-2 group-hover:text-white">
-                            Iniciar Diagnóstico
-                            <svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            Iniciar Diagnóstico <svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </span>
                     </a>
                 </div>
@@ -145,15 +117,14 @@
             </div>
         </div>
     </nav>
+
     <header class="relative min-h-screen flex items-center justify-center pt-32 px-6 md:px-12 overflow-hidden z-10">
-        
         <div class="absolute inset-0 max-w-[1800px] mx-auto pointer-events-none opacity-20">
             <div class="border-l border-evOlive h-full absolute left-6 md:left-12 top-0"></div>
             <div class="border-r border-evOlive h-full absolute right-6 md:right-12 top-0"></div>
         </div>
 
         <div class="relative max-w-screen-2xl mx-auto w-full text-center pb-20">
-            
             <div class="gsap-hidden hero-elem flex flex-col items-center gap-4 mb-10">
                 <span class="h-12 w-px bg-evBrown/50"></span>
                 <span class="inline-block px-4 py-2 border border-evBrown/20 text-[10px] font-bold tracking-[0.3em] uppercase text-evBrown bg-evBone/50 backdrop-blur-sm">
@@ -180,7 +151,6 @@
                     <span class="relative z-10 text-xs font-bold tracking-extreme uppercase group-hover:text-white">Ver La Verdad</span>
                     <div class="absolute inset-0 bg-evOlive transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 </a>
-                
                 <a href="#blueprint" class="group min-w-[220px] px-8 py-5 border border-evOlive/30 text-evOlive hover:border-evOlive transition-all bg-transparent hover:bg-evOlive/5">
                     <span class="text-xs font-bold tracking-extreme uppercase group-hover:text-evBlack">Explorar Blueprint</span>
                 </a>
@@ -200,33 +170,23 @@
                     <p class="text-evBone/80 font-light text-sm leading-relaxed">Audita, construye inteligencia y vigila. La certeza financiera que ninguno de los anteriores puede garantizar.</p>
                 </div>
             </div>
-
         </div>
-
     </header>
 
     <section id="truth" class="relative py-32 bg-evBone border-t arch-border z-20">
         <div class="max-w-[1800px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-            
             <div class="lg:col-span-5 lg:sticky lg:top-32 h-fit">
-                <span class="gsap-fade-up opacity-0 block text-[10px] font-bold tracking-extreme uppercase text-evBrown mb-8">
-                    /// Diagnóstico Situacional
-                </span>
-                
+                <span class="gsap-fade-up opacity-0 block text-[10px] font-bold tracking-extreme uppercase text-evBrown mb-8">/// Diagnóstico Situacional</span>
                 <h2 class="gsap-fade-up opacity-0 font-serif text-5xl md:text-6xl text-evOlive mb-10 leading-[1.05]">
-                    Su ERP es un<br>
-                    <span class="text-evOlive/40 italic">cementerio de datos.</span>
+                    Su ERP es un<br><span class="text-evOlive/40 italic">cementerio de datos.</span>
                 </h2>
-                
                 <div class="gsap-fade-up opacity-0 space-y-8">
                     <p class="text-lg font-light text-evBlack/70 leading-relaxed border-l border-evBrown pl-6">
                         SAP, Oracle o Aspel registran la historia, no el futuro. La <strong>entropía de datos</strong> (silos, errores humanos) le está costando entre un 5% y un 12% de margen neto anual.
                     </p>
                 </div>
             </div>
-
             <div class="lg:col-span-7 space-y-px border arch-border bg-evOlive/10">
-                
                 <div class="gsap-card opacity-0 translate-y-12 bg-evSurface p-12 md:p-16 hover:bg-white transition-colors duration-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="w-12 h-12 rounded-full bg-evBone border arch-border flex items-center justify-center text-evOlive/50">
@@ -235,14 +195,10 @@
                         <span class="text-[9px] font-bold tracking-widest text-red-800/60 uppercase border border-red-800/20 px-3 py-1 bg-red-50">Riesgo Alto</span>
                     </div>
                     <h3 class="font-serif text-3xl text-evOlive/60 mb-4">Reportes Estáticos</h3>
-                    <p class="text-sm font-light text-evBlack/60 leading-relaxed">
-                        Usted recibe la información 15 días después del cierre. Las decisiones correctivas llegan tarde y el daño al flujo de caja ya es irreversible.
-                    </p>
+                    <p class="text-sm font-light text-evBlack/60 leading-relaxed">Usted recibe la información 15 días después del cierre. Las decisiones correctivas llegan tarde y el daño al flujo de caja ya es irreversible.</p>
                 </div>
-
                 <div class="gsap-card opacity-0 translate-y-12 bg-evOlive p-12 md:p-16 relative overflow-hidden group">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                    
                     <div class="relative z-10 flex justify-between items-start mb-6">
                         <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -250,9 +206,7 @@
                         <span class="text-[9px] font-bold tracking-widest text-white uppercase border border-white/20 px-3 py-1">Estándar E&C</span>
                     </div>
                     <h3 class="relative z-10 font-serif text-3xl text-white mb-4">Verdad en Tiempo Real</h3>
-                    <p class="relative z-10 text-sm font-light text-white/80 leading-relaxed">
-                        Arquitectura Data Mesh que conecta sus silos. Si un margen cae hoy a las 10:00 AM, la alerta se dispara a las 10:01 AM. Gobernanza activa 24/7.
-                    </p>
+                    <p class="relative z-10 text-sm font-light text-white/80 leading-relaxed">Arquitectura Data Mesh que conecta sus silos. Si un margen cae hoy a las 10:00 AM, la alerta se dispara a las 10:01 AM. Gobernanza activa 24/7.</p>
                 </div>
             </div>
         </div>
@@ -260,17 +214,13 @@
 
     <section id="blueprint" class="relative py-32 bg-evSurface border-t arch-border z-10">
         <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(#1a1a2e 1px, transparent 1px), linear-gradient(90deg, #1a1a2e 1px, transparent 1px); background-size: 40px 40px;"></div>
-
         <div class="max-w-[1600px] mx-auto px-6 relative z-10">
-            
             <div class="text-center mb-20">
                 <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">Arquitectura de Soluciones</span>
                 <h2 class="font-serif text-5xl md:text-6xl text-evOlive mb-6">The Blueprint of Truth</h2>
                 <p class="text-evBlack/50 font-light text-lg">Visualice la transformación: Del caos a la rentabilidad.</p>
             </div>
-
             <div class="bg-evBone rounded-xl shadow-elite arch-border overflow-hidden">
-                
                 <div class="flex flex-wrap border-b arch-border bg-white">
                     <button onclick="changeLayer(0)" class="bp-tab flex-1 py-6 px-2 relative hover:bg-evSurface transition-colors group active" data-idx="0">
                         <span class="block text-2xl font-serif text-evOlive mb-2 transition-colors">01</span>
@@ -293,11 +243,8 @@
                         <div class="absolute bottom-0 left-0 w-full h-1 bg-evBrown scale-x-0 transition-transform origin-left bp-progress"></div>
                     </button>
                 </div>
-
                 <div class="grid lg:grid-cols-2 min-h-[500px]">
-                    
                     <div class="relative bg-evSurface/50 border-r arch-border overflow-hidden flex items-center justify-center p-8">
-                        
                         <div class="bp-layer absolute inset-0 flex items-center justify-center" id="visual-0">
                             <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl">
                                 <circle cx="60" cy="60" r="35" fill="white" stroke="#1a1a2e" stroke-width="2"/>
@@ -310,7 +257,6 @@
                                 <line x1="80" y1="85" x2="130" y2="210" stroke="#EF4444" stroke-width="2" stroke-dasharray="5,5"/>
                             </svg>
                         </div>
-
                         <div class="bp-layer absolute inset-0 flex items-center justify-center opacity-0" id="visual-1">
                             <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl animate-[spin_12s_linear_infinite]">
                                 <circle cx="150" cy="150" r="90" fill="none" stroke="#1a1a2e" stroke-width="1" stroke-dasharray="10,10"/>
@@ -322,7 +268,6 @@
                                 <circle cx="250" cy="150" r="5" fill="#D4AF37"/>
                             </svg>
                         </div>
-
                         <div class="bp-layer absolute inset-0 flex items-center justify-center opacity-0" id="visual-2">
                             <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl">
                                 <rect x="40" y="60" width="220" height="140" rx="4" fill="white" stroke="#1a1a2e" stroke-width="2"/>
@@ -333,7 +278,6 @@
                                 <rect x="200" y="210" width="60" height="10" fill="#E5E5E5"/>
                             </svg>
                         </div>
-
                         <div class="bp-layer absolute inset-0 flex items-center justify-center opacity-0" id="visual-3">
                             <svg viewBox="0 0 300 300" class="w-3/4 h-auto drop-shadow-xl">
                                 <circle cx="150" cy="150" r="80" fill="#1a1a2e"/>
@@ -341,11 +285,8 @@
                                 <text x="150" y="260" text-anchor="middle" font-size="14" fill="#1a1a2e" font-weight="bold">PMO READY</text>
                             </svg>
                         </div>
-
                     </div>
-
                     <div class="relative p-12 md:p-16 flex flex-col justify-center bg-white">
-                        
                         <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-100" id="content-0">
                             <span class="text-6xl font-serif text-evOlive/10 mb-6">01</span>
                             <h3 class="text-3xl font-serif text-evOlive mb-6">Fuentes & Caos</h3>
@@ -354,7 +295,6 @@
                                 <p class="text-sm text-red-500 font-medium">Impacto: Ceguera Operativa Total.</p>
                             </div>
                         </div>
-
                         <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-0 pointer-events-none translate-y-4" id="content-1">
                             <span class="text-6xl font-serif text-evOlive/10 mb-6">02</span>
                             <h3 class="text-3xl font-serif text-evOlive mb-6">Motor Forense</h3>
@@ -363,7 +303,6 @@
                                 <p class="text-sm text-evOlive font-medium">Resultado: Evidencia Auditable.</p>
                             </div>
                         </div>
-
                         <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-0 pointer-events-none translate-y-4" id="content-2">
                             <span class="text-6xl font-serif text-evOlive/10 mb-6">03</span>
                             <h3 class="text-3xl font-serif text-evOlive mb-6">Visualización</h3>
@@ -372,7 +311,6 @@
                                 <p class="text-sm text-evBrown font-medium">Resultado: Control de Mando.</p>
                             </div>
                         </div>
-
                         <div class="bp-content absolute inset-x-12 md:inset-x-16 inset-y-0 flex flex-col justify-center transition-all duration-500 opacity-0 pointer-events-none translate-y-4" id="content-3">
                             <span class="text-6xl font-serif text-evOlive/10 mb-6">04</span>
                             <h3 class="text-3xl font-serif text-evOlive mb-6">Ejecución & PMO</h3>
@@ -381,7 +319,6 @@
                                 <p class="text-sm text-evOlive font-medium">Resultado: Dinero en el Banco.</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -390,51 +327,40 @@
 
     <section id="governance" class="py-16 bg-evOliveDark border-t border-evOlive/20 relative z-10">
         <div class="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
-        
         <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-            
             <div class="text-center mb-10">
                 <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-3 block">Modelo de Ejecución</span>
                 <h2 class="font-serif text-3xl md:text-4xl text-evBone">Integración Vertical</h2>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10">
                 <div class="text-center md:text-left border-t md:border-t-0 md:border-l border-evBrown/30 pt-4 md:pt-0 md:pl-6">
                     <span class="text-evBrown font-serif text-xl mb-2 block">I. Foundation</span>
                     <p class="text-sm font-light text-evBone/80">Diagnóstico forense. Encontramos lo que sus sistemas ocultan.</p>
                 </div>
-                
                 <div class="text-center md:text-left border-t md:border-t-0 md:border-l border-evBrown/30 pt-4 md:pt-0 md:pl-6">
                     <span class="text-evBrown font-serif text-xl mb-2 block">II. Architecture</span>
                     <p class="text-sm font-light text-evBone/80">Construimos la inteligencia que convierte datos en decisiones.</p>
                 </div>
-
                 <div class="text-center md:text-left border-t md:border-t-0 md:border-l border-evBrown/30 pt-4 md:pt-0 md:pl-6">
                     <span class="text-evBrown font-serif text-xl mb-2 block">III. Sentinel</span>
                     <p class="text-sm font-light text-evBone/80">Vigilancia continua. Protegemos lo que Architecture construyó.</p>
                 </div>
             </div>
-
             <div class="flex justify-center">
                 <a href="metodologia.html" class="border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black px-8 py-3 transition-all duration-200 text-xs font-bold tracking-widest uppercase shadow-elite">
                     Ver metodología completa →
                 </a>
             </div>
-
         </div>
     </section>
 
     <section class="py-40 bg-evOliveDark relative overflow-hidden flex items-center justify-center">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-evOlive to-transparent"></div>
         <div class="absolute inset-0 bg-noise opacity-20 mix-blend-soft-light"></div>
-        
         <div class="relative z-10 text-center max-w-4xl px-6">
-            <span class="inline-block mb-8 text-[10px] font-bold tracking-[0.4em] uppercase text-evBone/40 border border-evBone/10 px-4 py-2">
-                Nuestra Garantía
-            </span>
+            <span class="inline-block mb-8 text-[10px] font-bold tracking-[0.4em] uppercase text-evBone/40 border border-evBone/10 px-4 py-2">Nuestra Garantía</span>
             <h2 class="font-serif text-4xl md:text-6xl text-evBone leading-tight mb-12">
-                "No vendemos horas de consultoría. <br>
-                <span class="text-evBrown italic">Vendemos la recuperación de su capital."</span>
+                "No vendemos horas de consultoría. <br><span class="text-evBrown italic">Vendemos la recuperación de su capital."</span>
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 border-t border-evBone/10 pt-12">
                 <div class="text-center">
@@ -485,19 +411,15 @@
         <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
             <div class="absolute right-0 top-0 w-[500px] h-[500px] bg-evOlive/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
         </div>
-
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-3xl mb-16 border-l-2 border-evOlive pl-6">
                 <span class="text-evOlive/70 text-[10px] tracking-[0.2em] uppercase mb-2 block">Contacto & Admisión</span>
                 <h2 class="font-playfair text-4xl md:text-5xl mb-4 text-evOlive">Protocolos de Interacción</h2>
                 <p class="font-light text-evBlack/80 text-sm md:text-base leading-relaxed max-w-2xl">
-                    En Evangelista & Co. hemos eliminado la burocracia de los formularios tradicionales. 
-                    Seleccione el canal adecuado según la naturaleza estratégica de su solicitud.
+                    En Evangelista & Co. hemos eliminado la burocracia de los formularios tradicionales. Seleccione el canal adecuado según la naturaleza estratégica de su solicitud.
                 </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-evOlive/10 pt-12">
-                
                 <div class="group space-y-6 pr-8">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse relative">
@@ -505,38 +427,26 @@
                         </div>
                         <span class="text-[10px] uppercase tracking-widest text-evOlive font-bold">Consultoría & Estrategia</span>
                     </div>
-                    
                     <h3 class="font-playfair text-2xl text-evOlive">Servicio de Consultoría</h3>
                     <p class="text-xs font-light text-evBlack/70 leading-relaxed text-justify">
-                        El acceso a la agenda de los Clientes para proyectos <strong>Foundation</strong> o <strong>Architecture</strong> es exclusivo a través de nuestro sistema de diagnóstico autónomo. 
-                        <br><br>
-                        Nuestro Socio Digital evaluará la madurez operativa de su caso en tiempo real y desbloqueará los horarios disponibles si califica.
-                        <br><br>
-                        Tenemos cupo limitado para nuestros servicios de consultoría.
+                        El acceso a la agenda de los Clientes para proyectos <strong>Foundation</strong> o <strong>Architecture</strong> es exclusivo a través de nuestro sistema de diagnóstico autónomo.<br><br>
+                        Nuestro Socio Digital evaluará la madurez operativa de su caso en tiempo real y desbloqueará los horarios disponibles si califica.<br><br>Tenemos cupo limitado para nuestros servicios de consultoría.
                     </p>
-
-                    <button onclick="document.getElementById('btn-open-chat').click()" 
-                        class="mt-4 group/btn relative inline-flex items-center gap-4 px-8 py-4 bg-evOlive text-evBone font-bold text-[10px] tracking-[0.2em] uppercase hover:bg-evBlack transition-all duration-500 shadow-md hover:shadow-evOlive/30">
+                    <button onclick="document.getElementById('btn-open-chat').click()" class="mt-4 group/btn relative inline-flex items-center gap-4 px-8 py-4 bg-evOlive text-evBone font-bold text-[10px] tracking-[0.2em] uppercase hover:bg-evBlack transition-all duration-500 shadow-md hover:shadow-evOlive/30">
                         <span>Iniciar Diagnóstico</span>
                         <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </button>
                 </div>
-
                 <div class="group space-y-6 md:pl-12 md:border-l border-evOlive/10 relative">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="w-2 h-2 border border-evOlive rounded-full"></div>
                         <span class="text-[10px] uppercase tracking-widest text-evOlive font-bold">Relaciones Corporativas</span>
                     </div>
-
                     <h3 class="font-playfair text-2xl text-evOlive">Administración General</h3>
                     <p class="text-xs font-light text-evBlack/70 leading-relaxed text-justify">
-                        Canal reservado estrictamente para alianzas comerciales, relaciones públicas, proveedores y asuntos legales.
-                        <br><br>
-                        <em class="opacity-60 text-[9px] uppercase tracking-wide border-l border-evOlive/30 text-evOlive pl-2 block mt-2">
-                            Nota: Solicitudes de consultoría enviadas por esta vía serán redirigidas automáticamente al Digital Vetting.
-                        </em>
+                        Canal reservado estrictamente para alianzas comerciales, relaciones públicas, proveedores y asuntos legales.<br><br>
+                        <em class="opacity-60 text-[9px] uppercase tracking-wide border-l border-evOlive/30 text-evOlive pl-2 block mt-2">Nota: Solicitudes de consultoría enviadas por esta vía serán redirigidas automáticamente al Digital Vetting.</em>
                     </p>
-
                     <div class="flex flex-col gap-3 mt-8 text-xs font-light text-evOlive/80">
                         <a href="mailto:consultoria@ibbmexico.org" class="hover:text-evOlive transition-colors flex items-center gap-3 group/link">
                             <span class="w-6 h-6 rounded-full border border-evOlive/30 flex items-center justify-center text-evOlive/60 group-hover/link:border-evOlive group-hover/link:text-evOlive transition-all">@</span>
@@ -548,14 +458,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <footer class="bg-evBlack text-evBone border-t border-evOlive/20 pt-24 pb-12 relative overflow-hidden z-10">
         <div class="absolute inset-0 bg-noise opacity-10 mix-blend-soft-light pointer-events-none"></div>
-
         <div class="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
             <div class="grid md:grid-cols-12 gap-16 mb-24">
                 <div class="md:col-span-5 space-y-8">
@@ -573,25 +481,21 @@
                         <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Puebla • Ciudad de México</span>
                     </div>
                 </div>
-
                 <div class="md:col-span-3 md:col-start-7 space-y-6">
                     <h4 class="text-[10px] font-semibold tracking-extreme uppercase text-white mb-4">Firma</h4>
                     <ul class="space-y-4">
                         <li>
                             <a href="por-que-nosotros.html" class="text-sm text-gray-300 hover:text-yellow-400 transition-colors duration-200 flex items-center gap-2 group">
-                                Nuestra Identidad
-                                <span class="w-0 h-px bg-yellow-400 transition-all group-hover:w-4"></span>
+                                Nuestra Identidad <span class="w-0 h-px bg-yellow-400 transition-all group-hover:w-4"></span>
                             </a>
                         </li>
                         <li>
                             <a href="#" id="btn-footer-cases" class="text-sm text-gray-300 hover:text-yellow-400 transition-colors duration-200 flex items-center gap-2 group">
-                                Casos de Exito
-                                <span class="w-0 h-px bg-yellow-400 transition-all group-hover:w-4"></span>
+                                Casos de Exito <span class="w-0 h-px bg-yellow-400 transition-all group-hover:w-4"></span>
                             </a>
                         </li>
                     </ul>
                 </div>
-
                 <div class="md:col-span-3 space-y-6">
                     <h4 class="text-[10px] font-semibold tracking-extreme uppercase text-white mb-4">Legal & Contacto</h4>
                     <ul class="space-y-4">
@@ -603,7 +507,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40">
                 <span class="text-[10px] uppercase tracking-widest text-gray-400">© 2026 Evangelista & Co. Inc.</span>
                 <span class="text-[10px] uppercase tracking-widest text-gray-400">Intelligence Architecture Firm</span>
@@ -617,25 +520,19 @@
 
         <aside id="drawer-mobile" class="absolute top-0 right-0 h-full w-full md:w-[400px] bg-evOliveDark shadow-2xl translate-x-full pointer-events-auto overflow-y-auto border-l border-evBrown/30 flex flex-col justify-between">
             <div class="p-8 md:p-12 relative flex flex-col min-h-full">
-                
                 <button id="btn-close-mobile" class="absolute top-8 right-8 p-2 bg-evBone/10 rounded-full hover:rotate-90 transition-transform cursor-pointer z-50">
                     <svg class="w-6 h-6 text-evBone" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
-                
                 <div class="drawer-content opacity-0 mt-12 flex flex-col gap-6">
                     <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">/// Navegación</span>
-                    
                     <a href="#truth" class="mobile-nav-link font-serif text-3xl text-evBone hover:text-evBrown transition-colors">La Brecha</a>
                     <a href="#blueprint" class="mobile-nav-link font-serif text-3xl text-evBone hover:text-evBrown transition-colors">Blueprint</a>
                     <a href="#governance" class="mobile-nav-link font-serif text-3xl text-evBone hover:text-evBrown transition-colors">Gobernanza</a>
-                    
                     <div class="h-px w-full bg-evBone/10 my-4"></div>
-                    
                     <a href="por-que-nosotros.html" class="mobile-nav-link text-lg font-light text-evBone/80 hover:text-evBrown transition-colors">Por qué nosotros</a>
                     <a href="sectores.html" class="mobile-nav-link text-lg font-light text-evBone/80 hover:text-evBrown transition-colors">Sectores</a>
                     <a href="metodologia.html" class="mobile-nav-link text-lg font-light text-evBone/80 hover:text-evBrown transition-colors">Metodología</a>
                 </div>
-
                 <div class="mt-auto pt-12 drawer-footer opacity-0">
                     <button onclick="document.getElementById('btn-close-mobile').click(); setTimeout(() => document.getElementById('btn-open-chat').click(), 400);" class="w-full bg-evBrown text-evOliveDark font-bold text-[10px] tracking-widest uppercase py-4 hover:bg-evBone transition-colors shadow-lg flex justify-center items-center gap-2">
                         Iniciar Diagnóstico
@@ -643,6 +540,46 @@
                 </div>
             </div>
         </aside>
+
+        <aside id="drawer-cases" class="absolute top-0 right-0 h-full w-full md:w-[600px] bg-evOlive shadow-2xl translate-x-full pointer-events-auto overflow-y-auto border-l border-white/10">
+            <div class="p-10 md:p-16 min-h-full bg-evOlive text-white relative flex flex-col justify-between">
+                <button id="btn-close-cases" class="absolute top-8 right-8 p-2 bg-white/10 rounded-full hover:rotate-90 transition-transform cursor-pointer z-50">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                <div class="drawer-content opacity-0">
+                    <span class="text-[10px] font-bold tracking-extreme text-white/50 uppercase mb-8 block">/// Operaciones</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-12">Casos</h2>
+                    <div class="space-y-px border border-white/10">
+                        <div class="p-8 bg-white/5 hover:bg-white/10 transition-all duration-300 group cursor-default">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-serif text-2xl group-hover:text-evBone transition-colors">Textilera Industrial</h3>
+                                <span class="text-[9px] border border-white/20 px-2 py-1 rounded-full uppercase tracking-wider">Auditoría</span>
+                            </div>
+                            <p class="text-sm font-light opacity-70 mb-6 leading-relaxed">Detección de "inventario fantasma" y fugas de materia prima mediante triangulación de datos ERP vs. Consumo Energético.</p>
+                            <div class="flex items-end gap-2">
+                                <span class="text-4xl font-serif text-white block">$3.5M</span>
+                                <span class="text-[10px] text-white/40 uppercase tracking-widest mb-2">Recuperado en Q1</span>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-white/5 hover:bg-white/10 transition-all duration-300 group cursor-default">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="font-serif text-2xl group-hover:text-evBone transition-colors">Retailer de Lujo</h3>
+                                <span class="text-[9px] border border-white/20 px-2 py-1 rounded-full uppercase tracking-wider">Prevención</span>
+                            </div>
+                            <p class="text-sm font-light opacity-70 mb-6 leading-relaxed">Implementación de sistema Sentinel para monitoreo de flujo de efectivo en tiempo real en 12 sucursales.</p>
+                            <div class="flex items-end gap-2">
+                                <span class="text-4xl font-serif text-white block">100%</span>
+                                <span class="text-[10px] text-white/40 uppercase tracking-widest mb-2">Integridad de Datos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 text-center opacity-0 drawer-footer">
+                    <p class="text-[9px] uppercase tracking-[0.3em]">Resultados Auditables</p>
+                </div>
+            </div>
+        </aside>
+
         <div id="vetting-modal" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] bg-evBlack text-evBone shadow-2xl rounded-lg overflow-hidden translate-y-[120%] opacity-0 transition-transform duration-500 z-[100] font-mono border border-evOlive/30 pointer-events-auto">
             <div class="bg-evOlive/20 p-4 border-b border-evOlive/30 flex justify-between items-center backdrop-blur-md">
                 <div class="flex items-center gap-3">
@@ -658,10 +595,7 @@
                 <div class="flex flex-col gap-1 items-start">
                     <span class="text-[8px] text-evOlive/50 uppercase tracking-widest">System</span>
                     <div class="bg-evOlive/10 p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-xs leading-relaxed text-evBone/90 border-l-2 border-evOlive">
-                        Bienvenido. Soy el Socio Digital de Evangelista & Co.<br><br>
-                        En mi experiencia, nadie busca una firma de arquitectura de datos cuando todo está tranquilo. Generalmente, los líderes llegan a nosotros cuando el crecimiento de la empresa ha superado a sus sistemas de control.<br><br>
-                        No estoy aquí para venderle tecnología, sino para entender el momento de su negocio.<br><br>
-                        <strong>Cuénteme, ¿qué está pasando actualmente en su operación que le hizo pensar en buscarnos hoy?</strong>
+                        Bienvenido. Soy el Socio Digital de Evangelista & Co.<br><br>En mi experiencia, nadie busca una firma de arquitectura de datos cuando todo está tranquilo. Generalmente, los líderes llegan a nosotros cuando el crecimiento de la empresa ha superado a sus sistemas de control.<br><br>No estoy aquí para venderle tecnología, sino para entender el momento de su negocio.<br><br><strong>Cuénteme, ¿qué está pasando actualmente en su operación que le hizo pensar en buscarnos hoy?</strong>
                     </div>
                 </div>
             </div>
@@ -676,9 +610,7 @@
             </div>
             
             <div id="calendly-unlock" class="hidden bg-evBrown p-3 text-center cursor-pointer hover:bg-white hover:text-evBrown transition-colors">
-                <span class="text-[10px] font-bold tracking-extreme uppercase flex items-center justify-center gap-2">
-                    Agenda Directiva Desbloqueada
-                </span>
+                <span class="text-[10px] font-bold tracking-extreme uppercase flex items-center justify-center gap-2">Agenda Directiva Desbloqueada</span>
             </div>
         </div>
 
@@ -757,7 +689,6 @@
             const btnFooterCases = document.getElementById('btn-footer-cases');
             const closeCases = document.getElementById('btn-close-cases');
 
-            // --- 1. NUEVAS VARIABLES PARA EL MENÚ MÓVIL ---
             const drawerMobile = document.getElementById('drawer-mobile');
             const btnMobileMenu = document.getElementById('btn-mobile-menu');
             const closeMobile = document.getElementById('btn-close-mobile');
@@ -780,7 +711,6 @@
                 overlay.classList.remove('pointer-events-auto');
                 gsap.to(overlay, { opacity: 0, duration: 0.3 });
                 
-                // --- 2. AQUÍ INCLUIMOS EL drawerMobile PARA QUE SE CIERRE ---
                 gsap.to([drawerCases, drawerMobile], { 
                     x: "100%", 
                     duration: 0.4, 
@@ -806,7 +736,7 @@
             if(btnFooterCases) btnFooterCases.addEventListener('click', (e) => { e.preventDefault(); openDrawer(drawerCases); });
             if(closeCases) closeCases.addEventListener('click', closeAll);
 
-            // --- 3. LISTENERS DEL MENÚ MÓVIL ---
+            // Listeners del Menú Móvil
             if(btnMobileMenu) btnMobileMenu.addEventListener('click', (e) => { e.preventDefault(); openDrawer(drawerMobile); });
             if(closeMobile) closeMobile.addEventListener('click', closeAll);
 
@@ -818,7 +748,6 @@
             if(overlay) overlay.addEventListener('click', closeAll);
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
 
-            // (AQUÍ CONTINÚA TU CÓDIGO NORMAL DE // Chatbot Logic)
             // Chatbot Logic
             const VettingGate = (() => {
                 const CONFIG = { apiEndpoint: 'https://evangelista-web-production.up.railway.app/chat' };
@@ -965,56 +894,6 @@
             })();
 
             VettingGate.init();
-
-            // Lógica Menú Móvil
-            const btnMobileMenu = document.getElementById('btn-mobile-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            if (btnMobileMenu && mobileMenu) {
-                btnMobileMenu.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-                const mobileLinks = mobileMenu.querySelectorAll('a');
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const btnMobile = document.getElementById('btn-mobile-menu');
-            const menuMobile = document.getElementById('mobile-menu');
-            const btnMobileChat = document.getElementById('btn-mobile-chat');
-            const linksMobile = document.querySelectorAll('.mobile-link');
-
-            if (btnMobile && menuMobile) {
-                // Abre/cierra el menú al tocar las 3 líneas
-                btnMobile.addEventListener('click', function(e) {
-                    e.preventDefault(); // Evita comportamientos por defecto
-                    e.stopPropagation(); // Evita que el clic se propague y se cierre inmediatamente
-                    menuMobile.classList.toggle('hidden');
-                });
-
-                // Cierra el menú si se hace clic en cualquier enlace
-                linksMobile.forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        menuMobile.classList.add('hidden');
-                    });
-                });
-
-                // Lógica especial para el botón "Iniciar Diagnóstico" dentro del menú móvil
-                if (btnMobileChat) {
-                    btnMobileChat.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        menuMobile.classList.add('hidden');
-                        const chatBtn = document.getElementById('btn-open-chat');
-                        if(chatBtn) chatBtn.click();
-                    });
-                }
-            }
         });
     </script>
 </body>
