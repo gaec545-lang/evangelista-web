@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth bg-[#FFFFFF]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Por qué nosotros | Evangelista & Co.</title>
+    <meta name="description" content="Por qué un ERP, un equipo interno de TI o una consultora global no pueden resolver la entropía de datos en su empresa.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        evOlive: '#1a1a2e',      
+                        evOliveDark: '#11111f',  
+                        evBrown: '#D4AF37',      
+                        evBone: '#FFFFFF',       
+                        evSurface: '#F5F5F5',    
+                        evBlack: '#0a0a0a',      
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    fontSize: {
+                        'display': ['clamp(3rem, 6vw, 6rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+                    },
+                    letterSpacing: {
+                        widest: '0.15em',
+                        extreme: '0.35em',
+                    },
+                    boxShadow: {
+                        'elite': '0 30px 60px -15px rgba(26, 26, 46, 0.2)',
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.7\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { overflow-x: hidden; cursor: default; }
+        ::selection { background: #1a1a2e; color: #FFFFFF; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FFFFFF; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1a1a2e; }
+        .gsap-hidden { visibility: hidden; opacity: 0; }
+        .arch-border { border: 1px solid rgba(26, 26, 46, 0.1); }
+    </style>
+</head>
+
+<body class="bg-evBone text-evBlack antialiased relative">
+
+    <div class="fixed inset-0 bg-noise opacity-50 pointer-events-none z-0 mix-blend-multiply"></div>
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 py-6 px-6 md:px-12 transition-all duration-500 bg-evBone/95 backdrop-blur-md shadow-sm border-b arch-border">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-4 group relative">
+                <img src="assets/logoEvangelistaCo.png" alt="Evangelista & Co." class="h-8 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all">
+                <div class="flex items-center gap-1">
+                    <span class="font-serif text-xl md:text-2xl font-bold tracking-tighter text-evOlive">EVANGELISTA</span>
+                    <span class="font-serif text-xl md:text-2xl font-normal italic text-evBrown">& CO.</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-12" id="nav-menu">
+                <a href="index.html" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors">Inicio</a>
+                <a href="#" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive transition-colors relative">
+                    Por qué nosotros
+                    <span class="absolute bottom-[-8px] left-0 w-full h-px bg-evBrown"></span>
+                </a>
+            </div>
+            <div class="hidden md:block">
+                <button onclick="document.getElementById('btn-open-chat').click()" class="px-8 py-3 bg-evOlive text-evBone text-[10px] font-bold tracking-extreme uppercase hover:bg-evBlack transition-all">
+                    Iniciar Diagnóstico
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-40 pb-20 px-6 md:px-12 overflow-hidden z-10 border-b arch-border bg-evSurface/30">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="gsap-hidden hero-elem inline-block px-4 py-2 border border-evBrown/30 text-[10px] font-bold tracking-[0.3em] uppercase text-evBrown mb-8 bg-white">
+                El Argumento Central
+            </span>
+            <h1 class="gsap-hidden hero-elem font-serif text-display text-evOlive mb-8 leading-tight">
+                La pregunta que su ERP, su equipo de TI y cualquier consultora grande <span class="italic text-evBrown">no pueden responder.</span>
+            </h1>
+            <p class="gsap-hidden hero-elem text-xl md:text-2xl font-light text-evBlack/70 leading-relaxed max-w-4xl mx-auto">
+                No es un problema de tecnología. Es un problema de quién tiene el mandato, el método y la garantía de convertir sus datos en certeza financiera.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-32 bg-evBone relative z-10 border-b arch-border">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-4xl md:text-5xl text-evOlive">Por qué su ERP no es suficiente</h2>
+                <p class="text-evBlack/60 font-light mt-4">La brecha entre registrar el pasado y asegurar el futuro.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-[1fr_auto_1fr] gap-12 items-center">
+                
+                <div class="gsap-fade-up bg-evSurface p-10 md:p-16 border arch-border h-full">
+                    <h3 class="text-sm font-bold tracking-widest uppercase text-evOlive mb-8 flex items-center gap-3">
+                        <span class="w-2 h-2 bg-evOlive rounded-full"></span>
+                        Lo que su ERP hace bien
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="text-evOlive/40 font-serif text-2xl leading-none">01</span>
+                            <p class="font-light text-evBlack/80">Registra transacciones contables e históricas.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-evOlive/40 font-serif text-2xl leading-none">02</span>
+                            <p class="font-light text-evBlack/80">Genera estados financieros de cierre de mes.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-evOlive/40 font-serif text-2xl leading-none">03</span>
+                            <p class="font-light text-evBlack/80">Cumple estrictamente con la normativa del SAT.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-evOlive/40 font-serif text-2xl leading-none">04</span>
+                            <p class="font-light text-evBlack/80">Controla el inventario que el personal "declara".</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="gsap-fade-up hidden lg:flex flex-col items-center justify-center h-full px-4">
+                    <div class="w-px h-32 bg-evBrown/30"></div>
+                    <div class="w-12 h-12 rounded-full border border-evBrown text-evBrown flex items-center justify-center font-serif italic text-xl bg-white my-4 shadow-sm">VS</div>
+                    <div class="w-px h-32 bg-evBrown/30"></div>
+                </div>
+
+                <div class="gsap-fade-up bg-evOlive text-evBone p-10 md:p-16 shadow-xl h-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <h3 class="text-sm font-bold tracking-widest uppercase text-evBrown mb-8 flex items-center gap-3 relative z-10">
+                        <span class="w-2 h-2 bg-evBrown rounded-full"></span>
+                        Lo que su ERP nunca podrá hacer
+                    </h3>
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex items-start gap-4">
+                            <svg class="w-6 h-6 text-evBrown shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <p class="font-light text-white/90">Detectar merma oculta o discrepancias entre procesos físicos y digitales.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <svg class="w-6 h-6 text-evBrown shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <p class="font-light text-white/90">Calcular la rentabilidad real, en vivo, por línea de producto o sucursal.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <svg class="w-6 h-6 text-evBrown shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <p class="font-light text-white/90">Cruzar datos automáticamente con otros sistemas (CRMs, Excels, APIs).</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <svg class="w-6 h-6 text-evBrown shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <p class="font-light text-white/90">Alertarle proactivamente (en tiempo real) cuando un margen está siendo destruido.</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-evOliveDark text-evBone relative z-10 overflow-hidden">
+        <div class="absolute inset-0 bg-noise opacity-10 mix-blend-overlay"></div>
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+            
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-4xl md:text-5xl text-evBone">Por qué un Director BI interno no resuelve el problema</h2>
+                <p class="text-white/50 font-light mt-4">La comparativa estructural de riesgo y rentabilidad.</p>
+            </div>
+
+            <div class="border border-white/10 rounded-xl overflow-hidden bg-evOlive/50 backdrop-blur-md">
+                <div class="grid grid-cols-1 md:grid-cols-3 bg-evBlack/80 border-b border-white/10">
+                    <div class="p-6 md:p-8 hidden md:block"></div>
+                    <div class="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/10">
+                        <h4 class="text-[10px] uppercase tracking-widest text-white/40 font-bold mb-2">Opción Tradicional</h4>
+                        <span class="text-2xl font-serif text-white">Director BI Interno</span>
+                    </div>
+                    <div class="p-6 md:p-8 bg-evOlive/80 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-evBrown"></div>
+                        <h4 class="text-[10px] uppercase tracking-widest text-evBrown font-bold mb-2">Arquitectura Institucional</h4>
+                        <span class="text-2xl font-serif text-white">Evangelista Sentinel</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <div class="p-6 md:p-8 flex items-center">
+                        <span class="font-bold text-sm tracking-wide text-white/80 uppercase">Costo Real Anual</span>
+                    </div>
+                    <div class="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/5 flex items-center">
+                        <p class="font-light text-white/70">$420k – $780k MXN<br><span class="text-xs text-white/40">(Salario + Prestaciones + Equipo)</span></p>
+                    </div>
+                    <div class="p-6 md:p-8 flex items-center">
+                        <p class="font-bold text-evBrown">$540k MXN<br><span class="text-xs font-light text-white/70">(Todo incluido + Infraestructura)</span></p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <div class="p-6 md:p-8 flex items-center">
+                        <span class="font-bold text-sm tracking-wide text-white/80 uppercase">Tiempo a 1er Resultado</span>
+                    </div>
+                    <div class="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/5 flex items-center">
+                        <p class="font-light text-white/70">3 a 6 meses<br><span class="text-xs text-white/40">(Reclutamiento + Curva de aprendizaje)</span></p>
+                    </div>
+                    <div class="p-6 md:p-8 flex items-center">
+                        <p class="font-bold text-evBrown">10 días<br><span class="text-xs font-light text-white/70">(Desde la fase Foundation)</span></p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <div class="p-6 md:p-8 flex items-center">
+                        <span class="font-bold text-sm tracking-wide text-white/80 uppercase">Riesgo de Rotación</span>
+                    </div>
+                    <div class="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/5 flex items-center">
+                        <p class="font-light text-white/70">Alto<br><span class="text-xs text-white/40">(El conocimiento se va con la persona)</span></p>
+                    </div>
+                    <div class="p-6 md:p-8 flex items-center">
+                        <p class="font-bold text-evBrown">Nulo<br><span class="text-xs font-light text-white/70">(El sistema y la gobernanza permanecen)</span></p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 hover:bg-white/5 transition-colors">
+                    <div class="p-6 md:p-8 flex items-center">
+                        <span class="font-bold text-sm tracking-wide text-white/80 uppercase">Garantía Financiera</span>
+                    </div>
+                    <div class="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/5 flex items-center">
+                        <p class="font-light text-white/70">Ninguna<br><span class="text-xs text-white/40">(Se paga sueldo haya resultados o no)</span></p>
+                    </div>
+                    <div class="p-6 md:p-8 flex items-center">
+                        <p class="font-bold text-evBrown">Rentabilidad Asegurada<br><span class="text-xs font-light text-white/70">(Success Fee solo bajo resultados comprobables)</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-evBone relative z-10 border-b arch-border">
+        <div class="max-w-[1000px] mx-auto px-6 md:px-12 text-center">
+            
+            <div class="w-16 h-1 bg-evBrown mx-auto mb-12"></div>
+            
+            <h2 class="font-serif text-4xl md:text-5xl text-evOlive mb-16">Por qué las consultoras grandes no atienden su empresa</h2>
+
+            <div class="space-y-8 text-left border-l-2 border-evOlive/20 pl-8 md:pl-12">
+                <p class="text-xl font-light text-evBlack/80 leading-relaxed">
+                    Las firmas de consultoría global (Deloitte Digital, Accenture, KPMG Advisory) no atienden empresas por debajo de $500 millones MXN de facturación anual. No porque no puedan — sino porque <strong>no les es rentable.</strong> Sus modelos de cobro por hora y sus equipos de 20 personas son incompatibles con la velocidad y el ticket que necesita una empresa mediana.
+                </p>
+                <p class="text-xl font-light text-evBlack/80 leading-relaxed">
+                    Evangelista & Co. opera exclusivamente en el espacio que ellos dejaron vacío: <strong>empresas entre $30M y $300M MXN de facturación</strong>, con complejidad operativa real, que necesitan inteligencia forense de grado institucional sin el costo prohibitivo de las corporaciones globales.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-24 bg-evSurface text-center relative z-10">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="font-serif text-3xl md:text-4xl text-evOlive mb-10">Es hora de gobernar sus datos.</h2>
+            <button onclick="document.getElementById('btn-open-chat').click()" class="inline-flex items-center justify-center bg-evBrown text-evOlive font-bold text-xs tracking-[0.2em] uppercase px-10 py-5 hover:bg-evOlive hover:text-evBone transition-all duration-500 shadow-elite hover:-translate-y-1">
+                Iniciar diagnóstico — 10 días al primer resultado
+            </button>
+        </div>
+    </section>
+
+    <div id="ui-layer" class="fixed inset-0 z-[9999] pointer-events-none">
+        <div id="vetting-modal" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] bg-evBlack text-evBone shadow-2xl rounded-lg overflow-hidden translate-y-[120%] opacity-0 transition-transform duration-500 z-[100] font-mono border border-evOlive/30 pointer-events-auto">
+            <div class="bg-evOlive/20 p-4 border-b border-evOlive/30 flex justify-between items-center backdrop-blur-md">
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-[10px] tracking-widest uppercase text-evOlive font-bold">Socio Digital_v1.5</span>
+                </div>
+                <button id="btn-close-chat" class="text-evBone/50 hover:text-evBone transition-colors cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+            
+            <div id="chat-log" class="h-[350px] overflow-y-auto p-6 space-y-4 bg-evBlack scrollbar-thin scrollbar-thumb-evOlive/20">
+                <div class="flex flex-col gap-1 items-start">
+                    <span class="text-[8px] text-evOlive/50 uppercase tracking-widest">System</span>
+                    <div class="bg-evOlive/10 p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-xs leading-relaxed text-evBone/90 border-l-2 border-evOlive">
+                        Bienvenido. Soy el Socio Digital de Evangelista & Co.<br><br>
+                        En mi experiencia, nadie busca una firma de arquitectura de datos cuando todo está tranquilo. Generalmente, los líderes llegan a nosotros cuando el crecimiento de la empresa ha superado a sus sistemas de control.<br><br>
+                        <strong>Cuénteme, ¿qué está pasando actualmente en su operación que le hizo pensar en buscarnos hoy?</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-evBlack border-t border-evOlive/20 relative">
+                <input type="text" id="chat-input" class="w-full bg-evBone/5 border border-evBone/10 rounded p-3 text-xs text-evBone focus:outline-none focus:border-evOlive transition-colors placeholder-evBone/20" placeholder="Ej: Fraude en inventarios..." autocomplete="off">
+                <div class="absolute right-6 top-1/2 -translate-y-1/2">
+                    <button id="btn-send-chat" class="text-evOlive hover:text-evBone transition-colors cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <button id="btn-open-chat" class="fixed bottom-6 right-6 z-[100] bg-evOlive text-evBone px-6 py-4 shadow-elite hover:bg-evBlack transition-all flex items-center gap-3 group border border-evOlive/20 pointer-events-auto cursor-pointer">
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span class="text-[10px] font-bold tracking-widest uppercase">Diagnóstico IA</span>
+        </button>
+    </div>
+
+    <footer class="bg-evBlack text-evBone border-t border-evOlive/20 pt-24 pb-12 relative overflow-hidden z-10">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid md:grid-cols-12 gap-16 mb-24">
+                <div class="md:col-span-5 space-y-8">
+                    <div class="flex items-start gap-4 group">
+                        <img src="assets/logoEvangelistaCo.png" alt="Evangelista Logo" class="h-14 w-auto object-contain brightness-0 invert opacity-90 group-hover:scale-105 transition-transform duration-500">
+                        <div class="flex flex-col -mt-1">
+                            <span class="font-serif text-3xl font-bold tracking-tighter text-evBone">EVANGELISTA</span>
+                            <span class="font-serif text-3xl font-normal italic text-evOlive">& CO.</span>
+                        </div>
+                    </div>
+                    <p class="text-sm font-light text-evBone/60 leading-relaxed max-w-md">
+                        Somos una firma de Arquitectura de Inteligencia. Nuestra misión es erradicar la intuición de la toma de decisiones directivas mediante la construcción de ecosistemas de datos auditables, gobernados y rentables.
+                    </p>
+                    <div class="pt-4">
+                        <span class="text-[10px] uppercase tracking-widest text-evOlive font-bold">Puebla • Ciudad de México</span>
+                    </div>
+                </div>
+                <div class="md:col-span-3 md:col-start-7 space-y-6">
+                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evOlive mb-4">Firma</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-sm text-evBone/80 hover:text-white transition-colors">Nuestra Identidad</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-3 space-y-6">
+                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evOlive mb-4">Legal & Contacto</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-sm text-evBone/60 hover:text-evOlive transition-colors">Aviso de Privacidad</a></li>
+                        <li class="pt-4"><a href="mailto:consultoria@ibbmexico.org" class="text-sm font-serif italic text-evBone hover:text-evOlive transition-colors">consultoria@ibbmexico.org</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40">
+                <span class="text-[10px] uppercase tracking-widest">© 2026 Evangelista & Co. Inc.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const tlHero = gsap.timeline();
+            tlHero.to('.hero-elem', {
+                autoAlpha: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out",
+                onStart: () => gsap.set('.hero-elem', { y: 30, autoAlpha: 0 })
+            });
+            
+            gsap.utils.toArray('.gsap-fade-up').forEach(elem => {
+                gsap.fromTo(elem, { y: 50, opacity: 0 }, { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
+            });
+
+            // Vetting Gate Chatbot Logic (Simplificada para CTA)
+            const dom = {
+                modal: document.getElementById('vetting-modal'),
+                triggerBtn: document.getElementById('btn-open-chat'),
+                closeBtn: document.getElementById('btn-close-chat')
+            };
+
+            let isOpen = false;
+
+            const toggleChat = (forceState = null) => {
+                isOpen = forceState !== null ? forceState : !isOpen;
+                if (isOpen) {
+                    gsap.to(dom.modal, { y: "0%", opacity: 1, duration: 0.5, ease: "power3.out" });
+                    gsap.to(dom.triggerBtn, { y: "200%", opacity: 0, duration: 0.3, pointerEvents: "none" }); 
+                    document.getElementById('chat-input').focus();
+                } else {
+                    gsap.to(dom.modal, { y: "120%", opacity: 0, duration: 0.4, ease: "power3.in" });
+                    gsap.to(dom.triggerBtn, { y: "0%", opacity: 1, duration: 0.3, delay: 0.4, pointerEvents: "all" });
+                }
+            };
+
+            dom.triggerBtn.addEventListener('click', () => toggleChat(true));
+            dom.closeBtn.addEventListener('click', () => toggleChat(false));
+            
+            // Simulación visual del envío para la demo estática
+            document.getElementById('btn-send-chat').addEventListener('click', () => {
+               const input = document.getElementById('chat-input');
+               if(input.value.trim() !== '') {
+                   const log = document.getElementById('chat-log');
+                   const msg = document.createElement('div');
+                   msg.className = "flex flex-col gap-1 items-end opacity-0";
+                   msg.innerHTML = `<span class="text-[8px] text-evOlive/50 uppercase tracking-widest">Usted</span>
+                                    <div class="bg-evBone text-evBlack rounded-tl-lg rounded-bl-lg rounded-br-lg p-3 text-xs leading-relaxed max-w-[90%]">${input.value}</div>`;
+                   log.appendChild(msg);
+                   gsap.to(msg, {opacity: 1, y: -5, duration: 0.3});
+                   input.value = '';
+                   log.scrollTop = log.scrollHeight;
+               }
+            });
+        });
+    </script>
+</body>
+</html>
