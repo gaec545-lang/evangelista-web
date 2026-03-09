@@ -1,492 +1,223 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth bg-evOliveDark">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodología ALCOA+ | Evangelista & Co.</title>
-    <meta name="description" content="Foundation, Architecture y Sentinel: las tres fases de intervención forense para Directores Generales. Del dato auditado a la decisión cuantificada, con garantía financiera.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        evOlive: '#1a1a2e',      
-                        evOliveDark: '#11111f',  
-                        evBrown: '#D4AF37',      
-                        evBone: '#FFFFFF',       
-                        evSurface: '#F5F5F5',    
-                        evBlack: '#0a0a0a',      
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    fontSize: {
-                        'display': ['clamp(2.5rem, 5vw, 5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-                    },
-                    letterSpacing: {
-                        widest: '0.15em',
-                        extreme: '0.35em',
-                    },
-                    boxShadow: {
-                        'elite': '0 30px 60px -15px rgba(0, 0, 0, 0.5)',
-                        'glow': '0 0 20px rgba(212, 175, 55, 0.2)',
-                    },
-                    backgroundImage: {
-                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.7\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/%3E%3C/svg%3E')",
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body { overflow-x: hidden; cursor: default; }
-        ::selection { background: #D4AF37; color: #11111f; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #11111f; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #FFFFFF; }
-        
-        .gsap-hidden { visibility: hidden; opacity: 0; }
-        .arch-border { border: 1px solid rgba(26, 26, 46, 0.1); }
-        .arch-border-light { border: 1px solid rgba(255, 255, 255, 0.1); }
-        
-        /* Custom ranges for calculator */
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            background: transparent;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 20px; width: 20px;
-            border-radius: 50%;
-            background: #D4AF37;
-            cursor: pointer;
-            margin-top: -8px;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%; height: 4px;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metodología ALCOA+ | Evangelista &amp; Co.</title>
+    <meta name="description" content="La metodología ALCOA+ aplicada a la inteligencia estratégica empresarial. Tres fases: Foundation, Architecture y Sentinel. Estándar forense para decisiones de Dirección General." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/main.css" />
 </head>
+<body>
 
-<body class="antialiased relative bg-evBone text-evBlack">
-
-    <div class="fixed inset-0 bg-noise opacity-50 pointer-events-none z-0 mix-blend-multiply"></div>
-
-    <nav id="navbar" class="fixed top-0 w-full z-50 py-6 px-6 md:px-12 transition-all duration-500 bg-evBone/95 backdrop-blur-md shadow-sm border-b arch-border">
-        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-4 group relative">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista & Co." class="h-8 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all">
-                <div class="flex items-center gap-1">
-                    <span class="font-serif text-xl md:text-2xl font-bold tracking-tighter text-evOlive">EVANGELISTA</span>
-                    <span class="font-serif text-xl md:text-2xl font-normal italic text-evBrown">& CO.</span>
-                </div>
-            </a>
-            <div class="hidden lg:flex items-center gap-12" id="nav-menu">
-                <a href="index.html" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors">Inicio</a>
-                <a href="por-que-nosotros.html" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors">Por qué nosotros</a>
-                <a href="sectores.html" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive/60 hover:text-evOlive transition-colors">Sectores</a>
-                <a href="#" class="text-[10px] font-bold tracking-extreme uppercase text-evOlive transition-colors relative">
-                    Metodología
-                    <span class="absolute bottom-[-8px] left-0 w-full h-px bg-evBrown"></span>
-                </a>
-            </div>
-            <div class="hidden md:block">
-                <button onclick="document.getElementById('btn-open-chat').click()" class="px-8 py-3 bg-evOlive text-evBone text-[10px] font-bold tracking-extreme uppercase hover:bg-evBlack transition-all">
-                    Iniciar Diagnóstico
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <header class="relative pt-40 pb-20 px-6 md:px-12 overflow-hidden z-10 bg-evOliveDark text-evBone border-b arch-border-light">
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-evBrown/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/4"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="gsap-hidden hero-elem inline-block px-4 py-2 border border-evBrown/30 text-[10px] font-bold tracking-[0.3em] uppercase text-evBrown mb-8 bg-evBone/5 backdrop-blur-sm">
-                Framework Operativo
-            </span>
-            <h1 class="gsap-hidden hero-elem font-serif text-display text-evBone mb-8 leading-tight">
-                Del dato al dinero. <br>
-                <span class="italic text-evBrown font-light">En tres fases, con garantía.</span>
-            </h1>
-        </div>
-    </header>
-
-    <section class="py-24 relative z-10 bg-evBone border-b arch-border overflow-hidden">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 items-center">
-            <div class="lg:col-span-5 gsap-fade-up">
-                <span class="text-[120px] font-serif leading-none text-evOlive/5 absolute -top-10 left-0 pointer-events-none select-none">01</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-evOlive mb-4">Foundation</h2>
-                <h3 class="text-sm font-bold tracking-widest text-evBrown uppercase mb-8">El diagnóstico que expone lo que sus sistemas ocultan.</h3>
-                <p class="text-lg font-light text-evBlack/70 leading-relaxed mb-8 border-l-2 border-evOlive pl-6">
-                    Foundation es la primera intervención de Evangelista sobre su operación. No instalamos nada, no modificamos ningún sistema existente. Extraemos, auditamos y cuantificamos. Al finalizar, usted tiene en sus manos un Dictamen Forense con cada hallazgo nombrado, ubicado y valorado en pesos.
-                </p>
-            </div>
-            <div class="lg:col-span-7 bg-white p-10 md:p-14 border arch-border shadow-xl relative gsap-fade-up">
-                <div class="absolute top-0 right-0 w-2 h-full bg-evOlive"></div>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Extracción de datos de todas las fuentes existentes sin tocar sus sistemas.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Auditoría forense con Ley de Benford y análisis de integridad referencial.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Detección de proveedores duplicados y transacciones anómalas.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Cuantificación de hallazgos en pesos mexicanos con nivel de riesgo por hallazgo.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Dictamen Forense escrito listo para presentarse al Consejo o al CFO.</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 relative z-10 bg-evSurface border-b arch-border overflow-hidden">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 items-center">
-            <div class="lg:col-span-7 bg-evBone p-10 md:p-14 border arch-border shadow-xl relative order-2 lg:order-1 gsap-fade-up">
-                <div class="absolute top-0 left-0 w-2 h-full bg-evBrown"></div>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evOlive text-evOlive rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Diseño e implementación de Data Warehouse en arquitectura Data Mesh.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evOlive text-evOlive rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">ETL automatizado conectado a sus fuentes existentes sin reemplazarlas.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evOlive text-evOlive rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Motor de Decision Intelligence diferenciado por perfil: CEO (estrategia), CFO (flujo de caja y ROI), COO (operación).</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evOlive text-evOlive rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Tres vistas integradas: Gerencial, Operativa y Financiera.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evOlive text-evOlive rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-evBlack/80">Capacitación del equipo directivo en uso e interpretación del sistema.</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="lg:col-span-5 order-1 lg:order-2 gsap-fade-up relative text-right lg:text-left">
-                <span class="text-[120px] font-serif leading-none text-evOlive/5 absolute -top-10 right-0 lg:left-0 pointer-events-none select-none">02</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-evOlive mb-4">Architecture</h2>
-                <h3 class="text-sm font-bold tracking-widest text-evBrown uppercase mb-8">La infraestructura que convierte datos en decisiones.</h3>
-                <p class="text-lg font-light text-evBlack/70 leading-relaxed mb-8 border-r-2 lg:border-r-0 lg:border-l-2 border-evBrown pr-6 lg:pr-0 lg:pl-6">
-                    Con los hallazgos del Foundation como mapa, construimos la arquitectura de inteligencia que cierra las brechas detectadas y crea visibilidad permanente sobre su operación. El resultado no es un dashboard — es un sistema de toma de decisiones que habla el idioma de cada perfil directivo.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 relative z-10 bg-evOliveDark text-evBone overflow-hidden">
-        <div class="absolute inset-0 bg-noise opacity-20 mix-blend-overlay"></div>
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 items-center relative z-10">
-            <div class="lg:col-span-5 gsap-fade-up">
-                <span class="text-[120px] font-serif leading-none text-white/5 absolute -top-10 left-0 pointer-events-none select-none">03</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-white mb-4">Sentinel</h2>
-                <h3 class="text-sm font-bold tracking-widest text-evBrown uppercase mb-8">La vigilancia que protege lo que Architecture construyó.</h3>
-                <p class="text-lg font-light text-white/70 leading-relaxed mb-8 border-l-2 border-evBrown pl-6">
-                    Un sistema de inteligencia sin vigilancia activa es una fotografía del pasado. Sentinel convierte ese sistema en un organismo vivo que detecta desviaciones antes de que se conviertan en pérdidas. No es soporte técnico — es inteligencia continua con criterio directivo.
-                </p>
-            </div>
-            <div class="lg:col-span-7 bg-evOlive p-10 md:p-14 border arch-border-light shadow-2xl relative gsap-fade-up">
-                <div class="absolute top-0 right-0 w-2 h-full bg-evBrown"></div>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-white/90">Monitoreo continuo de los nodos de riesgo identificados en Foundation.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-white/90">Alertas automáticas cuando cualquier métrica supera el umbral de tolerancia definido.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-white/90">Informe ejecutivo mensual de estado operativo y financiero.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-white/90">Actualización trimestral de los tableros según la evolución del negocio.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <span class="w-6 h-6 flex items-center justify-center border border-evBrown text-evBrown rounded-full shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></span>
-                        <p class="font-light text-white/90">Línea directa de consulta con el equipo de Evangelista.</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-evOlive text-evBone relative z-10 border-t border-black/50">
-        <div class="max-w-[1200px] mx-auto px-6 md:px-12">
-            
-            <div class="text-center mb-16">
-                <span class="text-[10px] font-bold tracking-extreme text-evBrown uppercase mb-4 block">Simulador de Fugas Operativas</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-evBone mb-6">Calculadora de ROI Preventivo</h2>
-                <p class="text-white/60 font-light max-w-2xl mx-auto">
-                    Descubra cuánto capital está expuesto mensualmente debido a la entropía de datos y la falta de gobernanza en su operación actual.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-0 border arch-border-light rounded-xl overflow-hidden shadow-2xl bg-evOliveDark/80 backdrop-blur-md">
-                
-                <div class="p-10 md:p-14 border-b lg:border-b-0 lg:border-r arch-border-light flex flex-col justify-center space-y-10">
-                    
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <label class="text-xs font-bold tracking-widest uppercase text-evBone/80">Facturación Anual Estimada (MXN)</label>
-                            <span id="val-revenue" class="text-evBrown font-serif text-lg">$100,000,000</span>
-                        </div>
-                        <input type="range" id="input-revenue" min="30000000" max="500000000" step="10000000" value="100000000">
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <label class="text-xs font-bold tracking-widest uppercase text-evBone/80">Estimado de Merma / Ineficiencia</label>
-                            <span id="val-merma" class="text-evBrown font-serif text-lg">5%</span>
-                        </div>
-                        <input type="range" id="input-merma" min="1" max="15" step="0.5" value="5">
-                        <p class="text-[9px] text-white/30 mt-2 uppercase tracking-wide">Promedio industrial sin gobierno de datos: 5% a 12%</p>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <label class="text-xs font-bold tracking-widest uppercase text-evBone/80">Fuentes de Datos (Silos)</label>
-                            <span id="val-sources" class="text-evBrown font-serif text-lg">3 Sistemas</span>
-                        </div>
-                        <input type="range" id="input-sources" min="1" max="10" step="1" value="3">
-                        <p class="text-[9px] text-white/30 mt-2 uppercase tracking-wide">ERPs, CRMs, Excel, Puntos de Venta, etc.</p>
-                    </div>
-
-                </div>
-
-                <div class="p-10 md:p-14 bg-[#997B22] flex flex-col justify-center items-center text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-                    <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.2),_transparent_50%)] pointer-events-none"></div>
-
-                    <div class="relative z-10 w-full">
-                        <span class="block text-xs font-bold tracking-extreme uppercase text-white/80 mb-6 drop-shadow-md">Su riesgo financiero estimado<br>sin intervención:</span>
-                        
-                        <div class="bg-evOliveDark/30 rounded-lg p-6 mb-8 border border-white/20 shadow-inner">
-                            <span id="calc-result" class="block text-4xl md:text-5xl font-serif text-white font-bold tracking-tight drop-shadow-lg">
-                                $5,300,000 MXN
-                            </span>
-                            <span class="block text-xs uppercase tracking-widest text-white/70 mt-2">Pérdida Anual Potencial</span>
-                        </div>
-
-                        <p class="text-[10px] font-light text-white/80 leading-relaxed mb-8 max-w-sm mx-auto opacity-90">
-                            Este estimado se basa en benchmarks de empresas del mismo sector y escala. El <strong>Foundation de Evangelista</strong> determina el número exacto con sus datos reales.
-                        </p>
-
-                        <button onclick="document.getElementById('btn-open-chat').click()" class="w-full bg-evOlive text-evBone font-bold text-[10px] tracking-[0.2em] uppercase py-4 hover:bg-evBlack transition-all shadow-xl border border-evOlive/50 hover:border-evBrown/50 flex items-center justify-center gap-3 group">
-                            Quiero saber mi número real — Iniciar Foundation
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div id="ui-layer" class="fixed inset-0 z-[9999] pointer-events-none">
-        <div id="vetting-modal" class="fixed bottom-6 right-6 w-[350px] md:w-[400px] bg-evBlack text-evBone shadow-2xl rounded-lg overflow-hidden translate-y-[120%] opacity-0 transition-transform duration-500 z-[100] font-mono border border-evOlive/30 pointer-events-auto">
-            <div class="bg-evOlive/20 p-4 border-b border-evOlive/30 flex justify-between items-center backdrop-blur-md">
-                <div class="flex items-center gap-3">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="text-[10px] tracking-widest uppercase text-evOlive font-bold">Socio Digital_v1.5</span>
-                </div>
-                <button id="btn-close-chat" class="text-evBone/50 hover:text-evBone transition-colors cursor-pointer">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-            </div>
-            
-            <div id="chat-log" class="h-[350px] overflow-y-auto p-6 space-y-4 bg-evBlack scrollbar-thin scrollbar-thumb-evOlive/20">
-                <div class="flex flex-col gap-1 items-start">
-                    <span class="text-[8px] text-evOlive/50 uppercase tracking-widest">System</span>
-                    <div class="bg-evOlive/10 p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-xs leading-relaxed text-evBone/90 border-l-2 border-evOlive">
-                        Bienvenido. Soy el Socio Digital de Evangelista & Co.<br><br>
-                        Ha visto nuestra metodología. El Foundation es el único camino para detener la pérdida silenciosa de capital antes de construir tableros.<br><br>
-                        <strong>Cuénteme, ¿qué problema operativo o de flujo de caja lo trajo hoy a nosotros?</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-4 bg-evBlack border-t border-evOlive/20 relative">
-                <input type="text" id="chat-input" class="w-full bg-evBone/5 border border-evBone/10 rounded p-3 text-xs text-evBone focus:outline-none focus:border-evOlive transition-colors placeholder-evBone/20" placeholder="Ej: No confío en mi inventario..." autocomplete="off">
-                <div class="absolute right-6 top-1/2 -translate-y-1/2">
-                    <button id="btn-send-chat" class="text-evOlive hover:text-evBone transition-colors cursor-pointer">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <button id="btn-open-chat" class="fixed bottom-6 right-6 z-[100] bg-evOlive text-evBone px-6 py-4 shadow-elite hover:bg-evBlack transition-all flex items-center gap-3 group border border-evOlive/20 pointer-events-auto cursor-pointer">
-            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span class="text-[10px] font-bold tracking-widest uppercase">Diagnóstico IA</span>
+<!-- ═══════════════════════════════════════════════════════ HEADER -->
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
+        </a>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+            <a href="index.html#foundation">Foundation</a>
+            <a href="index.html#architecture">Architecture</a>
+            <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
+            <a href="index.html#caso">Casos</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+            <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
     </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+        <a href="index.html#foundation">Foundation</a>
+        <a href="index.html#architecture">Architecture</a>
+        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
+        <a href="index.html#caso">Casos de Estudio</a>
+        <a href="por-que-nosotros.html">Por qué nosotros</a>
+        <a href="metodologia.html">Metodología ALCOA+</a>
+        <a href="index.html#contacto">Contacto</a>
+    </nav>
+</header>
 
-    <footer class="bg-evBlack text-evBone border-t border-evOlive/20 pt-24 pb-12 relative overflow-hidden z-10">
-        <div class="max-w-[1920px] mx-auto px-6 md:px-12 relative z-10">
-            <div class="grid md:grid-cols-12 gap-16 mb-24">
-                <div class="md:col-span-5 space-y-8">
-                    <div class="flex items-start gap-4 group">
-                        <img src="assets/logoEvangelistaCo.png" alt="Evangelista Logo" class="h-14 w-auto object-contain brightness-0 invert opacity-90 group-hover:scale-105 transition-transform duration-500">
-                        <div class="flex flex-col -mt-1">
-                            <span class="font-serif text-3xl font-bold tracking-tighter text-evBone">EVANGELISTA</span>
-                            <span class="font-serif text-3xl font-normal italic text-evOlive">& CO.</span>
-                        </div>
-                    </div>
-                    <p class="text-sm font-light text-evBone/60 leading-relaxed max-w-md">
-                        Somos una firma de Arquitectura de Inteligencia. Nuestra misión es erradicar la intuición de la toma de decisiones directivas mediante la construcción de ecosistemas de datos auditables, gobernados y rentables.
-                    </p>
-                    <div class="pt-4">
-                        <span class="text-[10px] uppercase tracking-widest text-evOlive font-bold">Puebla • Ciudad de México</span>
-                    </div>
+<!-- ═══════════════════════════════════════════════════════ PAGE HERO -->
+<section class="page-hero">
+    <div class="container">
+        <p class="section-label section-label-light">Cómo trabajamos</p>
+        <h1 class="page-hero-title">Metodología ALCOA+: el estándar forense aplicado a sus datos</h1>
+        <p class="page-hero-sub">El mismo rigor que protege vidas en la industria farmacéutica, aplicado a las decisiones que mueven su organización.</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ EL PROBLEMA -->
+<section class="content-section">
+    <div class="container">
+        <div class="content-block">
+            <p class="section-label">El problema que resolvemos</p>
+            <h2 class="section-title">Sus datos existen. La confianza en ellos, no siempre.</h2>
+            <p class="content-text">La mayoría de las organizaciones no tiene un problema de datos: tiene un problema de integridad de datos. La información existe pero no es confiable. Los sistemas registran pero nadie auditó si registran bien. Los reportes se generan pero nadie puede responder quién los modificó y cuándo.</p>
+            <p class="content-text">ALCOA+ es el estándar que convierte datos operativos en evidencia. No en métricas: en evidencia con la que puede tomar decisiones de $10 millones y defenderlas ante cualquier auditor interno o externo.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ FASES -->
+<section class="why-section" id="fases">
+    <div class="container">
+        <p class="section-label">El proceso</p>
+        <h2 class="section-title">Tres fases, un sistema de inteligencia</h2>
+        <div class="methodology-phases">
+
+            <div class="method-phase">
+                <div class="method-phase-header">
+                    <span class="method-phase-num">Fase 01</span>
+                    <h3 class="method-phase-name">Foundation</h3>
                 </div>
-                <div class="md:col-span-3 md:col-start-7 space-y-6">
-                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evOlive mb-4">Firma</h4>
-                    <ul class="space-y-4">
-                        <li><a href="index.html" class="text-sm text-evBone/80 hover:text-white transition-colors">Nuestra Identidad</a></li>
-                        <li><a href="por-que-nosotros.html" class="text-sm text-evBone/80 hover:text-white transition-colors">Por qué nosotros</a></li>
-                        <li><a href="sectores.html" class="text-sm text-evBone/80 hover:text-white transition-colors">Sectores</a></li>
-                    </ul>
-                </div>
-                <div class="md:col-span-3 space-y-6">
-                    <h4 class="text-[10px] font-bold tracking-extreme uppercase text-evOlive mb-4">Legal & Contacto</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="text-sm text-evBone/60 hover:text-evOlive transition-colors">Aviso de Privacidad</a></li>
-                        <li class="pt-4"><a href="mailto:consultoria@ibbmexico.org" class="text-sm font-serif italic text-evBone hover:text-evOlive transition-colors">consultoria@ibbmexico.org</a></li>
-                    </ul>
+                <div class="method-phase-body">
+                    <div class="method-block">
+                        <h4>¿Qué hacemos?</h4>
+                        <p>Auditoría forense de las fuentes de datos más críticas para su operación: inventarios, cuentas por cobrar, costos de producción, proveedores estratégicos.</p>
+                    </div>
+                    <div class="method-block">
+                        <h4>¿Cómo?</h4>
+                        <p>Aplicamos los 9 atributos ALCOA+ a cada fuente de datos. Trazamos la cadena de custodia de cada registro desde su origen hasta el reporte ejecutivo. Identificamos puntos de ruptura donde la información puede haber sido alterada sin registro.</p>
+                    </div>
+                    <div class="method-block">
+                        <h4>¿Qué entrega?</h4>
+                        <p>Informe ejecutivo para Junta Directiva con mapa de integridad por fuente de datos, cuantificación de brechas encontradas y recomendaciones priorizadas por impacto en P&amp;L.</p>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40">
-                <span class="text-[10px] uppercase tracking-widest">© 2026 Evangelista & Co. Inc.</span>
+
+            <div class="method-phase">
+                <div class="method-phase-header">
+                    <span class="method-phase-num">Fase 02</span>
+                    <h3 class="method-phase-name">Architecture</h3>
+                </div>
+                <div class="method-phase-body">
+                    <div class="method-block">
+                        <h4>¿Qué hacemos?</h4>
+                        <p>Construimos el motor de Decision Intelligence sobre la base de datos auditada. No sobre los datos que el sistema reporta: sobre la realidad operativa verificada.</p>
+                    </div>
+                    <div class="method-block">
+                        <h4>¿Cómo?</h4>
+                        <p>Modelamos 10,000 escenarios Monte Carlo para cada decisión estratégica crítica. Diseñamos inteligencia diferenciada por perfil: el DG recibe certeza de rumbo, el CFO recibe cuantificación de riesgo, el COO recibe alertas operativas accionables.</p>
+                    </div>
+                    <div class="method-block">
+                        <h4>¿Qué entrega?</h4>
+                        <p>Sistema analítico auditado con garantía de ROI medible. Acceso a plataforma Sentinel. Modelo de Success Fee activado sobre ahorros identificados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="method-phase">
+                <div class="method-phase-header">
+                    <span class="method-phase-num">Fase 03</span>
+                    <h3 class="method-phase-name">Sentinel</h3>
+                </div>
+                <div class="method-phase-body">
+                    <div class="method-block">
+                        <h4>¿Qué hacemos?</h4>
+                        <p>Monitoreo continuo con alertas tempranas ante anomalías operativas, desvíos en indicadores críticos y riesgos emergentes.</p>
+                    </div>
+                    <div class="method-block">
+                        <h4>¿Cómo?</h4>
+                        <p>El motor analítico opera de forma permanente sobre sus datos operativos. Las alertas se calibran para el umbral de riesgo que su Dirección define. Las revisiones ejecutivas mensuales contextualizan las señales más relevantes.</p>
+                    </div>
+                    <div class="method-block">
+                        <h4>¿Qué entrega?</h4>
+                        <p>Acceso a plataforma Sentinel en tiempo real. Revisiones ejecutivas mensuales. Soporte de Dirección ante auditorías externas. Trazabilidad ALCOA+ permanente.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ POR QUÉ FUNCIONA -->
+<section class="content-section" id="por-que-funciona">
+    <div class="container">
+        <div class="content-block">
+            <p class="section-label">Por qué funciona</p>
+            <h2 class="section-title">Tres razones por las que otros enfoques fallan</h2>
+        </div>
+        <div class="why-grid" style="margin-top:2.5rem;">
+            <div class="why-card">
+                <div class="why-card-number">01</div>
+                <h3>Empezamos por la integridad, no por la presentación</h3>
+                <p>La mayoría de las soluciones analíticas construyen interfaces sobre datos no verificados. ALCOA+ invierte el orden: primero auditamos la fuente, luego construimos sobre ella. Un número bonito sobre un dato sucio sigue siendo un dato sucio.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-number">02</div>
+                <h3>Monte Carlo elimina la ilusión de precisión</h3>
+                <p>Una proyección de crecimiento del 12% anual es una ficción. Una distribución que muestra 60% de probabilidad de crecer entre 8-15%, con cola de riesgo del 15% hacia pérdida, es inteligencia accionable. Eliminamos los números de una sola versión.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-number">03</div>
+                <h3>El Success Fee nos obliga a ser honestos</h3>
+                <p>Cobramos sobre resultados auditables. Esto significa que si inflamos las proyecciones para ganar el contrato, perdemos dinero real cuando el Success Fee no se materializa. Nuestros incentivos están perfectamente alineados con los suyos.</p>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            gsap.registerPlugin(ScrollTrigger);
+<!-- ═══════════════════════════════════════════════════════ CTA FINAL -->
+<section class="diagnostico-section" id="iniciar">
+    <div class="container">
+        <div class="diagnostico-inner">
+            <p class="section-label section-label-light">Primer paso</p>
+            <h2 class="diagnostico-title">Vea la metodología en acción en su propia organización</h2>
+            <p class="diagnostico-sub">
+                El diagnóstico inicial aplica la fase Foundation a sus datos más críticos. En 30 minutos identifica brechas reales con impacto cuantificable.
+            </p>
+            <div class="diagnostico-ctas">
+                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary-large">
+                    Iniciar Diagnóstico sin Costo
+                </button>
+                <a href="por-que-nosotros.html" class="btn-outline-light">Por qué elegirnos</a>
+            </div>
+            <p class="diagnostico-note">Sin costo · Sin compromiso · Confidencial</p>
+        </div>
+    </div>
+</section>
 
-            const tlHero = gsap.timeline();
-            tlHero.to('.hero-elem', {
-                autoAlpha: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out",
-                onStart: () => gsap.set('.hero-elem', { y: 30, autoAlpha: 0 })
-            });
-            
-            gsap.utils.toArray('.gsap-fade-up').forEach(elem => {
-                gsap.fromTo(elem, { y: 50, opacity: 0 }, { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
-            });
+<!-- ═══════════════════════════════════════════════════════ FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
+                <p class="footer-tagline">Si los datos existen, encontraremos la verdad.</p>
+                <p class="footer-sub">Intelligence Architecture Firm · Ciudad de México</p>
+            </div>
+            <div class="footer-links">
+                <h4>Servicios</h4>
+                <a href="index.html#foundation">Foundation</a>
+                <a href="index.html#architecture">Architecture</a>
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
+            </div>
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <a href="por-que-nosotros.html">Por qué nosotros</a>
+                <a href="metodologia.html">Metodología ALCOA+</a>
+                <a href="sectores.html">Sectores</a>
+                <a href="index.html#caso">Casos de Estudio</a>
+            </div>
+            <div class="footer-links">
+                <h4>Contacto</h4>
+                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="footer-cta-link">Diagnóstico Ejecutivo</button>
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Portal Sentinel</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Evangelista &amp; Co. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
 
-            // Calculator Logic
-            const inRev = document.getElementById('input-revenue');
-            const inMer = document.getElementById('input-merma');
-            const inSrc = document.getElementById('input-sources');
-            
-            const valRev = document.getElementById('val-revenue');
-            const valMer = document.getElementById('val-merma');
-            const valSrc = document.getElementById('val-sources');
-            const calcRes = document.getElementById('calc-result');
-
-            function formatCurrency(num) {
-                return '$' + Math.round(num).toLocaleString('es-MX') + ' MXN';
-            }
-
-            function updateCalculator() {
-                const revenue = parseFloat(inRev.value);
-                const merma = parseFloat(inMer.value) / 100;
-                const sources = parseInt(inSrc.value);
-
-                // Update Labels
-                valRev.textContent = formatCurrency(revenue).replace(' MXN', '');
-                valMer.textContent = inMer.value + '%';
-                valSrc.textContent = sources + (sources === 1 ? ' Sistema' : ' Sistemas');
-
-                // Risk Formula: Base risk + slight compounding based on complexity (sources)
-                // Complexity penalty: +2% of the total risk per additional source beyond 1
-                const complexityMultiplier = 1 + ((sources - 1) * 0.02);
-                const riskValue = revenue * merma * complexityMultiplier;
-
-                calcRes.textContent = formatCurrency(riskValue);
-            }
-
-            // Bind events
-            [inRev, inMer, inSrc].forEach(input => {
-                input.addEventListener('input', updateCalculator);
-            });
-            
-            // Init calc
-            updateCalculator();
-
-            // Vetting Gate Logic
-            const dom = {
-                modal: document.getElementById('vetting-modal'),
-                triggerBtn: document.getElementById('btn-open-chat'),
-                closeBtn: document.getElementById('btn-close-chat')
-            };
-
-            let isOpen = false;
-
-            const toggleChat = (forceState = null) => {
-                isOpen = forceState !== null ? forceState : !isOpen;
-                if (isOpen) {
-                    gsap.to(dom.modal, { y: "0%", opacity: 1, duration: 0.5, ease: "power3.out" });
-                    gsap.to(dom.triggerBtn, { y: "200%", opacity: 0, duration: 0.3, pointerEvents: "none" }); 
-                    document.getElementById('chat-input').focus();
-                } else {
-                    gsap.to(dom.modal, { y: "120%", opacity: 0, duration: 0.4, ease: "power3.in" });
-                    gsap.to(dom.triggerBtn, { y: "0%", opacity: 1, duration: 0.3, delay: 0.4, pointerEvents: "all" });
-                }
-            };
-
-            dom.triggerBtn.addEventListener('click', () => toggleChat(true));
-            dom.closeBtn.addEventListener('click', () => toggleChat(false));
-            
-            document.getElementById('btn-send-chat').addEventListener('click', () => {
-               const input = document.getElementById('chat-input');
-               if(input.value.trim() !== '') {
-                   const log = document.getElementById('chat-log');
-                   const msg = document.createElement('div');
-                   msg.className = "flex flex-col gap-1 items-end opacity-0";
-                   msg.innerHTML = `<span class="text-[8px] text-evOlive/50 uppercase tracking-widest">Usted</span>
-                                    <div class="bg-evBone text-evBlack rounded-tl-lg rounded-bl-lg rounded-br-lg p-3 text-xs leading-relaxed max-w-[90%]">${input.value}</div>`;
-                   log.appendChild(msg);
-                   gsap.to(msg, {opacity: 1, y: -5, duration: 0.3});
-                   input.value = '';
-                   log.scrollTop = log.scrollHeight;
-               }
-            });
-        });
-    </script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/diagnostico.js"></script>
 </body>
 </html>
