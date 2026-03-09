@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evangelista &amp; Co. | Arquitectura de Inteligencia para Decisiones Estratégicas</title>
-    <meta name="description" content="Convertimos datos operativos en inteligencia estratégica para Directores Generales, CFOs y Junta Directiva. Metodología ALCOA+ y Monte Carlo. Primer diagnóstico sin costo." />
+    <meta name="description" content="Arquitectura de Inteligencia para Directores Generales que toman decisiones de millones sin saber si sus datos son confiables. Metodología ALCOA+ y Monte Carlo." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,30 +14,33 @@
 
 <!-- ═══════════════════════════════════════════════════════ HEADER -->
 <header class="site-header">
-    <div class="container header-inner">
-        <a href="index.html" class="logo">
-            <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
-        </a>
-        <nav class="desktop-nav" aria-label="Navegación principal">
-            <a href="#foundation">Foundation</a>
-            <a href="#architecture">Architecture</a>
-            <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-            <a href="#caso">Casos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-        <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-            <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
+                    <span class="logo-text">EVANGELISTA &amp; CO.</span>
+                </a>
+            </div>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="por-que-nosotros.html">Por qué nosotros</a>
+                <a href="metodologia.html">Metodología</a>
+                <a href="sectores.html">Sectores</a>
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
+                <a href="mailto:info@evangelistaco.com" class="contact-link">info@evangelistaco.com</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
     </div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-        <a href="#foundation">Foundation</a>
-        <a href="#architecture">Architecture</a>
-        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-        <a href="#caso">Casos de Estudio</a>
         <a href="por-que-nosotros.html">Por qué nosotros</a>
-        <a href="metodologia.html">Metodología ALCOA+</a>
-        <a href="#contacto">Contacto</a>
+        <a href="metodologia.html">Metodología</a>
+        <a href="sectores.html">Sectores</a>
+        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
+        <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
     </nav>
 </header>
 
@@ -45,194 +48,220 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <p class="hero-eyebrow">Para Directores Generales · CFOs · Junta Directiva</p>
-            <h1 class="hero-headline">
-                Las decisiones de $10 millones no se toman con reportes de Excel no auditados.
-            </h1>
-            <p class="hero-sub">
-                Convertimos sus datos operativos en inteligencia estratégica con trazabilidad forense, certeza estadística y responsabilidad ejecutiva.
+            <h1 class="hero-title">Decisiones Auditables.</h1>
+            <p class="hero-subtitle">
+                Arquitectura de Inteligencia para Directores Generales que toman decisiones de millones sin saber si los datos son confiables.
             </p>
             <div class="hero-ctas">
-                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary">
-                    Diagnóstico Ejecutivo sin Costo
-                </button>
-                <a href="#caso" class="btn-outline-light">Ver Caso de Estudio</a>
-            </div>
-            <div class="hero-badges">
-                <span class="hero-badge">ALCOA+ Certified</span>
-                <span class="hero-badge">Monte Carlo 10,000×</span>
-                <span class="hero-badge">ROI Comprobable</span>
+                <a href="#diagnostico" class="btn btn-primary">Iniciar Diagnóstico IA</a>
+                <a href="metodologia.html" class="btn btn-secondary">Conocer Metodología</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ PAIN POINTS -->
-<section class="why-section" id="por-que">
+<!-- ═══════════════════════════════════════════════════════ QUIÉNES SOMOS -->
+<section class="about-section" id="quienes-somos">
     <div class="container">
-        <p class="section-label">El Problema Real</p>
-        <h2 class="section-title">Tres conversaciones que ocurren en cada sala de juntas</h2>
-        <div class="why-grid">
-            <div class="why-card">
-                <div class="why-card-number">01</div>
-                <h3>"Tenemos inventario en el sistema pero no en el almacén"</h3>
-                <p>El Director de Operaciones presenta cifras que el CFO no puede validar. La auditoría revela una brecha de $1.2M en activos fantasma. La decisión de expansión se paraliza seis meses.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-card-number">02</div>
-                <h3>"El proveedor dice que entregó. El sistema dice otra cosa"</h3>
-                <p>Sin trazabilidad forense, los litigios con proveedores se resuelven a favor de quien tiene mejor abogado, no de quien tiene la razón. El costo promedio: $380,000 por disputa.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-card-number">03</div>
-                <h3>"No sé si estos números son reales o alguien los ajustó"</h3>
-                <p>El 67% de los DGs que atendemos no pueden responder esta pregunta con certeza. La brecha entre lo que reportan sus sistemas y la realidad operativa promedia $3.8M anuales.</p>
-            </div>
-        </div>
-    </div>
-</section>
+        <h2 class="section-title">Arquitectos de la Verdad Operativa</h2>
 
-<!-- ═══════════════════════════════════════════════════════ ECOSYSTEM / SERVICIOS -->
-<section class="ecosystem" id="servicios">
-    <div class="container">
-        <p class="section-label section-label-light">El Ecosistema</p>
-        <h2 class="section-title section-title-light">Tres niveles de inteligencia estratégica</h2>
-        <div class="ecosystem-grid">
-
-            <div class="phase-card" id="foundation">
-                <div class="phase-header">
-                    <span class="phase-tag">Nivel 01</span>
-                    <h3 class="phase-name">Foundation</h3>
-                </div>
-                <p class="phase-what">Auditoría forense de sus fuentes de datos críticas con trazabilidad ALCOA+.</p>
-                <ul class="phase-list">
-                    <li>Diagnóstico ejecutivo de integridad de datos</li>
-                    <li>Identificación de brechas y riesgos cuantificados</li>
-                    <li>Mapa de confiabilidad por fuente de datos</li>
-                    <li>Entregable: Informe para Junta Directiva</li>
-                </ul>
-                <div class="phase-cta">
-                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary">
-                        Solicitar Foundation
-                    </button>
-                </div>
-            </div>
-
-            <div class="phase-card phase-card-featured" id="architecture">
-                <div class="phase-header">
-                    <span class="phase-tag phase-tag-gold">Nivel 02</span>
-                    <h3 class="phase-name">Architecture</h3>
-                    <span class="phase-badge">Más solicitado</span>
-                </div>
-                <p class="phase-what">Construcción del motor de Decision Intelligence con simulación Monte Carlo y Success Fee.</p>
-                <ul class="phase-list">
-                    <li>Motor analítico con 10,000 escenarios Monte Carlo</li>
-                    <li>Modelo de Success Fee: alineamos incentivos</li>
-                    <li>Inteligencia diferenciada: CEO / CFO / COO</li>
-                    <li>Entregable: Sistema auditado con garantía de ROI</li>
-                </ul>
-                <div class="phase-cta">
-                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary">
-                        Solicitar Architecture
-                    </button>
-                </div>
-            </div>
-
-            <div class="phase-card" id="sentinel-card">
-                <div class="phase-header">
-                    <span class="phase-tag">Nivel 03</span>
-                    <h3 class="phase-name">Sentinel</h3>
-                </div>
-                <p class="phase-what">Monitoreo continuo con alertas tempranas y soporte ejecutivo permanente.</p>
-                <ul class="phase-list">
-                    <li>Alertas automáticas de anomalías operativas</li>
-                    <li>Revisiones ejecutivas mensuales</li>
-                    <li>Acceso a plataforma de inteligencia en tiempo real</li>
-                    <li>Soporte de Dirección ante auditorías externas</li>
-                </ul>
-                <div class="phase-cta">
-                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="btn-primary">
-                        Acceder a Sentinel
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ CASO DE ESTUDIO -->
-<section class="cases-section" id="caso">
-    <div class="container">
-        <p class="section-label">Resultados Comprobables</p>
-        <h2 class="section-title">Textilera del Centro · Puebla, MX</h2>
-        <p class="section-sub">Manufactura textil · 340 empleados · Proceso: Architecture + Sentinel</p>
-        <div class="cases-stats">
-            <div class="stat-item">
-                <div class="stat-number">$2.3M</div>
-                <div class="stat-label">Recuperados en 14 meses</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">340%</div>
-                <div class="stat-label">ROI comprobado y auditado</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">+18%</div>
-                <div class="stat-label">Mejora en margen operativo</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">6 sem</div>
-                <div class="stat-label">De diagnóstico a primer entregable</div>
-            </div>
-        </div>
-        <blockquote class="case-quote">
-            "Por primera vez en 12 años puedo presentarle a la Junta números que nadie puede cuestionar."
-            <cite>— Director General, Textilera del Centro</cite>
-        </blockquote>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ DIFERENCIADORES -->
-<section class="why-section" id="diferenciadores">
-    <div class="container">
-        <p class="section-label">Lo que nos distingue</p>
-        <h2 class="section-title">Tres compromisos irrenunciables</h2>
-        <div class="why-grid">
-            <div class="why-card">
-                <div class="why-card-icon">⊕</div>
-                <h3>Monte Carlo: certeza, no promesas</h3>
-                <p>Cada recomendación estratégica se valida con 10,000 simulaciones de escenario. No entregamos reportes de una sola versión del futuro; entregamos el rango completo de posibilidades con su probabilidad asociada.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-card-icon">◎</div>
-                <h3>Success Fee: sus incentivos son los nuestros</h3>
-                <p>Cobramos un porcentaje de los ahorros auditables que identificamos. Si no encontramos valor, no cobramos el éxito. Esta estructura elimina el conflicto de interés que existe con firmas de consultoría tradicional.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-card-icon">△</div>
-                <h3>ALCOA+: estándar forense, no corporativo</h3>
-                <p>Aplicamos el mismo estándar de trazabilidad de datos que usan las industrias farmacéutica y aeroespacial. Sus datos se vuelven inauditables en sentido negativo: cualquier modificación queda registrada.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ DIAGNOSTICO CTA -->
-<section class="diagnostico-section" id="contacto">
-    <div class="container">
-        <div class="diagnostico-inner">
-            <p class="section-label section-label-light">Primer paso</p>
-            <h2 class="diagnostico-title">Diagnóstico Ejecutivo sin costo, sin compromiso</h2>
-            <p class="diagnostico-sub">
-                En 30 minutos identificamos la brecha entre lo que sus sistemas reportan y la realidad operativa de su organización. Sin presentaciones de ventas. Solo hallazgos.
+        <div class="about-intro">
+            <p class="quote">
+                "No somos una agencia de servicios; somos arquitectos de la verdad operativa.<br />
+                Donde hay caos, imponemos orden. Donde hay intuición, imponemos datos."
             </p>
-            <div class="diagnostico-ctas">
-                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary-large">
-                    Iniciar Diagnóstico Ejecutivo
-                </button>
-                <a href="metodologia.html" class="btn-outline-light">Ver Metodología ALCOA+</a>
+            <p class="description">
+                Evangelista &amp; Co. es una firma de Arquitectura de Inteligencia que expone la verdad operativa mediante ingeniería forense de datos para catalizar un progreso radical en organizaciones de alta complejidad.
+            </p>
+            <p class="description">
+                Eliminamos la intuición falible y la sustituimos por una arquitectura de decisiones de alta fidelidad.
+            </p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="value-number">01</span>
+                <h3>Honestidad Radical</h3>
+                <p>Somos un espejo de alta fidelidad. Si la empresa está rota, se lo diremos con datos, aunque duela. No cobramos por complacer.</p>
             </div>
-            <p class="diagnostico-note">Sin costo · Sin compromiso · Confidencial</p>
+            <div class="value-card">
+                <span class="value-number">02</span>
+                <h3>Rigor Arquitectónico</h3>
+                <p>Rechazamos los parches. Si la base de datos no es sólida, no construimos encima. Primero los cimientos, luego la fachada.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-number">03</span>
+                <h3>Soberanía del Dato</h3>
+                <p>Garantizamos que el cliente sea dueño de su verdad. No secuestramos la operación con licencias propietarias opacas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ SERVICIOS -->
+<section class="services-section" id="servicios">
+    <div class="container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Tres intervenciones secuenciales. Cada una construye sobre la anterior.</p>
+
+        <div class="services-timeline">
+            <div class="service-phase">
+                <div class="phase-marker">I</div>
+                <div class="phase-content">
+                    <h3>FOUNDATION</h3>
+                    <h4>Auditoría Forense de Datos</h4>
+                    <p>Metodología ALCOA+ aplicada a datos empresariales. Identificamos dónde sus datos le están mintiendo. Cuantificamos el costo anual. Certificado de integridad firmado.</p>
+                </div>
+            </div>
+
+            <div class="service-phase">
+                <div class="phase-marker">II</div>
+                <div class="phase-content">
+                    <h3>ARCHITECTURE</h3>
+                    <h4>Infraestructura de Inteligencia</h4>
+                    <p>Construimos la arquitectura de datos para decisiones de alto impacto. Ingeniería de certeza, no reportes. Success fee solo si hay resultados comprobables.</p>
+                </div>
+            </div>
+
+            <div class="service-phase">
+                <div class="phase-marker">III</div>
+                <div class="phase-content">
+                    <h3>SENTINEL</h3>
+                    <h4>Motor Monte Carlo (SaaS)</h4>
+                    <p>10,000 simulaciones de cada decisión estratégica. Probabilidad cuantificada de cada resultado. Vigilancia continua 24/7.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-cta">
+            <a href="metodologia.html" class="btn-outline">Ver Metodología Completa →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ SECTORES -->
+<section class="sectors-section" id="sectores">
+    <div class="container">
+        <h2 class="section-title">Sectores que Impactamos</h2>
+
+        <div class="home-sectors-grid">
+            <div class="sector-card-home">
+                <h3>Manufactura &amp; Textil</h3>
+                <div class="sector-detail">
+                    <span class="label">Nodo crítico</span>
+                    <p>Inventario fantasma, merma no contabilizada</p>
+                </div>
+                <div class="sector-detail">
+                    <span class="label">Impacto</span>
+                    <p>Recuperación $2M–$5M</p>
+                </div>
+            </div>
+
+            <div class="sector-card-home">
+                <h3>Retail &amp; Comercio</h3>
+                <div class="sector-detail">
+                    <span class="label">Nodo crítico</span>
+                    <p>Shrinkage oculto, márgenes erosionados</p>
+                </div>
+                <div class="sector-detail">
+                    <span class="label">Impacto</span>
+                    <p>Incremento margen 12%–18%</p>
+                </div>
+            </div>
+
+            <div class="sector-card-home">
+                <h3>Construcción &amp; Real Estate</h3>
+                <div class="sector-detail">
+                    <span class="label">Nodo crítico</span>
+                    <p>Sobrecostos ocultos, cash flow</p>
+                </div>
+                <div class="sector-detail">
+                    <span class="label">Impacto</span>
+                    <p>Reducción sobrecostos 15%–25%</p>
+                </div>
+            </div>
+
+            <div class="sector-card-home">
+                <h3>Servicios Profesionales</h3>
+                <div class="sector-detail">
+                    <span class="label">Nodo crítico</span>
+                    <p>Rentabilidad por cliente, pricing</p>
+                </div>
+                <div class="sector-detail">
+                    <span class="label">Impacto</span>
+                    <p>Incremento EBITDA 20%–30%</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sectors-cta">
+            <a href="sectores.html" class="btn btn-primary">Ver casos por sector →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ RESULTADOS -->
+<section class="cases-section" id="resultados">
+    <div class="container">
+        <h2 class="section-title-light">Resultados Cuantificables</h2>
+
+        <div class="cases-stats">
+            <div class="stat">
+                <div class="stat-number">$2.3M</div>
+                <div class="stat-label">Recuperado</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">18%</div>
+                <div class="stat-label">Incremento Margen</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">340%</div>
+                <div class="stat-label">ROI Año 1</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">89%</div>
+                <div class="stat-label">Certeza Estadística</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ CONTACTO DUAL -->
+<section class="contact-section" id="diagnostico">
+    <div class="container">
+        <h2 class="section-title">Siguiente Paso</h2>
+
+        <div class="contact-grid">
+            <!-- Para Clientes -->
+            <div class="contact-card">
+                <span class="contact-icon" aria-hidden="true">🤖</span>
+                <h3>Para Clientes</h3>
+                <h4>Diagnóstico Ejecutivo</h4>
+                <p>Nuestro Socio Digital evaluará la madurez operativa de su caso en tiempo real mediante conversación guiada.</p>
+                <p>Si su perfil califica, desbloqueará acceso al calendario.</p>
+                <button class="btn-primary-large" onclick="window.openDiagnostico && window.openDiagnostico()">
+                    Iniciar Diagnóstico IA
+                </button>
+                <p class="note">Exclusivo C-level · Sin costo · 45 minutos</p>
+            </div>
+
+            <!-- Para Alianzas -->
+            <div class="contact-card">
+                <span class="contact-icon" aria-hidden="true">🤝</span>
+                <h3>Para Alianzas Comerciales</h3>
+                <h4>Asociaciones Estratégicas</h4>
+                <p>Si representa una firma consultora, banco de inversión, o socio estratégico potencial.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon" aria-hidden="true">✉️</span>
+                        <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon" aria-hidden="true">📍</span>
+                        <span>Puebla, Pue. · Ciudad de México</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -240,36 +269,73 @@
 <!-- ═══════════════════════════════════════════════════════ FOOTER -->
 <footer class="site-footer">
     <div class="container">
-        <div class="footer-grid">
+        <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
-                <p class="footer-tagline">Si los datos existen, encontraremos la verdad.</p>
-                <p class="footer-sub">Intelligence Architecture Firm · Ciudad de México</p>
+                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
+                <div class="brand-name">EVANGELISTA &amp; CO.</div>
+                <p class="brand-tagline">Arquitectos de la Verdad Operativa</p>
+                <p class="brand-quote">"Si los datos existen, encontraremos la verdad."</p>
             </div>
-            <div class="footer-links">
+
+            <div class="footer-col">
                 <h4>Servicios</h4>
-                <a href="#foundation">Foundation</a>
-                <a href="#architecture">Architecture</a>
+                <a href="metodologia.html#foundation">Foundation</a>
+                <a href="metodologia.html#architecture">Architecture</a>
                 <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
             </div>
-            <div class="footer-links">
+
+            <div class="footer-col">
                 <h4>Empresa</h4>
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología ALCOA+</a>
+                <a href="por-que-nosotros.html">Quiénes somos</a>
+                <a href="metodologia.html">Metodología</a>
                 <a href="sectores.html">Sectores</a>
-                <a href="#caso">Casos de Estudio</a>
             </div>
-            <div class="footer-links">
+
+            <div class="footer-col">
                 <h4>Contacto</h4>
-                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="footer-cta-link">Diagnóstico Ejecutivo</button>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Portal Sentinel</a>
+                <p>Puebla, Pue.</p>
+                <p>Ciudad de México</p>
+                <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2025 Evangelista &amp; Co. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Evangelista &amp; Co. Inc.</p>
         </div>
     </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════════ CHATBOT MODAL -->
+<div id="diagnostico-modal" class="chat-overlay" role="dialog" aria-modal="true" aria-label="Diagnóstico Ejecutivo">
+    <div class="chat-panel">
+        <div class="chat-panel-header">
+            <div class="chat-panel-title">
+                <div class="chat-panel-avatar" aria-hidden="true">E</div>
+                <div>
+                    <div class="chat-panel-name">Socio Digital</div>
+                    <div class="chat-panel-sub">Evangelista &amp; Co.</div>
+                </div>
+            </div>
+            <button class="chat-panel-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">
+                &times;
+            </button>
+        </div>
+        <div id="chat-messages" class="chat-messages-area"></div>
+        <div class="chat-input-row">
+            <input
+                id="user-input"
+                class="chat-input-field"
+                type="text"
+                placeholder="Escriba su respuesta..."
+                autocomplete="off"
+                maxlength="500"
+            />
+            <button id="send-btn" class="chat-send-btn" aria-label="Enviar">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/diagnostico.js"></script>

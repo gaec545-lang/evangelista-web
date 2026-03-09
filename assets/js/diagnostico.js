@@ -1,262 +1,259 @@
 /**
  * Diagnóstico Ejecutivo — Evangelista & Co.
- * Chat widget auto-injected: FAB + modal
- * Backend: Railway + Gemini
+ * Chatbot de scoping: evalúa perfil C-level, NO revela precios.
+ * Modal HTML esperado en el DOM con IDs: diagnostico-modal, chat-messages, user-input, send-btn
  */
 (function () {
     'use strict';
 
-    const CONFIG = {
-        apiEndpoint: 'https://evangelista-web-production.up.railway.app/chat',
-        calendlyUrl: 'https://calendly.com/gaec545/30min'
+    // ── Estado ─────────────────────────────────────────────────────────────────
+    let chatState = {
+        step: 'welcome',
+        userData: {},
+        messages: []
     };
 
-    let state = {
-        isOpen: false,
-        history: [],
-        lead_data: {},
-        isTyping: false,
-        initialized: false
-    };
-
-    // ── DOM injection ──────────────────────────────────────────────────────────
-
-    function injectDOM() {
-        // FAB button
-        const fab = document.createElement('button');
-        fab.id = 'chat-fab';
-        fab.className = 'chat-fab';
-        fab.setAttribute('aria-label', 'Abrir Diagnóstico Ejecutivo');
-        fab.innerHTML = `
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span>Diagnóstico Ejecutivo</span>
-        `;
-
-        // Modal
-        const modal = document.createElement('div');
-        modal.id = 'chat-modal';
-        modal.className = 'chat-modal';
-        modal.setAttribute('role', 'dialog');
-        modal.setAttribute('aria-modal', 'true');
-        modal.setAttribute('aria-label', 'Diagnóstico Ejecutivo');
-        modal.innerHTML = `
-            <div class="chat-modal-header">
-                <div class="chat-modal-title">
-                    <div class="chat-modal-avatar">E</div>
-                    <div>
-                        <div style="font-weight:700;font-size:0.875rem;color:#ffffff;">Evangelista &amp; Co.</div>
-                        <div style="font-size:0.7rem;color:#d4af37;text-transform:uppercase;letter-spacing:0.08em;">Diagnóstico Ejecutivo</div>
-                    </div>
-                </div>
-                <button id="chat-close-btn" class="chat-close-btn" aria-label="Cerrar">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            <div id="chat-log" class="chat-log">
-                <div class="chat-bubble-bot">
-                    Las decisiones estratégicas requieren certeza cuantificada. ¿Cuál es el reto de datos más crítico que enfrenta su organización hoy?
-                </div>
-            </div>
-            <div class="chat-input-area">
-                <input
-                    id="chat-input"
-                    class="chat-input-field"
-                    type="text"
-                    placeholder="Escriba su respuesta..."
-                    autocomplete="off"
-                    maxlength="500"
-                />
-                <button id="chat-send-btn" class="chat-send-btn" aria-label="Enviar">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </div>
-        `;
-
-        document.body.appendChild(fab);
-        document.body.appendChild(modal);
+    // ── Abrir / cerrar modal ───────────────────────────────────────────────────
+    function openDiagnostico() {
+        const modal = document.getElementById('diagnostico-modal');
+        if (!modal) return;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        if (chatState.messages.length === 0) initChat();
+        setTimeout(function () {
+            const input = document.getElementById('user-input');
+            if (input) input.focus();
+        }, 300);
     }
 
-    // ── Core functions ─────────────────────────────────────────────────────────
-
-    function openChat() {
-        state.isOpen = true;
-        const modal = document.getElementById('chat-modal');
-        const fab = document.getElementById('chat-fab');
-        if (modal) modal.classList.add('open');
-        if (fab) fab.style.display = 'none';
-        const input = document.getElementById('chat-input');
-        if (input) setTimeout(() => input.focus(), 300);
+    function closeDiagnostico() {
+        const modal = document.getElementById('diagnostico-modal');
+        if (!modal) return;
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
     }
 
-    function closeChat() {
-        state.isOpen = false;
-        const modal = document.getElementById('chat-modal');
-        const fab = document.getElementById('chat-fab');
-        if (modal) modal.classList.remove('open');
-        if (fab) fab.style.display = '';
+    function resetChat() {
+        chatState = { step: 'welcome', userData: {}, messages: [] };
+        const log = document.getElementById('chat-messages');
+        if (log) log.innerHTML = '';
     }
 
-    function appendMessage(role, text) {
-        if (!text) return;
-        const log = document.getElementById('chat-log');
+    // ── Mensajes ───────────────────────────────────────────────────────────────
+    function addMessage(sender, text) {
+        const log = document.getElementById('chat-messages');
         if (!log) return;
 
-        const bubble = document.createElement('div');
-        bubble.className = role === 'user' ? 'chat-bubble-user' : 'chat-bubble-bot';
+        const wrap = document.createElement('div');
+        wrap.className = 'chat-msg chat-msg-' + sender;
 
-        if (role === 'user') {
-            bubble.textContent = text;
-            log.appendChild(bubble);
-            log.scrollTop = log.scrollHeight;
+        const bubble = document.createElement('div');
+        bubble.className = sender === 'bot' ? 'chat-bubble-bot' : 'chat-bubble-user';
+
+        if (sender === 'bot') {
+            // Typewriter para el bot
+            log.appendChild(wrap);
+            wrap.appendChild(bubble);
+            typeWriter(bubble, text);
         } else {
-            log.appendChild(bubble);
-            typeWriter(bubble, text, () => {
-                log.scrollTop = log.scrollHeight;
-            });
+            bubble.textContent = text;
+            wrap.appendChild(bubble);
+            log.appendChild(wrap);
         }
+
         log.scrollTop = log.scrollHeight;
+        chatState.messages.push({ sender, text });
     }
 
-    function typeWriter(element, text, onComplete) {
+    function typeWriter(element, text) {
         let i = 0;
-        state.isTyping = true;
+        const delay = Math.min(Math.max(text.length * 3, 600), 1800);
         element.textContent = '';
-        const delay = Math.min(Math.max(text.length * 4, 800), 2000);
 
         setTimeout(function type() {
             if (i < text.length) {
-                const char = text.charAt(i);
-                element.textContent += char;
+                element.textContent += text.charAt(i);
                 i++;
-                const log = document.getElementById('chat-log');
+                const log = document.getElementById('chat-messages');
                 if (log) log.scrollTop = log.scrollHeight;
-                let next = 25 + (Math.random() * 15 - 7);
-                if (char === '.' || char === '?') next += 350;
-                else if (char === ',') next += 120;
+                let next = 22 + (Math.random() * 12 - 6);
+                if (text.charAt(i - 1) === '.') next += 300;
+                else if (text.charAt(i - 1) === ',') next += 100;
                 setTimeout(type, next);
-            } else {
-                state.isTyping = false;
-                if (onComplete) onComplete();
             }
         }, delay);
     }
 
-    function showLoader() {
-        const log = document.getElementById('chat-log');
-        if (!log) return null;
-        const loader = document.createElement('div');
-        loader.className = 'chat-loader';
-        loader.innerHTML = '<span></span><span></span><span></span>';
-        log.appendChild(loader);
-        log.scrollTop = log.scrollHeight;
-        return loader;
+    // ── Init ───────────────────────────────────────────────────────────────────
+    function initChat() {
+        resetChat();
+        addMessage('bot',
+            'Bienvenido. Soy el Socio Digital de Evangelista & Co.\n\n' +
+            'Nadie busca una firma de arquitectura de datos cuando todo funciona. ' +
+            'Generalmente llegan cuando descubren que una decisión estratégica se basó en datos que resultaron estar equivocados.\n\n' +
+            '¿Qué decisión reciente le hizo dudar de la confiabilidad de sus datos?'
+        );
     }
 
-    function unlockCalendly() {
-        const log = document.getElementById('chat-log');
-        if (!log) return;
-        const cta = document.createElement('div');
-        cta.className = 'chat-calendly-unlock';
-        cta.innerHTML = `
-            <div class="chat-calendly-title">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                Protocolo Foundation Aprobado
-            </div>
-            <p>Se ha autorizado una ventana de 45 minutos en la agenda de la Dirección.</p>
-            <button onclick="window.open('${CONFIG.calendlyUrl}','_blank')" class="btn-primary" style="width:100%;justify-content:center;font-size:0.75rem;">
-                Reservar Sesión →
-            </button>
-        `;
-        log.appendChild(cta);
-        log.scrollTop = log.scrollHeight;
-    }
-
-    async function handleSend() {
-        const input = document.getElementById('chat-input');
+    // ── Lógica de scoping ──────────────────────────────────────────────────────
+    function processInput(input) {
+        input = input.trim();
         if (!input) return;
-        const text = input.value.trim();
-        if (!text || state.isTyping) return;
 
-        input.value = '';
-        appendMessage('user', text);
-        state.history.push({ role: 'user', parts: [text] });
+        addMessage('user', input);
 
-        const loader = showLoader();
+        const input_lower = document.getElementById('user-input');
+        if (input_lower) input_lower.value = '';
 
-        try {
-            const response = await fetch(CONFIG.apiEndpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    message: text,
-                    history: state.history,
-                    lead_data: state.lead_data
-                })
-            });
+        setTimeout(function () { handleStep(input); }, 900);
+    }
 
-            if (loader && loader.parentNode) loader.remove();
-            if (!response.ok) throw new Error('Server error ' + response.status);
+    function handleStep(input) {
+        switch (chatState.step) {
 
-            const data = await response.json();
-            if (data.updated_lead_data) state.lead_data = data.updated_lead_data;
+            case 'welcome':
+                chatState.userData.problema = input;
+                chatState.step = 'facturacion';
+                addMessage('bot',
+                    'Entiendo. Para evaluar si podemos ayudar, necesito contexto.\n\n' +
+                    '¿Cuál es la facturación anual aproximada de su empresa?\n\n' +
+                    'a) Menos de $50M MXN\n' +
+                    'b) $50M — $200M MXN\n' +
+                    'c) Más de $200M MXN'
+                );
+                break;
 
-            if (data.response) {
-                appendMessage('model', data.response);
-                state.history.push({ role: 'model', parts: [data.response] });
+            case 'facturacion':
+                chatState.userData.facturacion = input;
+                chatState.step = 'cargo';
+                addMessage('bot',
+                    '¿Qué cargo ocupa usted?\n\n' +
+                    'a) Director General / CEO\n' +
+                    'b) CFO / Director Financiero\n' +
+                    'c) COO / Director de Operaciones\n' +
+                    'd) Otro'
+                );
+                break;
 
-                if (data.silent_audit && data.silent_audit.action === 'UNLOCK_CALENDLY') {
-                    setTimeout(unlockCalendly, 500);
+            case 'cargo':
+                chatState.userData.cargo = input;
+                if (califica()) {
+                    chatState.step = 'servicio';
+                    addMessage('bot',
+                        'Su perfil califica para nuestro servicio.\n\n' +
+                        'Evangelista & Co. opera con tres intervenciones secuenciales:\n\n' +
+                        'FOUNDATION — Auditoría forense de datos operativos. Identificamos dónde sus datos le están mintiendo y cuantificamos el costo anual.\n\n' +
+                        'ARCHITECTURE — Infraestructura de inteligencia para decisiones de alto impacto. Success fee solo si hay resultados comprobables.\n\n' +
+                        'SENTINEL — Plataforma SaaS con simulación Monte Carlo. 10,000 escenarios por cada decisión estratégica.\n\n' +
+                        '¿Cuál de estas intervenciones describe mejor su necesidad?\n\n' +
+                        'a) Foundation — Necesito saber qué datos son confiables\n' +
+                        'b) Architecture — Necesito certeza para decisiones de alto impacto\n' +
+                        'c) Sentinel — Necesito monitoreo continuo\n' +
+                        'd) No estoy seguro, necesito asesoría'
+                    );
+                } else {
+                    chatState.step = 'no_califica';
+                    addMessage('bot',
+                        'Gracias por su interés.\n\n' +
+                        'Actualmente Evangelista & Co. enfoca sus recursos en empresas con facturación >$50M MXN y equipos directivos de nivel C.\n\n' +
+                        'Si su perfil cambia, estaremos disponibles. Puede explorar nuestra metodología en evangelistaco.com/metodologia.html'
+                    );
                 }
-            }
-        } catch (err) {
-            if (loader && loader.parentNode) loader.remove();
-            appendMessage('model', 'Conexión interrumpida. Por favor verifique e intente de nuevo.');
-            state.isTyping = false;
+                break;
+
+            case 'servicio':
+                chatState.userData.servicio = input;
+                chatState.step = 'contacto';
+                addMessage('bot',
+                    'Perfecto. El siguiente paso es una sesión de 45 minutos con un Socio Senior para analizar su caso específico.\n\n' +
+                    'Por favor proporcione:\n' +
+                    '— Nombre completo\n' +
+                    '— Email corporativo\n' +
+                    '— Teléfono\n' +
+                    '— Empresa\n\n' +
+                    '(Puede escribirlos en un solo mensaje separados por comas)'
+                );
+                break;
+
+            case 'contacto':
+                chatState.userData.contacto = input;
+                chatState.step = 'fin';
+                enviarContacto(chatState.userData);
+                addMessage('bot',
+                    'Hemos recibido su información.\n\n' +
+                    'Un miembro del equipo Evangelista & Co. lo contactará en las próximas 24 horas para coordinar la sesión de diagnóstico.\n\n' +
+                    'Gracias por su interés.'
+                );
+                break;
+
+            default:
+                break;
         }
     }
 
-    // ── Init ───────────────────────────────────────────────────────────────────
+    function califica() {
+        const f = chatState.userData.facturacion.toLowerCase();
+        const c = chatState.userData.cargo.toLowerCase();
 
-    function init() {
-        if (state.initialized) return;
-        state.initialized = true;
+        const facturacionOk = /[bc]|50|200|más/.test(f);
+        const cargoOk = /[abc]|director|ceo|cfo|coo|general|financier/.test(c);
 
-        injectDOM();
+        return facturacionOk && cargoOk;
+    }
 
-        const fab = document.getElementById('chat-fab');
-        const closeBtn = document.getElementById('chat-close-btn');
-        const sendBtn = document.getElementById('chat-send-btn');
-        const input = document.getElementById('chat-input');
+    function enviarContacto(data) {
+        // Placeholder: integrar con webhook / CRM
+        console.log('[Evangelista & Co.] Nuevo lead:', data);
+        /*
+        fetch('https://hook.make.com/tu-webhook', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        */
+    }
 
-        if (fab) fab.addEventListener('click', openChat);
-        if (closeBtn) closeBtn.addEventListener('click', closeChat);
-        if (sendBtn) sendBtn.addEventListener('click', handleSend);
+    // ── Event listeners ────────────────────────────────────────────────────────
+    function bindEvents() {
+        const sendBtn = document.getElementById('send-btn');
+        const input = document.getElementById('user-input');
+        const modal = document.getElementById('diagnostico-modal');
+
+        if (sendBtn) {
+            sendBtn.addEventListener('click', function () {
+                const inp = document.getElementById('user-input');
+                if (inp) processInput(inp.value);
+            });
+        }
+
         if (input) {
             input.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') handleSend();
+                if (e.key === 'Enter') processInput(input.value);
             });
         }
 
-        // Close on Escape
+        // Cerrar con Escape
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && state.isOpen) closeChat();
+            if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+                closeDiagnostico();
+            }
         });
+
+        // Cerrar al hacer click en el overlay (fuera del panel)
+        if (modal) {
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) closeDiagnostico();
+            });
+        }
     }
 
-    // Public API
-    window.openDiagnostico = openChat;
+    // ── API pública ────────────────────────────────────────────────────────────
+    window.openDiagnostico = openDiagnostico;
+    window.closeDiagnostico = closeDiagnostico;
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', bindEvents);
     } else {
-        init();
+        bindEvents();
     }
 })();
