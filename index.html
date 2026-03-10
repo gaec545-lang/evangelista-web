@@ -3,281 +3,620 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Evangelista &amp; Co. | Decisiones Auditables</title>
-    <meta name="description" content="Arquitectura de Inteligencia para Directores Generales. Decisiones de millones con certeza estadística. Metodología ALCOA+ y Monte Carlo." />
+    <title>Evangelista &amp; Co. | Arquitectura de Inteligencia</title>
+    <meta name="description" content="Arquitectura de Inteligencia para Directores Generales. Decisiones auditables con certeza estadística. Metodología ALCOA+ y Monte Carlo." />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════ HEADER -->
+<!-- ══════════════════════════════════════════ HEADER -->
 <header class="header-sticky" id="header">
     <div class="container">
         <div class="header-content">
+
             <a href="index.html" class="logo">
                 <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
+                <div class="logo-text">
+                    <span class="brand-name">Evangelista &amp; Co.</span>
+                    <span class="brand-tagline">Intelligence Architecture</span>
+                </div>
             </a>
+
             <nav class="main-nav" aria-label="Navegación principal">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#metodologia">Metodología</a>
+                <a href="#sectores">Sectores</a>
                 <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-                <a href="mailto:info@evangelistaco.com" class="email-link">info@evangelistaco.com</a>
+                <a href="#contacto" class="nav-cta">Diagnóstico</a>
             </nav>
+
             <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
             </button>
+
         </div>
     </div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-        <a href="por-que-nosotros.html">Por qué nosotros</a>
-        <a href="metodologia.html">Metodología</a>
-        <a href="sectores.html">Sectores</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#sectores">Sectores</a>
         <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-        <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
+        <a href="#contacto">Diagnóstico Ejecutivo</a>
     </nav>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════ HERO -->
-<section class="hero-fullscreen">
+<!-- ══════════════════════════════════════════ HERO -->
+<section class="hero-fullscreen" id="inicio">
+
+    <!-- Background image layer -->
+    <div class="hero-bg" aria-hidden="true">
+        <img src="assets/Business.webp" alt="" loading="eager" />
+    </div>
+
+    <!-- Decorador geométrico -->
+    <div class="geo-decor geo-decor--hero" aria-hidden="true">
+        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="130" stroke="currentColor" stroke-width="0.5"/>
+            <circle cx="150" cy="150" r="100" stroke="currentColor" stroke-width="0.5"/>
+            <circle cx="150" cy="150" r="70" stroke="currentColor" stroke-width="1"/>
+            <line x1="20" y1="150" x2="280" y2="150" stroke="currentColor" stroke-width="0.4"/>
+            <line x1="150" y1="20" x2="150" y2="280" stroke="currentColor" stroke-width="0.4"/>
+        </svg>
+    </div>
+
     <div class="container">
         <div class="hero-content fade-in">
+            <p class="eyebrow">Para Directores Generales</p>
             <h1 class="hero-title">
-                Decisiones<br />
-                <span class="accent-italic">Auditables.</span>
+                Donde los datos<br />
+                <em class="accent-italic">se convierten</em><br />
+                en decisiones.
             </h1>
             <p class="hero-subtitle">
-                Arquitectura de Inteligencia para Directores Generales que toman
-                decisiones de millones sin saber si los datos son confiables.
+                Diseñamos la arquitectura de inteligencia que transforma datos
+                dispersos en ventajas competitivas sostenibles para su organización.
             </p>
             <div class="cta-group">
-                <a href="#diagnostico" class="btn-primary">Iniciar Diagnóstico IA</a>
-                <a href="metodologia.html" class="btn-secondary">Conocer Metodología</a>
+                <button class="btn-primary" onclick="window.openDiagnostico && window.openDiagnostico()">
+                    Iniciar Diagnóstico Ejecutivo
+                </button>
+                <a href="#metodologia" class="btn-secondary">Conocer Metodología</a>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item fade-in stagger-1">
+                <span class="stat-number" data-target="3.5" data-format="currency">$3.5M+</span>
+                <span class="stat-label">Recuperado en 2025</span>
+            </div>
+            <div class="stat-item fade-in stagger-2">
+                <span class="stat-number" data-target="100" data-format="percent">100%</span>
+                <span class="stat-label">ALCOA+ Compliant</span>
+            </div>
+            <div class="stat-item fade-in stagger-3">
+                <span class="stat-number">&lt;10 días</span>
+                <span class="stat-label">Primer dictamen entregado</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ QUIÉNES SOMOS -->
-<section class="about-section" id="quienes-somos">
-    <div class="container-narrow">
-        <p class="eyebrow">EVANGELISTA &amp; CO.</p>
-        <h2 class="fade-in">No somos una agencia de servicios; somos arquitectos de la verdad operativa.</h2>
-        <p class="lead-text fade-in">Donde hay caos, imponemos orden. Donde hay intuición, imponemos datos.</p>
-
-        <div class="values-grid">
-            <div class="value-item fade-in">
-                <h3>Honestidad Radical</h3>
-                <p>Si sus datos están rotos, se lo diremos con evidencia forense. No cobramos por complacer.</p>
-            </div>
-            <div class="value-item fade-in">
-                <h3>Rigor Arquitectónico</h3>
-                <p>Primero los cimientos, luego la fachada. Nunca inteligencia sobre datos no verificados.</p>
-            </div>
-            <div class="value-item fade-in">
-                <h3>Soberanía del Dato</h3>
-                <p>Usted es dueño de su verdad operativa. Nosotros solo la exponemos.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════ SERVICIOS -->
-<section class="services-section" id="servicios">
+<!-- ══════════════════════════════════════════ QUIÉNES SOMOS -->
+<section class="about-section" id="nosotros">
     <div class="container">
-        <p class="eyebrow">SERVICIOS</p>
-        <h2 class="fade-in">Tres intervenciones, una arquitectura completa</h2>
 
-        <div class="services-timeline">
-            <div class="service-card fade-in">
-                <div class="service-number">01</div>
+        <div class="about-split">
+
+            <!-- Texto izquierda -->
+            <div class="about-text">
+                <p class="eyebrow fade-in">Quiénes Somos</p>
+                <h2 class="fade-in">
+                    La convergencia entre
+                    <em class="accent-italic">BI</em>
+                    y Arquitectura
+                </h2>
+
+                <p class="lead-text fade-in" style="margin-top:var(--s4);">
+                    Evangelista &amp; Co. nace de la convicción de que la inteligencia de
+                    negocios y la arquitectura de soluciones no son disciplinas separadas
+                    — son dos caras de la misma moneda.
+                </p>
+
+                <p class="fade-in" style="margin-top:var(--s3);color:var(--text-muted);">
+                    Cada compromiso comienza con la comprensión profunda del negocio
+                    del cliente. No cobramos por complacer, cobramos por resolver.
+                    La intuición en la toma de decisiones es negligencia.
+                </p>
+
+                <div class="values-grid fade-in" style="margin-top:var(--s6);">
+                    <div class="value-card">
+                        <h3>Honestidad Radical</h3>
+                        <p>Si sus datos están rotos, se lo diremos con evidencia forense.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Rigor Arquitectónico</h3>
+                        <p>Primero los cimientos, luego la fachada. Siempre.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Soberanía del Dato</h3>
+                        <p>Usted es dueño de su verdad operativa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen derecha -->
+            <div class="about-image-wrapper fade-in">
+                <div class="about-image">
+                    <img
+                        src="assets/Business (1).webp"
+                        alt="Análisis de datos corporativo"
+                        loading="lazy"
+                    />
+                </div>
+                <!-- Badge flotante -->
+                <div class="about-badge fade-in stagger-2">
+                    <span class="about-badge-number">$3.5M+</span>
+                    <span class="about-badge-label">Recuperado en 2025</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════ SERVICIOS -->
+<section class="services-section" id="servicios">
+
+    <!-- Pattern Background sutil -->
+    <div class="services-bg" aria-hidden="true">
+        <img
+            src="assets/Fundo de escritório desfocado escritório desfocado para fundo de apresentação _ image.jpeg"
+            alt=""
+            loading="lazy"
+        />
+    </div>
+
+    <!-- Decorador geométrico -->
+    <div class="geo-decor geo-decor--services" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none">
+            <rect x="20" y="20" width="160" height="160" stroke="currentColor" stroke-width="0.4" rx="4"/>
+            <rect x="50" y="50" width="100" height="100" stroke="currentColor" stroke-width="0.8" rx="2"/>
+        </svg>
+    </div>
+
+    <div class="container" style="position:relative;z-index:1;">
+
+        <div class="section-header">
+            <p class="eyebrow fade-in">Nuestros Servicios</p>
+            <h2 class="fade-in">
+                Tres pilares,
+                <em class="accent-italic">una visión integral</em>
+            </h2>
+            <p class="fade-in" style="font-size:var(--text-lg);color:var(--text-muted);margin-top:var(--s2);">
+                Cada intervención diseñada para atacar el problema en la raíz,
+                no sus síntomas superficiales.
+            </p>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- Foundation -->
+            <div class="service-card fade-in stagger-1">
+                <div class="service-card-bar"></div>
+                <div class="service-card-top">
+                    <div class="service-number">01</div>
+                    <div class="service-icon-badge">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                </div>
                 <h3>Foundation</h3>
                 <p class="service-tagline">Auditoría Forense de Datos</p>
-                <p>Evaluamos la integridad de sus fuentes con metodología ALCOA+. Identificamos dónde sus datos le están mintiendo y cuantificamos el costo operativo.</p>
-                <a href="metodologia.html#foundation" class="link-arrow">Conocer Foundation →</a>
+                <p>
+                    Evaluamos la integridad de sus fuentes con metodología ALCOA+.
+                    Identificamos dónde sus datos le están mintiendo y cuantificamos
+                    el costo operativo exacto de cada hallazgo.
+                </p>
+                <ul class="deliverables">
+                    <li>Dictamen forense con costo anual de cada hallazgo</li>
+                    <li>Certificado de integridad ALCOA+</li>
+                    <li>Análisis de brechas (gap analysis)</li>
+                    <li>Recomendación Go / No-Go para inversión</li>
+                </ul>
+                <a href="metodologia.html" class="link-arrow">Conocer Foundation →</a>
             </div>
 
-            <div class="service-card fade-in">
-                <div class="service-number">02</div>
+            <!-- Architecture -->
+            <div class="service-card fade-in stagger-2">
+                <div class="service-card-bar"></div>
+                <div class="service-card-top">
+                    <div class="service-number">02</div>
+                    <div class="service-icon-badge">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                    </div>
+                </div>
                 <h3>Architecture</h3>
                 <p class="service-tagline">Infraestructura de Decisión</p>
-                <p>Diseñamos la arquitectura que conecta sus sistemas sin reemplazarlos. Gobierno del dato con trazabilidad completa y vistas por perfil directivo.</p>
-                <a href="metodologia.html#architecture" class="link-arrow">Conocer Architecture →</a>
+                <p>
+                    Diseñamos la arquitectura Data Mesh que conecta sus sistemas
+                    sin reemplazarlos. Gobierno del dato con trazabilidad completa
+                    y vistas diferenciadas por perfil directivo.
+                </p>
+                <ul class="deliverables">
+                    <li>Data Mesh sobre infraestructura actual</li>
+                    <li>Pipelines ETL/ELT auditables</li>
+                    <li>Vistas CEO, CFO, COO diferenciadas</li>
+                    <li>Gobernanza y linaje de datos certificado</li>
+                </ul>
+                <a href="metodologia.html" class="link-arrow">Conocer Architecture →</a>
             </div>
 
-            <div class="service-card fade-in">
-                <div class="service-number">03</div>
+            <!-- Sentinel -->
+            <div class="service-card fade-in stagger-3">
+                <div class="service-card-bar"></div>
+                <div class="service-card-top">
+                    <div class="service-number">03</div>
+                    <div class="service-icon-badge">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                </div>
                 <h3>Sentinel</h3>
                 <p class="service-tagline">Vigilancia Inteligente 24/7</p>
-                <p>Motor Monte Carlo que convierte datos en probabilidad de riesgo. Decisiones auditables, no intuiciones.</p>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="link-arrow">Probar Sentinel →</a>
+                <p>
+                    Motor Monte Carlo que convierte datos en probabilidad de riesgo.
+                    Decisiones auditables en tiempo real. Juntas de Consejo con
+                    simulaciones financieras y teoría de juegos.
+                </p>
+                <ul class="deliverables">
+                    <li>Simulación Monte Carlo (10,000 escenarios)</li>
+                    <li>Alertas predictivas de riesgo en tiempo real</li>
+                    <li>Juntas directivas mensuales</li>
+                    <li>Planes: Silver · Gold · Omega</li>
+                </ul>
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="link-arrow">
+                    Acceder a Sentinel →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════ METODOLOGÍA -->
+<section class="methodology-section" id="metodologia">
+    <div class="container">
+
+        <div class="section-header">
+            <p class="eyebrow fade-in">Nuestra Metodología</p>
+            <h2 class="fade-in">
+                Un proceso
+                <em class="accent-italic">refinado</em>
+            </h2>
+            <p class="fade-in" style="font-size:var(--text-base);color:var(--text-muted);margin-top:var(--s2);max-width:52ch;">
+                Cada proyecto sigue un camino claro y probado, adaptado a la realidad
+                única de su organización. Sin atajos.
+            </p>
+        </div>
+
+        <div class="phases-grid">
+            <div class="phase-item fade-in stagger-1">
+                <div class="phase-dot"></div>
+                <span class="phase-label">Fase 1</span>
+                <h3>Descubrimiento</h3>
+                <p>Inmersión profunda: procesos, datos existentes, stakeholders y objetivos estratégicos del ciclo actual.</p>
+            </div>
+            <div class="phase-item fade-in stagger-2">
+                <div class="phase-dot"></div>
+                <span class="phase-label">Fase 2</span>
+                <h3>Auditoría</h3>
+                <p>Protocolo ALCOA+ a sus fuentes. Cada hallazgo: nombrado, ubicado y cuantificado en pesos mexicanos.</p>
+            </div>
+            <div class="phase-item fade-in stagger-3">
+                <div class="phase-dot"></div>
+                <span class="phase-label">Fase 3</span>
+                <h3>Arquitectura</h3>
+                <p>Diseño e implementación del Data Mesh. Sprints definidos con acompañamiento directivo continuo.</p>
+            </div>
+            <div class="phase-item fade-in stagger-4">
+                <div class="phase-dot"></div>
+                <span class="phase-label">Fase 4</span>
+                <h3>Sentinel</h3>
+                <p>Vigilancia post-implementación, optimización Monte Carlo y transferencia de conocimiento total.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ SECTORES -->
+<!-- ══════════════════════════════════════════ SECTORES -->
 <section class="sectors-section" id="sectores">
-    <div class="container">
-        <p class="eyebrow">SECTORES</p>
-        <h2 class="fade-in">Empresas que ya deciden con datos</h2>
+
+    <!-- Background image sutil -->
+    <div class="sectors-bg" aria-hidden="true">
+        <img
+            src="assets/Власти продлили выкуп заблокированных активов.jpeg"
+            alt=""
+            loading="lazy"
+        />
+    </div>
+
+    <div class="container" style="position:relative;z-index:1;">
+
+        <div class="section-header">
+            <p class="eyebrow fade-in">Impacto por Sector</p>
+            <h2 class="fade-in">
+                Cómo transformamos
+                <em class="accent-italic">decisiones empresariales</em>
+            </h2>
+        </div>
 
         <div class="sectors-grid">
-            <div class="sector-card fade-in">
+
+            <div class="sector-card fade-in stagger-1">
                 <span class="sector-icon" aria-hidden="true">🏭</span>
                 <h3>Manufactura PYME</h3>
-                <p>Fugas de inventario, merma no contabilizada, sobrecostos ocultos.</p>
+                <div class="sector-item">
+                    <span class="sector-item-label">Desafío</span>
+                    <p>Decisiones de producción basadas en hojas de cálculo y experiencia empírica.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Impacto</span>
+                    <p>Reducción 22% tiempo de ciclo y eliminación 15% desperdicio de material.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Entrada</span>
+                    <p>Foundation → Sentinel</p>
+                </div>
             </div>
-            <div class="sector-card fade-in">
+
+            <div class="sector-card fade-in stagger-2">
                 <span class="sector-icon" aria-hidden="true">🛒</span>
                 <h3>Retail &amp; Distribución</h3>
-                <p>Ventas dispersas en múltiples sistemas, visibilidad cero, margen erosionado.</p>
+                <div class="sector-item">
+                    <span class="sector-item-label">Desafío</span>
+                    <p>Datos de ventas dispersos en 4 sistemas sin visibilidad consolidada.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Impacto</span>
+                    <p>+28% margen bruto al identificar categorías con baja rotación.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Entrada</span>
+                    <p>Foundation → Architecture (Data Mesh)</p>
+                </div>
             </div>
-            <div class="sector-card fade-in">
+
+            <div class="sector-card fade-in stagger-3">
                 <span class="sector-icon" aria-hidden="true">🏗️</span>
                 <h3>Construcción</h3>
-                <p>Presupuestación manual, desviaciones de costos, ROI invisibles.</p>
+                <div class="sector-item">
+                    <span class="sector-item-label">Desafío</span>
+                    <p>Presupuestación manual sin forecast ni análisis de rentabilidad por proyecto.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Impacto</span>
+                    <p>Reducción 40% desviaciones presupuestales. Visibilidad semanal.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Entrada</span>
+                    <p>Architecture → Sentinel (Monte Carlo)</p>
+                </div>
             </div>
-            <div class="sector-card fade-in">
+
+            <div class="sector-card fade-in stagger-4">
                 <span class="sector-icon" aria-hidden="true">💼</span>
                 <h3>Servicios Profesionales</h3>
-                <p>Horas no facturables, proyectos sin rentabilidad clara, pricing sin base.</p>
+                <div class="sector-item">
+                    <span class="sector-item-label">Desafío</span>
+                    <p>Horas no facturables sin tracking y proyectos sin análisis de ROI claro.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Impacto</span>
+                    <p>ROI recuperado en primer trimestre mediante identificación de pérdidas.</p>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-item-label">Entrada</span>
+                    <p>Foundation → Architecture</p>
+                </div>
             </div>
+
         </div>
 
-        <div class="cta-center">
+        <div class="cta-center fade-in">
             <a href="sectores.html" class="btn-secondary">Ver Todos los Sectores →</a>
         </div>
+
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ CASOS -->
-<section class="cases-section" id="resultados">
-    <div class="container">
-        <p class="eyebrow">CASOS DE ÉXITO</p>
-        <h2 class="fade-in">Resultados <span class="accent-italic">auditables</span></h2>
+<!-- ══════════════════════════════════════════ RESULTADOS -->
+<section class="results-section">
 
-        <div class="stats-grid">
-            <div class="stat-card fade-in">
-                <div class="stat-number">$2.3M</div>
-                <div class="stat-label">Recuperado en inventario fantasma</div>
-                <div class="stat-context">Textilera · 3 plantas</div>
+    <!-- Background sutil -->
+    <div class="results-bg" aria-hidden="true">
+        <img src="assets/Business (1).webp" alt="" loading="lazy" />
+    </div>
+
+    <div class="container" style="position:relative;z-index:1;">
+
+        <div class="results-grid">
+            <div class="result-item fade-in stagger-1">
+                <span class="result-number" data-target="2.3" data-format="currency">$2.3M</span>
+                <span class="result-label">Recuperado en inventario fantasma</span>
+                <span class="result-context">Textilera · 3 plantas</span>
             </div>
-            <div class="stat-card fade-in">
-                <div class="stat-number">+18%</div>
-                <div class="stat-label">Incremento margen bruto</div>
-                <div class="stat-context">Retail · categorías baja rotación</div>
+            <div class="result-item fade-in stagger-2">
+                <span class="result-number" data-target="18" data-format="percent">+18%</span>
+                <span class="result-label">Incremento margen bruto</span>
+                <span class="result-context">Retail · categorías baja rotación</span>
             </div>
-            <div class="stat-card fade-in">
-                <div class="stat-number">340%</div>
-                <div class="stat-label">ROI año 1</div>
-                <div class="stat-context">Servicios profesionales</div>
+            <div class="result-item fade-in stagger-3">
+                <span class="result-number" data-target="340" data-format="percent">340%</span>
+                <span class="result-label">ROI año 1</span>
+                <span class="result-context">Servicios profesionales</span>
             </div>
-            <div class="stat-card fade-in">
-                <div class="stat-number">89%</div>
-                <div class="stat-label">Certeza en proyecciones</div>
-                <div class="stat-context">De 40% de baseline</div>
+            <div class="result-item fade-in stagger-4">
+                <span class="result-number" data-target="89" data-format="percent">89%</span>
+                <span class="result-label">Certeza en proyecciones</span>
+                <span class="result-context">De 40% de baseline</span>
             </div>
         </div>
 
-        <div class="testimonial fade-in">
+        <div class="testimonial-block fade-in">
             <blockquote>
                 "Llevaba 15 años tomando decisiones con reportes que creía correctos.
                 Evangelista &amp; Co. me mostró que 30% de mi inventario no existía."
             </blockquote>
-            <cite>— Director General, Grupo Almendra (Retail)</cite>
+            <cite>— Director General, Grupo Almendra (Retail, Puebla)</cite>
         </div>
+
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ CONTACTO -->
-<section class="contact-section" id="diagnostico">
+<!-- ══════════════════════════════════════════ CONTACTO -->
+<section class="contact-section" id="contacto">
     <div class="container">
+
         <div class="contact-split">
+
             <div class="contact-left">
-                <p class="eyebrow">COMENCEMOS</p>
-                <h2 class="fade-in">Su empresa merece <span class="accent-italic">decidir mejor.</span></h2>
+                <p class="eyebrow fade-in">Comencemos</p>
+                <h2 class="fade-in">
+                    Su empresa merece
+                    <em class="accent-italic">decidir mejor.</em>
+                </h2>
 
                 <div class="contact-box fade-in">
-                    <h3>Diagnóstico Gratuito</h3>
-                    <p>90 min · Sin compromiso · Resultados inmediatos</p>
+                    <h3>Diagnóstico Ejecutivo</h3>
+                    <p>
+                        Todos los clientes completan el diagnóstico ejecutivo
+                        con nuestro asistente de inteligencia. Permite diseñar
+                        la propuesta más adecuada a su caso específico.
+                    </p>
                     <button class="btn-primary" onclick="window.openDiagnostico && window.openDiagnostico()">
-                        Agendar mi diagnóstico gratuito →
+                        Iniciar Diagnóstico →
                     </button>
+                    <p class="contact-disclaimer">Sin costo · Sin compromiso · Acceso inmediato</p>
                 </div>
             </div>
 
             <div class="contact-right fade-in">
-                <div class="contact-info">
-                    <p class="contact-label">Alianzas comerciales</p>
-                    <a href="mailto:info@evangelistaco.com" class="contact-email">
-                        info@evangelistaco.com
-                    </a>
-                    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:8px;">Puebla, Pue. · Ciudad de México</p>
+                <h3>Información de Contacto</h3>
+                <div class="contact-info-items">
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon">📧</span>
+                        <div>
+                            <span class="contact-info-label">Email</span>
+                            <div class="contact-info-value">
+                                <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon">📍</span>
+                        <div>
+                            <span class="contact-info-label">Ubicación</span>
+                            <div class="contact-info-value">Puebla, Pue.<br />Ciudad de México</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon">🤝</span>
+                        <div>
+                            <span class="contact-info-label">Alianzas Comerciales</span>
+                            <div class="contact-info-value" style="font-size:0.875rem;color:var(--text-muted);">
+                                Para propuestas de alianzas estratégicas, contacte
+                                directamente al equipo comercial.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════ FOOTER -->
+<!-- ══════════════════════════════════════════ FOOTER -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
-            <div class="footer-left">
+            <div class="footer-brand">
                 <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
-                <p class="footer-tagline">Arquitectos de la verdad operativa</p>
+                <span class="brand-name">Evangelista &amp; Co.</span>
+                <p class="footer-tagline">
+                    Intelligence Architecture — la convergencia entre Business Intelligence
+                    y Arquitectura de Soluciones para organizaciones que buscan ventajas
+                    competitivas sostenibles a través de sus datos.
+                </p>
             </div>
-
-            <div class="footer-links">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <a href="#servicios">Foundation</a>
+                <a href="#servicios">Architecture</a>
                 <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
             </div>
-
-            <div class="footer-right">
-                <p>&copy; 2026 Evangelista &amp; Co.</p>
-                <p>Puebla, México</p>
+            <div class="footer-col">
+                <h4>Compañía</h4>
+                <a href="#nosotros">Quiénes Somos</a>
+                <a href="#metodologia">Metodología</a>
+                <a href="#sectores">Sectores</a>
+                <a href="por-que-nosotros.html">Por qué Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Evangelista &amp; Co. Todos los derechos reservados.</p>
+            <div class="footer-legal">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
             </div>
         </div>
     </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════ MODAL CHATBOT -->
+<!-- ══════════════════════════════════════════ MODAL CHATBOT -->
 <div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Diagnóstico Ejecutivo">
     <div class="modal-content">
         <div class="modal-header">
             <div class="modal-header-title">
-                <div class="modal-avatar" aria-hidden="true">E</div>
+                <div class="modal-avatar" aria-hidden="true">S</div>
                 <div>
-                    <div class="modal-name">Socio Digital</div>
+                    <div class="modal-name">Socio Digital · Evangelista &amp; Co.</div>
                     <div class="modal-sub">Evangelista &amp; Co.</div>
                 </div>
             </div>
             <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
         </div>
         <div id="chat-container"></div>
-        <div id="chat-input-area" style="display:none;align-items:center;gap:8px;padding:12px 24px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3);">
+        <div id="chat-input-area">
             <input
                 id="chat-free-input"
                 type="text"
                 placeholder="Escriba su respuesta..."
                 autocomplete="off"
-                maxlength="500"
-                style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:10px 14px;font-size:0.875rem;font-family:inherit;outline:none;"
+                maxlength="600"
             />
-            <button
-                id="chat-send-free"
-                aria-label="Enviar"
-                style="background:var(--accent-gold);border:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;"
-            >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <button id="chat-send-free" aria-label="Enviar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
             </button>
         </div>
     </div>
@@ -286,29 +625,85 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/diagnostico.js"></script>
 <script>
-    // Fade-in on scroll
-    (function () {
-        var els = document.querySelectorAll('.fade-in');
-        if (!els.length) return;
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    observer.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(function (el) { observer.observe(el); });
-    })();
+(function () {
+    // Scroll fade-in observer
+    var els = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+    els.forEach(function (el) { observer.observe(el); });
 
     // Header scroll shadow
-    (function () {
-        var header = document.getElementById('header');
-        if (!header) return;
+    var header = document.getElementById('header');
+    if (header) {
         window.addEventListener('scroll', function () {
             header.classList.toggle('scrolled', window.scrollY > 40);
         }, { passive: true });
-    })();
+    }
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var id = a.getAttribute('href');
+            var target = id.length > 1 ? document.querySelector(id) : null;
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Number counter animation
+    function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var format = el.getAttribute('data-format');
+        if (!target || !format) return;
+
+        var duration = 1800;
+        var startTime = null;
+
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            var value = eased * target;
+
+            if (format === 'currency') {
+                el.textContent = '$' + value.toFixed(1) + 'M+';
+            } else if (format === 'percent') {
+                if (target >= 100) {
+                    el.textContent = Math.round(value) + '%';
+                } else {
+                    el.textContent = (value >= 10 ? '+' : '') + Math.round(value) + '%';
+                }
+            }
+
+            if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    // Observe counters
+    var counterObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                animateCounter(e.target);
+                counterObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(function (el) {
+        counterObs.observe(el);
+    });
+})();
 </script>
+
 </body>
 </html>

@@ -1,69 +1,20 @@
 /**
- * Evangelista & Co. — Diagnóstico Ejecutivo
- * Chatbot de scoping por pasos. No menciona precios.
- * Modal: #diagnostico-modal (.modal) > .modal-content > #chat-container
+ * Evangelista & Co. — Adria · Asesor Estratégico
+ * Calls FastAPI backend at Railway — never exposes keys.
+ * Modal: #diagnostico-modal > .modal-content > #chat-container
  */
 (function () {
     'use strict';
 
-    // ── Estado ─────────────────────────────────────────────────────────────────
-    var currentStep = 0;
-    var userData = {};
-    var waitingForInput = false;
+    var BACKEND_URL = 'https://evangelista-web-production.up.railway.app/chat';
+    var CALENDLY_URL = 'https://calendly.com/evangelistaco/diagnostico-ejecutivo';
 
-    // ── Flujo ──────────────────────────────────────────────────────────────────
-    var flow = [
-        // Step 0 — Saludo
-        {
-            type: 'greeting',
-            message: 'Hola. Soy el Socio Digital de Evangelista & Co.\n\nEn 90 minutos le daré claridad sobre qué datos posee, qué le falta, y cómo convertirlos en ventaja competitiva real.\n\n¿Listo para comenzar?',
-            options: ['Sí, comenzar', 'Necesito más información']
-        },
-        // Step 1 — Contexto del problema
-        {
-            type: 'open',
-            message: 'Cuénteme sobre una decisión reciente que haya tomado donde dudó si tenía los datos correctos.',
-            validate: function (t) { return t.trim().length > 10; },
-            validationError: 'Por favor, proporcione más detalle. Esto nos ayuda a personalizar su diagnóstico.'
-        },
-        // Step 2 — Facturación
-        {
-            type: 'choice',
-            key: 'tier',
-            message: '¿Cuál es la facturación anual aproximada de su empresa?',
-            options: [
-                { label: 'Menos de $50M MXN', value: 'tier1' },
-                { label: '$50M – $200M MXN',  value: 'tier2' },
-                { label: 'Más de $200M MXN',  value: 'tier3' }
-            ]
-        },
-        // Step 3 — Rol
-        {
-            type: 'choice',
-            key: 'role',
-            message: '¿Cuál es su rol en la organización?',
-            options: [
-                { label: 'Director General / CEO',          value: 'ceo' },
-                { label: 'Director Financiero / CFO',       value: 'cfo' },
-                { label: 'Director de Operaciones / COO',   value: 'coo' },
-                { label: 'Otro cargo',                       value: 'other' }
-            ]
-        },
-        // Step 4 — Calificación + servicio
-        {
-            type: 'qualify'
-        },
-        // Step 5 — Datos de contacto
-        {
-            type: 'form',
-            message: 'Para agendar su diagnóstico ejecutivo, necesito los siguientes datos.'
-        },
-        // Step 6 — Cierre
-        {
-            type: 'closing',
-            message: 'Perfecto. Recibirá confirmación en las próximas horas.\n\nNuestro equipo se pondrá en contacto antes de 24 horas para coordinar su sesión.\n\n¿Hay algo más en lo que pueda orientarle?'
-        }
-    ];
+    var OPENING_MESSAGE = 'Hola. Soy el Socio Digital de Evangelista\u00a0&\u00a0Co.\n\nEn mi experiencia, nadie busca arquitectura de inteligencia cuando todo va bien.\n\n¿Qué está pasando en su operación que le hizo pensar en buscarnos hoy?';
+
+    // ── Estado ─────────────────────────────────────────────────────────────────
+    var history  = [];   // [{role, content}]
+    var leadData = {};   // acumulado por backend silent_audit
+    var busy     = false;
 
     // ── DOM helpers ────────────────────────────────────────────────────────────
     function getChatContainer() {
@@ -84,237 +35,159 @@
 
         var bubble = document.createElement('div');
         bubble.className = 'bubble';
+        // Preserve line breaks
+        bubble.style.whiteSpace = 'pre-line';
         bubble.textContent = text;
 
         wrap.appendChild(bubble);
         container.appendChild(wrap);
         scrollToBottom();
+        return wrap;
     }
 
-    function appendOptions(options, onSelect) {
+    // ── Typing indicator ───────────────────────────────────────────────────────
+    var typingEl = null;
+
+    function showTyping() {
         var container = getChatContainer();
-        if (!container) return;
+        if (!container || typingEl) return;
 
         var wrap = document.createElement('div');
-        wrap.className = 'chat-options';
+        wrap.className = 'chat-message assistant';
 
-        options.forEach(function (opt) {
-            var btn = document.createElement('button');
-            btn.className = 'chat-option-btn';
-            btn.textContent = typeof opt === 'string' ? opt : opt.label;
-            btn.addEventListener('click', function () {
-                // Disable all options after selection
-                wrap.querySelectorAll('.chat-option-btn').forEach(function (b) {
-                    b.disabled = true;
-                    b.style.opacity = '0.4';
-                });
-                var value = typeof opt === 'string' ? opt : opt.value;
-                var label = typeof opt === 'string' ? opt : opt.label;
-                appendMessage(label, 'user');
-                onSelect(value, label);
-            });
-            wrap.appendChild(btn);
-        });
+        var indicator = document.createElement('div');
+        indicator.className = 'typing-indicator';
+        indicator.innerHTML = '<span></span><span></span><span></span>';
 
+        wrap.appendChild(indicator);
         container.appendChild(wrap);
+        typingEl = wrap;
         scrollToBottom();
     }
 
-    function appendLinks(links) {
-        var container = getChatContainer();
-        if (!container) return;
-
-        var wrap = document.createElement('div');
-        wrap.className = 'chat-links';
-
-        links.forEach(function (link) {
-            var a = document.createElement('a');
-            a.className = 'chat-link-btn';
-            a.textContent = link.text;
-            a.href = link.url;
-            wrap.appendChild(a);
-        });
-
-        container.appendChild(wrap);
-        scrollToBottom();
-    }
-
-    function appendContactForm() {
-        var container = getChatContainer();
-        if (!container) return;
-
-        var form = document.createElement('div');
-        form.className = 'chat-form';
-
-        var fields = [
-            { name: 'nombre',   placeholder: 'Nombre completo' },
-            { name: 'email',    placeholder: 'Email corporativo',  type: 'email' },
-            { name: 'telefono', placeholder: 'Teléfono',           type: 'tel' },
-            { name: 'empresa',  placeholder: 'Empresa' }
-        ];
-
-        fields.forEach(function (f) {
-            var input = document.createElement('input');
-            input.name = f.name;
-            input.placeholder = f.placeholder;
-            input.type = f.type || 'text';
-            form.appendChild(input);
-        });
-
-        var btn = document.createElement('button');
-        btn.className = 'chat-form-submit';
-        btn.textContent = 'Enviar datos →';
-        btn.addEventListener('click', function () {
-            var nombre   = form.querySelector('[name=nombre]').value.trim();
-            var email    = form.querySelector('[name=email]').value.trim();
-            var telefono = form.querySelector('[name=telefono]').value.trim();
-            var empresa  = form.querySelector('[name=empresa]').value.trim();
-
-            if (!nombre || !email || !empresa) {
-                var err = form.querySelector('.form-error');
-                if (!err) {
-                    err = document.createElement('p');
-                    err.className = 'form-error';
-                    err.style.cssText = 'color:#d4af37;font-size:0.78rem;margin-top:4px;';
-                    form.appendChild(err);
-                }
-                err.textContent = 'Por favor complete nombre, email y empresa.';
-                return;
-            }
-
-            userData.contacto = { nombre: nombre, email: email, telefono: telefono, empresa: empresa };
-            btn.disabled = true;
-            form.style.opacity = '0.5';
-
-            appendMessage(nombre + ' · ' + email + ' · ' + empresa, 'user');
-            enviarDatos(userData);
-            currentStep = 6;
-            displayStep();
-        });
-
-        form.appendChild(btn);
-        container.appendChild(form);
-        scrollToBottom();
-    }
-
-    // ── Lógica de pasos ────────────────────────────────────────────────────────
-    function displayStep() {
-        var step = flow[currentStep];
-        if (!step) return;
-
-        if (step.type === 'greeting') {
-            appendMessage(step.message, 'assistant');
-            appendOptions(step.options, function (val) {
-                userData.greeting = val;
-                if (val === 'Necesito más información') {
-                    appendMessage('Con gusto. Evangelista & Co. ayuda a Directores Generales, CFOs y COOs a tomar decisiones con certeza estadística, usando metodología forense de datos ALCOA+ y simulación Monte Carlo.\n\nUna vez que esté listo para explorar si podemos ayudarle, podemos continuar.', 'assistant');
-                    appendOptions(['Continuar diagnóstico'], function () {
-                        currentStep = 1;
-                        displayStep();
-                    });
-                } else {
-                    currentStep = 1;
-                    displayStep();
-                }
-            });
-
-        } else if (step.type === 'open') {
-            appendMessage(step.message, 'assistant');
-            waitingForInput = true;
-            enableInput(function (text) {
-                if (step.validate && !step.validate(text)) {
-                    appendMessage(step.validationError || 'Por favor proporcione más detalle.', 'assistant');
-                    return false;
-                }
-                userData['step' + currentStep] = text;
-                currentStep++;
-                displayStep();
-                return true;
-            });
-
-        } else if (step.type === 'choice') {
-            appendMessage(step.message, 'assistant');
-            appendOptions(step.options, function (value) {
-                userData[step.key] = value;
-                currentStep++;
-                displayStep();
-            });
-
-        } else if (step.type === 'qualify') {
-            var qualifies = userData.tier !== 'tier1' &&
-                            (userData.role === 'ceo' || userData.role === 'cfo' || userData.role === 'coo');
-
-            if (qualifies) {
-                appendMessage('Su perfil califica para nuestro servicio.\n\nEvangelista & Co. opera con tres intervenciones:\n\nFOUNDATION — Auditoría forense de datos (4-6 semanas)\nARCHITECTURE — Infraestructura de inteligencia (8-12 semanas)\nSENTINEL — Vigilancia Monte Carlo 24/7 (SaaS)\n\n¿Cuál describe mejor su necesidad?', 'assistant');
-                appendOptions(['Foundation', 'Architecture', 'Sentinel', 'Las tres / necesito asesoría'], function (val) {
-                    userData.servicio = val;
-                    currentStep = 5;
-                    displayStep();
-                });
-            } else {
-                appendMessage('Gracias por su interés.\n\nPor el momento, Evangelista & Co. enfoca sus recursos en empresas con facturación superior a $50M MXN y equipos directivos C-level.\n\nLe invito a conocer más sobre nuestra metodología y sectores de impacto.', 'assistant');
-                appendLinks([
-                    { text: 'Ver Metodología →', url: 'metodologia.html' },
-                    { text: 'Ver Sectores →',     url: 'sectores.html' }
-                ]);
-            }
-
-        } else if (step.type === 'form') {
-            appendMessage(step.message, 'assistant');
-            appendContactForm();
-
-        } else if (step.type === 'closing') {
-            appendMessage(step.message, 'assistant');
+    function hideTyping() {
+        if (typingEl) {
+            typingEl.parentNode && typingEl.parentNode.removeChild(typingEl);
+            typingEl = null;
         }
     }
 
-    // ── Input libre ────────────────────────────────────────────────────────────
-    var pendingInputCallback = null;
+    // ── Calendly CTA ───────────────────────────────────────────────────────────
+    function appendCalendlyCTA() {
+        var container = getChatContainer();
+        if (!container) return;
 
-    function enableInput(callback) {
-        pendingInputCallback = callback;
+        var cta = document.createElement('div');
+        cta.className = 'calendly-cta';
+
+        var p = document.createElement('p');
+        p.textContent = 'Basado en lo que me comparte, creo que merece una conversación directa con nuestro equipo.';
+
+        var a = document.createElement('a');
+        a.href = CALENDLY_URL;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'calendly-btn';
+        a.textContent = 'Agendar Diagnóstico Ejecutivo \u2192';
+
+        cta.appendChild(p);
+        cta.appendChild(a);
+        container.appendChild(cta);
+        scrollToBottom();
+    }
+
+    // ── Input controls ─────────────────────────────────────────────────────────
+    function enableInput() {
         var area = document.getElementById('chat-input-area');
         if (area) area.style.display = 'flex';
         var input = document.getElementById('chat-free-input');
         if (input) {
-            input.value = '';
-            setTimeout(function () { input.focus(); }, 200);
+            input.disabled = false;
+            setTimeout(function () { input.focus(); }, 150);
         }
+        var btn = document.getElementById('chat-send-free');
+        if (btn) btn.disabled = false;
     }
 
     function disableInput() {
-        pendingInputCallback = null;
-        var area = document.getElementById('chat-input-area');
-        if (area) area.style.display = 'none';
+        var input = document.getElementById('chat-free-input');
+        if (input) input.disabled = true;
+        var btn = document.getElementById('chat-send-free');
+        if (btn) btn.disabled = true;
     }
 
-    function handleFreeInputSend() {
-        if (!pendingInputCallback) return;
+    // ── Backend call ───────────────────────────────────────────────────────────
+    function sendToBackend(userMessage) {
+        if (busy) return;
+        busy = true;
+        disableInput();
+
+        appendMessage(userMessage, 'user');
+        history.push({ role: 'user', content: userMessage });
+
+        // Clear input field
+        var inputEl = document.getElementById('chat-free-input');
+        if (inputEl) inputEl.value = '';
+
+        showTyping();
+
+        fetch(BACKEND_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message:   userMessage,
+                history:   history.slice(0, -1), // exclude the just-added message
+                lead_data: leadData
+            })
+        })
+        .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+        })
+        .then(function (data) {
+            hideTyping();
+
+            var response = (data && data.response) ? data.response : null;
+
+            if (response) {
+                appendMessage(response, 'assistant');
+                history.push({ role: 'assistant', content: response });
+            }
+
+            // Merge updated lead data
+            if (data && data.updated_lead_data) {
+                Object.assign(leadData, data.updated_lead_data);
+            }
+
+            // Check for Calendly unlock
+            var action = data && data.silent_audit && data.silent_audit.action;
+            if (action === 'UNLOCK_CALENDLY') {
+                setTimeout(appendCalendlyCTA, 600);
+            }
+
+            busy = false;
+            enableInput();
+        })
+        .catch(function (err) {
+            hideTyping();
+            console.error('[Adria] Backend error:', err);
+            appendMessage(
+                'En este momento tengo una dificultad técnica. Por favor escríbanos directamente a contacto@evangelistaco.com o intente de nuevo en un momento.',
+                'assistant'
+            );
+            busy = false;
+            enableInput();
+        });
+    }
+
+    // ── Send handler ───────────────────────────────────────────────────────────
+    function handleSend() {
+        if (busy) return;
         var input = document.getElementById('chat-free-input');
         if (!input) return;
         var text = input.value.trim();
         if (!text) return;
-
-        var accepted = pendingInputCallback(text);
-        if (accepted !== false) {
-            appendMessage(text, 'user');
-            input.value = '';
-            disableInput();
-        } else {
-            // validation failed — keep input open
-        }
-    }
-
-    // ── Enviar datos ───────────────────────────────────────────────────────────
-    function enviarDatos(data) {
-        console.log('[Evangelista & Co.] Lead calificado:', data);
-        /*
-        fetch('https://hook.make.com/TU_WEBHOOK', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        */
+        sendToBackend(text);
     }
 
     // ── Modal controls ─────────────────────────────────────────────────────────
@@ -325,21 +198,38 @@
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
 
-        // Micro-delay to trigger CSS transition
         requestAnimationFrame(function () {
             requestAnimationFrame(function () {
                 modal.classList.add('active');
             });
         });
 
-        // Reset and start
-        currentStep = 0;
-        userData = {};
+        // Reset state
+        history  = [];
+        leadData = {};
+        busy     = false;
+        typingEl = null;
+
         var container = document.getElementById('chat-container');
         if (container) container.innerHTML = '';
+
+        // Show input area from start
+        var area = document.getElementById('chat-input-area');
+        if (area) area.style.display = 'flex';
+        var inputEl = document.getElementById('chat-free-input');
+        if (inputEl) inputEl.value = '';
         disableInput();
 
-        setTimeout(displayStep, 300);
+        // Opening message with typing feel
+        setTimeout(function () {
+            showTyping();
+            setTimeout(function () {
+                hideTyping();
+                appendMessage(OPENING_MESSAGE, 'assistant');
+                history.push({ role: 'assistant', content: OPENING_MESSAGE });
+                enableInput();
+            }, 1200);
+        }, 350);
     }
 
     function closeDiagnostico() {
@@ -356,28 +246,27 @@
     function bindEvents() {
         var modal = document.getElementById('diagnostico-modal');
 
-        // Close on backdrop click
         if (modal) {
             modal.addEventListener('click', function (e) {
                 if (e.target === modal) closeDiagnostico();
             });
         }
 
-        // Free input send button
         var sendBtn = document.getElementById('chat-send-free');
         if (sendBtn) {
-            sendBtn.addEventListener('click', handleFreeInputSend);
+            sendBtn.addEventListener('click', handleSend);
         }
 
-        // Enter key
         var freeInput = document.getElementById('chat-free-input');
         if (freeInput) {
             freeInput.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') handleFreeInputSend();
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSend();
+                }
             });
         }
 
-        // Escape key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
                 closeDiagnostico();
