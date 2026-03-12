@@ -3,235 +3,269 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metodología ALCOA+ | Evangelista &amp; Co.</title>
-    <meta name="description" content="Metodología ALCOA+ aplicada a la Inteligencia Empresarial. Foundation, Architecture y Sentinel para decisiones auditables." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Metodología | Evangelista & Co.</title>
+    <meta name="description" content="El rigor técnico detrás de la rentabilidad. Auditoría ALCOA+, Data Mesh y modelos de simulación Monte Carlo para la alta dirección." />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['"Cormorant Garamond"', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
 </head>
-<body>
+<body class="bg-[#F4F1EA] text-[#1C1C1C] font-sans antialiased selection:bg-[#5A6352] selection:text-white">
 
-<header class="header-sticky" id="header">
-    <div class="container">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
-            </a>
-            <nav class="main-nav" aria-label="Navegación principal">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-                <a href="mailto:info@evangelistaco.com" class="email-link">info@evangelistaco.com</a>
-            </nav>
-            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-        </div>
-    </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-        <a href="por-que-nosotros.html">Por qué nosotros</a>
-        <a href="metodologia.html">Metodología</a>
-        <a href="sectores.html">Sectores</a>
-        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-        <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
-    </nav>
-</header>
+    <header class="header-sticky bg-white/90 backdrop-blur-md border-b border-[#1C1C1C]/10 fixed w-full top-0 z-50 transition-all duration-300" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
 
-<section class="page-hero">
-    <div class="container">
-        <p class="eyebrow">CÓMO TRABAJAMOS</p>
-        <h1 class="fade-in">Metodología <span class="accent-italic">ALCOA+</span></h1>
-        <p class="subtitle fade-in">Del estándar farmacéutico a la Inteligencia Empresarial</p>
-    </div>
-</section>
+                <a href="index.html" class="flex items-center gap-4 group" aria-label="Inicio Evangelista & Co.">
+                    <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." class="h-10 w-auto grayscale contrast-125 group-hover:opacity-80 transition-opacity" />
+                    <div class="flex flex-col">
+                        <span class="font-sans font-bold uppercase tracking-[0.15em] text-sm text-[#1C1C1C]">Evangelista &amp; Co.</span>
+                        <span class="font-serif italic text-xs text-[#5A6352]">Intelligence Architecture Firm</span>
+                    </div>
+                </a>
 
-<section class="content-section">
-    <div class="container-narrow">
-        <p class="eyebrow">EL PROBLEMA</p>
-        <h2 class="fade-in">La mayoría toma decisiones sin saber si los datos son verdad</h2>
-        <p class="lead fade-in">Los reportes que llegan a su escritorio nunca fueron auditados. Confía en ellos porque los elaboró su equipo. Pero ¿quién auditó al equipo?</p>
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de la Firma">
+                    <a href="por-que-nosotros.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">La Firma</a>
+                    <a href="metodologia.html" class="text-sm font-semibold tracking-wide text-[#5A6352] border-b border-[#5A6352]">Metodología</a>
+                    <a href="sectores.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Sectores</a>
+                    
+                    <span class="w-[1px] h-4 bg-[#1C1C1C]/20 mx-2"></span>
+                    
+                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Sentinel</a>
+                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white text-xs font-bold uppercase tracking-widest px-6 py-2.5 hover:bg-[#1C1C1C] transition-colors duration-300">
+                        Admisión
+                    </button>
+                </nav>
 
-        <div class="problem-list">
-            <div class="problem-item fade-in">
-                <span class="icon" aria-hidden="true">→</span>
-                <p>Decisiones de expansión sobredimensionadas por datos incorrectos</p>
-            </div>
-            <div class="problem-item fade-in">
-                <span class="icon" aria-hidden="true">→</span>
-                <p>Capital inmovilizado en inventario que no existe físicamente</p>
-            </div>
-            <div class="problem-item fade-in">
-                <span class="icon" aria-hidden="true">→</span>
-                <p>Márgenes erosionados por sobrecostos ocultos no registrados</p>
             </div>
         </div>
+    </header>
 
-        <p class="conclusion fade-in">No es un problema de malos sistemas. Es un problema de integridad de evidencia.</p>
-    </div>
-</section>
+    <main class="pt-20">
 
-<section class="methodology-section" id="metodologia">
-    <div class="container">
-        <p class="eyebrow">LAS TRES FASES</p>
-        <h2 class="fade-in" style="margin-bottom:var(--space-15);">Nuestra Metodología</h2>
-
-        <!-- FOUNDATION -->
-        <div class="method-phase fade-in" id="foundation">
-            <div class="phase-header">
-                <span class="phase-number">FASE I</span>
-                <h3>FOUNDATION — Auditoría Forense</h3>
+        <section class="py-24 md:py-32 bg-[#1C1C1C] text-[#F4F1EA] relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <svg class="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid-hero" width="30" height="30" patternUnits="userSpaceOnUse">
+                            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid-hero)" />
+                </svg>
             </div>
-            <div class="method-grid">
-                <div class="method-item">
-                    <h4>¿Qué hacemos?</h4>
-                    <p>Auditoría forense de sus datos operativos en el nodo crítico. Operamos en modo read-only absoluto, sin alterar ningún sistema.</p>
+            
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Protocolo de Intervención</span>
+                <h1 class="text-5xl md:text-6xl font-serif leading-tight mb-8">
+                    El rigor técnico detrás de <br/><em class="italic text-[#5A6352]">la rentabilidad.</em>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 font-sans leading-relaxed max-w-3xl mx-auto border-t border-white/10 pt-8">
+                    La certidumbre financiera no es un accidente; es el resultado de un diseño estructural impecable. Nuestra metodología de tres fases está diseñada para auditar, reconstruir y vigilar el capital intelectual de su empresa.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="hidden md:block absolute left-1/2 top-32 bottom-24 w-px bg-[#1C1C1C]/10 transform -translate-x-1/2"></div>
+
+                <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between mb-24 group">
+                    <div class="md:w-5/12 text-right md:pr-12 mb-8 md:mb-0">
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Foundation</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Auditoría Forense</span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Sometemos sus bases de datos actuales a un escrutinio implacable. Identificamos latencia, duplicidades de registro y silos de información. Si el dato no es íntegro, no se visualiza. Los cimientos preceden a la estrategia.</p>
+                    </div>
+                    
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-full items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
+                        <span class="font-serif italic font-bold">01</span>
+                    </div>
+
+                    <div class="md:w-5/12 md:pl-12 w-full">
+                        <div class="bg-[#F4F1EA] p-6 border-l-2 border-[#5A6352]">
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Mecánica Técnica</h4>
+                            <ul class="text-sm font-sans text-gray-700 space-y-2">
+                                <li>&bull; Dictamen de madurez operativa.</li>
+                                <li>&bull; Mapeo de topología de sistemas (ERP, CRM).</li>
+                                <li>&bull; Aplicación del protocolo ALCOA+.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="method-item">
-                    <h4>¿Cómo?</h4>
-                    <p>Metodología ALCOA+ del estándar farmacéutico. Cada dato debe ser: Atribuible, Legible, Contemporáneo, Original, Exacto, Completo, Consistente, Perdurable, Disponible.</p>
+
+                <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between mb-24 group">
+                    <div class="md:w-5/12 md:text-right order-3 md:order-1 w-full mt-8 md:mt-0 md:pr-12">
+                        <div class="bg-[#1C1C1C] p-6 border-r-2 border-[#5A6352]">
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#F4F1EA] mb-3">Mecánica Técnica</h4>
+                            <ul class="text-sm font-sans text-gray-400 space-y-2">
+                                <li>&bull; Canalizaciones ETL / ELT automatizadas.</li>
+                                <li>&bull; Nodos Data Mesh departamentales.</li>
+                                <li>&bull; Modelado DAX de alto rendimiento (Power BI).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-full items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
+                        <span class="font-serif italic font-bold">02</span>
+                    </div>
+
+                    <div class="md:w-5/12 md:pl-12 order-1 md:order-3">
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Architecture</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Gobierno de Datos</span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Diseñamos la infraestructura de mando. Aplicamos una arquitectura Data Mesh para unificar las áreas de su empresa bajo una sola fuente de verdad. El CFO, el COO y el CEO observan la misma realidad en tiempo real.</p>
+                    </div>
                 </div>
-                <div class="method-item">
-                    <h4>¿Qué entrega?</h4>
-                    <ul>
-                        <li>Dictamen forense con hallazgos nombrados y ubicados</li>
-                        <li>Costo anual cuantificado de cada hallazgo</li>
-                        <li>Certificado de integridad ALCOA+ firmado</li>
-                    </ul>
+
+                <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between group">
+                    <div class="md:w-5/12 text-right md:pr-12 mb-8 md:mb-0">
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Sentinel</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Inteligencia Activa</span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">El desarrollo culmina, pero la vigilancia comienza. Construimos modelos estocásticos para someter su flujo de caja a miles de escenarios de estrés. Si una métrica operativa amenaza la rentabilidad, el sistema emite una alerta antes del cierre contable.</p>
+                    </div>
+                    
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-full items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
+                        <span class="font-serif italic font-bold">03</span>
+                    </div>
+
+                    <div class="md:w-5/12 md:pl-12 w-full">
+                        <div class="bg-[#F4F1EA] p-6 border-l-2 border-[#5A6352]">
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Mecánica Técnica</h4>
+                            <ul class="text-sm font-sans text-gray-700 space-y-2">
+                                <li>&bull; Simulaciones probabilísticas (Monte Carlo).</li>
+                                <li>&bull; Detección de anomalías algorítmicas.</li>
+                                <li>&bull; Alertas directivas (Push/Mail).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#F4F1EA] border-t border-[#1C1C1C]/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                    
+                    <div class="lg:col-span-5 flex flex-col justify-center">
+                        <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Control de Calidad</span>
+                        <h2 class="text-4xl font-serif text-[#1C1C1C] leading-tight mb-6">
+                            El protocolo de precisión <em class="italic text-[#5A6352]">ALCOA+.</em>
+                        </h2>
+                        <p class="text-sm text-gray-700 font-sans leading-relaxed mb-6">
+                            Creado originalmente por la FDA para garantizar la integridad de los datos en ensayos clínicos, nosotros lo hemos adaptado como nuestro estándar innegociable para la arquitectura financiera.
+                        </p>
+                        <p class="text-sm text-gray-700 font-sans leading-relaxed font-semibold border-l-2 border-[#1C1C1C] pl-4">
+                            Su margen neto requiere la misma precisión técnica que un protocolo farmacéutico. Si sus bases de datos no superan este estándar, no procedemos con la visualización.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <div class="bg-white p-6 shadow-sm border border-[#1C1C1C]/5 hover:border-[#5A6352] transition-colors">
+                            <span class="text-2xl font-serif font-bold text-[#5A6352] mb-2 block">A</span>
+                            <h4 class="text-sm font-bold font-sans uppercase tracking-widest text-[#1C1C1C] mb-2">Attributable</h4>
+                            <p class="text-xs font-sans text-gray-600">Rastreamos el origen exacto del dato. Quién lo generó, en qué sistema y bajo qué transacción comercial.</p>
+                        </div>
+
+                        <div class="bg-white p-6 shadow-sm border border-[#1C1C1C]/5 hover:border-[#5A6352] transition-colors">
+                            <span class="text-2xl font-serif font-bold text-[#5A6352] mb-2 block">L</span>
+                            <h4 class="text-sm font-bold font-sans uppercase tracking-widest text-[#1C1C1C] mb-2">Legible</h4>
+                            <p class="text-xs font-sans text-gray-600">Información estructurada, libre de errores de captura, homologada y disponible para lectura a largo plazo.</p>
+                        </div>
+
+                        <div class="bg-white p-6 shadow-sm border border-[#1C1C1C]/5 hover:border-[#5A6352] transition-colors">
+                            <span class="text-2xl font-serif font-bold text-[#5A6352] mb-2 block">C</span>
+                            <h4 class="text-sm font-bold font-sans uppercase tracking-widest text-[#1C1C1C] mb-2">Contemporaneous</h4>
+                            <p class="text-xs font-sans text-gray-600">Los datos deben registrarse y actualizarse en el momento de la ejecución, garantizando latencia cero.</p>
+                        </div>
+
+                        <div class="bg-white p-6 shadow-sm border border-[#1C1C1C]/5 hover:border-[#5A6352] transition-colors">
+                            <span class="text-2xl font-serif font-bold text-[#5A6352] mb-2 block">O</span>
+                            <h4 class="text-sm font-bold font-sans uppercase tracking-widest text-[#1C1C1C] mb-2">Original</h4>
+                            <p class="text-xs font-sans text-gray-600">Conexión directa con la base de datos primaria (ERP), eliminando las copias frágiles en Excel.</p>
+                        </div>
+
+                        <div class="bg-white p-6 shadow-sm border border-[#1C1C1C]/5 hover:border-[#5A6352] transition-colors sm:col-span-2">
+                            <span class="text-2xl font-serif font-bold text-[#5A6352] mb-2 block">A+</span>
+                            <h4 class="text-sm font-bold font-sans uppercase tracking-widest text-[#1C1C1C] mb-2">Accurate &amp; Complete</h4>
+                            <p class="text-xs font-sans text-gray-600">Matemáticamente correctos. Sin omisiones, sin estimaciones vacías y respaldados por evidencia estadística rigurosa.</p>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
-            <div class="method-result">
-                <strong>Resultado:</strong> Usted sabe exactamente cuánto dinero pierde por datos incorrectos.
+        </section>
+
+        <section class="py-24 bg-[#1C1C1C] text-white text-center">
+            <div class="max-w-3xl mx-auto px-4">
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Ejecución</span>
+                <h2 class="text-3xl md:text-4xl font-serif leading-tight mb-8">Someter su operación a escrutinio.</h2>
+                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="inline-flex items-center bg-[#F4F1EA] text-[#1C1C1C] font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-[#5A6352] hover:text-white transition-colors duration-300">
+                    Iniciar Evaluación de Admisión
+                    <svg class="w-4 h-4 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#1C1C1C] text-white pb-12 pt-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-sans font-bold uppercase tracking-widest text-sm block">Evangelista &amp; Co.</span>
+                <span class="text-xs text-gray-500 mt-1 block">Intelligence Architecture Firm &copy; 2026</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="mailto:info@evangelistaco.com" class="text-xs text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Contacto Corporativo</a>
             </div>
         </div>
 
-        <!-- ARCHITECTURE -->
-        <div class="method-phase fade-in" id="architecture">
-            <div class="phase-header">
-                <span class="phase-number">FASE II</span>
-                <h3>ARCHITECTURE — Infraestructura de Decisión</h3>
-            </div>
-            <div class="method-grid">
-                <div class="method-item">
-                    <h4>¿Qué hacemos?</h4>
-                    <p>Construimos infraestructura de inteligencia sobre datos auditados. No reemplazamos sistemas; los conectamos de manera confiable.</p>
-                </div>
-                <div class="method-item">
-                    <h4>¿Cómo?</h4>
-                    <p>Motor de Decision Intelligence con vistas diferenciadas por perfil directivo: CEO recibe certeza de rumbo, CFO cuantificación de riesgo, COO alertas operativas.</p>
-                </div>
-                <div class="method-item">
-                    <h4>¿Qué entrega?</h4>
-                    <ul>
-                        <li>Simulación de escenarios estratégicos cuantificados</li>
-                        <li>Alertas tempranas de discrepancias operativas</li>
-                        <li>Success fee solo si hay ahorro comprobable</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="method-result">
-                <strong>Resultado:</strong> Decisiones con certeza estadística, no intuición.
-            </div>
-        </div>
-
-        <!-- SENTINEL -->
-        <div class="method-phase fade-in" id="sentinel">
-            <div class="phase-header">
-                <span class="phase-number">FASE III</span>
-                <h3>SENTINEL — Motor Monte Carlo</h3>
-            </div>
-            <div class="method-grid">
-                <div class="method-item">
-                    <h4>¿Qué hacemos?</h4>
-                    <p>Vigilancia continua 24/7 de datos operativos mediante plataforma SaaS. Alertas automáticas ante anomalías estadísticas.</p>
-                </div>
-                <div class="method-item">
-                    <h4>¿Cómo?</h4>
-                    <p>Simulación Monte Carlo en tiempo real. 10,000 iteraciones por cada decisión estratégica para cuantificar probabilidades reales de cada escenario.</p>
-                </div>
-                <div class="method-item">
-                    <h4>¿Qué entrega?</h4>
-                    <ul>
-                        <li>Probabilidad cuantificada de cada resultado posible</li>
-                        <li>Riesgo medido (VaR, CVaR) por decisión</li>
-                        <li>Sensibilidad de variables críticas</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="method-result">
-                <strong>Resultado:</strong> Nunca más toma una decisión sin conocer la probabilidad de cada escenario.
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="why-works-section">
-    <div class="container">
-        <p class="eyebrow" style="text-align:center;">LA DIFERENCIA</p>
-        <h2 class="fade-in" style="text-align:center;margin-bottom:var(--space-12);">Garantía Financiera</h2>
-
-        <div class="comparison fade-in">
-            <div class="comparison-item">
-                <h3>Otras Consultoras</h3>
-                <p>Cobran por horas. Ganan lo mismo si sus recomendaciones funcionan o no. Sin exposición al riesgo del cliente.</p>
-            </div>
-            <div class="comparison-divider" aria-hidden="true">VS</div>
-            <div class="comparison-item highlight">
-                <h3>Evangelista &amp; Co.</h3>
-                <p>Cobramos Success Fee. Solo ganamos el variable si hay ahorro comprobable con acceso a libros. Compartimos el riesgo.</p>
-            </div>
-        </div>
-
-        <p class="conclusion-text fade-in">Eso nos obliga a encontrar resultados reales, no a vender reportes bonitos.</p>
-
-        <div class="cta-center">
-            <a href="sectores.html" class="btn-secondary">Ver impacto por sector →</a>
-        </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-left">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
-                <p class="footer-tagline">Arquitectos de la verdad operativa</p>
-            </div>
-            <div class="footer-links">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-            </div>
-            <div class="footer-right">
-                <p>&copy; 2026 Evangelista &amp; Co.</p>
-                <p>Puebla, México</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
+<!-- ══════════════════════════════════════════ MODAL CHATBOT -->
 <div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Diagnóstico Ejecutivo">
     <div class="modal-content">
         <div class="modal-header">
             <div class="modal-header-title">
-                <div class="modal-avatar" aria-hidden="true">E</div>
+                <div class="modal-avatar" aria-hidden="true">S</div>
                 <div>
-                    <div class="modal-name">Socio Digital</div>
+                    <div class="modal-name">Socio Digital · Evangelista &amp; Co.</div>
                     <div class="modal-sub">Evangelista &amp; Co.</div>
                 </div>
             </div>
             <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
         </div>
         <div id="chat-container"></div>
-        <div id="chat-input-area" style="display:none;align-items:center;gap:8px;padding:12px 24px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3);">
-            <input id="chat-free-input" type="text" placeholder="Escriba su respuesta..." autocomplete="off" maxlength="500" style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:10px 14px;font-size:0.875rem;font-family:inherit;outline:none;" />
-            <button id="chat-send-free" aria-label="Enviar" style="background:var(--accent-gold);border:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <div id="chat-input-area">
+            <input
+                id="chat-free-input"
+                type="text"
+                placeholder="Escriba su respuesta..."
+                autocomplete="off"
+                maxlength="600"
+            />
+            <button id="chat-send-free" aria-label="Enviar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
             </button>
         </div>
     </div>
@@ -240,15 +274,89 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/diagnostico.js"></script>
 <script>
-    (function () {
-        var els = document.querySelectorAll('.fade-in');
-        var obs = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(function (el) { obs.observe(el); });
-        var h = document.getElementById('header');
-        if (h) window.addEventListener('scroll', function () { h.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-    })();
+(function () {
+    // Scroll fade-in observer
+    var els = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+    els.forEach(function (el) { observer.observe(el); });
+
+    // Header scroll shadow
+    var header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var id = a.getAttribute('href');
+            var target = id.length > 1 ? document.querySelector(id) : null;
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Number counter animation
+    function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var format = el.getAttribute('data-format');
+        if (!target || !format) return;
+
+        var duration = 1800;
+        var startTime = null;
+
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            var value = eased * target;
+
+            if (format === 'currency') {
+                el.textContent = '$' + value.toFixed(1) + 'M+';
+            } else if (format === 'percent') {
+                if (target >= 100) {
+                    el.textContent = Math.round(value) + '%';
+                } else {
+                    el.textContent = (value >= 10 ? '+' : '') + Math.round(value) + '%';
+                }
+            }
+
+            if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    // Observe counters
+    var counterObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                animateCounter(e.target);
+                counterObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(function (el) {
+        counterObs.observe(el);
+    });
+})();
 </script>
+
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/diagnostico.js"></script>
 </body>
 </html>

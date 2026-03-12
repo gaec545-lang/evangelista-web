@@ -3,246 +3,217 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sectores | Evangelista &amp; Co.</title>
-    <meta name="description" content="Impacto por sector: Manufactura, Retail, Construcción, Servicios Profesionales. Nodos críticos y estrategia de inteligencia operativa." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Sectores de Intervención | Evangelista & Co.</title>
+    <meta name="description" content="Arbitraje de ineficiencias por sector. Soluciones de inteligencia arquitectónica para Manufactura, Retail, Construcción y Servicios Corporativos." />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['"Cormorant Garamond"', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
 </head>
-<body>
+<body class="bg-[#F4F1EA] text-[#1C1C1C] font-sans antialiased selection:bg-[#5A6352] selection:text-white">
 
-<header class="header-sticky" id="header">
-    <div class="container">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
-            </a>
-            <nav class="main-nav" aria-label="Navegación principal">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-                <a href="mailto:info@evangelistaco.com" class="email-link">info@evangelistaco.com</a>
-            </nav>
-            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-        </div>
-    </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-        <a href="por-que-nosotros.html">Por qué nosotros</a>
-        <a href="metodologia.html">Metodología</a>
-        <a href="sectores.html">Sectores</a>
-        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-        <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
-    </nav>
-</header>
+    <header class="header-sticky bg-white/90 backdrop-blur-md border-b border-[#1C1C1C]/10 fixed w-full top-0 z-50 transition-all duration-300" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
 
-<section class="page-hero">
-    <div class="container">
-        <p class="eyebrow">DÓNDE OPERAMOS</p>
-        <h1 class="fade-in">Impacto por <span class="accent-italic">Sector</span></h1>
-        <p class="subtitle fade-in">Cada sector tiene nodos críticos diferentes. La metodología es la misma; el diagnóstico, personalizado.</p>
-    </div>
-</section>
+                <a href="index.html" class="flex items-center gap-4 group" aria-label="Inicio Evangelista & Co.">
+                    <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." class="h-10 w-auto grayscale contrast-125 group-hover:opacity-80 transition-opacity" />
+                    <div class="flex flex-col">
+                        <span class="font-sans font-bold uppercase tracking-[0.15em] text-sm text-[#1C1C1C]">Evangelista &amp; Co.</span>
+                        <span class="font-serif italic text-xs text-[#5A6352]">Intelligence Architecture Firm</span>
+                    </div>
+                </a>
 
-<section class="sectors-detail-section">
-    <div class="container">
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de la Firma">
+                    <a href="por-que-nosotros.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">La Firma</a>
+                    <a href="metodologia.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Metodología</a>
+                    <a href="sectores.html" class="text-sm font-semibold tracking-wide text-[#5A6352] border-b border-[#5A6352]">Sectores</a>
+                    
+                    <span class="w-[1px] h-4 bg-[#1C1C1C]/20 mx-2"></span>
+                    
+                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Sentinel</a>
+                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white text-xs font-bold uppercase tracking-widest px-6 py-2.5 hover:bg-[#1C1C1C] transition-colors duration-300">
+                        Admisión
+                    </button>
+                </nav>
 
-        <div class="sector-detail-card fade-in" id="manufactura">
-            <div class="sector-detail-header">
-                <span class="sector-icon-lg" aria-hidden="true">🏭</span>
-                <div>
-                    <p class="eyebrow">SECTOR 01</p>
-                    <h2>Manufactura PYME</h2>
-                </div>
             </div>
-            <div class="sector-content">
-                <div class="sector-col">
-                    <h4>Nodo Crítico</h4>
-                    <p>El inventario. En manufactura PYME, entre el 15% y el 30% del inventario registrado no existe físicamente. El sistema dice una cosa; el almacén, otra.</p>
-                    <ul>
-                        <li>Merma no contabilizada por turno</li>
-                        <li>Diferencias entre ERP y conteo físico</li>
-                        <li>Materias primas no trazadas por lote</li>
-                    </ul>
-                </div>
-                <div class="sector-col">
-                    <h4>Impacto Cuantificado</h4>
-                    <p>Una textilera con 3 plantas recuperó $2.3M MXN en inventario fantasma tras un Foundation de 4 semanas. El costo del problema era invisible porque nadie había auditado la fuente.</p>
-                    <div class="sector-stat">
-                        <span class="sector-stat-number">$2.3M</span>
-                        <span class="sector-stat-label">recuperado en inventario fantasma</span>
+        </div>
+    </header>
+
+    <main class="pt-20">
+
+        <section class="py-24 md:py-32 bg-[#F4F1EA] border-b border-[#1C1C1C]/10 fade-in">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Aplicación Transversal</span>
+                <h1 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">
+                    El riesgo asume distintas formas.<br/>
+                    <em class="italic text-[#5A6352]">La protección exige rigor sectorial.</em>
+                </h1>
+                <p class="text-lg text-gray-700 font-sans leading-relaxed max-w-3xl mx-auto pt-4">
+                    La ineficiencia que destruye el margen en una planta de manufactura no se comporta igual que la entropía financiera en una firma de servicios. Diseñamos ecosistemas de datos parametrizados para la fricción exacta de su industria.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
+                    <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-1 rounded-sm">
+                        <img src="assets/Business.webp" alt="Manufactura e Industria" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-6 left-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 01</div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Manufactura e Industria</h2>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">En operaciones de alta intensidad, el margen se erosiona en los puntos ciegos entre la cadena de suministro, el almacén y el piso de producción. La falta de conciliación en tiempo real convierte la merma en una pérdida contable aceptada.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Auditoría forense sobre el costo de producción real vs. teórico.</p>
+                            </div>
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Ecosistema</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Trazabilidad ALCOA+ que unifica sensores de piso, mermas de almacén y ERP financiero en un solo centro de mando directivo.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="sector-col">
-                    <h4>Estrategia</h4>
-                    <p>Foundation en nodo de almacén. Validación ALCOA+ de entradas, salidas y ajustes. Architecture para dashboard de producción por turno con alertas de desviación.</p>
-                    <a href="metodologia.html#foundation" class="link-arrow">Ver Foundation →</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="sector-detail-card fade-in" id="retail">
-            <div class="sector-detail-header">
-                <span class="sector-icon-lg" aria-hidden="true">🛒</span>
-                <div>
-                    <p class="eyebrow">SECTOR 02</p>
-                    <h2>Retail &amp; Distribución</h2>
-                </div>
-            </div>
-            <div class="sector-content">
-                <div class="sector-col">
-                    <h4>Nodo Crítico</h4>
-                    <p>El margen por SKU. En retail con múltiples puntos de venta, el margen bruto real difiere del margen reportado por errores de costo, devoluciones no procesadas y descuentos no registrados.</p>
-                    <ul>
-                        <li>Ventas en múltiples sistemas sin conciliación</li>
-                        <li>Categorías de baja rotación con margen negativo oculto</li>
-                        <li>Devoluciones que no impactan inventario</li>
-                    </ul>
-                </div>
-                <div class="sector-col">
-                    <h4>Impacto Cuantificado</h4>
-                    <p>Un retailer con 8 sucursales incrementó su margen bruto en 18 puntos porcentuales al identificar 3 categorías que erosionaban el resultado consolidado sin que ningún reporte lo evidenciara.</p>
-                    <div class="sector-stat">
-                        <span class="sector-stat-number">+18%</span>
-                        <span class="sector-stat-label">incremento en margen bruto</span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
+                    <div class="order-1 lg:order-1">
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Retail y Comercialización</h2>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">La dependencia de reportes de ventas fragmentados por sucursal genera un espejismo de liquidez. El verdadero asesino de la rentabilidad en retail es la inmovilización silenciosa de capital en inventario fantasma y categorías de baja rotación.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Identificación matemática de capital atrapado y discrepancias de punto de venta.</p>
+                            </div>
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Ecosistema</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Gobierno de datos que ejecuta conciliación automatizada entre ERP, inventario físico y proyecciones de flujo de caja para el CFO.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-2 rounded-sm">
+                        <img src="assets/Business%20(1).webp" alt="Retail y Comercialización" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-6 right-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 02</div>
                     </div>
                 </div>
-                <div class="sector-col">
-                    <h4>Estrategia</h4>
-                    <p>Foundation en punto de venta y ERP. Conciliación de ventas por canal. Architecture con vista CFO de rentabilidad por categoría, sucursal y vendedor en tiempo real.</p>
-                    <a href="metodologia.html#architecture" class="link-arrow">Ver Architecture →</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="sector-detail-card fade-in" id="construccion">
-            <div class="sector-detail-header">
-                <span class="sector-icon-lg" aria-hidden="true">🏗️</span>
-                <div>
-                    <p class="eyebrow">SECTOR 03</p>
-                    <h2>Construcción</h2>
-                </div>
-            </div>
-            <div class="sector-content">
-                <div class="sector-col">
-                    <h4>Nodo Crítico</h4>
-                    <p>El presupuesto de obra. En construcción, la desviación promedio entre presupuesto y costo real supera el 22%. No por mala ejecución, sino por datos de origen incorrecto.</p>
-                    <ul>
-                        <li>Estimaciones basadas en proyectos históricos no auditados</li>
-                        <li>Materiales con precios desactualizados en catálogo</li>
-                        <li>Subcontratistas sin trazabilidad de avance real</li>
-                    </ul>
-                </div>
-                <div class="sector-col">
-                    <h4>Impacto Cuantificado</h4>
-                    <p>Una constructora con 12 obras activas redujo su desviación presupuestal de 22% a 6% en dos ciclos de obra al implementar Architecture con alertas tempranas de sobrecosto por partida.</p>
-                    <div class="sector-stat">
-                        <span class="sector-stat-number">−16pp</span>
-                        <span class="sector-stat-label">reducción en desviación presupuestal</span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
+                    <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-1 rounded-sm">
+                        <img src="assets/_.jpeg" alt="Construcción y Real Estate" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-6 left-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 03</div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Construcción y Real Estate</h2>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">El desfase temporal entre el avance físico de obra y la facturación contable destruye la liquidez. Las desviaciones presupuestales suelen encubrirse en subcontratos y estimaciones optimistas hasta que es demasiado tarde para corregirlas.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Cruce forense entre estimaciones pagadas vs. insumos entregados.</p>
+                            </div>
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Ecosistema</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Arquitectura de inteligencia que emite alertas predictivas sobre el rebase de presupuestos antes de que el capital sea desembolsado.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="sector-col">
-                    <h4>Estrategia</h4>
-                    <p>Foundation en catálogos de precios y contratos vigentes. Sentinel con simulación Monte Carlo para proyección de costo final de obra bajo diferentes escenarios de mercado.</p>
-                    <a href="metodologia.html#sentinel" class="link-arrow">Ver Sentinel →</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="sector-detail-card fade-in" id="servicios">
-            <div class="sector-detail-header">
-                <span class="sector-icon-lg" aria-hidden="true">💼</span>
-                <div>
-                    <p class="eyebrow">SECTOR 04</p>
-                    <h2>Servicios Profesionales</h2>
-                </div>
-            </div>
-            <div class="sector-content">
-                <div class="sector-col">
-                    <h4>Nodo Crítico</h4>
-                    <p>La rentabilidad por proyecto. En despachos y firmas de servicios, entre el 25% y el 40% de las horas trabajadas no se facturan. El problema no es el talento; es la arquitectura de medición.</p>
-                    <ul>
-                        <li>Horas no facturables sin causa documentada</li>
-                        <li>Proyectos cerrados sin análisis de rentabilidad real</li>
-                        <li>Pricing basado en intuición, no en costo-hora auditado</li>
-                    </ul>
-                </div>
-                <div class="sector-col">
-                    <h4>Impacto Cuantificado</h4>
-                    <p>Una firma de servicios profesionales obtuvo 340% de ROI en el primer año al rediseñar su estructura de pricing sobre datos auditados de costo-hora real por perfil y tipo de proyecto.</p>
-                    <div class="sector-stat">
-                        <span class="sector-stat-number">340%</span>
-                        <span class="sector-stat-label">ROI año 1</span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
+                    <div class="order-1 lg:order-1">
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Servicios Corporativos</h2>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">En firmas donde el principal activo es el capital humano, el riesgo reside en la entropía administrativa. Los silos de información departamental impiden ver si un proyecto o cliente específico está absorbiendo recursos de manera ineficiente.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Análisis de la eficiencia estructural de nómina y costos fijos por centro de utilidad.</p>
+                            </div>
+                            <div class="border-l-2 border-[#1C1C1C] pl-4">
+                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Ecosistema</span>
+                                <p class="text-sm font-sans text-gray-800 font-medium">Visibilidad financiera de alto rendimiento que permite al Consejo auditar la rentabilidad neta por hora, por cliente y por socio.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-2 rounded-sm">
+                        <img src="assets/Corporate%20Meeting%20Insight.jpeg" alt="Servicios Corporativos" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-6 right-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 04</div>
                     </div>
                 </div>
-                <div class="sector-col">
-                    <h4>Estrategia</h4>
-                    <p>Foundation en sistema de registro de horas y facturación. Architecture con modelo de rentabilidad por cliente, proyecto y perfil. Revisión de estructura tarifaria con base estadística.</p>
-                    <a href="metodologia.html#foundation" class="link-arrow">Ver Foundation →</a>
-                </div>
-            </div>
-        </div>
 
-    </div>
-</section>
+            </div>
+        </section>
 
-<section class="sector-agnostic-section">
-    <div class="container">
-        <div class="agnostic-content fade-in">
-            <p class="eyebrow" style="text-align:center;">SU SECTOR NO ESTÁ EN LA LISTA</p>
-            <h2 class="fade-in" style="text-align:center;">La metodología es <span class="accent-italic">agnóstica</span></h2>
-            <p class="lead fade-in" style="text-align:center;max-width:680px;margin:0 auto var(--space-10);">Si su empresa toma decisiones basadas en datos, tiene un nodo crítico. Nuestra metodología ALCOA+ se adapta a cualquier sector donde la integridad del dato sea determinante para el resultado.</p>
-            <div class="cta-center">
-                <button class="btn-primary" onclick="window.openDiagnostico && window.openDiagnostico()">Solicitar diagnóstico para mi sector →</button>
+        <section class="py-24 bg-[#1C1C1C] text-white text-center border-t border-white/10 fade-in">
+            <div class="max-w-3xl mx-auto px-4">
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Su Operación</span>
+                <h2 class="text-3xl md:text-4xl font-serif leading-tight mb-8">Audite el riesgo latente de su industria.</h2>
+                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="inline-flex items-center bg-[#F4F1EA] text-[#1C1C1C] font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-[#5A6352] hover:text-white transition-colors duration-300">
+                    Iniciar Evaluación de Admisión
+                    <svg class="w-4 h-4 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-left">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
-                <p class="footer-tagline">Arquitectos de la verdad operativa</p>
-            </div>
-            <div class="footer-links">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-            </div>
-            <div class="footer-right">
-                <p>&copy; 2026 Evangelista &amp; Co.</p>
-                <p>Puebla, México</p>
-            </div>
-        </div>
-    </div>
-</footer>
+    </main>
 
+<!-- ══════════════════════════════════════════ MODAL CHATBOT -->
 <div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Diagnóstico Ejecutivo">
     <div class="modal-content">
         <div class="modal-header">
             <div class="modal-header-title">
-                <div class="modal-avatar" aria-hidden="true">E</div>
+                <div class="modal-avatar" aria-hidden="true">S</div>
                 <div>
-                    <div class="modal-name">Socio Digital</div>
+                    <div class="modal-name">Socio Digital · Evangelista &amp; Co.</div>
                     <div class="modal-sub">Evangelista &amp; Co.</div>
                 </div>
             </div>
             <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
         </div>
         <div id="chat-container"></div>
-        <div id="chat-input-area" style="display:none;align-items:center;gap:8px;padding:12px 24px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3);">
-            <input id="chat-free-input" type="text" placeholder="Escriba su respuesta..." autocomplete="off" maxlength="500" style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:10px 14px;font-size:0.875rem;font-family:inherit;outline:none;" />
-            <button id="chat-send-free" aria-label="Enviar" style="background:var(--accent-gold);border:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <div id="chat-input-area">
+            <input
+                id="chat-free-input"
+                type="text"
+                placeholder="Escriba su respuesta..."
+                autocomplete="off"
+                maxlength="600"
+            />
+            <button id="chat-send-free" aria-label="Enviar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
             </button>
         </div>
     </div>
@@ -251,15 +222,127 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/diagnostico.js"></script>
 <script>
-    (function () {
-        var els = document.querySelectorAll('.fade-in');
-        var obs = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(function (el) { obs.observe(el); });
-        var h = document.getElementById('header');
-        if (h) window.addEventListener('scroll', function () { h.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-    })();
+(function () {
+    // Scroll fade-in observer
+    var els = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+    els.forEach(function (el) { observer.observe(el); });
+
+    // Header scroll shadow
+    var header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var id = a.getAttribute('href');
+            var target = id.length > 1 ? document.querySelector(id) : null;
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Number counter animation
+    function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var format = el.getAttribute('data-format');
+        if (!target || !format) return;
+
+        var duration = 1800;
+        var startTime = null;
+
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            var value = eased * target;
+
+            if (format === 'currency') {
+                el.textContent = '$' + value.toFixed(1) + 'M+';
+            } else if (format === 'percent') {
+                if (target >= 100) {
+                    el.textContent = Math.round(value) + '%';
+                } else {
+                    el.textContent = (value >= 10 ? '+' : '') + Math.round(value) + '%';
+                }
+            }
+
+            if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    // Observe counters
+    var counterObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                animateCounter(e.target);
+                counterObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(function (el) {
+        counterObs.observe(el);
+    });
+})();
 </script>
+    
+    <footer class="bg-[#1C1C1C] text-white pb-12 pt-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-sans font-bold uppercase tracking-widest text-sm block">Evangelista &amp; Co.</span>
+                <span class="text-xs text-gray-500 mt-1 block">Intelligence Architecture Firm &copy; 2026</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="mailto:info@evangelistaco.com" class="text-xs text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Contacto Corporativo</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="diagnostico-modal" style="display: none;" class="fixed inset-0 z-[100] items-center justify-center bg-[#1C1C1C]/80 backdrop-blur-sm">
+        <div class="modal-content w-full max-w-lg bg-[#F4F1EA] shadow-2xl relative flex flex-col h-[70vh] md:h-[80vh] border-t-4 border-[#5A6352] rounded-t-xl md:rounded-xl overflow-hidden mx-auto mt-auto md:mt-0 animate-slide-up">
+            
+            <div class="p-6 bg-[#1C1C1C] text-[#F4F1EA] flex justify-between items-start shrink-0">
+                <div>
+                    <span class="text-[#5A6352] text-[10px] font-bold tracking-[0.2em] uppercase mb-2 block flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        Sistema de Admisión
+                    </span>
+                    <h3 class="text-xl font-serif">Socio Digital <span class="italic font-light opacity-70">v1.0</span></h3>
+                </div>
+                <button onclick="window.closeDiagnostico()" class="text-white/50 hover:text-white transition-colors p-2" aria-label="Cerrar">✕</button>
+            </div>
+
+            <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-6 font-sans text-sm bg-white custom-scrollbar pb-20"></div>
+
+            <div id="chat-input-area" class="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-[#1C1C1C]/10 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] shrink-0">
+                <div class="relative flex items-center">
+                    <input type="text" id="chat-free-input" placeholder="Describa su situación operativa..." class="w-full bg-[#F4F1EA] border border-[#1C1C1C]/10 rounded-full px-6 py-4 text-sm focus:outline-none focus:border-[#5A6352] focus:ring-1 focus:ring-[#5A6352] pr-16 transition-all text-[#1C1C1C]" autocomplete="off" />
+                    <button id="chat-send-free" class="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-[#1C1C1C] text-white rounded-full flex items-center justify-center hover:bg-[#5A6352] transition-colors disabled:opacity-50" aria-label="Enviar mensaje">
+                        <svg class="w-4 h-4 translate-x-[-1px] translate-y-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    </button>
+                </div>
+                <div class="text-center mt-2">
+                    <span class="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Protocolo de Confidencialidad Activo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

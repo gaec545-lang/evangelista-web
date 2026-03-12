@@ -3,170 +3,243 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Por qué nosotros | Evangelista &amp; Co.</title>
-    <meta name="description" content="Identidad organizacional de Evangelista &amp; Co. Misión, visión 2030, valores y hoja de ruta estratégica." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>La Firma | Evangelista & Co.</title>
+    <meta name="description" content="Manifiesto y tesis de inversión de Evangelista & Co. Arquitectura de inteligencia forense para la protección del margen neto." />
+
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['"Cormorant Garamond"', 'serif'],
+            },
+            colors: {
+              olive: '#5A6352',
+              cream: '#F4F1EA',
+              carbon: '#1C1C1C'
+            }
+          }
+        }
+      }
+    </script>
 </head>
-<body>
 
-<header class="header-sticky" id="header">
-    <div class="container">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
-            </a>
-            <nav class="main-nav" aria-label="Navegación principal">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-                <a href="mailto:info@evangelistaco.com" class="email-link">info@evangelistaco.com</a>
-            </nav>
-            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-        </div>
-    </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-        <a href="por-que-nosotros.html">Por qué nosotros</a>
-        <a href="metodologia.html">Metodología</a>
-        <a href="sectores.html">Sectores</a>
-        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-        <a href="mailto:info@evangelistaco.com">info@evangelistaco.com</a>
-    </nav>
-</header>
+<body class="bg-[#F4F1EA] text-[#1C1C1C] font-sans antialiased selection:bg-[#5A6352] selection:text-white">
 
-<section class="page-hero">
-    <div class="container">
-        <p class="eyebrow">IDENTIDAD ORGANIZACIONAL</p>
-        <h1 class="fade-in">Arquitectos de la Verdad <span class="accent-italic">Operativa</span></h1>
-        <p class="subtitle fade-in">No somos una agencia de servicios. Somos ingenieros de certeza.</p>
-    </div>
-</section>
+    <header class="header-sticky bg-white/90 backdrop-blur-md border-b border-[#1C1C1C]/10 fixed w-full top-0 z-50 transition-all duration-300" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
 
-<section class="content-section">
-    <div class="container-narrow">
-        <p class="eyebrow">MISIÓN</p>
-        <h2 class="fade-in">Exponer la verdad operativa</h2>
-        <p class="lead fade-in">Mediante ingeniería forense de datos para catalizar un progreso radical en organizaciones de alta complejidad.</p>
-        <p class="fade-in">Eliminamos la intuición falible y la sustituimos por una arquitectura de decisiones de alta fidelidad.</p>
-    </div>
-</section>
+                <a href="index.html" class="flex items-center gap-4 group" aria-label="Inicio Evangelista & Co.">
+                    <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." class="h-10 w-auto grayscale contrast-125 group-hover:opacity-80 transition-opacity" />
+                    <div class="flex flex-col">
+                        <span class="font-sans font-bold uppercase tracking-[0.15em] text-sm text-[#1C1C1C]">Evangelista &amp; Co.</span>
+                        <span class="font-serif italic text-xs text-[#5A6352]">Intelligence Architecture Firm</span>
+                    </div>
+                </a>
 
-<section class="content-section alt-bg">
-    <div class="container-narrow">
-        <p class="eyebrow">VISIÓN 2030</p>
-        <h2 class="fade-in">Autoridad técnica suprema en México</h2>
-        <p class="lead fade-in">Consolidarse como el socio estratégico indispensable para empresas Enterprise que exigen integridad absoluta.</p>
-        <p class="fade-in">Ser el estándar de facto para auditorías de datos en organizaciones de alta complejidad operativa en México.</p>
-    </div>
-</section>
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de la Firma">
+                    <a href="por-que-nosotros.html" class="text-sm font-semibold tracking-wide text-[#5A6352] border-b border-[#5A6352]">La Firma</a>
+                    <a href="metodologia.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Metodología</a>
+                    <a href="sectores.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Sectores</a>
+                    
+                    <span class="w-[1px] h-4 bg-[#1C1C1C]/20 mx-2"></span>
+                    
+                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Sentinel</a>
+                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white text-xs font-bold uppercase tracking-widest px-6 py-2.5 hover:bg-[#1C1C1C] transition-colors duration-300">
+                        Admisión
+                    </button>
+                </nav>
 
-<section class="content-section">
-    <div class="container">
-        <p class="eyebrow">VALORES</p>
-        <h2 class="fade-in">Los Valores Evangelista</h2>
-        <p class="fade-in" style="font-size:0.95rem;color:var(--text-muted);max-width:640px;margin-bottom:0;">Estos principios son innegociables. Funcionan como filtro de contratación y de selección de clientes.</p>
-        <div class="values-detailed">
-            <div class="value-block fade-in">
-                <h3>Honestidad Radical</h3>
-                <p>Si la empresa del cliente está rota, se lo diremos con datos, aunque duela. No cobramos por complacer.</p>
-            </div>
-            <div class="value-block fade-in">
-                <h3>Rigor Arquitectónico</h3>
-                <p>Rechazamos los parches. Si la base de datos no es sólida, no construimos inteligencia encima. Primero los cimientos.</p>
-            </div>
-            <div class="value-block fade-in">
-                <h3>Armonía Operativa</h3>
-                <p>La técnica sin ejecución es inútil. Conectamos la precisión del dato con la calidez de la estrategia humana.</p>
-            </div>
-            <div class="value-block fade-in">
-                <h3>Soberanía del Dato</h3>
-                <p>El cliente es dueño de su verdad. No secuestramos la operación con dependencias ni licencias opacas.</p>
             </div>
         </div>
-    </div>
-</section>
+    </header>
 
-<section class="content-section alt-bg">
-    <div class="container">
-        <p class="eyebrow">HOJA DE RUTA</p>
-        <h2 class="fade-in">Estrategia 2026–2030</h2>
-        <div class="roadmap">
-            <div class="roadmap-phase fade-in">
-                <span class="phase-label">FASE 1 — 2026</span>
-                <h3>Captura y Validación</h3>
-                <p><strong style="color:var(--text-primary);">Objetivo:</strong> Validación del modelo High-Ticket</p>
-                <p>Adquisición de 2 Clientes Ancla Enterprise mediante Foundation como diagnóstico forense rápido. Primer Success Fee comprobado.</p>
+    <main class="pt-20"> <section class="py-24 md:py-32 bg-[#F4F1EA]">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">La Firma</span>
+                <h1 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">
+                    La intuición es un riesgo que el capital no puede financiar.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 font-sans leading-relaxed max-w-3xl mx-auto border-t border-[#1C1C1C]/10 pt-8">
+                    Evangelista &amp; Co. nació de una observación irrefutable: las empresas de alta complejidad operan bajo la ilusión del control. Diseñamos esta firma para ser el árbitro implacable entre lo que sus sistemas reportan y lo que su cuenta bancaria refleja.
+                </p>
             </div>
-            <div class="roadmap-phase fade-in">
-                <span class="phase-label">FASE 2 — 2027–2028</span>
-                <h3>Estabilización y Escala</h3>
-                <p><strong style="color:var(--text-primary);">Objetivo:</strong> Verticalización y flujo recurrente</p>
-                <p>Dominio de nichos industriales en Puebla y CDMX. 60% de cartera migrada a Sentinel (MRR). Equipo Senior establecido.</p>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                    
+                    <div class="md:col-span-5 border-l-4 border-[#1C1C1C] pl-6">
+                        <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Nuestra Tesis</span>
+                        <h2 class="text-4xl font-serif text-[#1C1C1C] leading-tight">
+                            El software es un commodity.<br/>
+                            <em class="italic text-[#5A6352]">La certeza es el activo.</em>
+                        </h2>
+                    </div>
+
+                    <div class="md:col-span-7 space-y-6 text-gray-700 font-sans text-base leading-relaxed">
+                        <p>
+                            El mercado está saturado de agencias que instalan licencias, construyen tableros genéricos y se retiran. Nosotros sostenemos que la arquitectura de datos no es un proyecto de TI; es una reestructuración crítica del capital intelectual de su empresa.
+                        </p>
+                        <p>
+                            Nuestro mandato absoluto es exponer la verdad operativa mediante ingeniería forense. No buscamos complacer a las gerencias con reportes optimistas; buscamos proteger el flujo de efectivo del Consejo de Administración mediante un rigor arquitectónico inquebrantable.
+                        </p>
+                    </div>
+
+                </div>
             </div>
-            <div class="roadmap-phase fade-in">
-                <span class="phase-label">FASE 3 — 2028+</span>
-                <h3>Autoridad e Institucionalización</h3>
-                <p><strong style="color:var(--text-primary);">Objetivo:</strong> El "Sello Evangelista" como estándar</p>
-                <p>Certificación ALCOA+ reconocida como requisito para auditorías bancarias en clientes Enterprise.</p>
+        </section>
+
+        <section class="py-24 bg-[#1C1C1C] text-[#F4F1EA]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="mb-16 max-w-3xl">
+                    <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Filtro de Admisión</span>
+                    <h2 class="text-4xl font-serif leading-tight mb-6">Operamos bajo una estricta gobernanza de la verdad.</h2>
+                    <p class="text-gray-400 font-sans text-sm leading-relaxed">
+                        Estos principios no son sugerencias corporativas. Dictan exactamente cómo operamos y determinan a qué clientes aceptamos en nuestra cartera activa.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/10 pt-12">
+                    
+                    <div class="group">
+                        <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">01.</span>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Honestidad Radical</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">Si su operación está fracturada, se lo demostraremos con evidencia cuantitativa. No mitigamos el riesgo operativo utilizando lenguaje corporativo complaciente.</p>
+                    </div>
+
+                    <div class="group">
+                        <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">02.</span>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Rigor Secuencial</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">Rechazamos el desarrollo visual sobre bases podridas. Si la integridad del dato no supera nuestra auditoría inicial, detenemos el proyecto. Los cimientos siempre preceden a la fachada.</p>
+                    </div>
+
+                    <div class="group">
+                        <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">03.</span>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Arbitraje Objetivo</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">No somos empleados del departamento de sistemas ni validadores de la operación diaria. Actuamos como auditores independientes al servicio exclusivo del Consejo de Administración.</p>
+                    </div>
+
+                    <div class="group">
+                        <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">04.</span>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Soberanía del Cliente</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">Desarrollamos ecosistemas de inteligencia, no dependencias comerciales. Usted posee el código, la infraestructura en la nube y el control absoluto de su capital intelectual.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="managing-partner" class="py-24 md:py-32 bg-[#F4F1EA]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    
+                    <div class="lg:col-span-5 relative h-[500px] lg:h-[700px] w-full rounded-sm overflow-hidden group shadow-2xl">
+                        <img 
+                            src="assets/Yo.jpeg" 
+                            alt="Adriel Evangelista - Managing Partner" 
+                            class="absolute inset-0 w-full h-full object-cover grayscale-[20%] contrast-125 transition-transform duration-1000 group-hover:scale-105" 
+                        />
+                        <div class="absolute inset-0 bg-[#1C1C1C]/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        
+                        <div class="absolute bottom-0 left-0 bg-[#1C1C1C] text-[#F4F1EA] p-4 pr-8">
+                            <span class="block text-[10px] font-bold font-sans uppercase tracking-[0.2em] text-[#5A6352] mb-1">Fundador</span>
+                            <span class="block text-sm font-serif">Adriel Evangelista</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 flex flex-col justify-center">
+                        
+                        <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">El Managing Partner</span>
+                        <h2 class="text-4xl md:text-5xl font-serif text-[#1C1C1C] leading-tight mb-12">
+                            La visión detrás del rigor.
+                        </h2>
+
+                        <blockquote class="border-l-2 border-[#5A6352] pl-6 md:pl-10 mb-10">
+                            <p class="text-2xl md:text-3xl font-serif italic text-[#1C1C1C] leading-relaxed mb-6">
+                                "Para decidir, hay que saber; y para saber, hay que observar con rigor implacable. Nosotros somos el escrutinio que expone su verdad operativa."
+                            </p>
+                            <footer class="text-xs font-sans font-bold text-[#1C1C1C] uppercase tracking-widest">
+                                Adriel Evangelista <span class="text-[#5A6352] mx-2">|</span> <span class="text-gray-500 normal-case font-normal italic tracking-normal">Managing Partner</span>
+                            </footer>
+                        </blockquote>
+
+                        <div class="text-base text-gray-700 font-sans leading-relaxed mb-12 space-y-6">
+                            <p>
+                                Fundé Evangelista &amp; Co. al identificar una falla sistémica en el entorno corporativo: las empresas acumulan software, pero carecen de gobierno. 
+                            </p>
+                            <p>
+                                Mi visión nunca fue crear una agencia tecnológica, sino una firma de arquitectura de inteligencia capaz de conectar la precisión forense de los datos con la armonía de la ejecución operativa. Nuestra esencia no es implementar tableros; es auditar su realidad y erradicar la entropía administrativa. 
+                            </p>
+                            <p class="font-semibold text-[#1C1C1C]">
+                                Para saber exactamente dónde se destruye su margen neto, hay que observar la operación sin filtros. Eso somos.
+                            </p>
+                        </div>
+
+                        <div>
+                            <button onclick="window.openDiagnostico && window.openDiagnostico()" class="inline-flex items-center bg-[#1C1C1C] text-white font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-[#5A6352] transition-colors duration-300 group">
+                                Iniciar Proceso de Admisión
+                                <svg class="w-4 h-4 ml-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#1C1C1C] text-white py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="font-sans font-bold uppercase tracking-widest text-sm block">Evangelista &amp; Co.</span>
+                <span class="text-xs text-gray-500 mt-1 block">Intelligence Architecture Firm &copy; 2026</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="mailto:info@evangelistaco.com" class="text-xs text-gray-400 hover:text-white uppercase tracking-widest transition-colors">Contacto Corporativo</a>
             </div>
         </div>
-    </div>
-</section>
 
-<section class="commitment-section">
-    <div class="container">
-        <div class="brand-promise fade-in">
-            <p>"Si los datos existen, encontraremos la verdad.<br />Si la verdad duele, diseñaremos la cura operativa."</p>
-        </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-left">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
-                <span class="brand-name">EVANGELISTA &amp; CO.</span>
-                <p class="footer-tagline">Arquitectos de la verdad operativa</p>
-            </div>
-            <div class="footer-links">
-                <a href="por-que-nosotros.html">Por qué nosotros</a>
-                <a href="metodologia.html">Metodología</a>
-                <a href="sectores.html">Sectores</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-            </div>
-            <div class="footer-right">
-                <p>&copy; 2026 Evangelista &amp; Co.</p>
-                <p>Puebla, México</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
+<!-- ══════════════════════════════════════════ MODAL CHATBOT -->
 <div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Diagnóstico Ejecutivo">
     <div class="modal-content">
         <div class="modal-header">
             <div class="modal-header-title">
-                <div class="modal-avatar" aria-hidden="true">E</div>
+                <div class="modal-avatar" aria-hidden="true">S</div>
                 <div>
-                    <div class="modal-name">Socio Digital</div>
+                    <div class="modal-name">Socio Digital · Evangelista &amp; Co.</div>
                     <div class="modal-sub">Evangelista &amp; Co.</div>
                 </div>
             </div>
             <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
         </div>
         <div id="chat-container"></div>
-        <div id="chat-input-area" style="display:none;align-items:center;gap:8px;padding:12px 24px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3);">
-            <input id="chat-free-input" type="text" placeholder="Escriba su respuesta..." autocomplete="off" maxlength="500" style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:10px 14px;font-size:0.875rem;font-family:inherit;outline:none;" />
-            <button id="chat-send-free" aria-label="Enviar" style="background:var(--accent-gold);border:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <div id="chat-input-area">
+            <input
+                id="chat-free-input"
+                type="text"
+                placeholder="Escriba su respuesta..."
+                autocomplete="off"
+                maxlength="600"
+            />
+            <button id="chat-send-free" aria-label="Enviar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
             </button>
         </div>
     </div>
@@ -175,15 +248,88 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/diagnostico.js"></script>
 <script>
-    (function () {
-        var els = document.querySelectorAll('.fade-in');
-        var obs = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(function (el) { obs.observe(el); });
-        var h = document.getElementById('header');
-        if (h) window.addEventListener('scroll', function () { h.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-    })();
+(function () {
+    // Scroll fade-in observer
+    var els = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+    els.forEach(function (el) { observer.observe(el); });
+
+    // Header scroll shadow
+    var header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var id = a.getAttribute('href');
+            var target = id.length > 1 ? document.querySelector(id) : null;
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Number counter animation
+    function animateCounter(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var format = el.getAttribute('data-format');
+        if (!target || !format) return;
+
+        var duration = 1800;
+        var startTime = null;
+
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            var value = eased * target;
+
+            if (format === 'currency') {
+                el.textContent = '$' + value.toFixed(1) + 'M+';
+            } else if (format === 'percent') {
+                if (target >= 100) {
+                    el.textContent = Math.round(value) + '%';
+                } else {
+                    el.textContent = (value >= 10 ? '+' : '') + Math.round(value) + '%';
+                }
+            }
+
+            if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    // Observe counters
+    var counterObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                animateCounter(e.target);
+                counterObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-target]').forEach(function (el) {
+        counterObs.observe(el);
+    });
+})();
 </script>
+
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
