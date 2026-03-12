@@ -14,26 +14,28 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════ HEADER -->
 <header class="header-sticky" id="header">
     <div class="container">
         <div class="header-content">
 
-            <a href="index.html" class="logo">
-                <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." />
+            <a href="index.html" class="logo" aria-label="Inicio Evangelista & Co.">
+                <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." />
                 <div class="logo-text">
                     <span class="brand-name">Evangelista &amp; Co.</span>
-                    <span class="brand-tagline">Intelligence Architecture</span>
+                    <span class="brand-tagline">Intelligence Architecture Firm</span>
                 </div>
             </a>
 
-            <nav class="main-nav" aria-label="Navegación principal">
-                <a href="#nosotros">Nosotros</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#metodologia">Metodología</a>
-                <a href="#sectores">Sectores</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-                <a href="#contacto" class="nav-cta">Diagnóstico</a>
+            <nav class="main-nav" aria-label="Navegación de la Firma">
+                <a href="por-que-nosotros.html">La Firma</a>
+                <a href="metodologia.html">Metodología</a>
+                <a href="sectores.html">Sectores</a>
+                <a href="#perspectivas">Perspectivas</a>
+                
+                <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
+                
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Sentinel</a>
+                <button class="nav-cta" onclick="window.openDiagnostico && window.openDiagnostico()" style="border: none; cursor: pointer; font-family: var(--font-sans);">Admisión</button>
             </nav>
 
             <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
@@ -47,71 +49,16 @@
 
         </div>
     </div>
+    
     <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
-        <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#metodologia">Metodología</a>
-        <a href="#sectores">Sectores</a>
-        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
-        <a href="#contacto">Diagnóstico Ejecutivo</a>
+        <a href="por-que-nosotros.html">La Firma</a>
+        <a href="metodologia.html">Metodología</a>
+        <a href="sectores.html">Sectores</a>
+        <a href="#perspectivas">Perspectivas</a>
+        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso Sentinel</a>
+        <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Solicitar Admisión</a>
     </nav>
 </header>
-
-<!-- ══════════════════════════════════════════ HERO -->
-<section class="hero-fullscreen" id="inicio">
-
-    <!-- Background image layer -->
-    <div class="hero-bg" aria-hidden="true">
-        <img src="assets/Business.webp" alt="" loading="eager" />
-    </div>
-
-    <!-- Decorador geométrico -->
-    <div class="geo-decor geo-decor--hero" aria-hidden="true">
-        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="150" cy="150" r="130" stroke="currentColor" stroke-width="0.5"/>
-            <circle cx="150" cy="150" r="100" stroke="currentColor" stroke-width="0.5"/>
-            <circle cx="150" cy="150" r="70" stroke="currentColor" stroke-width="1"/>
-            <line x1="20" y1="150" x2="280" y2="150" stroke="currentColor" stroke-width="0.4"/>
-            <line x1="150" y1="20" x2="150" y2="280" stroke="currentColor" stroke-width="0.4"/>
-        </svg>
-    </div>
-
-    <div class="container">
-        <div class="hero-content fade-in">
-            <p class="eyebrow">Para Directores Generales</p>
-            <h1 class="hero-title">
-                Donde los datos<br />
-                <em class="accent-italic">se convierten</em><br />
-                en decisiones.
-            </h1>
-            <p class="hero-subtitle">
-                Diseñamos la arquitectura de inteligencia que transforma datos
-                dispersos en ventajas competitivas sostenibles para su organización.
-            </p>
-            <div class="cta-group">
-                <button class="btn-primary" onclick="window.openDiagnostico && window.openDiagnostico()">
-                    Iniciar Diagnóstico Ejecutivo
-                </button>
-                <a href="#metodologia" class="btn-secondary">Conocer Metodología</a>
-            </div>
-        </div>
-
-        <div class="stats-bar">
-            <div class="stat-item fade-in stagger-1">
-                <span class="stat-number" data-target="3.5" data-format="currency">$3.5M+</span>
-                <span class="stat-label">Recuperado en 2025</span>
-            </div>
-            <div class="stat-item fade-in stagger-2">
-                <span class="stat-number" data-target="100" data-format="percent">100%</span>
-                <span class="stat-label">ALCOA+ Compliant</span>
-            </div>
-            <div class="stat-item fade-in stagger-3">
-                <span class="stat-number">&lt;10 días</span>
-                <span class="stat-label">Primer dictamen entregado</span>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ══════════════════════════════════════════ QUIÉNES SOMOS -->
 <section class="about-section" id="nosotros">
