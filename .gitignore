@@ -1,4 +1,36 @@
-.env
+# Entornos virtuales
+venv/
+.venv/
+env/
+Evangelista_web/server/venv/
+
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Sistema
 .DS_Store
+._*
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# AI/Agentes (opcional, pero usualmente no se suben las reglas locales)
+.clinerules
+.clinerules-gstack
+.gemini/
+
+# Logs
+*.log
+
+# Toolset
+gstack/

@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Evangelista &amp; Co. | Arquitectura de Inteligencia</title>
-    <meta name="description" content="Arquitectura de Inteligencia para Directores Generales. Decisiones auditables con certeza estadística. Metodología ALCOA+ y Monte Carlo." />
+    <title>Evangelista &amp; Co. | Strategic Governance & Capital Control</title>
+    <meta name="description" content="Gobernanza estratégica y control de capital para Directores Generales. Certeza fiduciaria y eficiencia del capital mediante escrutinio institucional auditable." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,8 +18,19 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['"Cormorant Garamond"', 'serif'],
+              sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              serif: ['Fraunces', 'Georgia', 'serif'],
+            },
+            colors: {
+              carbon:  '#1C1C1C',
+              beige:   '#F4F1EA',
+              olive: {
+                DEFAULT: '#5A6352',
+                dark:    '#4A5342',
+                light:   '#8A9A7D',
+              },
+              body:    '#2D3319',
+              muted:   '#707070',
             }
           }
         }
@@ -49,15 +57,15 @@
                 <a href="por-que-nosotros.html">La Firma</a>
                 <a href="metodologia.html">Metodología</a>
                 <a href="sectores.html">Sectores</a>
-                <a href="#perspectivas">Perspectivas</a>
+                <a href="#evidencia">Perspectivas</a>
                 
                 <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
                 
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Sentinel</a>
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Tableros C-Level</a>
                 <button class="nav-cta" onclick="window.openDiagnostico && window.openDiagnostico()" style="border: none; cursor: pointer; font-family: var(--font-sans);">Admisión</button>
             </nav>
 
-            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+            <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
                 <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
@@ -73,8 +81,8 @@
         <a href="por-que-nosotros.html">La Firma</a>
         <a href="metodologia.html">Metodología</a>
         <a href="sectores.html">Sectores</a>
-        <a href="#perspectivas">Perspectivas</a>
-        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso Sentinel</a>
+        <a href="#evidencia">Perspectivas</a>
+        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso Tableros</a>
         <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Solicitar Admisión</a>
     </nav>
 </header>
@@ -82,34 +90,27 @@
 <section class="hero-fullscreen" id="inicio">
 
     <div class="hero-bg" aria-hidden="true">
-        <img src="assets/Business.webp" alt="" loading="eager" />
+        <img src="assets/Business.webp" alt="Consultoría estratégica de alto nivel para Directores Generales en oficina corporativa" loading="eager" width="1920" height="1080" />
     </div>
 
-    <div class="geo-decor geo-decor--hero" aria-hidden="true">
-        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="150" cy="150" r="130" stroke="currentColor" stroke-width="0.5"/>
-            <circle cx="150" cy="150" r="100" stroke="currentColor" stroke-width="0.5"/>
-            <circle cx="150" cy="150" r="70" stroke="currentColor" stroke-width="1"/>
-            <line x1="20" y1="150" x2="280" y2="150" stroke="currentColor" stroke-width="0.4"/>
-            <line x1="150" y1="20" x2="150" y2="280" stroke="currentColor" stroke-width="0.4"/>
-        </svg>
+    <div class="geo-decor geo-decor--hero" aria-hidden="true" style="position:absolute; bottom: var(--s15); right: var(--s6); font-family: var(--font-serif); font-size: clamp(7rem, 18vw, 16rem); font-weight: 300; color: var(--text-dark); opacity: 0.04; line-height: 1; letter-spacing: -0.05em; pointer-events: none; user-select: none; z-index: 0;">
+        01
     </div>
 
     <div class="container">
         <div class="hero-content fade-in">
             <p class="eyebrow">Para Directores Generales</p>
             <h1 class="hero-title">
-                Donde los datos<br />
-                <em class="accent-italic">se convierten</em><br />
-                en decisiones.
+                Gestionar por intuición es un riesgo<br />
+                <em class="accent-italic">que el capital ya no</em><br />
+                puede financiar.
             </h1>
             <p class="hero-subtitle">
-                Diseñamos la arquitectura de inteligencia que transforma datos
-                dispersos en ventajas competitivas sostenibles para su organización.
+                Donde termina la consultoría de gestión tradicional, comienza la eficiencia del capital. Reemplazamos la incertidumbre operativa con un escrutinio institucional auditable que protege su margen neto ante el Consejo de Administración.
             </p>
             <div class="cta-group">
                 <button class="btn-primary" onclick="window.openDiagnostico && window.openDiagnostico()">
-                    Iniciar Diagnóstico Ejecutivo
+                    Iniciar Protocolo de Vetting
                 </button>
                 <a href="metodologia.html" class="btn-secondary">Conocer Metodología</a>
             </div>
@@ -118,30 +119,50 @@
         <div class="stats-bar">
             <div class="stat-item fade-in stagger-1">
                 <span class="stat-number" data-target="3.5" data-format="currency">$3.5M+</span>
-                <span class="stat-label">Recuperado en 2025</span>
+                <span class="stat-label">Margen Recuperado (2025)</span>
             </div>
             <div class="stat-item fade-in stagger-2">
                 <span class="stat-number" data-target="100" data-format="percent">100%</span>
-                <span class="stat-label">ALCOA+ Compliant</span>
+                <span class="stat-label">Rigor ALCOA+</span>
             </div>
             <div class="stat-item fade-in stagger-3">
                 <span class="stat-number">&lt;10 días</span>
-                <span class="stat-label">Primer dictamen entregado</span>
+                <span class="stat-label">Primer Dictamen Estructural</span>
             </div>
         </div>
     </div>
+</section>
+
+<!-- ══════════════════════════════════════════ Sección: Posicionamiento Institucional -->
+<section id="posicionamiento" class="py-24 bg-white border-b border-[#1C1C1C]/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div class="lg:col-span-5">
+        <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">La Firma</span>
+        <h2 class="text-4xl font-serif text-[#1C1C1C] leading-tight">Orquestación única para problemas estructurales.</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="text-lg text-gray-700 font-sans leading-relaxed mb-6">
+          Evangelista & Co. es una firma de arquitectura de inteligencia diseñada para diagnosticar, transformar y vigilar las operaciones críticas de empresas en México. No somos un proveedor; somos un socio de intervención que diseña cada <em>engagement</em> desde cero según la fricción específica de su modelo de negocio.
+        </p>
+        <p class="text-base text-gray-600 font-sans leading-relaxed">
+          Bajo un solo mandato de responsabilidad, orquestamos equipos de consultoría estratégica e ingeniería de datos de alto rendimiento. Nuestra ejecución se apoya en una plataforma operativa propietaria que garantiza trazabilidad institucional en todo el ciclo de vida del proyecto, desde la primera hipótesis hasta la entrega final, permitiendo que usted mantenga el control absoluto mientras nosotros absorbemos la complejidad operativa.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="tesis-operativa" class="relative py-24 bg-[#F4F1EA]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       
-      <div class="relative h-[550px] w-full rounded-sm overflow-hidden group shadow-2xl">
+      <div class="relative h-[550px] w-full rounded-none overflow-hidden group border border-[#1C1C1C] shadow-[12px_12px_0_0_#1C1C1C] hover:-translate-y-2 hover:shadow-[16px_16px_0_0_#1C1C1C] transition-all duration-300">
         <img src="assets/Business.webp" alt="Operación Empresarial" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         <div class="absolute inset-0 bg-[#1C1C1C]/30"></div>
         
         <div class="absolute top-12 left-8 bg-[#1C1C1C]/70 backdrop-blur-md border border-white/10 p-5 max-w-[240px] transform transition-transform duration-500 hover:translate-x-2">
-          <p class="text-white font-sans text-xs font-bold tracking-widest uppercase">Sistemas fragmentados.</p>
+          <p class="text-white font-sans text-xs font-bold tracking-widest uppercase">Entropía Administrativa.</p>
         </div>
         
         <div class="absolute bottom-12 right-8 bg-[#1C1C1C]/70 backdrop-blur-md border border-white/10 p-5 max-w-[240px] transform transition-transform duration-500 hover:-translate-x-2">
@@ -152,11 +173,11 @@
       <div class="flex flex-col justify-center">
         <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Riesgo y Gobierno Corporativo</span>
         <h2 class="text-4xl md:text-5xl font-serif text-[#1C1C1C] leading-tight mb-6">
-          Su infraestructura tecnológica registra transacciones.<br/>
-          <em class="italic text-[#5A6352]">Nosotros auditamos su rentabilidad.</em>
+          Su infraestructura registra transacciones.<br/>
+          <em class="italic text-[#5A6352]">Nuestra firma audita su capital.</em>
         </h2>
         <p class="text-lg text-gray-700 font-sans leading-relaxed mb-8">
-          Su ERP registra el pasado operativo. Su departamento de TI garantiza la disponibilidad de los sistemas. Sin embargo, ninguna de estas entidades tiene el mandato de cuestionar la eficiencia del capital. Nuestra firma audita sus bases de datos, homologa la información aislada y expone ante el Consejo de Administración el margen exacto que se está destruyendo por entropía administrativa.
+          La mayoría de las organizaciones operan bajo la ilusión del control. Su ERP registra el pasado, pero ninguna entidad en su estructura actual tiene el mandato de cuestionar la eficiencia del capital en tiempo real. Actuamos como el árbitro objetivo entre lo que sus sistemas reportan y lo que su flujo de caja refleja, erradicando la entropía que erosiona el valor de su empresa.
         </p>
         <div>
           <a href="por-que-nosotros.html" class="inline-flex items-center text-[#1C1C1C] font-sans font-bold text-sm tracking-widest uppercase hover:text-[#5A6352] transition-colors border-b border-[#1C1C1C] hover:border-[#5A6352] pb-1">
@@ -179,31 +200,31 @@
         <h2 class="text-4xl font-serif text-[#1C1C1C] leading-tight">Estructuración de capital intelectual y control operativo.</h2>
       </div>
       <p class="mt-6 md:mt-0 max-w-md text-gray-600 font-sans text-sm leading-relaxed border-l-2 border-[#5A6352] pl-6">
-        No comercializamos licencias de software ni implementamos soluciones genéricas. Ejecutamos un protocolo de tres fases para transferir el control absoluto de los datos a la Dirección General.
+        No comercializamos software ni implementamos soluciones genéricas. Ejecutamos un protocolo de intervención diseñado para transferir el control absoluto de la verdad operativa a la Dirección General.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
-      <div class="group border border-[#5A6352]/20 p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 bg-white">
-        <span class="text-4xl font-serif text-[#F4F1EA] group-hover:text-[#5A6352] transition-colors drop-shadow-sm mb-6 block">01</span>
-        <h3 class="text-lg font-bold font-sans text-[#1C1C1C] uppercase tracking-widest mb-1">Foundation</h3>
-        <h4 class="text-sm font-serif text-[#5A6352] italic mb-5">Auditoría Diagnóstica.</h4>
-        <p class="text-gray-600 font-sans text-sm leading-relaxed mb-6">Evaluamos la integridad de sus fuentes de información actuales. Cuantificamos discrepancias, ineficiencias operativas y fugas de capital mediante un dictamen con evidencia irrefutable.</p>
+      <div class="group border border-[#1C1C1C] p-10 hover:shadow-[8px_8px_0_0_#1C1C1C] hover:-translate-y-2 transition-all duration-300 bg-white">
+        <span class="text-6xl font-serif text-[#1C1C1C]/10 group-hover:text-[#5A6352] transition-colors drop-shadow-sm mb-6 block leading-none">01</span>
+        <h3 class="text-lg font-bold font-sans text-[#1C1C1C] uppercase tracking-widest mb-1">Diagnóstico</h3>
+        <h4 class="text-sm font-serif text-[#5A6352] italic mb-5">Hemofilia Operativa.</h4>
+        <p class="text-gray-600 font-sans text-sm leading-relaxed mb-6">Identificamos la erosión de margen en áreas críticas: desde ineficiencias en el control de inventarios hasta mermas no auditadas y sobrecostos operativos.</p>
       </div>
 
-      <div class="group border border-[#5A6352]/20 p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 bg-white">
-        <span class="text-4xl font-serif text-[#F4F1EA] group-hover:text-[#5A6352] transition-colors drop-shadow-sm mb-6 block">02</span>
-        <h3 class="text-lg font-bold font-sans text-[#1C1C1C] uppercase tracking-widest mb-1">Architecture</h3>
-        <h4 class="text-sm font-serif text-[#5A6352] italic mb-5">Gobierno de Datos.</h4>
-        <p class="text-gray-600 font-sans text-sm leading-relaxed mb-6">Desarrollamos la infraestructura que consolida sus sistemas de registro. Implementamos ecosistemas segmentados: flujo de caja (CFO), rentabilidad (CEO) y piso (COO).</p>
+      <div class="group border border-[#1C1C1C] p-10 hover:shadow-[8px_8px_0_0_#1C1C1C] hover:-translate-y-2 transition-all duration-300 bg-white">
+        <span class="text-6xl font-serif text-[#1C1C1C]/10 group-hover:text-[#5A6352] transition-colors drop-shadow-sm mb-6 block leading-none">02</span>
+        <h3 class="text-lg font-bold font-sans text-[#1C1C1C] uppercase tracking-widest mb-1">Extracción</h3>
+        <h4 class="text-sm font-serif text-[#5A6352] italic mb-5">Integración Legacy.</h4>
+        <p class="text-gray-600 font-sans text-sm leading-relaxed mb-6">Nos conectamos quirúrgicamente a sus sistemas legacy (SAP, Aspel o proyecciones manuales) para consolidar una fuente única de verdad sin interrumpir la operación.</p>
       </div>
 
-      <div class="group border border-[#5A6352]/20 p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 bg-white">
-        <span class="text-4xl font-serif text-[#F4F1EA] group-hover:text-[#5A6352] transition-colors drop-shadow-sm mb-6 block">03</span>
-        <h3 class="text-lg font-bold font-sans text-[#1C1C1C] uppercase tracking-widest mb-1">Sentinel</h3>
-        <h4 class="text-sm font-serif text-[#5A6352] italic mb-5">Inteligencia Continua.</h4>
-        <p class="text-gray-600 font-sans text-sm leading-relaxed mb-6">Desplegamos protocolos de vigilancia sobre sus indicadores de riesgo. Si una métrica compromete la rentabilidad, el Consejo recibe la alerta antes del cierre contable.</p>
+      <div class="group border border-[#1C1C1C] p-10 hover:shadow-[8px_8px_0_0_#1C1C1C] hover:-translate-y-2 transition-all duration-300 bg-white">
+        <span class="text-6xl font-serif text-[#1C1C1C]/10 group-hover:text-[#5A6352] transition-colors drop-shadow-sm mb-6 block leading-none">03</span>
+        <h3 class="text-lg font-bold font-sans text-[#1C1C1C] uppercase tracking-widest mb-1">Gobernanza</h3>
+        <h4 class="text-sm font-serif text-[#5A6352] italic mb-5">Certeza Directiva.</h4>
+        <p class="text-gray-600 font-sans text-sm leading-relaxed mb-6">Consolidamos sus activos de decisión en un ecosistema de control que protege el EBITDA y garantiza certeza fiduciaria ante el Consejo de Administración.</p>
       </div>
 
     </div>
@@ -227,51 +248,51 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       
-      <div class="bg-white p-10 border-t-4 border-[#1C1C1C] hover:border-[#5A6352] transition-colors duration-300 group shadow-sm hover:shadow-xl">
+      <div class="bg-white p-10 border border-[#1C1C1C] border-t-4 hover:border-[#5A6352] transition-all duration-300 group hover:shadow-[8px_8px_0_0_#1C1C1C] hover:-translate-y-2">
         <h3 class="text-xl font-serif text-[#1C1C1C] mb-6 group-hover:text-[#5A6352] transition-colors">Manufactura e Industria</h3>
         <div class="mb-5">
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Fricción Operativa</span>
-          <p class="text-sm font-sans text-gray-600 leading-relaxed">Sobrecostos ocultos en la cadena de suministro y falta de visibilidad en el piso de producción.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Vectores de Ineficiencia</span>
+          <p class="text-sm font-sans text-gray-600 leading-relaxed">Erosión silenciosa del margen neto en piso y falta de rigor en el costo real vs. teórico.</p>
         </div>
         <div>
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Intervención</span>
-          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Trazabilidad ALCOA+ que reduce mermas e identifica ineficiencias logísticas en tiempo real.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Escrutinio Estructural</span>
+          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Trazabilidad ALCOA+ que detiene la hemofilia operativa y recupera el control del capital logístico.</p>
         </div>
       </div>
 
-      <div class="bg-white p-10 border-t-4 border-[#1C1C1C] hover:border-[#5A6352] transition-colors duration-300 group shadow-sm hover:shadow-xl">
+      <div class="bg-white p-10 border border-[#1C1C1C] border-t-4 hover:border-[#5A6352] transition-all duration-300 group hover:shadow-[8px_8px_0_0_#1C1C1C] hover:-translate-y-2">
         <h3 class="text-xl font-serif text-[#1C1C1C] mb-6 group-hover:text-[#5A6352] transition-colors">Retail y Comercialización</h3>
         <div class="mb-5">
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Fricción Operativa</span>
-          <p class="text-sm font-sans text-gray-600 leading-relaxed">Inmovilización de capital por inventario fantasma y fragmentación de datos en puntos de venta.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Vectores de Ineficiencia</span>
+          <p class="text-sm font-sans text-gray-600 leading-relaxed">Capital inmovilizado en activos fantasma y fragmentación de la verdad operativa en puntos de venta.</p>
         </div>
         <div>
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Intervención</span>
-          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Conciliación automatizada entre ERP y piso para la recuperación inmediata de flujo de efectivo.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Escrutinio Estructural</span>
+          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Auditoría de inventario crítico para la liberación inmediata de liquidez y flujo de efectivo.</p>
         </div>
       </div>
 
-      <div class="bg-white p-10 border-t-4 border-[#1C1C1C] hover:border-[#5A6352] transition-colors duration-300 group shadow-sm hover:shadow-xl">
+      <div class="bg-white p-10 border border-[#1C1C1C] border-t-4 hover:border-[#5A6352] transition-all duration-300 group hover:shadow-[8px_8px_0_0_#1C1C1C] hover:-translate-y-2">
         <h3 class="text-xl font-serif text-[#1C1C1C] mb-6 group-hover:text-[#5A6352] transition-colors">Construcción y Real Estate</h3>
         <div class="mb-5">
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Fricción Operativa</span>
-          <p class="text-sm font-sans text-gray-600 leading-relaxed">Desviaciones presupuestales encubiertas en subcontratos y desfases en el control de obra.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Vectores de Ineficiencia</span>
+          <p class="text-sm font-sans text-gray-600 leading-relaxed">Desviaciones presupuestales por falta de rigor fiduciario y sobrecostos en subcontratos no auditados.</p>
         </div>
         <div>
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Intervención</span>
-          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Gobierno de datos que anticipa y emite alertas sobre el rebase de presupuestos antes de ejecutarse.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Escrutinio Estructural</span>
+          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Arquitectura de control que neutraliza el riesgo de sobregiro y garantiza el rendimiento del capital.</p>
         </div>
       </div>
 
-      <div class="bg-white p-10 border-t-4 border-[#1C1C1C] hover:border-[#5A6352] transition-colors duration-300 group shadow-sm hover:shadow-xl">
+      <div class="bg-white p-10 border border-[#1C1C1C] border-t-4 hover:border-[#5A6352] transition-all duration-300 group hover:shadow-[8px_8px_0_0_#1C1C1C] hover:-translate-y-2">
         <h3 class="text-xl font-serif text-[#1C1C1C] mb-6 group-hover:text-[#5A6352] transition-colors">Servicios Corporativos</h3>
         <div class="mb-5">
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Fricción Operativa</span>
-          <p class="text-sm font-sans text-gray-600 leading-relaxed">Entropía administrativa, silos de información departamental y dependencia de reportes estáticos.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Vectores de Ineficiencia</span>
+          <p class="text-sm font-sans text-gray-600 leading-relaxed">Entropía administrativa sistémica y dependencia crítica de reportes que ocultan la realidad financiera.</p>
         </div>
         <div>
-          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Intervención</span>
-          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Visibilidad consolidada del margen neto y eficiencia estructural de nómina para el Consejo.</p>
+          <span class="block text-[10px] font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-2">Resultado de Escrutinio Estructural</span>
+          <p class="text-sm font-sans text-gray-900 font-medium leading-relaxed">Visibilidad fiduciaria del margen neto y reestructuración eficiente basada en rigor matemático.</p>
         </div>
       </div>
 
@@ -306,10 +327,10 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <div class="mb-16 text-center max-w-3xl mx-auto">
-      <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Evidencia de Impacto</span>
-      <h2 class="text-4xl font-serif leading-tight mb-6">El costo de la certidumbre se paga solo.</h2>
+      <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Escrutinio de Impacto</span>
+      <h2 class="text-4xl font-serif leading-tight mb-6">El rigor del control institucional se paga solo.</h2>
       <p class="text-gray-400 font-sans text-sm leading-relaxed">
-        Los proyectos de Inteligencia de Datos suelen verse como centros de costo. Nuestra arquitectura está diseñada como un centro de recuperación de utilidades.
+        Las iniciativas de inteligencia operativa suelen verse como centros de costo. Nuestra arquitectura está diseñada como un centro de recuperación de utilidades fiduciarias.
       </p>
     </div>
 
@@ -344,7 +365,7 @@
     <div class="max-w-4xl mx-auto text-center">
       <svg class="w-8 h-8 mx-auto text-[#5A6352] mb-6 opacity-50" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
       <blockquote class="text-2xl md:text-3xl font-serif text-[#F4F1EA] leading-relaxed mb-8">
-        "Llevaba 15 años tomando decisiones directivas basadas en reportes que mi equipo juraba que eran correctos. Evangelista & Co. no me instaló un dashboard; me demostró operativamente que el 30% de mi inventario era una ficción contable."
+        "Llevaba 15 años tomando decisiones basadas en reportes que mi equipo juraba que eran correctos. Evangelista & Co. no me instaló un dashboard; me demostró que mi realidad operativa era una ficción contable."
       </blockquote>
       <cite class="block font-sans text-sm tracking-widest text-[#5A6352] uppercase not-italic">
         Director General <span class="text-gray-500 lowercase tracking-normal italic ml-2">Grupo Retail, Puebla</span>
@@ -360,16 +381,16 @@
   <div class="flex flex-col lg:flex-row">
     
     <div class="lg:w-1/2 bg-[#1C1C1C] p-12 lg:p-24 text-white flex flex-col justify-center">
-      <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4">Mesa de Análisis</span>
-      <h2 class="text-4xl font-serif mb-6">Someta su operación a escrutinio.</h2>
+      <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4">Protocolo de Vetting Ejecutivo</span>
+      <h2 class="text-4xl font-serif mb-6">Sometemos su operación a un escrutinio institucional.</h2>
       <p class="text-gray-400 font-sans leading-relaxed mb-10 max-w-lg">
-        El acceso a nuestra agenda es limitado. Nuestro sistema evaluará la madurez y viabilidad financiera de su caso en tiempo real. De cumplir con los criterios, se habilitará el acceso para una revisión ejecutiva.
+        El acceso a nuestra firma es restringido. Nuestro proceso de admisión evalúa el riesgo fiduciario y la viabilidad de recuperación de capital de su caso. De cumplirse el umbral crítico, se habilitará un canal de intervención directa.
       </p>
       <div>
         <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-white hover:text-[#1C1C1C] transition-colors duration-300">
-          Iniciar Evaluación de Admisión
+          Iniciar Protocolo de Vetting
         </button>
-        <p class="mt-4 text-xs text-gray-500 font-sans italic">Proceso confidencial · Evaluación sin compromiso.</p>
+        <p class="mt-4 text-xs text-gray-500 font-sans italic">Proceso estrictamente confidencial · Sujeto a aprobación directiva.</p>
       </div>
     </div>
 
@@ -413,18 +434,18 @@
                 </p>
             </div>
             <div class="footer-col">
-                <h4>Servicios</h4>
-                <a href="#servicios">Foundation</a>
-                <a href="#servicios">Architecture</a>
-                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Sentinel</a>
+                <h4>Proyectos Especiales</h4>
+                <a href="metodologia.html">Intervención Operativa</a>
+                <a href="metodologia.html">Integración Legacy</a>
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener">Tableros C-Level</a>
             </div>
             <div class="footer-col">
                 <h4>Compañía</h4>
-                <a href="#nosotros">Quiénes Somos</a>
-                <a href="#metodologia">Metodología</a>
-                <a href="#sectores">Sectores</a>
+                <a href="por-que-nosotros.html">Quiénes Somos</a>
+                <a href="metodologia.html">Metodología</a>
+                <a href="sectores.html">Sectores</a>
                 <a href="por-que-nosotros.html">Por qué Nosotros</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#admision">Contacto</a>
             </div>
         </div>
         <div class="footer-bottom">

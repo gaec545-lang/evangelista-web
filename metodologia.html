@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metodología | Evangelista & Co.</title>
-    <meta name="description" content="El rigor técnico detrás de la rentabilidad. Auditoría ALCOA+, Data Mesh y modelos de simulación Monte Carlo para la alta dirección." />
+    <title>Metodología | Protocolo de Escrutinio Estructural</title>
+    <meta name="description" content="Rigor institucional para la eficiencia del capital. Protocolo ALCOA+, Arbitraje Operativo y Vigilancia Fiduciaria para la alta dirección." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="assets/css/styles.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -18,8 +18,19 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['"Cormorant Garamond"', 'serif'],
+              sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              serif: ['Fraunces', 'Georgia', 'serif'],
+            },
+            colors: {
+              carbon:  '#1C1C1C',
+              beige:   '#F4F1EA',
+              olive: {
+                DEFAULT: '#5A6352',
+                dark:    '#4A5342',
+                light:   '#8A9A7D',
+              },
+              body:    '#2D3319',
+              muted:   '#707070',
             }
           }
         }
@@ -43,11 +54,12 @@
                 <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de la Firma">
                     <a href="por-que-nosotros.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">La Firma</a>
                     <a href="metodologia.html" class="text-sm font-semibold tracking-wide text-[#5A6352] border-b border-[#5A6352]">Metodología</a>
+                    <a href="index.html#evidencia" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Perspectivas</a>
                     <a href="sectores.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Sectores</a>
                     
                     <span class="w-[1px] h-4 bg-[#1C1C1C]/20 mx-2"></span>
                     
-                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Sentinel</a>
+                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Tableros C-Level</a>
                     <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white text-xs font-bold uppercase tracking-widest px-6 py-2.5 hover:bg-[#1C1C1C] transition-colors duration-300">
                         Admisión
                     </button>
@@ -72,12 +84,12 @@
             </div>
             
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Protocolo de Intervención</span>
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Protocolo de Intervención Estructural</span>
                 <h1 class="text-5xl md:text-6xl font-serif leading-tight mb-8">
-                    El rigor técnico detrás de <br/><em class="italic text-[#5A6352]">la rentabilidad.</em>
+                    El rigor institucional detrás de <br/><em class="italic text-[#5A6352]">la eficiencia del capital.</em>
                 </h1>
                 <p class="text-lg md:text-xl text-gray-400 font-sans leading-relaxed max-w-3xl mx-auto border-t border-white/10 pt-8">
-                    La certidumbre financiera no es un accidente; es el resultado de un diseño estructural impecable. Nuestra metodología de tres fases está diseñada para auditar, reconstruir y vigilar el capital intelectual de su empresa.
+                    La transparencia operativa no es un accidente; es el resultado de un diseño estructural impecable. Nuestra metodología está diseñada para someter el capital intelectual de su empresa a un escrutinio absoluto.
                 </p>
             </div>
         </section>
@@ -89,22 +101,22 @@
 
                 <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between mb-24 group">
                     <div class="md:w-5/12 text-right md:pr-12 mb-8 md:mb-0">
-                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Foundation</h3>
-                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Auditoría Forense</span>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Sometemos sus bases de datos actuales a un escrutinio implacable. Identificamos latencia, duplicidades de registro y silos de información. Si el dato no es íntegro, no se visualiza. Los cimientos preceden a la estrategia.</p>
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Diagnóstico</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Hemofilia Operativa</span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Sometemos sus flujos de datos a un escrutinio institucional para identificar erosiones de margen en áreas críticas: desde ineficiencias en el control de inventarios hasta mermas no auditadas y sobrecostos operativos.</p>
                     </div>
                     
-                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-full items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-none items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
                         <span class="font-serif italic font-bold">01</span>
                     </div>
 
                     <div class="md:w-5/12 md:pl-12 w-full">
                         <div class="bg-[#F4F1EA] p-6 border-l-2 border-[#5A6352]">
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Mecánica Técnica</h4>
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Mecánica Institucional</h4>
                             <ul class="text-sm font-sans text-gray-700 space-y-2">
-                                <li>&bull; Dictamen de madurez operativa.</li>
-                                <li>&bull; Mapeo de topología de sistemas (ERP, CRM).</li>
-                                <li>&bull; Aplicación del protocolo ALCOA+.</li>
+                                <li>&bull; Identificación de entropía administrativa.</li>
+                                <li>&bull; Mapeo estructural de sistemas críticos.</li>
+                                <li>&bull; Cuantificación del riesgo de capital.</li>
                             </ul>
                         </div>
                     </div>
@@ -113,44 +125,44 @@
                 <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between mb-24 group">
                     <div class="md:w-5/12 md:text-right order-3 md:order-1 w-full mt-8 md:mt-0 md:pr-12">
                         <div class="bg-[#1C1C1C] p-6 border-r-2 border-[#5A6352]">
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#F4F1EA] mb-3">Mecánica Técnica</h4>
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#F4F1EA] mb-3">Mecánica Institucional</h4>
                             <ul class="text-sm font-sans text-gray-400 space-y-2">
-                                <li>&bull; Canalizaciones ETL / ELT automatizadas.</li>
-                                <li>&bull; Nodos Data Mesh departamentales.</li>
-                                <li>&bull; Modelado DAX de alto rendimiento (Power BI).</li>
+                                <li>&bull; Consolidación de fuentes de verdad.</li>
+                                <li>&bull; Orquestación de ingeniería de datos.</li>
+                                <li>&bull; Homologación de activos de decisión.</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-full items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-none items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
                         <span class="font-serif italic font-bold">02</span>
                     </div>
 
                     <div class="md:w-5/12 md:pl-12 order-1 md:order-3">
-                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Architecture</h3>
-                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Gobierno de Datos</span>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Diseñamos la infraestructura de mando. Aplicamos una arquitectura Data Mesh para unificar las áreas de su empresa bajo una sola fuente de verdad. El CFO, el COO y el CEO observan la misma realidad en tiempo real.</p>
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Extracción</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Integración Legacy</span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Nos conectamos quirúrgicamente a sus sistemas legacy (SAP, Aspel o proyecciones manuales) para consolidar una fuente única de verdad sin interrumpir la operación de la empresa.</p>
                     </div>
                 </div>
 
                 <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between group">
                     <div class="md:w-5/12 text-right md:pr-12 mb-8 md:mb-0">
-                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Sentinel</h3>
-                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Inteligencia Activa</span>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed">El desarrollo culmina, pero la vigilancia comienza. Construimos modelos estocásticos para someter su flujo de caja a miles de escenarios de estrés. Si una métrica operativa amenaza la rentabilidad, el sistema emite una alerta antes del cierre contable.</p>
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Gobernanza</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Certeza Directiva</span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Consolidamos sus activos de decisión en un ecosistema de control que protege el EBITDA y garantiza certeza fiduciaria ante el Consejo de Administración.</p>
                     </div>
                     
-                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-full items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
+                    <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-none items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
                         <span class="font-serif italic font-bold">03</span>
                     </div>
 
                     <div class="md:w-5/12 md:pl-12 w-full">
                         <div class="bg-[#F4F1EA] p-6 border-l-2 border-[#5A6352]">
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Mecánica Técnica</h4>
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Infraestructura Propietaria</h4>
                             <ul class="text-sm font-sans text-gray-700 space-y-2">
-                                <li>&bull; Simulaciones probabilísticas (Monte Carlo).</li>
-                                <li>&bull; Detección de anomalías algorítmicas.</li>
-                                <li>&bull; Alertas directivas (Push/Mail).</li>
+                                <li>&bull; Control total del ciclo de vida del proyecto.</li>
+                                <li>&bull; Trazabilidad forense automatizada.</li>
+                                <li>&bull; Alertas predictivas de margen neto.</li>
                             </ul>
                         </div>
                     </div>
@@ -220,7 +232,7 @@
                 <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Ejecución</span>
                 <h2 class="text-3xl md:text-4xl font-serif leading-tight mb-8">Someter su operación a escrutinio.</h2>
                 <button onclick="window.openDiagnostico && window.openDiagnostico()" class="inline-flex items-center bg-[#F4F1EA] text-[#1C1C1C] font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-[#5A6352] hover:text-white transition-colors duration-300">
-                    Iniciar Evaluación de Admisión
+                    Iniciar Protocolo de Vetting
                     <svg class="w-4 h-4 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
             </div>

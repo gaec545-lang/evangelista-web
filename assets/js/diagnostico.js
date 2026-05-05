@@ -6,7 +6,9 @@
 (function () {
     'use strict';
 
-    var BACKEND_URL = 'https://evangelista-web-production.up.railway.app/chat';
+    var BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:8002/chat'
+        : 'https://evangelista-web-production.up.railway.app/chat';
     var CALENDLY_URL = 'https://calendly.com/evangelistaco/diagnostico-ejecutivo';
 
     var OPENING_MESSAGE = 'Hola. Soy el Socio Digital de Evangelista\u00a0&\u00a0Co.\n\nEn mi experiencia, nadie busca arquitectura de inteligencia cuando todo va bien.\n\n¿Qué está pasando en su operación que le hizo pensar en buscarnos hoy?';
@@ -190,10 +192,14 @@
         sendToBackend(text);
     }
 
+    var lastActiveElement = null;
+
     // ── Modal controls ─────────────────────────────────────────────────────────
     function openDiagnostico() {
         var modal = document.getElementById('diagnostico-modal');
         if (!modal) return;
+
+        lastActiveElement = document.activeElement;
 
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -211,7 +217,9 @@
         typingEl = null;
 
         var container = document.getElementById('chat-container');
-        if (container) container.innerHTML = '';
+        if (container) {
+            container.innerHTML = '<div class="chat-skeleton"></div>';
+        }
 
         // Show input area from start
         var area = document.getElementById('chat-input-area');
@@ -222,6 +230,7 @@
 
         // Opening message with typing feel
         setTimeout(function () {
+            if (container) container.innerHTML = '';
             showTyping();
             setTimeout(function () {
                 hideTyping();
@@ -229,7 +238,7 @@
                 history.push({ role: 'assistant', content: OPENING_MESSAGE });
                 enableInput();
             }, 1200);
-        }, 350);
+        }, 600);
     }
 
     function closeDiagnostico() {
@@ -239,6 +248,9 @@
         document.body.style.overflow = '';
         setTimeout(function () {
             modal.style.display = 'none';
+            if (lastActiveElement) {
+                lastActiveElement.focus();
+            }
         }, 350);
     }
 
