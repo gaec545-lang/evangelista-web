@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metodología | Protocolo de Escrutinio Estructural</title>
-    <meta name="description" content="Rigor institucional para la eficiencia del capital. Protocolo ALCOA+, Arbitraje Operativo y Vigilancia Fiduciaria para la alta dirección." />
+    <title>Metodología | Evangelista & Co.</title>
+    <meta name="description" content="Diagnóstico, diseño e implementación, transferencia. El proceso detrás de cada proyecto de Evangelista & Co." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,35 +39,51 @@
 </head>
 <body class="bg-[#F4F1EA] text-[#1C1C1C] font-sans antialiased selection:bg-[#5A6352] selection:text-white">
 
-    <header class="header-sticky bg-white/90 backdrop-blur-md border-b border-[#1C1C1C]/10 fixed w-full top-0 z-50 transition-all duration-300" id="header">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+    <header class="header-sticky" id="header">
+    <div class="container">
+        <div class="header-content">
 
-                <a href="index.html" class="flex items-center gap-4 group" aria-label="Inicio Evangelista & Co.">
-                    <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." class="h-10 w-auto grayscale contrast-125 group-hover:opacity-80 transition-opacity" />
-                    <div class="flex flex-col">
-                        <span class="font-sans font-bold uppercase tracking-[0.15em] text-sm text-[#1C1C1C]">Evangelista &amp; Co.</span>
-                        <span class="font-serif italic text-xs text-[#5A6352]">Intelligence Architecture Firm</span>
-                    </div>
-                </a>
+            <a href="index.html" class="logo" aria-label="Inicio Evangelista & Co.">
+                <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." />
+                <div class="logo-text">
+                    <span class="brand-name">Evangelista &amp; Co.</span>
+                    <span class="brand-tagline">Intelligence Architecture Firm</span>
+                </div>
+            </a>
 
-                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de la Firma">
-                    <a href="por-que-nosotros.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">La Firma</a>
-                    <a href="metodologia.html" class="text-sm font-semibold tracking-wide text-[#5A6352] border-b border-[#5A6352]">Metodología</a>
-                    <a href="index.html#evidencia" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Perspectivas</a>
-                    <a href="sectores.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Sectores</a>
-                    
-                    <span class="w-[1px] h-4 bg-[#1C1C1C]/20 mx-2"></span>
-                    
-                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Tableros C-Level</a>
-                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white text-xs font-bold uppercase tracking-widest px-6 py-2.5 hover:bg-[#1C1C1C] transition-colors duration-300">
-                        Admisión
-                    </button>
-                </nav>
+            <nav class="main-nav" aria-label="Navegación de la Firma">
+                <a href="por-que-nosotros.html">La Firma</a>
+                <a href="metodologia.html">Metodología</a>
+                <a href="sectores.html">Áreas de Práctica</a>
+                <a href="index.html#evidencia">Perspectivas</a>
+                
+                <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
+                
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+                <button class="nav-cta" onclick="window.openDiagnostico && window.openDiagnostico()" style="border: none; cursor: pointer; font-family: var(--font-sans);">Hablar con la firma</button>
+            </nav>
 
-            </div>
+            <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
         </div>
-    </header>
+    </div>
+    
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+        <a href="por-que-nosotros.html">La Firma</a>
+        <a href="metodologia.html">Metodología</a>
+        <a href="sectores.html">Áreas de Práctica</a>
+        <a href="index.html#evidencia">Perspectivas</a>
+        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+        <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Hablar con la firma</a>
+    </nav>
+</header>
 
     <main class="pt-20">
 
@@ -84,12 +100,12 @@
             </div>
             
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Protocolo de Intervención Estructural</span>
-                <h1 class="text-5xl md:text-6xl font-serif leading-tight mb-8">
-                    El rigor institucional detrás de <br/><em class="italic text-[#5A6352]">la eficiencia del capital.</em>
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Cómo trabajamos</span>
+                <h1 class="text-5xl md:text-6xl font-serif leading-tight mb-8 text-white">
+                    Consultoría que diagnostica.<br>Inteligencia que ejecuta.<br>Un solo proceso.
                 </h1>
                 <p class="text-lg md:text-xl text-gray-400 font-sans leading-relaxed max-w-3xl mx-auto border-t border-white/10 pt-8">
-                    La transparencia operativa no es un accidente; es el resultado de un diseño estructural impecable. Nuestra metodología está diseñada para someter el capital intelectual de su empresa a un escrutinio absoluto.
+                    Cada proyecto integra dos disciplinas desde el primer día: el criterio consultivo para entender el problema real, y la inteligencia de negocio para resolverlo con precisión. El alcance varía. El proceso, no.
                 </p>
             </div>
         </section>
@@ -101,9 +117,11 @@
 
                 <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between mb-24 group">
                     <div class="md:w-5/12 text-right md:pr-12 mb-8 md:mb-0">
-                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Diagnóstico</h3>
-                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Hemofilia Operativa</span>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Sometemos sus flujos de datos a un escrutinio institucional para identificar erosiones de margen en áreas críticas: desde ineficiencias en el control de inventarios hasta mermas no auditadas y sobrecostos operativos.</p>
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">01 — Diagnóstico</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4"/span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Todo proyecto comienza con una conversación. El cliente nos cuenta su objetivo o su problema. Nosotros hacemos las preguntas que nadie más ha hecho.
+
+De ahí surge el diagnóstico: una lectura precisa de la brecha entre dónde está la empresa hoy y dónde necesita estar. El diagnóstico define el alcance. El alcance define el trabajo.</p>
                     </div>
                     
                     <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-none items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
@@ -112,7 +130,7 @@
 
                     <div class="md:w-5/12 md:pl-12 w-full">
                         <div class="bg-[#F4F1EA] p-6 border-l-2 border-[#5A6352]">
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Mecánica Institucional</h4>
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#1C1C1C] mb-3">Lo que implica</h4>
                             <ul class="text-sm font-sans text-gray-700 space-y-2">
                                 <li>&bull; Identificación de entropía administrativa.</li>
                                 <li>&bull; Mapeo estructural de sistemas críticos.</li>
@@ -125,7 +143,7 @@
                 <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between mb-24 group">
                     <div class="md:w-5/12 md:text-right order-3 md:order-1 w-full mt-8 md:mt-0 md:pr-12">
                         <div class="bg-[#1C1C1C] p-6 border-r-2 border-[#5A6352]">
-                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#F4F1EA] mb-3">Mecánica Institucional</h4>
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#F4F1EA] mb-3">Lo que implica</h4>
                             <ul class="text-sm font-sans text-gray-400 space-y-2">
                                 <li>&bull; Consolidación de fuentes de verdad.</li>
                                 <li>&bull; Orquestación de ingeniería de datos.</li>
@@ -139,17 +157,21 @@
                     </div>
 
                     <div class="md:w-5/12 md:pl-12 order-1 md:order-3">
-                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Extracción</h3>
-                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Integración Legacy</span>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Nos conectamos quirúrgicamente a sus sistemas legacy (SAP, Aspel o proyecciones manuales) para consolidar una fuente única de verdad sin interrumpir la operación de la empresa.</p>
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">02 — Diseño e implementación</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4"/span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Una vez definido el diagnóstico, diseñamos la solución. Esto puede involucrar arquitectura de datos, desarrollo de herramientas, reestructuración de procesos, o cualquier combinación que el objetivo requiera.
+
+Trabajamos junto al equipo del cliente. Aportamos nuestros consultores y, cuando el proyecto lo exige, incorporamos recursos especializados bajo el mismo esquema de responsabilidad única.</p>
                     </div>
                 </div>
 
                 <div class="relative flex flex-col md:flex-row items-center md:items-start justify-between group">
                     <div class="md:w-5/12 text-right md:pr-12 mb-8 md:mb-0">
-                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">Gobernanza</h3>
-                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4">Certeza Directiva</span>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed">Consolidamos sus activos de decisión en un ecosistema de control que protege el EBITDA y garantiza certeza fiduciaria ante el Consejo de Administración.</p>
+                        <h3 class="text-2xl font-serif text-[#1C1C1C] mb-2">03 — Transferencia y control</h3>
+                        <span class="text-xs font-bold font-sans text-[#5A6352] uppercase tracking-widest block mb-4"/span>
+                        <p class="text-sm text-gray-600 font-sans leading-relaxed">El cierre de un proyecto no es la entrega de un reporte. Es el momento en que el cliente tiene el control total de la inteligencia que construimos juntos.
+
+Documentamos, capacitamos y transferimos. El objetivo no es que el cliente nos necesite para siempre. Es que opere mejor desde el primer día después de que nos retiramos.</p>
                     </div>
                     
                     <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#F4F1EA] border-2 border-[#1C1C1C] rounded-none items-center justify-center z-10 group-hover:bg-[#5A6352] group-hover:border-[#5A6352] group-hover:text-white transition-colors duration-500">
@@ -179,13 +201,13 @@
                     <div class="lg:col-span-5 flex flex-col justify-center">
                         <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Control de Calidad</span>
                         <h2 class="text-4xl font-serif text-[#1C1C1C] leading-tight mb-6">
-                            El protocolo de precisión <em class="italic text-[#5A6352]">ALCOA+.</em>
+                            El estándar que garantiza la integridad de cada proyecto.
                         </h2>
                         <p class="text-sm text-gray-700 font-sans leading-relaxed mb-6">
-                            Creado originalmente por la FDA para garantizar la integridad de los datos en ensayos clínicos, nosotros lo hemos adaptado como nuestro estándar innegociable para la arquitectura financiera.
+                            ALCOA+ es el protocolo de integridad de datos desarrollado originalmente por la FDA para garantizar la validez de la información en ensayos clínicos. Lo adoptamos como nuestro estándar de referencia para cualquier proyecto que involucre arquitectura o auditoría de datos.
                         </p>
                         <p class="text-sm text-gray-700 font-sans leading-relaxed font-semibold border-l-2 border-[#1C1C1C] pl-4">
-                            Su margen neto requiere la misma precisión técnica que un protocolo farmacéutico. Si sus bases de datos no superan este estándar, no procedemos con la visualización.
+                            La razón es directa: una decisión de negocio es tan buena como la información en que se basa. Si el dato no es íntegro, la inteligencia que construimos sobre él tampoco lo es.
                         </p>
                     </div>
 
@@ -232,7 +254,7 @@
                 <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Ejecución</span>
                 <h2 class="text-3xl md:text-4xl font-serif leading-tight mb-8">Someter su operación a escrutinio.</h2>
                 <button onclick="window.openDiagnostico && window.openDiagnostico()" class="inline-flex items-center bg-[#F4F1EA] text-[#1C1C1C] font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-[#5A6352] hover:text-white transition-colors duration-300">
-                    Iniciar Protocolo de Vetting
+                    Hablar con la firma
                     <svg class="w-4 h-4 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
             </div>
@@ -251,17 +273,117 @@
             </div>
         </div>
 
-<!-- ══════════════════════════════════════════ MODAL CHATBOT -->
-<div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Diagnóstico Ejecutivo">
-    <div class="modal-content">
+<!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
+<!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
+<div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Contacto">
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
         <div class="modal-header">
             <div class="modal-header-title">
-                <div class="modal-avatar" aria-hidden="true">S</div>
                 <div>
-                    <div class="modal-name">Socio Digital · Evangelista &amp; Co.</div>
+                    <div class="modal-name">Contacto Institucional</div>
                     <div class="modal-sub">Evangelista &amp; Co.</div>
                 </div>
             </div>
+            <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
+        </div>
+        <div style="padding: 24px;">
+            <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde sitio web Evangelista & Co.">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                    <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                    <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                    <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Teléfono</label>
+                    <input type="tel" name="Teléfono" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Dirección</label>
+                    <input type="text" name="Dirección" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">País</label>
+                    <input type="text" name="País" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                    <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                    <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">¿Cómo se enteró de nuestros servicios?</label>
+                    <input type="text" name="¿Cómo se enteró de nuestros servicios?" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+            <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
+        </div>
+        <div style="padding: 24px;">
+            <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde sitio web Evangelista & Co.">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                    <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                    <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                    <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Teléfono</label>
+                    <input type="tel" name="Teléfono" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Dirección</label>
+                    <input type="text" name="Dirección" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">País</label>
+                    <input type="text" name="País" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                    <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                    <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">¿Cómo se enteró de nuestros servicios?</label>
+                    <input type="text" name="¿Cómo se enteró de nuestros servicios?" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
             <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
         </div>
         <div id="chat-container"></div>

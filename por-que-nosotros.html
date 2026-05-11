@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>La Firma | Rigor Institucional y Control de Capital</title>
-    <meta name="description" content="Manifiesto y tesis de inversión de Evangelista & Co. Arquitectura de control institucional para la protección del margen neto." />
+    <title>La Firma | Evangelista & Co.</title>
+    <meta name="description" content="Conoce la firma, nuestra filosofía y el equipo detrás de cada proyecto de consultoría e inteligencia de negocio." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,44 +40,63 @@
 
 <body class="bg-[#F4F1EA] text-[#1C1C1C] font-sans antialiased selection:bg-[#5A6352] selection:text-white">
 
-    <header class="header-sticky bg-white/90 backdrop-blur-md border-b border-[#1C1C1C]/10 fixed w-full top-0 z-50 transition-all duration-300" id="header">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+    <header class="header-sticky" id="header">
+    <div class="container">
+        <div class="header-content">
 
-                <a href="index.html" class="flex items-center gap-4 group" aria-label="Inicio Evangelista & Co.">
-                    <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." class="h-10 w-auto grayscale contrast-125 group-hover:opacity-80 transition-opacity" />
-                    <div class="flex flex-col">
-                        <span class="font-sans font-bold uppercase tracking-[0.15em] text-sm text-[#1C1C1C]">Evangelista &amp; Co.</span>
-                        <span class="font-serif italic text-xs text-[#5A6352]">Intelligence Architecture Firm</span>
-                    </div>
-                </a>
+            <a href="index.html" class="logo" aria-label="Inicio Evangelista & Co.">
+                <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." />
+                <div class="logo-text">
+                    <span class="brand-name">Evangelista &amp; Co.</span>
+                    <span class="brand-tagline">Intelligence Architecture Firm</span>
+                </div>
+            </a>
 
-                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de la Firma">
-                    <a href="por-que-nosotros.html" class="text-sm font-semibold tracking-wide text-[#5A6352] border-b border-[#5A6352]">La Firma</a>
-                    <a href="metodologia.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Metodología</a>
-                    <a href="index.html#evidencia" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Perspectivas</a>
-                    <a href="sectores.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Sectores</a>
-                    
-                    <span class="w-[1px] h-4 bg-[#1C1C1C]/20 mx-2"></span>
-                    
-                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Tableros C-Level</a>
-                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white text-xs font-bold uppercase tracking-widest px-6 py-2.5 hover:bg-[#1C1C1C] transition-colors duration-300">
-                        Admisión
-                    </button>
-                </nav>
+            <nav class="main-nav" aria-label="Navegación de la Firma">
+                <a href="por-que-nosotros.html">La Firma</a>
+                <a href="metodologia.html">Metodología</a>
+                <a href="sectores.html">Áreas de Práctica</a>
+                <a href="index.html#evidencia">Perspectivas</a>
+                
+                <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
+                
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+                <button class="nav-cta" onclick="window.openDiagnostico && window.openDiagnostico()" style="border: none; cursor: pointer; font-family: var(--font-sans);">Hablar con la firma</button>
+            </nav>
 
-            </div>
+            <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
         </div>
-    </header>
+    </div>
+    
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+        <a href="por-que-nosotros.html">La Firma</a>
+        <a href="metodologia.html">Metodología</a>
+        <a href="sectores.html">Áreas de Práctica</a>
+        <a href="index.html#evidencia">Perspectivas</a>
+        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+        <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Hablar con la firma</a>
+    </nav>
+</header>
 
     <main class="pt-20"> <section class="py-24 md:py-32 bg-[#F4F1EA]">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">La Firma</span>
                 <h1 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">
-                    La intuición es un riesgo que el capital no puede financiar.
+                    Fundamos esta firma sobre una observación que vimos repetirse en demasiadas empresas.
                 </h1>
                 <p class="text-lg md:text-xl text-gray-700 font-sans leading-relaxed max-w-3xl mx-auto border-t border-[#1C1C1C]/10 pt-8">
-                    Evangelista & Co. es una firma de arquitectura de inteligencia diseñada para diagnosticar y transformar la operación de empresas mexicanas. Operamos bajo un modelo de orquestación única: diseñamos cada intervención desde cero, integrando consultoría de élite e ingeniería de datos bajo un solo mandato de responsabilidad.
+                    Los datos existían. Las herramientas existían.
+Pero la consultoría llegaba sin inteligencia, o la inteligencia llegaba sin consultoría.
+
+Ninguna de las dos sola resuelve el problema real.
                 </p>
             </div>
         </section>
@@ -89,17 +108,22 @@
                     <div class="md:col-span-5 border-l-4 border-[#1C1C1C] pl-6">
                         <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Nuestra Tesis</span>
                         <h2 class="text-4xl font-serif text-[#1C1C1C] leading-tight">
-                            El software es un commodity.<br/>
-                            <em class="italic text-[#5A6352]">La certeza es el activo.</em>
+                            La consultoría sin inteligencia adivina. La inteligencia sin consultoría no pregunta lo correcto.
                         </h2>
                     </div>
 
                     <div class="md:col-span-7 space-y-6 text-gray-700 font-sans text-base leading-relaxed">
                         <p>
-                            El mercado está saturado de consultoras que venden sistemas genéricos como gastos de TI. Nosotros sostenemos que la arquitectura de datos es un "Seguro contra el Caos" directamente vinculado a la recuperación de su flujo de efectivo.
+                            Hay dos tipos de firma en el mercado.
+
+Las que asesoran: llegan, analizan, entregan un reporte y se van. El cliente queda con recomendaciones, pero sin la capacidad operativa de ejecutarlas.
                         </p>
                         <p>
-                            Nuestro mandato es doble: dotar al Gerente Operativo de un escrutinio institucional mediante nuestra plataforma operativa propietaria, y brindarle al Director General la certeza de que cada fase del proyecto —desde la hipótesis hasta la entrega— posee trazabilidad absoluta.
+                            Las que implementan: instalan sistemas, construyen dashboards y configuran herramientas. El cliente queda con tecnología, pero sin el criterio para saber si resuelve el problema real.
+
+Evangelista & Co. no es ninguna de las dos.
+
+Somos la firma que diagnostica con criterio consultivo y ejecuta con rigor técnico. El proyecto termina cuando el cliente tiene ambas cosas: claridad sobre su operación y la inteligencia instalada para mantenerla.
                         </p>
                     </div>
 
@@ -111,10 +135,12 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="mb-16 max-w-3xl">
-                    <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Filtro de Admisión</span>
-                    <h2 class="text-4xl font-serif leading-tight mb-6">Operamos bajo una estricta gobernanza de la verdad.</h2>
+                    <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Cómo operamos</span>
+                    <h2 class="text-4xl font-serif leading-tight mb-6">Una firma. Un equipo. Un responsable.</h2>
                     <p class="text-gray-400 font-sans text-sm leading-relaxed">
-                        Estos principios no son sugerencias corporativas. Dictan exactamente cómo operamos y determinan a qué clientes aceptamos en nuestra cartera activa.
+                        Cada proyecto de Evangelista & Co. opera bajo un único esquema de responsabilidad. Nuestros consultores trabajan en conjunto con el equipo del cliente. Cuando el proyecto requiere capacidades especializadas, las incorporamos bajo el mismo marco de trabajo.
+
+El cliente no gestiona múltiples proveedores ni coordina equipos que no se conocen. Trabaja con una firma que toma la responsabilidad completa del resultado.
                     </p>
                 </div>
 
@@ -122,26 +148,26 @@
                     
                     <div class="group">
                         <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">01.</span>
-                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Honestidad Radical</h3>
-                        <p class="text-gray-400 font-sans text-sm leading-relaxed">Si su operación está fracturada, se lo demostraremos con evidencia cuantitativa. No mitigamos el riesgo operativo utilizando lenguaje corporativo complaciente.</p>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Honestidad sobre el diagnóstico</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">Si el problema que el cliente nos presenta no es el problema real, lo decimos. La solución correcta empieza por el diagnóstico correcto.</p>
                     </div>
 
                     <div class="group">
                         <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">02.</span>
-                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Integración Legacy</h3>
-                        <p class="text-gray-400 font-sans text-sm leading-relaxed">No exigimos migraciones de software millonarias. Si su operación corre en sistemas con 15 años de antigüedad, extraeremos la verdad operativa de ahí de forma quirúrgica. La realidad precede a la fachada.</p>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Rigor antes que velocidad</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">No construimos sobre bases que no hemos verificado. Si la integridad del dato no está garantizada, el proyecto no avanza. Los cimientos siempre preceden a la estrategia.</p>
                     </div>
 
                     <div class="group">
                         <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">03.</span>
-                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Arbitraje Objetivo</h3>
-                        <p class="text-gray-400 font-sans text-sm leading-relaxed">No somos empleados del departamento de sistemas. Actuamos como un Strike Force independiente que elimina los puntos ciegos entre el piso de operación y el Consejo de Administración.</p>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Independencia de criterio</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">No somos parte del equipo del cliente. Somos su contraparte técnica. Eso nos permite ver lo que la operación diaria no permite ver.</p>
                     </div>
 
                     <div class="group">
                         <span class="text-[#5A6352] font-serif text-2xl italic mb-3 block">04.</span>
-                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Soberanía del Cliente</h3>
-                        <p class="text-gray-400 font-sans text-sm leading-relaxed">Desarrollamos ecosistemas de inteligencia, no dependencias comerciales. Usted posee el código, la infraestructura en la nube y el control absoluto de su capital intelectual.</p>
+                        <h3 class="text-lg font-bold font-sans uppercase tracking-widest mb-3 group-hover:text-[#5A6352] transition-colors">Inteligencia transferida</h3>
+                        <p class="text-gray-400 font-sans text-sm leading-relaxed">Cada proyecto termina con el cliente en control total. No creamos dependencias. Creamos capacidades.</p>
                     </div>
 
                 </div>
@@ -175,7 +201,7 @@
 
                         <blockquote class="border-l-2 border-[#5A6352] pl-6 md:pl-10 mb-10">
                             <p class="text-2xl md:text-3xl font-serif italic text-[#1C1C1C] leading-relaxed mb-6">
-                                "Para decidir, hay que saber; y para saber, hay que observar con rigor implacable. Nosotros somos el escrutinio que expone su verdad operativa."
+                                "La consultoría te dice qué está mal. La inteligencia te dice por qué, y te da la capacidad de verlo siempre. Construimos esta firma para que nuestros clientes tengan las dos cosas."
                             </p>
                             <footer class="text-xs font-sans font-bold text-[#1C1C1C] uppercase tracking-widest">
                                 Adriel Evangelista <span class="text-[#5A6352] mx-2">|</span> <span class="text-gray-500 normal-case font-normal italic tracking-normal">Managing Partner</span>
@@ -184,16 +210,18 @@
 
                         <div class="text-base text-gray-700 font-sans leading-relaxed mb-12 space-y-6">
                             <p>
-                                Mi visión nunca fue crear una agencia tecnológica, sino una firma de arquitectura de control que orquesta el talento de consultores e ingenieros bajo una metodología rigurosa. Nuestra ventaja no es solo el equipo, sino la infraestructura propietaria que controla el ciclo de vida de cada intervención, permitiéndonos observar la operación sin filtros y erradicar la entropía administrativa. 
+                                Fundé Evangelista & Co. al identificar una brecha sistemática en el mercado: las firmas de consultoría llegaban con criterio pero sin capacidad técnica. Las empresas de tecnología llegaban con herramientas pero sin criterio de negocio. 
                             </p>
                             <p class="font-semibold text-[#1C1C1C]">
-                                Para saber exactamente dónde se erosiona su margen neto, hay que observar la operación sin filtros. Eso somos.
+                                El resultado en ambos casos era el mismo: el cliente gastaba, pero el problema seguía ahí o regresaba en seis meses.
+
+La firma nació para cerrar esa brecha. Consultoría e Inteligencia de Negocio no son dos servicios que ofrecemos — son dos disciplinas que operamos de manera integrada en cada proyecto que tomamos.
                             </p>
                         </div>
 
                         <div>
                             <button onclick="window.openDiagnostico && window.openDiagnostico()" class="inline-flex items-center bg-[#1C1C1C] text-white font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-[#5A6352] transition-colors duration-300 group">
-                                Iniciar Proceso de Admisión
+                                Hablar con la firma
                                 <svg class="w-4 h-4 ml-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </button>
                         </div>
@@ -217,17 +245,117 @@
             </div>
         </div>
 
-<!-- ══════════════════════════════════════════ MODAL CHATBOT -->
-<div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Diagnóstico Ejecutivo">
-    <div class="modal-content">
+<!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
+<!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
+<div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Contacto">
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
         <div class="modal-header">
             <div class="modal-header-title">
-                <div class="modal-avatar" aria-hidden="true">S</div>
                 <div>
-                    <div class="modal-name">Socio Digital · Evangelista &amp; Co.</div>
+                    <div class="modal-name">Contacto Institucional</div>
                     <div class="modal-sub">Evangelista &amp; Co.</div>
                 </div>
             </div>
+            <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
+        </div>
+        <div style="padding: 24px;">
+            <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde sitio web Evangelista & Co.">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                    <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                    <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                    <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Teléfono</label>
+                    <input type="tel" name="Teléfono" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Dirección</label>
+                    <input type="text" name="Dirección" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">País</label>
+                    <input type="text" name="País" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                    <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                    <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">¿Cómo se enteró de nuestros servicios?</label>
+                    <input type="text" name="¿Cómo se enteró de nuestros servicios?" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+            <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
+        </div>
+        <div style="padding: 24px;">
+            <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde sitio web Evangelista & Co.">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                    <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                    <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                    <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Teléfono</label>
+                    <input type="tel" name="Teléfono" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Dirección</label>
+                    <input type="text" name="Dirección" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">País</label>
+                    <input type="text" name="País" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                    <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                    <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">¿Cómo se enteró de nuestros servicios?</label>
+                    <input type="text" name="¿Cómo se enteró de nuestros servicios?" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
             <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
         </div>
         <div id="chat-container"></div>

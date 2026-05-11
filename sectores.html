@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sectores de Intervención | Arbitraje de Ineficiencias de Capital</title>
-    <meta name="description" content="Arbitraje de ineficiencias y erosión de margen por sector. Arquitectura de control institucional para Manufactura, Retail, Construcción y Servicios Corporativos." />
+    <title>Áreas de Práctica | Evangelista & Co.</title>
+    <meta name="description" content="Supply Chain, Industrial & Manufacturing, Growth & Commercial Analytics, Risk & Financial Integrity. Las cuatro áreas de práctica de Evangelista & Co." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,47 +39,62 @@
 </head>
 <body class="bg-[#F4F1EA] text-[#1C1C1C] font-sans antialiased selection:bg-[#5A6352] selection:text-white">
 
-    <header class="header-sticky bg-white/90 backdrop-blur-md border-b border-[#1C1C1C]/10 fixed w-full top-0 z-50 transition-all duration-300" id="header">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+    <header class="header-sticky" id="header">
+    <div class="container">
+        <div class="header-content">
 
-                <a href="index.html" class="flex items-center gap-4 group" aria-label="Inicio Evangelista & Co.">
-                    <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." class="h-10 w-auto grayscale contrast-125 group-hover:opacity-80 transition-opacity" />
-                    <div class="flex flex-col">
-                        <span class="font-sans font-bold uppercase tracking-[0.15em] text-sm text-[#1C1C1C]">Evangelista &amp; Co.</span>
-                        <span class="font-serif italic text-xs text-[#5A6352]">Intelligence Architecture Firm</span>
-                    </div>
-                </a>
+            <a href="index.html" class="logo" aria-label="Inicio Evangelista & Co.">
+                <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." />
+                <div class="logo-text">
+                    <span class="brand-name">Evangelista &amp; Co.</span>
+                    <span class="brand-tagline">Intelligence Architecture Firm</span>
+                </div>
+            </a>
 
-                <nav class="hidden md:flex items-center gap-8" aria-label="Navegación de la Firma">
-                    <a href="por-que-nosotros.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">La Firma</a>
-                    <a href="metodologia.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Metodología</a>
-                    <a href="index.html#evidencia" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#1C1C1C] transition-colors">Perspectivas</a>
-                    <a href="sectores.html" class="text-sm font-semibold tracking-wide text-[#5A6352] border-b border-[#5A6352]">Sectores</a>
-                    
-                    <span class="w-[1px] h-4 bg-[#1C1C1C]/20 mx-2"></span>
-                    
-                    <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" class="text-sm font-bold text-[#5A6352] hover:text-[#1C1C1C] transition-colors">Tableros C-Level</a>
-                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white text-xs font-bold uppercase tracking-widest px-6 py-2.5 hover:bg-[#1C1C1C] transition-colors duration-300">
-                        Admisión
-                    </button>
-                </nav>
+            <nav class="main-nav" aria-label="Navegación de la Firma">
+                <a href="por-que-nosotros.html">La Firma</a>
+                <a href="metodologia.html">Metodología</a>
+                <a href="sectores.html">Áreas de Práctica</a>
+                <a href="index.html#evidencia">Perspectivas</a>
+                
+                <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
+                
+                <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+                <button class="nav-cta" onclick="window.openDiagnostico && window.openDiagnostico()" style="border: none; cursor: pointer; font-family: var(--font-sans);">Hablar con la firma</button>
+            </nav>
 
-            </div>
+            <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
         </div>
-    </header>
+    </div>
+    
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+        <a href="por-que-nosotros.html">La Firma</a>
+        <a href="metodologia.html">Metodología</a>
+        <a href="sectores.html">Áreas de Práctica</a>
+        <a href="index.html#evidencia">Perspectivas</a>
+        <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+        <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Hablar con la firma</a>
+    </nav>
+</header>
 
     <main class="pt-20">
 
         <section class="py-24 md:py-32 bg-[#F4F1EA] border-b border-[#1C1C1C]/10 fade-in">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Aplicación Transversal</span>
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Áreas de Práctica</span>
                 <h1 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">
-                    La erosión del margen es sistémica.<br/>
-                    <em class="italic text-[#5A6352]">La intervención exige rigor.</em>
+                    Cuatro dominios de especialización.<br/>Un solo modelo de trabajo.
                 </h1>
                 <p class="text-lg text-gray-700 font-sans leading-relaxed max-w-3xl mx-auto pt-4">
-                    Diseñamos cada intervención desde cero, orquestando el talento necesario para neutralizar la entropía operativa de su industria mediante nuestra plataforma de control propietaria.
+                    Cada área de práctica representa un territorio donde el Business Intelligence tiene impacto directo sobre la eficiencia y la toma de decisiones de la empresa. Los proyectos se originan en una de estas áreas. El trabajo siempre es a la medida del objetivo del cliente.
                 </p>
             </div>
         </section>
@@ -87,99 +102,75 @@
         <section class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
                 
+                <!-- Área 01 -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
                     <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-1 rounded-none">
-                        <img src="assets/Business.webp" alt="Manufactura e Industria" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <img src="assets/Business.webp" alt="Supply Chain & Operations" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
                         <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="absolute top-6 left-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 01</div>
+                        <div class="absolute top-6 left-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Área 01</div>
                     </div>
                     
                     <div class="order-1 lg:order-2">
-                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Manufactura e Industria</h2>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">En operaciones de alta intensidad, el margen se erosiona en los puntos ciegos entre la cadena de suministro, el almacén y el piso de producción. La falta de conciliación en tiempo real convierte la merma en una pérdida contable aceptada.</p>
-                        
-                        <div class="space-y-6">
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Análisis fiduciario sobre el costo de producción real vs. presupuesto autorizado.</p>
-                            </div>
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">La Arquitectura</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Trazabilidad ALCOA+ que integra la verdad del piso de producción con el balance financiero en un centro de mando directivo.</p>
-                            </div>
-                        </div>
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-6">Supply Chain & Operations</h2>
+                        <p class="text-base text-gray-700 font-sans leading-relaxed mb-8">
+                            La cadena de suministro es uno de los sistemas más complejos de cualquier empresa. Involucra múltiples áreas, múltiples sistemas y múltiples equipos que rara vez comparten la misma información en tiempo real.<br><br>
+                            Cuando esa información está fragmentada, las consecuencias son visibles: pedidos que no se cumplen, inventarios que no cuadran, decisiones de compra que se toman con datos que ya no son válidos.<br><br>
+                            Trabajamos en este dominio con empresas que quieren que su operación logística responda con precisión: desde el control de inventario y la predicción de demanda, hasta la sincronización entre compras, producción y distribución.
+                        </p>
                     </div>
                 </div>
 
+                <!-- Área 02 -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
                     <div class="order-1 lg:order-1">
-                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Retail y Comercialización</h2>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">La dependencia de reportes de ventas fragmentados por sucursal genera un espejismo de liquidez. El verdadero asesino de la rentabilidad en retail es la inmovilización silenciosa de capital en inventario fantasma y categorías de baja rotación.</p>
-                        
-                        <div class="space-y-6">
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Identificación matemática de capital atrapado en activos fantasma.</p>
-                            </div>
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">La Arquitectura</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Gobernanza de capital que ejecuta conciliación fiduciaria entre el ERP y el flujo de caja operativo para el CFO.</p>
-                            </div>
-                        </div>
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-6">Industrial & Manufacturing</h2>
+                        <p class="text-base text-gray-700 font-sans leading-relaxed mb-8">
+                            La eficiencia de una planta no se mejora observando. Se mejora midiendo lo correcto.<br><br>
+                            Muchas operaciones industriales tienen indicadores. Pocas tienen los indicadores que realmente explican por qué una línea produce menos de lo que debería, por qué un turno rinde diferente al siguiente, o por qué la merma aparece en el reporte pero nadie sabe exactamente dónde ocurrió.<br><br>
+                            Trabajamos en este dominio con empresas que quieren visibilidad real de su operación: eficiencia por línea y turno, trazabilidad de procesos, control de producción en tiempo real y benchmarking operativo con causa raíz identificada.
+                        </p>
                     </div>
 
                     <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-2 rounded-none">
-                        <img src="assets/Business%20(1).webp" alt="Retail y Comercialización" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <img src="assets/Business%20(1).webp" alt="Industrial & Manufacturing" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
                         <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="absolute top-6 right-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 02</div>
+                        <div class="absolute top-6 right-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Área 02</div>
                     </div>
                 </div>
 
+                <!-- Área 03 -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
                     <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-1 rounded-none">
-                        <img src="assets/_.jpeg" alt="Construcción y Real Estate" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <img src="assets/_.jpeg" alt="Growth & Commercial Analytics" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
                         <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="absolute top-6 left-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 03</div>
+                        <div class="absolute top-6 left-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Área 03</div>
                     </div>
                     
                     <div class="order-1 lg:order-2">
-                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Construcción y Real Estate</h2>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">El desfase temporal entre el avance físico de obra y la facturación contable destruye la liquidez. Las desviaciones presupuestales suelen encubrirse en subcontratos y estimaciones optimistas hasta que es demasiado tarde para corregirlas.</p>
-                        
-                        <div class="space-y-6">
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Cruce institucional entre estimaciones liquidadas y avance físico auditable.</p>
-                            </div>
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">La Arquitectura</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Control estructural que emite alertas predictivas sobre el rebase de presupuestos antes del desembolso de capital.</p>
-                            </div>
-                        </div>
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-6">Growth & Commercial Analytics</h2>
+                        <p class="text-base text-gray-700 font-sans leading-relaxed mb-8">
+                            El crecimiento comercial tiene dos velocidades: la del volumen y la de la rentabilidad. Casi siempre se mide la primera y se asume la segunda.<br><br>
+                            El resultado es que muchas empresas crecen en ventas sin crecer en utilidad, porque no tienen la inteligencia para saber exactamente qué vender, a quién venderle, y cuándo el costo de atender a un cliente supera el margen que genera.<br><br>
+                            Trabajamos en este dominio con empresas que quieren construir una estrategia comercial basada en datos reales: rentabilidad por producto y cliente, inteligencia de mercado, y modelos que permiten anticipar el comportamiento comercial antes de que se convierta en un problema.
+                        </p>
                     </div>
                 </div>
 
+                <!-- Área 04 -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
                     <div class="order-1 lg:order-1">
-                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-4">Servicios Corporativos</h2>
-                        <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">En firmas donde el principal activo es el capital humano, el riesgo reside en la entropía administrativa. Los silos de información departamental impiden ver si un proyecto o cliente específico está absorbiendo recursos de manera ineficiente.</p>
-                        
-                        <div class="space-y-6">
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">El Escrutinio</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Auditoría de la eficiencia estructural de nómina y costos fijos por centro de utilidad.</p>
-                            </div>
-                            <div class="border-l-2 border-[#1C1C1C] pl-4">
-                                <span class="block text-xs font-bold text-[#5A6352] uppercase tracking-[0.15em] mb-1">La Arquitectura</span>
-                                <p class="text-sm font-sans text-gray-800 font-medium">Visibilidad institucional que permite al Consejo auditar la rentabilidad neta por hora, por cliente y por socio operativo.</p>
-                            </div>
-                        </div>
+                        <h2 class="text-3xl font-serif text-[#1C1C1C] mb-6">Risk & Financial Integrity</h2>
+                        <p class="text-base text-gray-700 font-sans leading-relaxed mb-8">
+                            La información financiera que llega a la Dirección General casi siempre ha pasado por varias interpretaciones antes de llegar. Cada área presenta los números que mejor reflejan su desempeño. No por deshonestidad. Por inercia organizacional.<br><br>
+                            El resultado es que la imagen que tiene el Director General de su empresa puede diferir de lo que sus sistemas registran — y lo que sus sistemas registran puede diferir de lo que realmente ocurrió.<br><br>
+                            Trabajamos en este dominio con empresas que necesitan certeza: auditoría de costos, trazabilidad de capital, cumplimiento preventivo y monitoreo de salud financiera con visibilidad antes de que el problema sea difícil de revertir.
+                        </p>
                     </div>
 
                     <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-2 rounded-none">
-                        <img src="assets/Corporate%20Meeting%20Insight.jpeg" alt="Servicios Corporativos" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <img src="assets/Corporate%20Meeting%20Insight.jpeg" alt="Risk & Financial Integrity" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
                         <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="absolute top-6 right-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Sector 04</div>
+                        <div class="absolute top-6 right-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Área 04</div>
                     </div>
                 </div>
 
@@ -189,14 +180,23 @@
         <section class="py-24 bg-[#1C1C1C] text-white text-center border-t border-white/10 fade-in">
             <div class="max-w-3xl mx-auto px-4">
                 <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Su Operación</span>
-                <h2 class="text-3xl md:text-4xl font-serif leading-tight mb-8">Audite el riesgo latente de su industria.</h2>
+                <h2 class="text-3xl md:text-4xl font-serif leading-tight mb-8">¿Su objetivo está en alguno de estos dominios?</h2>
                 <button onclick="window.openDiagnostico && window.openDiagnostico()" class="inline-flex items-center bg-[#F4F1EA] text-[#1C1C1C] font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-[#5A6352] hover:text-white transition-colors duration-300">
-                    Iniciar Protocolo de Vetting
+                    Hablar con la firma
                     <svg class="w-4 h-4 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
             </div>
         </section>
-
+                <!-- Sección CTA final -->
+                <div class="py-24 text-center fade-in">
+                    <h3 class="text-2xl font-serif text-[#1C1C1C] mb-6">¿Su objetivo está en alguno de estos dominios?</h3>
+                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white px-10 py-4 font-bold tracking-widest uppercase text-xs hover:bg-[#1C1C1C] transition-colors duration-300">
+                        Hablar con la firma
+                    </button>
+                    <p class="mt-4 text-xs text-[#5A6352] font-sans tracking-wide">Confidencial &middot; Sin compromiso</p>
+                </div>
+            </div>
+        </section>
     </main>
 
 
@@ -296,34 +296,66 @@
         </div>
     </footer>
 
-    <div id="diagnostico-modal" style="display: none;" class="fixed inset-0 z-[100] items-center justify-center bg-[#1C1C1C]/80 backdrop-blur-sm">
-        <div class="modal-content w-full max-w-lg bg-[#F4F1EA] shadow-2xl relative flex flex-col h-[70vh] md:h-[80vh] border-t-4 border-[#5A6352] rounded-none overflow-hidden mx-auto mt-auto md:mt-0 animate-slide-up">
-            
-            <div class="p-6 bg-[#1C1C1C] text-[#F4F1EA] flex justify-between items-start shrink-0">
+    <!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
+<div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Contacto">
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+        <div class="modal-header">
+            <div class="modal-header-title">
                 <div>
-                    <span class="text-[#5A6352] text-[10px] font-bold tracking-[0.2em] uppercase mb-2 block flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        Sistema de Admisión
-                    </span>
-                    <h3 class="text-xl font-serif">Socio Digital <span class="italic font-light opacity-70">v1.0</span></h3>
-                </div>
-                <button onclick="window.closeDiagnostico()" class="text-white/50 hover:text-white transition-colors p-2" aria-label="Cerrar">✕</button>
-            </div>
-
-            <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-6 font-sans text-sm bg-white custom-scrollbar pb-20"></div>
-
-            <div id="chat-input-area" class="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-[#1C1C1C]/10 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] shrink-0">
-                <div class="relative flex items-center">
-                    <input type="text" id="chat-free-input" placeholder="Describa su situación operativa..." class="w-full bg-[#F4F1EA] border border-[#1C1C1C]/10 rounded-none px-6 py-4 text-sm focus:outline-none focus:border-[#5A6352] focus:ring-1 focus:ring-[#5A6352] pr-16 transition-all text-[#1C1C1C]" autocomplete="off" />
-                    <button id="chat-send-free" class="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-[#1C1C1C] text-white rounded-none flex items-center justify-center hover:bg-[#5A6352] transition-colors disabled:opacity-50" aria-label="Enviar mensaje">
-                        <svg class="w-4 h-4 translate-x-[-1px] translate-y-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-                    </button>
-                </div>
-                <div class="text-center mt-2">
-                    <span class="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Protocolo de Confidencialidad Activo</span>
+                    <div class="modal-name">Contacto Institucional</div>
+                    <div class="modal-sub">Evangelista &amp; Co.</div>
                 </div>
             </div>
+            <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
         </div>
+        <div style="padding: 24px;">
+            <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde sitio web Evangelista & Co.">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                    <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                    <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                    <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Teléfono</label>
+                    <input type="tel" name="Teléfono" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Dirección</label>
+                    <input type="text" name="Dirección" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">País</label>
+                    <input type="text" name="País" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                    <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                    <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">¿Cómo se enteró de nuestros servicios?</label>
+                    <input type="text" name="¿Cómo se enteró de nuestros servicios?" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     </div>
 
 </body>
