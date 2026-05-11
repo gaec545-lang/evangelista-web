@@ -62,7 +62,7 @@
                 <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
                 
                 <a href="https://montecarlo-evangelistaco.streamlit.app/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
-                <button class="nav-cta" onclick="window.openDiagnostico && window.openDiagnostico()" style="border: none; cursor: pointer; font-family: var(--font-sans);">Hablar con la firma</button>
+                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary nav-cta">Hablar con la firma</button>
             </nav>
 
             <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
@@ -313,21 +313,39 @@
 
 
 
-<!-- ══════════════════════════════════════════ Sección 5: Contacto (Sólo Info) -->
-<section id="contacto" class="border-t border-[#5A6352]/20 bg-[#F4F1EA]">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+
+
+<!-- ══════════════════════════════════════════ Sección 5: Contacto Institucional -->
+<section id="contacto" class="border-t border-[#5A6352]/20">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Bloque Clientes / Consultoría -->
+    <div class="lg:w-1/2 bg-[#1C1C1C] p-12 lg:p-24 text-white flex flex-col justify-center">
+      <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4">Hablar con la firma</span>
+      <h2 class="text-4xl font-serif mb-6 text-white">Inicie el diagnóstico de su operación.</h2>
+      <p class="text-gray-400 font-sans leading-relaxed mb-10 max-w-lg">
+        El acceso a nuestra firma comienza con un diálogo sobre sus objetivos. De click en el botón para iniciar el proceso de contacto institucional.
+      </p>
       <div>
-        <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-2 block">Oficina Administrativa</span>
-        <h2 class="text-3xl font-serif text-[#1C1C1C]">Relaciones Corporativas.</h2>
+        <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white font-sans text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-white hover:text-[#1C1C1C] transition-colors duration-300">
+          Hablar con la firma
+        </button>
       </div>
-      <div class="flex flex-col md:flex-row gap-8 md:gap-16 font-sans text-sm">
-        <div class="flex flex-col">
-          <span class="text-[#5A6352] font-bold uppercase tracking-wide mb-1">Email</span>
+    </div>
+    
+    <!-- Bloque Administrativo -->
+    <div class="lg:w-1/2 bg-[#F4F1EA] p-12 lg:p-24 text-[#1C1C1C] flex flex-col justify-center">
+      <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-4">Relaciones Corporativas</span>
+      <h2 class="text-4xl font-serif mb-6">Oficina Administrativa.</h2>
+      <p class="text-gray-700 font-sans leading-relaxed mb-10 max-w-lg">
+        Canal reservado estrictamente para propuestas de alianzas, asuntos legales y atención a proveedores.
+      </p>
+      <div class="space-y-6 font-sans text-sm">
+        <div class="flex items-start">
+          <span class="text-[#5A6352] font-bold w-32 uppercase tracking-wide">Email</span>
           <a href="mailto:info@evangelistaco.com" class="text-gray-800 hover:text-[#5A6352] transition-colors">info@evangelistaco.com</a>
         </div>
-        <div class="flex flex-col">
-          <span class="text-[#5A6352] font-bold uppercase tracking-wide mb-1">Operación</span>
+        <div class="flex items-start">
+          <span class="text-[#5A6352] font-bold w-32 uppercase tracking-wide">Operación</span>
           <span class="text-gray-800">Puebla, Pue. | Ciudad de México</span>
         </div>
       </div>
@@ -363,13 +381,10 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Evangelista &amp; Co. Todos los derechos reservados.</p>
-            <div class="footer-legal">
-                <a href="#">Privacidad</a>
-                <a href="#">Términos</a>
-            </div>
         </div>
     </div>
 </footer>
+
 
 <!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
 <div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Contacto">
