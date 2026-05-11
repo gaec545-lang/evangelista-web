@@ -137,7 +137,7 @@
                 <!-- Área 03 -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
                     <div class="relative h-[400px] lg:h-[500px] w-full group overflow-hidden shadow-2xl order-2 lg:order-1 rounded-none">
-                        <img src="assets/_.jpeg" alt="Growth & Commercial Analytics" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+                        <img src="assets/commercial_growth.jpeg" alt="Growth & Commercial Analytics" class="absolute inset-0 w-full h-full object-cover grayscale-[30%] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
                         <div class="absolute inset-0 bg-[#1C1C1C]/20 group-hover:bg-transparent transition-colors duration-500"></div>
                         <div class="absolute top-6 left-6 bg-[#1C1C1C] text-white px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase">Área 03</div>
                     </div>
@@ -183,106 +183,7 @@
                 </button>
             </div>
         </section>
-                <!-- Sección CTA final -->
-                <div class="py-24 text-center fade-in">
-                    <h3 class="text-2xl font-serif text-[#1C1C1C] mb-6">¿Su objetivo está en alguno de estos dominios?</h3>
-                    <button onclick="window.openDiagnostico && window.openDiagnostico()" class="bg-[#5A6352] text-white px-10 py-4 font-bold tracking-widest uppercase text-xs hover:bg-[#1C1C1C] transition-colors duration-300">
-                        Hablar con la firma
-                    </button>
-                    <p class="mt-4 text-xs text-[#5A6352] font-sans tracking-wide">Confidencial &middot; Sin compromiso</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-
-
-<script src="assets/js/main.js"></script>
-<script src="assets/js/diagnostico.js"></script>
-<script>
-(function () {
-    // Scroll fade-in observer
-    var els = document.querySelectorAll('.fade-in');
-    var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                observer.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
-    els.forEach(function (el) { observer.observe(el); });
-
-    // Header scroll shadow
-    var header = document.getElementById('header');
-    if (header) {
-        window.addEventListener('scroll', function () {
-            header.classList.toggle('scrolled', window.scrollY > 40);
-        }, { passive: true });
-    }
-
-    // Smooth anchor scroll
-    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-        a.addEventListener('click', function (e) {
-            var id = a.getAttribute('href');
-            var target = id.length > 1 ? document.querySelector(id) : null;
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Number counter animation
-    function animateCounter(el) {
-        var target = parseFloat(el.getAttribute('data-target'));
-        var format = el.getAttribute('data-format');
-        if (!target || !format) return;
-
-        var duration = 1800;
-        var startTime = null;
-
-        function step(ts) {
-            if (!startTime) startTime = ts;
-            var progress = Math.min((ts - startTime) / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-            var value = eased * target;
-
-            if (format === 'currency') {
-                el.textContent = '$' + value.toFixed(1) + 'M+';
-            } else if (format === 'percent') {
-                if (target >= 100) {
-                    el.textContent = Math.round(value) + '%';
-                } else {
-                    el.textContent = (value >= 10 ? '+' : '') + Math.round(value) + '%';
-                }
-            }
-
-            if (progress < 1) requestAnimationFrame(step);
-        }
-
-        requestAnimationFrame(step);
-    }
-
-    // Observe counters
-    var counterObs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-            if (e.isIntersecting) {
-                animateCounter(e.target);
-                counterObs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('[data-target]').forEach(function (el) {
-        counterObs.observe(el);
-    });
-})();
-</script>
-    
-    
-
-
+                
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -314,6 +215,7 @@
         </div>
     </div>
 </footer>
+
 
 
 
