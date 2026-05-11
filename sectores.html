@@ -184,6 +184,48 @@
             </div>
         </section>
                 
+
+        </section>
+    </main>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/diagnostico.js"></script>
+<script>
+(function () {
+    // Scroll fade-in observer
+    var els = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+    els.forEach(function (el) { observer.observe(el); });
+
+    // Header scroll shadow
+    var header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var id = a.getAttribute('href');
+            var target = id.length > 1 ? document.querySelector(id) : null;
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+})();
+</script>
+
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
