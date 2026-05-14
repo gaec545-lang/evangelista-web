@@ -4,14 +4,53 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin | Evangelista &amp; Co.</title>
-  <!-- Link al archivo de configuración -->
-  <link href="config.yml" type="text/yaml" rel="cms-config-url" />
-  <!-- Decap CMS Script -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <!-- Decap CMS Script (Versión estable fija) -->
+  <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
+  
+  <script>
+    // Configuración Inyectada Directamente para asegurar carga
+    CMS.init({
+      config: {
+        backend: {
+          name: 'git-gateway',
+          branch: 'main'
+        },
+        media_folder: 'Perspectivas/Analisis (pdf)',
+        public_folder: '/Perspectivas/Analisis (pdf)',
+        collections: [
+          {
+            name: 'perspectivas_list',
+            label: 'Lista de Análisis',
+            files: [
+              {
+                label: 'Análisis Perspectivas',
+                name: 'analisis',
+                file: 'data/perspectivas.json',
+                fields: [
+                  {
+                    label: 'Artículos',
+                    name: 'perspectivas',
+                    widget: 'list',
+                    allow_add: true,
+                    fields: [
+                      { label: 'ID', name: 'id', widget: 'string', hint: 'Ej: 03' },
+                      { label: 'Título', name: 'titulo', widget: 'string' },
+                      { label: 'Fecha', name: 'fecha', widget: 'string' },
+                      { label: 'Descripción', name: 'descripcion', widget: 'text' },
+                      { label: 'Archivo PDF', name: 'pdf', widget: 'file' }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
 </body>
 </html>
