@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main # O la rama donde despliegas
+
+
+media_folder: "Perspectivas/Analisis (pdf)"
+public_folder: "Analisis (pdf)"
+
+collections:
+  - name: "perspectivas"
+    label: "Análisis Perspectivas"
+    label_singular: "Análisis"
+    file: "data/perspectivas.json"
+    extension: "json"
+    format: "json"
+    create: true
+    fields:
+      - { label: "ID del Análisis", name: "id", widget: "string", hint: "Ej: 03" }
+      - { label: "Título", name: "titulo", widget: "string" }
+      - { label: "Fecha", name: "fecha", widget: "string", hint: "Ej: Mayo 2026" }
+      - { label: "Descripción Corta", name: "descripcion", widget: "text" }
+      - { label: "Archivo PDF", name: "pdf", widget: "file" }

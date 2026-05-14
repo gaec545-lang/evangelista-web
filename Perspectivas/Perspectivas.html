@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspectivas | Evangelista &amp; Co.</title>
+    <meta name="description" content="Análisis estratégico e inteligencia de negocio para la toma de decisiones directivas en México." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              serif: ['Fraunces', 'Georgia', 'serif'],
+            },
+            colors: {
+              carbon:  '#1C1C1C',
+              beige:   '#F4F1EA',
+              olive: {
+                DEFAULT: '#5A6352',
+                dark:    '#4A5342',
+                light:   '#8A9A7D',
+              },
+              body:    '#2D3319',
+              muted:   '#707070',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-[#F4F1EA]">
+
+<!-- ══════════════════════════════════════════ Header -->
+
+<header class="header-sticky" id="header">
+    <div class="container">
+        <div class="header-content">
+
+            <a href="../index.html" class="logo" aria-label="Inicio Evangelista & Co.">
+                <img src="../assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." />
+                <div class="logo-text">
+                    <span class="brand-name">Evangelista &amp; Co.</span>
+                    <span class="brand-tagline">Intelligence Architecture Firm</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación de la Firma">
+                <a href="../por-que-nosotros.html">La Firma</a>
+                <a href="../metodologia.html">Metodología</a>
+                <a href="../sectores.html">Áreas de Práctica</a>
+                <a href="Perspectivas.html" class="active">Perspectivas</a>
+                
+                <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
+                
+                <a href="https://plataforma.evangelistaco.com/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary nav-cta">Hablar con la firma</button>
+            </nav>
+
+            <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
+        </div>
+    </div>
+    
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+        <a href="../por-que-nosotros.html">La Firma</a>
+        <a href="../metodologia.html">Metodología</a>
+        <a href="../sectores.html">Áreas de Práctica</a>
+        <a href="Perspectivas.html" class="active">Perspectivas</a>
+        <a href="https://plataforma.evangelistaco.com/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+        <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Hablar con la firma</a>
+    </nav>
+</header>
+
+<main class="pt-32 pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Hero Section -->
+        <div class="mb-20">
+            <span class="text-[#5A6352] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Editorial</span>
+            <h1 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">Perspectivas.</h1>
+            <p class="max-w-2xl text-lg text-gray-700 font-sans leading-relaxed">
+                Análisis de datos e inteligencia de mercado diseñada para el Director General. Evidencia técnica para decisiones estratégicas en la empresa privada mexicana.
+            </p>
+        </div>
+
+        <!-- Grid de Análisis (Dinamizado vía JS) -->
+        <div id="perspectivas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- El contenido se cargará dinámicamente -->
+            <div class="col-span-full py-20 text-center text-gray-400 font-sans italic">
+                Cargando análisis...
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+        const grid = document.getElementById('perspectivas-grid');
+        
+        try {
+            const response = await fetch('../data/perspectivas.json');
+            const data = await response.json();
+            
+            grid.innerHTML = ''; // Limpiar cargador
+
+            data.forEach(item => {
+                const card = `
+                    <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                        <div class="p-8 flex-grow">
+                            <div class="flex justify-between items-start mb-6">
+                                <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Perspectiva #${item.id}</span>
+                                <span class="text-gray-400 text-xs font-sans">${item.fecha}</span>
+                            </div>
+                            <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                                ${item.titulo}
+                            </h2>
+                            <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                                ${item.descripcion}
+                            </p>
+                        </div>
+                        <div class="px-8 pb-8 space-y-3">
+                            <a href="visor.html?file=${item.pdf}&title=${encodeURIComponent(item.titulo)}" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                                Leer en línea
+                                <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </a>
+                            <a href="${item.pdf}" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                                Descargar PDF
+                                <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                            </a>
+                        </div>
+                    </article>
+                `;
+                grid.innerHTML += card;
+            });
+
+            // Agregar tarjeta de "Próximamente" al final
+            grid.innerHTML += `
+                <article class="border border-dashed border-[#1C1C1C]/30 flex flex-col items-center justify-center p-12 text-center opacity-60">
+                    <div class="w-12 h-12 border border-[#1C1C1C]/20 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#1C1C1C]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-serif text-[#1C1C1C] mb-2">Próximo Análisis</h3>
+                    <p class="text-xs font-sans text-gray-500 uppercase tracking-widest">En proceso de investigación</p>
+                </article>
+            `;
+
+        } catch (error) {
+            console.error('Error cargando los análisis:', error);
+            grid.innerHTML = '<div class="col-span-full text-center text-red-800 font-sans">Error al conectar con la base de datos de Perspectivas.</div>';
+        }
+    });
+</script>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="../assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
+                <span class="brand-name">Evangelista &amp; Co.</span>
+                <p class="footer-tagline !text-white/70">
+                    Evangelista & Co. es una firma de consultoría e inteligencia de negocio organizada por áreas de práctica. Ayudamos a empresas privadas mexicanas a alcanzar sus objetivos más rápido mediante criterio consultivo e inteligencia diseñada para su operación específica.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Áreas de Práctica</h4>
+                <a href="../sectores.html">Supply Chain & Operations</a>
+                <a href="../sectores.html">Industrial & Manufacturing</a>
+                <a href="../sectores.html">Growth & Commercial Analytics</a>
+                <a href="../sectores.html">Risk & Financial Integrity</a>
+            </div>
+            <div class="footer-col">
+                <h4>Compañía</h4>
+                <a href="../por-que-nosotros.html">La Firma</a>
+                <a href="../metodologia.html">Metodología</a>
+                <a href="../sectores.html">Áreas de Práctica</a>
+                <a href="Perspectivas.html">Perspectivas</a>
+                <a href="../index.html#contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Evangelista &amp; Co. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
+<div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Contacto">
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+        <div class="modal-header">
+            <div class="modal-header-title">
+                <div>
+                    <div class="modal-name">Contacto Institucional</div>
+                    <div class="modal-sub">Evangelista &amp; Co.</div>
+                </div>
+            </div>
+            <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
+        </div>
+        <div style="padding: 24px;">
+            <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde Perspectivas | Evangelista & Co.">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                    <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                    <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                    <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                    <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                    <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/diagnostico.js"></script>
+<script>
+
+    // Header scroll shadow
+    var header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visor de Análisis | Evangelista &amp; Co.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              serif: ['Fraunces', 'Georgia', 'serif'],
+            },
+            colors: {
+              carbon:  '#1C1C1C',
+              beige:   '#F4F1EA',
+              olive: {
+                DEFAULT: '#5A6352',
+                dark:    '#4A5342',
+                light:   '#8A9A7D',
+              },
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-[#F4F1EA] flex flex-col min-h-screen">
+
+<!-- Header Simplificado para el Visor -->
+<header class="bg-[#F4F1EA] text-[#1C1C1C] py-6 px-6 flex flex-col md:flex-row justify-between items-center border-b border-[#1C1C1C]/10">
+    <div class="flex items-center space-x-4 mb-4 md:mb-0">
+        <a href="Perspectivas.html" class="hover:text-[#5A6352] transition-colors flex items-center text-xs font-bold tracking-widest uppercase border-b border-[#1C1C1C] hover:border-[#5A6352] pb-1">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Volver a Perspectivas
+        </a>
+    </div>
+    <div class="font-serif text-2xl text-center md:text-left" id="viewer-title">Cargando Análisis...</div>
+    <div class="flex items-center mt-4 md:mt-0">
+        <a id="download-btn" href="#" download class="inline-flex items-center justify-center border border-[#1C1C1C] text-[#1C1C1C] py-2 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#1C1C1C] hover:text-white transition-colors duration-300">
+            Descargar PDF Original
+            <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+        </a>
+    </div>
+</header>
+
+<!-- Contenedor Nativo del Documento -->
+<main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+    <div id="pdf-render-container" class="max-w-4xl mx-auto space-y-8 flex flex-col items-center">
+        <!-- Los canvas del PDF se inyectarán aquí -->
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer mt-auto border-t border-[#1C1C1C]/10">
+    <div class="container text-center py-8">
+        <p class="text-xs font-sans text-gray-500 uppercase tracking-widest">&copy; 2026 Evangelista &amp; Co. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- PDF.js via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+    // Configurar el worker de PDF.js
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    document.addEventListener("DOMContentLoaded", async function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileUrl = urlParams.get('file');
+        const title = urlParams.get('title');
+
+        if (title) {
+            document.getElementById('viewer-title').textContent = title;
+            document.title = title + " | Evangelista & Co.";
+        }
+
+        if (!fileUrl) {
+            document.getElementById('viewer-title').textContent = "Error: Documento no encontrado";
+            return;
+        }
+
+        document.getElementById('download-btn').href = fileUrl;
+        const container = document.getElementById('pdf-render-container');
+
+        try {
+            // Cargar el documento PDF
+            const loadingTask = pdfjsLib.getDocument(fileUrl);
+            const pdf = await loadingTask.promise;
+            
+            // Renderizar cada página
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                const page = await pdf.getPage(pageNum);
+                
+                // Escala para alta resolución
+                const scale = 1.5; 
+                const viewport = page.getViewport({ scale: scale });
+
+                // Crear un wrapper para la sombra/borde (estilo hoja de papel)
+                const wrapper = document.createElement('div');
+                wrapper.className = "bg-white border border-[#1C1C1C]/10 shadow-[8px_8px_0_0_rgba(28,28,28,0.05)] overflow-hidden w-full max-w-[800px]";
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                canvas.className = "w-full h-auto block"; // Para que se ajuste al wrapper
+
+                wrapper.appendChild(canvas);
+                container.appendChild(wrapper);
+
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                
+                await page.render(renderContext).promise;
+            }
+        } catch (error) {
+            console.error('Error renderizando el PDF:', error);
+            document.getElementById('viewer-title').textContent = "Error al cargar el análisis";
+        }
+    });
+</script>
+
+</body>
+</html>
