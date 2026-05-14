@@ -3,45 +3,96 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin | Evangelista &amp; Co.</title>
+  <title>Editor de Perspectivas | Evangelista &amp; Co.</title>
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    /* Custom CMS Styling */
+    /* Botones y acentos */
+    :root {
+      --color-primary: #5A6352 !important; /* Olive */
+      --color-primary-hover: #1C1C1C !important; /* Carbon */
+    }
+    
+    /* Cambiar el color del botón de publicar y acentos */
+    [class*="StyledAppHeaderButton"] {
+      background-color: var(--color-primary) !important;
+      font-family: serif !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+    }
+
+    /* Estilo para las tarjetas de la lista */
+    [class*="CollectionCard"] {
+      border-left: 4px solid var(--color-primary) !important;
+    }
+
+    /* Ocultar el preview pane que se ve mal */
+    [class*="PreviewPaneContainer"] {
+      display: none !important;
+    }
+    
+    /* Expandir el editor para que use todo el espacio */
+    [class*="EditorContainer"] {
+      width: 100% !important;
+      max-width: 1000px !important;
+      margin: 0 auto !important;
+    }
+
+    /* Mejorar labels */
+    label {
+      font-family: sans-serif !important;
+      text-transform: uppercase !important;
+      font-size: 10px !important;
+      letter-spacing: 1px !important;
+      color: #5A6352 !important;
+      font-weight: bold !important;
+    }
+
+    /* Fondo del panel */
+    body {
+      background-color: #F4F1EA !important;
+    }
+  </style>
 </head>
 <body>
-  <!-- Decap CMS Script (Versión estable fija) -->
+  <!-- Decap CMS Script -->
   <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
   
   <script>
-    // Configuración Inyectada Directamente para asegurar carga
     CMS.init({
       config: {
         backend: {
           name: 'git-gateway',
           branch: 'main'
         },
+        display_name: 'Evangelista Perspectives Hub',
+        logo_url: '../assets/logoEvangelistaCo.png',
         media_folder: 'Perspectivas/Analisis (pdf)',
         public_folder: '/Perspectivas/Analisis (pdf)',
         collections: [
           {
             name: 'perspectivas_list',
-            label: 'Lista de Análisis',
+            label: 'Plataforma Editorial',
             files: [
               {
-                label: 'Análisis Perspectivas',
+                label: 'Análisis Publicados',
                 name: 'analisis',
                 file: 'data/perspectivas.json',
+                description: 'Gestiona los análisis técnicos que aparecen en la sección Perspectivas.',
                 fields: [
                   {
-                    label: 'Artículos',
+                    label: 'Análisis Individuales',
                     name: 'perspectivas',
                     widget: 'list',
-                    allow_add: true,
+                    summary: '{{fields.titulo}} ({{fields.id}})',
+                    add_to_top: true,
                     fields: [
-                      { label: 'ID', name: 'id', widget: 'string', hint: 'Ej: 03' },
-                      { label: 'Título', name: 'titulo', widget: 'string' },
-                      { label: 'Fecha', name: 'fecha', widget: 'string' },
-                      { label: 'Descripción', name: 'descripcion', widget: 'text' },
-                      { label: 'Archivo PDF', name: 'pdf', widget: 'file' }
+                      { label: 'Identificador', name: 'id', widget: 'string', hint: 'Ej: 03' },
+                      { label: 'Título del Análisis', name: 'titulo', widget: 'string' },
+                      { label: 'Fecha de Publicación', name: 'fecha', widget: 'string', hint: 'Ej: Junio 2026' },
+                      { label: 'Resumen Ejecutivo', name: 'descripcion', widget: 'text' },
+                      { label: 'Cargar Archivo PDF', name: 'pdf', widget: 'file' }
                     ]
                   }
                 ]
