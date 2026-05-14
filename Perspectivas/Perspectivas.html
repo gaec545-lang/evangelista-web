@@ -119,7 +119,11 @@
             
             grid.innerHTML = ''; // Limpiar cargador
 
-            data.forEach(item => {
+            // Asegurar que leemos el array desde la propiedad correcta
+            const items = data.perspectivas || [];
+
+            items.forEach(item => {
+
                 const card = `
                     <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
                         <div class="p-8 flex-grow">

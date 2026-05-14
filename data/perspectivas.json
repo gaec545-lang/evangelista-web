@@ -1,16 +1,18 @@
-[
-  {
-    "id": "01",
-    "titulo": "Manufactura Textil: Puebla - Tlaxcala",
-    "fecha": "Mayo 2026",
-    "descripcion": "Análisis de concentración industrial y competitividad regional. Un diagnóstico sobre la infraestructura productiva del corredor textil más importante del país.",
-    "pdf": "Analisis (pdf)/perspectivas-01-textil.pdf"
-  },
-  {
-    "id": "02",
-    "titulo": "Mezcal Poblano: El Paradoja del Crecimiento",
-    "fecha": "Mayo 2026",
-    "descripcion": "Evaluación de la cadena de valor y potencial de exportación. Por qué la producción artesanal enfrenta cuellos de botella ante la demanda global.",
-    "pdf": "Analisis (pdf)/perspectivas-02-mezcal-puebla.pdf"
-  }
-]
+{
+  "perspectivas": [
+    {
+      "id": "01",
+      "titulo": "Manufactura Textil: Puebla - Tlaxcala",
+      "fecha": "Mayo 2026",
+      "descripcion": "Análisis de concentración industrial y competitividad regional. Un diagnóstico sobre la infraestructura productiva del corredor textil más importante del país.",
+      "pdf": "Analisis (pdf)/perspectivas-01-textil.pdf"
+    },
+    {
+      "id": "02",
+      "titulo": "Mezcal Poblano: El Paradoja del Crecimiento",
+      "fecha": "Mayo 2026",
+      "descripcion": "Evaluación de la cadena de valor y potencial de exportación. Por qué la producción artesanal enfrenta cuellos de botella ante la demanda global.",
+      "pdf": "Analisis (pdf)/perspectivas-02-mezcal-puebla.pdf"
+    }
+  ]
+}
