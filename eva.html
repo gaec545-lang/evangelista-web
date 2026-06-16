@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EVA | Evangelista & Co.</title>
+    <meta name="description" content="El agente de inteligencia de Evangelista & Co. Entrenado sobre la realidad operativa de la empresa manufacturera mexicana." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              serif: ['Fraunces', 'Georgia', 'serif'],
+            },
+            colors: {
+              carbon:  '#1C1C1C',
+              beige:   '#F4F1EA',
+              olive: {
+                DEFAULT: '#5A6352',
+                dark:    '#4A5342',
+                light:   '#8A9A7D',
+              },
+              body:    '#2D3319',
+              muted:   '#707070',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+
+<body class="bg-[#F4F1EA] text-[#1C1C1C] font-sans antialiased selection:bg-[#5A6352] selection:text-white">
+
+    <header class="header-sticky" id="header">
+        <div class="container">
+            <div class="header-content">
+
+                <a href="index.html" class="logo" aria-label="Inicio Evangelista & Co.">
+                    <img src="assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." />
+                    <div class="logo-text">
+                        <span class="brand-name">Evangelista &amp; Co.</span>
+                        <span class="brand-tagline">Intelligence Architecture Firm</span>
+                    </div>
+                </a>
+
+                <nav class="main-nav" aria-label="Navegación de la Firma">
+                    <a href="por-que-nosotros.html">La Firma</a>
+                    <a href="metodologia.html">Metodología</a>
+                    <a href="eva.html">EVA</a>
+                    <a href="Perspectivas/Perspectivas.html">Perspectivas</a>
+                    <a href="https://plataforma.evangelistaco.com/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+                </nav>
+
+                <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                    <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                    <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+        
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+            <a href="por-que-nosotros.html">La Firma</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="eva.html">EVA</a>
+            <a href="Perspectivas/Perspectivas.html">Perspectivas</a>
+            <a href="https://plataforma.evangelistaco.com/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+            <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Hablar con la firma</a>
+        </nav>
+    </header>
+
+    <main class="pt-20"> 
+        <section class="py-24 md:py-32 bg-[#F4F1EA]">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+                <span class="text-[#5A6352] text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Evangelista Intelligence</span>
+                <h1 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">
+                    EVA
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 font-sans leading-relaxed max-w-3xl mx-auto border-t border-[#1C1C1C]/10 pt-8">
+                    El agente de inteligencia de Evangelista &amp; Co.<br>Entrenado sobre la realidad operativa de la empresa manufacturera mexicana.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+                <div class="text-gray-700 font-sans text-lg leading-relaxed space-y-6">
+                    <p>
+                        Cada firma tiene criterio. Lo que distingue el criterio de la opinión es la evidencia que lo respalda.
+                    </p>
+                    <p>
+                        EVA es el sistema con el que Evangelista &amp; Co. organiza, recupera y aplica ese conocimiento en cada proyecto. Opera desde el primer día del diagnóstico. No reemplaza el juicio del consultor. Lo hace más difícil de refutar.
+                    </p>
+                    <p>
+                        Cuando EVA cita un benchmark, tiene fuente y fecha. Cuando advierte sobre una hipótesis, hay datos detrás. Cuando el proyecto cierra, todo lo que EVA procesó queda registrado en el expediente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#1C1C1C] text-[#F4F1EA]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+                <h2 class="text-3xl font-serif text-white leading-tight mb-8">Inteligencia aplicada, no inteligencia exhibida.</h2>
+                <div class="text-gray-400 font-sans text-lg leading-relaxed space-y-6">
+                    <p class="!text-gray-400">
+                        EVA no produce reportes. Asiste al consultor en las decisiones que importan: cuándo una hipótesis tiene suficiente evidencia para avanzar, cuándo los datos contradicen el diagnóstico inicial, cuándo el patrón que aparece en este proyecto apareció antes en otro contexto similar.
+                    </p>
+                    <p class="!text-gray-400">
+                        Cada conversación con EVA dentro de un proyecto queda registrada. EVA recuerda lo que se discutió, lo que se descartó y por qué. Al cierre, ese historial forma parte del expediente que el cliente recibe.
+                    </p>
+                    <p class="!text-gray-400">
+                        Lo que el cliente ve es el resultado. EVA es la razón por la que ese resultado llega con evidencia trazable.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in">
+                <h2 class="text-3xl font-serif text-[#1C1C1C] leading-tight mb-8">El mercado no necesita más herramientas de IA.<br>Necesita criterio que las use bien.</h2>
+                <div class="text-gray-700 font-sans text-lg leading-relaxed space-y-6">
+                    <p>
+                        Las firmas grandes tienen agentes de inteligencia. McKinsey tiene Lilli's. Operan sobre corpus propietarios construidos en décadas de proyectos.
+                    </p>
+                    <p>
+                        EVA opera sobre el corpus de operaciones manufactureras en México: cómo funciona un ERP en una PyME de 200 empleados, qué significa una variación de merma en una planta textil de Puebla, cómo leer el estado de cuenta de CONTPAQi cuando el contador lleva diez años registrando lo mismo de forma distinta.
+                    </p>
+                    <p>
+                        Ese es el conocimiento que ningún modelo general tiene. Y es el conocimiento que EVA aplica desde el día uno de cada proyecto.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[#F4F1EA] text-center border-t border-[#1C1C1C]/10">
+            <div class="max-w-3xl mx-auto px-4 fade-in">
+                <div class="text-gray-700 font-sans text-lg leading-relaxed space-y-6 mb-12">
+                    <p>
+                        EVA no está disponible como producto independiente. Opera exclusivamente dentro de los proyectos de Evangelista &amp; Co.
+                    </p>
+                    <p>
+                        Es la razón por la que nuestros diagnósticos tienen fuente y nuestros resultados tienen hash.
+                    </p>
+                </div>
+                <a href="metodologia.html" class="inline-flex items-center text-[#1C1C1C] font-sans font-bold text-sm tracking-widest uppercase hover:text-[#5A6352] transition-colors border-b border-[#1C1C1C] hover:border-[#5A6352] pb-1 group">
+                    Conocer cómo trabajamos
+                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
+                    <span class="brand-name">Evangelista &amp; Co.</span>
+                    <p class="footer-tagline !text-white/70">
+                        Evangelista &amp; Co. es una firma de consultoría e inteligencia de negocio organizada por especializaciones. Ayudamos a empresas privadas mexicanas a alcanzar sus objetivos más rápido mediante criterio consultivo e inteligencia diseñada para su operación específica.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Especializaciones</h4>
+                    <a href="sectores.html">Operaciones y Transformación Operativa</a>
+                    <a href="sectores.html">Estrategia Comercial y Crecimiento</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Compañía</h4>
+                    <a href="por-que-nosotros.html">La Firma</a>
+                    <a href="metodologia.html">Metodología</a>
+                    <a href="eva.html">EVA</a>
+                    <a href="Perspectivas/Perspectivas.html">Perspectivas</a>
+                    <a href="https://plataforma.evangelistaco.com/" target="_blank" rel="noopener">Acceso</a>
+                    <a href="index.html#contacto">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Evangelista &amp; Co. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL FORMULARIO -->
+    <div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Contacto">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+            <div class="modal-header">
+                <div class="modal-header-title">
+                    <div>
+                        <div class="modal-name">Contacto Institucional</div>
+                        <div class="modal-sub">Evangelista &amp; Co.</div>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
+            </div>
+            <div style="padding: 24px;">
+                <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                    <input type="hidden" name="_subject" value="Nuevo contacto desde sitio web Evangelista & Co.">
+                    <input type="hidden" name="_captcha" value="false">
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                        <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                        <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                        <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Teléfono</label>
+                        <input type="tel" name="Teléfono" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Dirección</label>
+                        <input type="text" name="Dirección" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">País</label>
+                        <input type="text" name="País" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                        <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                        <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-[#F4F1EA] mb-1">¿Cómo se enteró de nuestros servicios?</label>
+                        <input type="text" name="¿Cómo se enteró de nuestros servicios?" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                    </div>
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/diagnostico.js"></script>
+    <script>
+    (function () {
+        // Scroll fade-in observer
+        var els = document.querySelectorAll('.fade-in');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+        els.forEach(function (el) { observer.observe(el); });
+    })();
+    </script>
+</body>
+</html>
