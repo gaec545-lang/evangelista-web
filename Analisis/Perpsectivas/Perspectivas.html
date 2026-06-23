@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspectivas | Evangelista &amp; Co.</title>
+    <meta name="description" content="Análisis estratégico e inteligencia de negocio para la toma de decisiones directivas en México." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              serif: ['Fraunces', 'Georgia', 'serif'],
+            },
+            colors: {
+              carbon:  '#1C1C1C',
+              beige:   '#F4F1EA',
+              olive: {
+                DEFAULT: '#5A6352',
+                dark:    '#4A5342',
+                light:   '#8A9A7D',
+              },
+              body:    '#2D3319',
+              muted:   '#707070',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-[#F4F1EA]">
+
+<!-- ══════════════════════════════════════════ Header -->
+
+<header class="header-sticky" id="header">
+    <div class="container">
+        <div class="header-content">
+
+            <a href="../index.html" class="logo" aria-label="Inicio Evangelista & Co.">
+                <img src="../assets/logoEvangelistaCo.png" alt="Isotipo Evangelista & Co." />
+                <div class="logo-text">
+                    <span class="brand-name">Evangelista &amp; Co.</span>
+                    <span class="brand-tagline">Intelligence Architecture Firm</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación de la Firma">
+                <a href="../por-que-nosotros.html">La Firma</a>
+                <a href="../metodologia.html">Metodología</a>
+                <a href="../sectores.html">Áreas de Práctica</a>
+                <a href="Perspectivas.html" class="active">Perspectivas</a>
+                
+                <span class="nav-divider" style="width: 1px; height: 16px; background-color: rgba(107,123,94,0.3); margin: 0 8px;"></span>
+                
+                <a href="https://plataforma.evangelistaco.com/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+                <button onclick="window.openDiagnostico && window.openDiagnostico()" class="btn-primary nav-cta">Hablar con la firma</button>
+            </nav>
+
+            <button type="button" class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+                <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
+        </div>
+    </div>
+    
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+        <a href="../por-que-nosotros.html">La Firma</a>
+        <a href="../metodologia.html">Metodología</a>
+        <a href="../sectores.html">Áreas de Práctica</a>
+        <a href="Perspectivas.html" class="active">Perspectivas</a>
+        <a href="https://plataforma.evangelistaco.com/" target="_blank" rel="noopener" style="color: var(--olive); font-weight: 700;">Acceso</a>
+        <a href="#contacto" onclick="window.openDiagnostico && window.openDiagnostico(); return false;" style="font-weight: 700;">Hablar con la firma</a>
+    </nav>
+</header>
+
+<main class="pt-32 pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Hero Section -->
+        <div class="mb-20">
+            <span class="text-[#5A6352] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Editorial</span>
+            <h1 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">Perspectivas.</h1>
+            <p class="max-w-2xl text-lg text-gray-700 font-sans leading-relaxed">
+                Análisis de datos e inteligencia de mercado diseñada para el Director General. Evidencia té        <!-- Grid de Análisis -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            
+            <!-- Análisis 01 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Perspectiva #01</span>
+                        <span class="text-gray-400 text-xs font-sans">Mayo 2026</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        Manufactura Textil: Puebla - Tlaxcala.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        Análisis de concentración industrial y competitividad regional. Un diagnóstico sobre la infraestructura productiva del corredor textil más importante del país.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=Analisis (pdf)/perspectivas-01-textil.pdf&title=Manufactura Textil: Puebla - Tlaxcala" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="Analisis (pdf)/perspectivas-01-textil.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Análisis 02 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Perspectiva #02</span>
+                        <span class="text-gray-400 text-xs font-sans">Mayo 2026</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        Mezcal Poblano: La Paradoja del Crecimiento.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        Evaluación de la cadena de valor y potencial de exportación. Por qué la producción artesanal enfrenta cuellos de botella ante la demanda global.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=Analisis (pdf)/perspectivas-02-mezcal-puebla.pdf&title=Mezcal Poblano: La Paradoja del Crecimiento" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="Analisis (pdf)/perspectivas-02-mezcal-puebla.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Análisis 04 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Perspectiva #04</span>
+                        <span class="text-gray-400 text-xs font-sans">Mayo 2025</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        Los Aranceles de Trump No Golpearon a Puebla de Forma Uniforme.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        Saber de cuál lado estás vale más que el dato agregado. La industria alimentaria creció 7% con los mismos aranceles que hundieron al automotriz 10% y al textil 18%. La diferencia no es suerte. Es la estructura de tu cadena.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=Analisis%20(pdf)/perspectivas-04-aranceles-trump-puebla.pdf&title=Los%20Aranceles%20de%20Trump%20No%20Golpearon%20a%20Puebla%20de%20Forma%20Uniforme" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="Analisis (pdf)/perspectivas-04-aranceles-trump-puebla.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Análisis 05 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Perspectiva #05</span>
+                        <span class="text-gray-400 text-xs font-sans">Junio 2026</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        Tus Empleados Ya Usan Herramientas Tecnológicas.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        El problema es que tú no recibes nada. El 64% de las PyMEs declara usar inteligencia artificial, pero solo el 5.8% obtiene resultados medibles. La brecha no es de tecnología ni presupuesto: es la ausencia de una arquitectura institucional formal.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=Analisis%20(pdf)/perspectivas-05.pdf&title=Tus%20Empleados%20Ya%20Usan%20Herramientas%20Tecnol%C3%B3gicas" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="Analisis (pdf)/perspectivas-05.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Análisis 06 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Perspectiva #06</span>
+                        <span class="text-gray-400 text-xs font-sans">Junio 2026</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        México Atrajo Inversión Récord en 2025. Perdió 127,000 Empleos Manufactureros.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        El dato que cambia la estrategia. Los fabricantes de insumos y volumen tradicional retroceden mientras la manufactura tecnológica y de ensamble avanzado se acelera. El dato nacional agregado oculta en cuál curva de crecimiento se ubica cada competidor.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=Analisis%20(pdf)/perspectivas-06.pdf&title=M%C3%A9xico%20Atrajo%20Inversi%C3%B3n%20R%C3%A9cord%20en%202025" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="Analisis (pdf)/perspectivas-06.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Próximamente -->
+            <article class="border border-dashed border-[#1C1C1C]/30 flex flex-col items-center justify-center p-12 text-center opacity-60">
+                <div class="w-12 h-12 border border-[#1C1C1C]/20 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-[#1C1C1C]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+                </div>
+                <h3 class="text-lg font-serif text-[#1C1C1C] mb-2">Próximo Análisis</h3>
+                <p class="text-xs font-sans text-gray-500 uppercase tracking-widest">En proceso de investigación</p>
+            </article>
+
+        </div>
+
+        <!-- Sección Tesis Metodológicas -->
+        <div class="mt-32 mb-12 border-t border-[#1C1C1C]/10 pt-20">
+            <span class="text-[#5A6352] text-xs font-bold tracking-[0.3em] uppercase mb-4 block">Investigación</span>
+            <h2 class="text-5xl md:text-6xl font-serif text-[#1C1C1C] leading-tight mb-8">Tesis Metodológicas.</h2>
+            <p class="max-w-2xl text-lg text-gray-700 font-sans leading-relaxed">
+                Documentos de posición y casos de estudio sobre la transferencia de capacidades de inteligencia y la mitigación de riesgos operativos.
+            </p>
+        </div>
+
+        <!-- Grid de Tesis -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Tesis 01 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Tesis #01</span>
+                        <span class="text-gray-400 text-xs font-sans">2025</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        Evangelista Risk Radar®: Estrés Operativo en PyMEs.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        Metodología de detección temprana de estrés operativo en PyMEs con datos públicos. Aplicación piloto en el corredor textil Puebla-Tlaxcala analizando 4,648 establecimientos productivos.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=../Tesis/Tesis_Metodologica_01_Risk_Radar.pdf&title=Evangelista%20Risk%20Radar%C2%AE:%20Estr%C3%A9s%20Operativo%20en%20PyMEs" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="../Tesis/Tesis_Metodologica_01_Risk_Radar.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Tesis 02 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Tesis #02</span>
+                        <span class="text-gray-400 text-xs font-sans">2025</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        México Captó $36B en IED de Nearshoring. La PyME Manufacturera Capturó Casi Nada.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        El diagnóstico que la narrativa optimista esconde. Un análisis estratégico de la cadena de proveeduría Tier 2/3 en el corredor manufacturero nacional y las brechas de certificación.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=../Tesis/tesis-02-nearshoring-pyme-2025.pdf&title=M%C3%A9xico%20Capt%C3%B3%20%2436B%20en%20IED%20de%20Nearshoring" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="../Tesis/tesis-02-nearshoring-pyme-2025.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Tesis 03 -->
+            <article class="group bg-white border border-[#1C1C1C] overflow-hidden hover:shadow-[12px_12px_0_0_#5A6352] transition-all duration-300 flex flex-col">
+                <div class="p-8 flex-grow">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="bg-[#F4F1EA] text-[#5A6352] text-[10px] font-bold tracking-widest uppercase py-1 px-3">Tesis #03</span>
+                        <span class="text-gray-400 text-xs font-sans">Junio 2026</span>
+                    </div>
+                    <h2 class="text-2xl font-serif text-[#1C1C1C] mb-4 leading-tight group-hover:text-[#5A6352] transition-colors">
+                        IA para Empresas No es ChatGPT con tu Logo.
+                    </h2>
+                    <p class="text-sm text-gray-600 font-sans leading-relaxed mb-8">
+                        Esto es lo que separa a las que ya deciden diferente. El diagnóstico de los tres niveles y por qué la arquitectura correcta supera a la tecnología más avanzada.
+                    </p>
+                </div>
+                <div class="px-8 pb-8 space-y-3">
+                    <a href="visor.html?file=../Tesis/tesis-03.pdf&title=IA%20para%20Empresas%20No%20es%20ChatGPT%20con%20tu%20Logo" class="inline-flex items-center w-full justify-center bg-[#1C1C1C] text-white py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#5A6352] transition-colors duration-300">
+                        Leer en línea
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </a>
+                    <a href="../Tesis/tesis-03.pdf" download class="inline-flex items-center w-full justify-center border border-[#1C1C1C] text-[#1C1C1C] py-3 px-6 text-[10px] font-bold tracking-widest uppercase hover:bg-[#F4F1EA] transition-colors duration-300">
+                        Descargar PDF
+                        <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="square" stroke-width="2" d="M7 16l5 5m0 0l5-5m-5 5V3"></path></svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</main>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="../assets/logoEvangelistaCo.png" alt="Evangelista &amp; Co." class="footer-logo" />
+                <span class="brand-name">Evangelista &amp; Co.</span>
+                <p class="footer-tagline !text-white/70">
+                    Evangelista & Co. es una firma de consultoría e inteligencia de negocio organizada por áreas de práctica. Ayudamos a empresas privadas mexicanas a alcanzar sus objetivos más rápido mediante criterio consultivo e inteligencia diseñada para su operación específica.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Áreas de Práctica</h4>
+                <a href="../sectores.html">Supply Chain & Operations</a>
+                <a href="../sectores.html">Industrial & Manufacturing</a>
+                <a href="../sectores.html">Growth & Commercial Analytics</a>
+                <a href="../sectores.html">Risk & Financial Integrity</a>
+            </div>
+            <div class="footer-col">
+                <h4>Compañía</h4>
+                <a href="../por-que-nosotros.html">La Firma</a>
+                <a href="../metodologia.html">Metodología</a>
+                <a href="../sectores.html">Áreas de Práctica</a>
+                <a href="Perspectivas.html">Perspectivas</a>
+                <a href="../index.html#contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Evangelista &amp; Co. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════ MODAL FORMULARIO -->
+<div id="diagnostico-modal" class="modal" role="dialog" aria-modal="true" aria-label="Contacto">
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+        <div class="modal-header">
+            <div class="modal-header-title">
+                <div>
+                    <div class="modal-name">Contacto Institucional</div>
+                    <div class="modal-sub">Evangelista &amp; Co.</div>
+                </div>
+            </div>
+            <button class="modal-close" onclick="window.closeDiagnostico && window.closeDiagnostico()" aria-label="Cerrar">&times;</button>
+        </div>
+        <div style="padding: 24px;">
+            <form action="https://formsubmit.co/gaec545@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde Perspectivas | Evangelista & Co.">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Nombre</label>
+                    <input type="text" name="Nombre" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Cargo / Puesto</label>
+                    <input type="text" name="Cargo/Puesto" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Correo electrónico</label>
+                    <input type="email" name="Correo" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Compañía / Organización</label>
+                    <input type="text" name="Compañía" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]" />
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-[#F4F1EA] mb-1">Comentarios</label>
+                    <textarea name="Comentarios" rows="3" required class="w-full border border-gray-300 p-2 rounded-none focus:outline-none focus:border-[#5A6352]"></textarea>
+                </div>
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#1C1C1C] text-white py-3 font-bold tracking-widest uppercase text-xs hover:bg-[#5A6352] transition-colors">Enviar Información</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/diagnostico.js"></script>
+<script>
+
+    // Header scroll shadow
+    var header = document.getElementById('header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+</script>
+
+</body>
+</html>
